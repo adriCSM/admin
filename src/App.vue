@@ -16,9 +16,9 @@ export default {
     NavigationDrawerVue,
   },
 
-  data: () => ({
-    //
-  }),
+  data() {
+    return {};
+  },
 };
 </script>
 <style>

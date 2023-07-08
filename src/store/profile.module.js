@@ -1,5 +1,4 @@
 import ProfileService from '@/services/profile.service';
-import jwtDecode from 'jwt-decode';
 import handler from '../services/error-handler';
 
 const initialState = { userProfile: null };
@@ -16,12 +15,20 @@ export const profile = {
         handler.errorHandling(error);
       }
     },
-    async getProfile({ commit }) {
+    async getProfile({ commit }, id) {
       try {
-        const token = JSON.parse(localStorage.getItem('user_id'));
-        const { id: userId } = jwtDecode(token);
-        const userProfile = await ProfileService.getProfile(userId);
-        commit('success', userProfile);
+        const userProfile = await ProfileService.getProfile(id);
+        commit('userProfile', userProfile);
+        return userProfile;
+      } catch (error) {
+        handler.errorHandling(error);
+      }
+    },
+    async deleteUser({ commit }, userId) {
+      try {
+        await ProfileService.deleteUser(userId);
+        const users = await ProfileService.getUsers();
+        commit('users', users);
       } catch (error) {
         handler.errorHandling(error);
       }
@@ -38,11 +45,8 @@ export const profile = {
     // },
   },
   mutations: {
-    success(state, userProfile) {
-      state.users.userProfile = userProfile;
-    },
-    successUpload(state, picURL) {
-      state.users.userProfile.profile_image = picURL;
+    userProfile(state, userProfile) {
+      state.userProfile = userProfile;
     },
     users(state, users) {
       state.users = users;

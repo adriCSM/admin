@@ -10,51 +10,37 @@ const route = useRoute();
 const id = route.params.id;
 const error = computed(() => store.state.error);
 
-const project = ref({
-  name: '',
-  description: '',
-  image: [],
-  url_site: '',
-  blob: null,
-});
-
+const name = ref('');
+const image = ref([]);
+const certificate = ref({ image: null });
 onMounted(async () => {
-  await store.dispatch('projects/getProject', id);
-  await store.dispatch('projects/getMetadataImageProject', id);
-  const metadata = store.state.projects.image_metadata;
-  const { name, description, url_site, image: blob } = store.state.projects.project;
-  project.value = {
-    name,
-    description,
-    image: [
-      new File([metadata], metadata.name, {
-        type: metadata.contentType,
-      }),
-    ],
-    url_site,
-    blob,
-  };
+  await store.dispatch('certificates/getCertificate', id);
+  const metadata = await store.dispatch('certificates/getMetadataImageCertificate', id);
+  certificate.value = store.state.certificates.certificate;
+  name.value = certificate.value.name;
+  image.value[0] = new File([certificate.value.image], metadata.name, {
+    type: metadata.contentType,
+  });
 });
 
 const change = (event) => {
   const file = event.target.files[0];
   if (file) {
     const url = URL.createObjectURL(file);
-    project.value.blob = url;
+    certificate.value.image = url;
   }
 };
 
 const update = async () => {
-  await store.dispatch('projects/editProject', {
+  await store.dispatch('certificates/editCertificate', {
     id,
-    name: project.value.name,
-    description: project.value.description,
-    image: project.value.image[0],
-    url_site: project.value.url_site,
+    name: name.value,
+    image: image.value[0],
   });
-
   if (!error.value) {
     router.push({ name: 'Portofolio' });
+  } else {
+    certificate.value.image = null;
   }
 };
 
@@ -65,19 +51,16 @@ const back = () => {
 
 <template>
   <div>
-    <v-app-bar elevation="2" class="bg-dark">
+    <v-app-bar elevation="2">
       <HeaderView />
     </v-app-bar>
     <main>
-      <div v-if="error">
-        <h1>{{ error }}</h1>
-      </div>
       <v-card class="bg-dark ma-3 pt-5">
         <div v-if="error">
           <h1 class="text-white">{{ error }}</h1>
         </div>
         <v-card-title style="color: #0fe" class="text-center">
-          <span class="text-h5">Edit Project</span>
+          <span class="text-h5">Edit certificate</span>
         </v-card-title>
 
         <v-card-text style="color: #0fe">
@@ -85,30 +68,10 @@ const back = () => {
             <v-row>
               <v-col cols="12">
                 <v-text-field
-                  label="Project Name"
-                  name="project"
+                  label="Certificate Name"
+                  name="certificate"
                   variant="outlined"
-                  v-model="project.name"
-                  required
-                  type="text"
-                ></v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-textarea
-                  label="Description"
-                  name="description"
-                  variant="outlined"
-                  v-model="project.description"
-                  required
-                  type="text"
-                ></v-textarea>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field
-                  label="Url Web Site"
-                  name="url"
-                  variant="outlined"
-                  v-model="project.url_site"
+                  v-model="name"
                   required
                   type="text"
                 ></v-text-field>
@@ -118,14 +81,14 @@ const back = () => {
                   label="Image"
                   variant="outlined"
                   prepend-icon="mdi-image"
-                  v-model="project.image"
+                  v-model="image"
                   accept="image/*"
                   type="file"
                   maxFileSize="512000"
                   @change="change"
                 ></v-file-input>
-                <v-card width="50%" v-if="project.blob">
-                  <v-img :src="project.blob"></v-img>
+                <v-card width="50%" v-if="certificate.image">
+                  <v-img :src="certificate.image"></v-img>
                 </v-card>
               </v-col>
             </v-row>

@@ -3,7 +3,11 @@ import store from '@/store';
 
 export default {
   errorHandling(err) {
-    if (err.message == 'Invalid token specified' || (err.response && err.response.status == 401)) {
+    if (
+      err.message == 'Invalid token specified' ||
+      (err.response && err.response.status == 401) ||
+      (err.response && err.response.status == 403)
+    ) {
       router.push({ name: 'Login' });
     }
 

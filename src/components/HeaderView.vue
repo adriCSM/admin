@@ -6,6 +6,9 @@ const store = useStore();
 const stateDrawer = computed(() => {
   return store.state.drawer;
 });
+const pic = computed(() => {
+  return store.state.profile.userProfile.pic;
+});
 const changeDrawer = () => {
   store.commit('drawer', !stateDrawer.value);
 };
@@ -21,8 +24,8 @@ const changeDrawer = () => {
         <router-link to="/users" class="px-5"> Users </router-link>
       </v-col>
       <v-col cols="4" class="text-end pe-10">
-        <v-avatar size="40px">
-          <v-img alt="Avatar" src="../assets/109715820.jpg">
+        <v-avatar size="40px" class="bg-white">
+          <v-img alt="Avatar" :src="pic">
             <v-btn variant="text" @click="changeDrawer"> </v-btn>
           </v-img>
         </v-avatar>

@@ -9,7 +9,6 @@ export const projects = {
     async getMetadataImageProject({ commit }, id) {
       try {
         const response = await projectService.getMetadataImageProject(id);
-        console.log(response);
         commit('metadata', response.data);
       } catch (err) {
         handler.errorHandling(err);

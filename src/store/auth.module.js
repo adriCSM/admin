@@ -15,7 +15,9 @@ export const auth = {
         const response = await AuthService.login(user);
         const { id } = jwtDecode(response.data.refreshToken);
         const userProfile = await ProfileService.getProfile(id);
+        console.log(userProfile.role);
         commit('username', userProfile.username);
+        commit('isRole', userProfile.role);
 
         commit('successMessage', `Selamat datang ${userProfile.username}`);
         setTimeout(() => {
@@ -45,6 +47,7 @@ export const auth = {
       try {
         const response = await AuthService.register(user);
         commit('isLoggedIn', true);
+
         if (response) {
           commit('successMessage', response.message);
           setTimeout(() => {
@@ -68,6 +71,9 @@ export const auth = {
   mutations: {
     isLoggedIn(state, loggedIn) {
       state.loggedIn = loggedIn;
+    },
+    isRole(state, isRole) {
+      state.isRole = isRole;
     },
     errorMessage(state, errorMessage) {
       state.errorMessage = errorMessage;

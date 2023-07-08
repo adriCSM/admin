@@ -194,7 +194,8 @@ export default defineComponent({
   }),
   setup() {
     const show = ref(false);
-    const error = ref();
+    const store = useStore();
+    const error = computed(() => store.state.error);
     const success = ref();
     const progres_linear = ref(0);
     let idInterval = [];
@@ -206,7 +207,6 @@ export default defineComponent({
       password: '',
       confirmPassword: '',
     });
-    const store = useStore();
 
     const confirmPassRules = computed(() => {
       return [
@@ -219,8 +219,18 @@ export default defineComponent({
       progres_linear.value = 0;
 
       await store.dispatch('auth/register', user.value);
-      error.value = await store.state.auth.errorMessage;
+
       success.value = await store.state.auth.successMessage;
+      if (success.value) {
+        user.value = {
+          ...user.value,
+          username: '',
+          phoneNumber: '',
+          email: '',
+          password: '',
+          confirmPassword: '',
+        };
+      }
 
       const interval = setInterval(() => {
         progres_linear.value++;

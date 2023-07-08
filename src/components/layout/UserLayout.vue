@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
+import AddUser from './AddUser.vue';
 
 const store = useStore();
 onMounted(async () => {
@@ -15,41 +16,46 @@ const actions = ref([
     text: 'Delete',
     icon: 'mdi-delete-outline',
     color: 'error',
-  },
-  {
-    text: 'Edit',
-    icon: 'mdi-pencil-outline',
-    color: 'info',
+    method: (id) => {
+      store.dispatch('profile/deleteUser', id);
+    },
   },
 ]);
 </script>
 
 <template>
-  <v-container class="rounded-xl">
-    <v-table class="pa-5">
+  <v-container fluid class="overflow-x-auto">
+    <v-row justify="center pt-5">
+      <AddUser />
+    </v-row>
+    <v-table class="pa-5 bg-dark" style="color: #0fe">
       <thead>
         <tr>
-          <th class="text-center">Image</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Email</th>
-          <th class="text-center">Role</th>
-          <th class="text-center">Status</th>
-          <th class="text-center">Action</th>
+          <th class="text-center text-white">Image</th>
+          <th class="text-center text-white">Name</th>
+          <th class="text-center text-white">Email</th>
+          <th class="text-center text-white">Role</th>
+          <th class="text-center text-white">Status</th>
+          <th class="text-center text-white">Action</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in dataUsers" :key="item" class="text-center">
           <td>
-            <v-avatar size="40px">
-              <v-img alt="Avatar" src="../../assets/109715820.jpg"></v-img>
+            <v-avatar size="40px" class="bg-white">
+              <v-img alt="Avatar" :src="item.pic"></v-img>
             </v-avatar>
           </td>
           <td>{{ item.username }}</td>
           <td>{{ item.email }}</td>
           <td>{{ item.role }}</td>
-          <td>
+          <td v-if="item.isOnline">
             <v-badge dot color="success" inline> </v-badge>
-            active
+            online
+          </td>
+          <td v-else>
+            <v-badge dot color="error" inline> </v-badge>
+            offline
           </td>
           <td>
             <v-tooltip :text="action.text" v-for="action in actions" :key="action">
@@ -57,8 +63,10 @@ const actions = ref([
                 <v-btn
                   v-bind="props"
                   size="small"
+                  class="ma-2"
                   :color="action.color"
                   :icon="action.icon"
+                  @click="action.method(item._id)"
                 ></v-btn>
               </template>
             </v-tooltip>

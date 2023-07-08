@@ -34,6 +34,7 @@ const routes = [
     name: 'Users',
     component: () => import('../views/UserView.vue'),
   },
+
   {
     path: '/portofolio',
     name: 'Portofolio',
@@ -42,7 +43,7 @@ const routes = [
   {
     path: '/portofolio/certificates/edit/:id',
     name: 'Edit Certificate',
-    component: () => import('../views/EditCertificateVeiw.vue'),
+    component: () => import('../views/EditCertificateView.vue'),
   },
   {
     path: '/portofolio/projects/edit/:id',

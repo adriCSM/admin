@@ -14,6 +14,12 @@ export default {
     const response = await axios.get(API_URL + `/users/${userId}`, { headers: await authHeader() });
     return response.data.data;
   },
+  async deleteUser(userId) {
+    const response = await axios.delete(API_URL + `/users/${userId}`, {
+      headers: await authHeader(),
+    });
+    return response.data.data;
+  },
 
   async uploadPic(pic, userId) {
     const postUrl = API_URL + '/uploads/users/' + userId + '/profile-image';
