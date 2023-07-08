@@ -45,7 +45,7 @@ const errorHandling = require('./Error/errorHandling');
 const init = async () => {
   const firebaseService = new FirebaseService();
   const cacheService = new CacheService();
-  const usersService = new UsersService();
+  const usersService = new UsersService(firebaseService);
   const authenticationsService = new AuthenticationService();
 
   const projectsService = new ProjectsService(firebaseService);

@@ -26,6 +26,14 @@ const Product = mongoose.model(
         require: true,
         default: 'user',
       },
+      isOnline: {
+        type: Boolean,
+      },
+      pic: {
+        type: String,
+        required: true,
+        default: 'https://img.icons8.com/ios-filled/50/000000/user-male-circle.png',
+      },
     },
     {
       timestamps: true,

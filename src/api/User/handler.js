@@ -47,6 +47,8 @@ class UserHandler {
   }
 
   async getUsersHandler(request, h) {
+    const { id: userId } = request.auth.credentials;
+    await this.usersService.verifyAdminAndCollaborator(userId);
     const users = await this.usersService.getUsers();
     const response = h
       .response({
@@ -59,6 +61,17 @@ class UserHandler {
   async getUserByIdHandler(request, h) {
     const { id: userId } = request.params;
     const user = await this.usersService.getUserById(userId);
+    const response = h
+      .response({
+        status: 'success',
+        data: user,
+      })
+      .code(201);
+    return response;
+  }
+  async deleteUserByIdHandler(request, h) {
+    const { id: userId } = request.params;
+    const user = await this.usersService.deleteUser(userId);
     const response = h
       .response({
         status: 'success',

@@ -6,8 +6,18 @@ const NotFoundError = require('../../Error/NotFoundError');
 const AuthorizationError = require('../../Error/AuthorizationError');
 
 class UsersService {
-  constructor() {
+  constructor(firebaseService) {
     this.db = User;
+    this.firebaseService = firebaseService;
+  }
+
+  async uploadImageInFirebase(payload) {
+    const fileBuffer = payload.image._data;
+    const metadata = {
+      contentType: payload.image.hapi.headers['content-type'],
+    };
+    const url = await this.firebaseService.addImage(payload.name, fileBuffer, metadata);
+    return url;
   }
 
   async checkRole() {
@@ -94,6 +104,37 @@ class UsersService {
     return result;
   }
 
+  async editUser(id, { username, phoneNumber, email, password, image, confirmPassword }) {
+    if (password !== confirmPassword) {
+      throw new InvariantError('Password dan confirmPassword tidak sesuai.');
+    }
+    const image_name = username + '_' + new Date().getTime();
+    const user = await this.getUserById(id);
+    await this.firebaseService.deleteImageWithURL(user.pic);
+    const url = await this.uploadImageInFirebase({ name: image_name, image });
+    const result = await this.db.findOneAndUpdate(
+      { _id: id },
+      {
+        username,
+        phoneNumber,
+        email,
+        password,
+        pic: url,
+      },
+    );
+    if (!result) {
+      throw new InvariantError('Gagal memperbarui project');
+    }
+  }
+
+  async deleteUser(userId) {
+    const result = await this.db.findOneAndDelete({ _id: userId });
+    await this.firebaseService.deleteImageWithURL(result.image);
+    if (!result) {
+      throw new InvariantError('Gagal menghapus user');
+    }
+  }
+
   async verifyUserCredential(email, password) {
     const result = await this.db.findOne({ email });
     if (!result) {
@@ -103,6 +144,12 @@ class UsersService {
     if (!match) {
       throw new AuthenticationError('Password tidak valid');
     }
+    await this.db.findOneAndUpdate(
+      { _id: result.id },
+      {
+        isOnline: true,
+      },
+    );
     return result.id;
   }
 

@@ -30,6 +30,14 @@ const routes = (handler) => [
       auth: 'allproject_jwt',
     },
   },
+  {
+    method: 'DELETE',
+    path: '/users/{id}',
+    handler: (request, h) => handler.deleteUserByIdHandler(request, h),
+    options: {
+      auth: 'allproject_jwt',
+    },
+  },
 ];
 
 module.exports = routes;

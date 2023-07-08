@@ -38,10 +38,19 @@ class FirebaseService {
 
   async deleteImage(filename) {
     try {
-      const storageRef = ref(this.storage, `image/${filename}`);
+      const storageRef = ref(this.storage, 'image/' + filename);
       await deleteObject(storageRef);
     } catch (err) {
-      console.log(err);
+      console.log(err.message);
+      return true;
+    }
+  }
+  async deleteImageWithURL(url) {
+    try {
+      const storageRef = ref(this.storage, url);
+      await deleteObject(storageRef);
+    } catch (err) {
+      console.log(err.message);
       return true;
     }
   }

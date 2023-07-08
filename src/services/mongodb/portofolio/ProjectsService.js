@@ -70,7 +70,7 @@ class ProjectsService {
       }
     } else {
       await this.firebaseService.deleteImage(oldFileName);
-      const url = await this.uploadImageInFirebase({ name: image_name, image });
+      const url = await this.uploadImageInFirebase({ name, image });
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
