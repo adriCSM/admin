@@ -5,12 +5,12 @@ const items = ref([
   {
     name: 'Web Portofolio',
     path: '/portofolio',
-    image: 'https://cdn.vuetifyjs.com/images/cards/kitchen.png',
+    image: '../../assets/wlppr.jpg',
   },
   {
     name: 'Store',
     path: '/store',
-    image: 'https://cdn.vuetifyjs.com/images/cards/kitchen.png',
+    image: '../../assets/wlppr.jpg',
   },
 ]);
 </script>
@@ -27,7 +27,7 @@ const items = ref([
             <v-img
               :aspect-ratio="16 / 12"
               cover
-              :src="item.image"
+              src="../../assets/wlppr.jpg"
               :style="isHovering ? { transform: 'scale(1.1)', transition: '.5s' } : null"
             >
               <v-expand-transition>
@@ -36,7 +36,7 @@ const items = ref([
                   class="d-flex flex-column transition-fast-in-fast-out v-card--reveal text-h6 text-white"
                   style="height: 100%"
                 >
-                  <strong elevation="6">
+                  <strong class="text-black" style="text-shadow: 0 0 1rem white">
                     {{ item.name }}
                   </strong>
                   <router-link :to="item.path">

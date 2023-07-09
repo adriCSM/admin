@@ -1,13 +1,15 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const stateDrawer = computed(() => {
-  return store.state.drawer;
-});
-const pic = computed(() => {
-  return store.state.profile.userProfile.pic;
+const stateDrawer = computed(() => store.state.drawer);
+const pic = ref();
+onMounted(async () => {
+  await store.dispatch('profile/myProfile');
+  if (store.state.profile.userProfile) {
+    pic.value = store.state.profile.userProfile.pic;
+  }
 });
 const changeDrawer = () => {
   store.commit('drawer', !stateDrawer.value);

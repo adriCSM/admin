@@ -17,15 +17,15 @@ const actions = ref([
 
 <template>
   <v-container fluid class="overflow-y-auto" style="max-height: 100vh">
-    <v-table class="pa-5">
+    <v-table class="pa-5 bg-dark" style="color: #0fe">
       <thead>
         <tr>
-          <th class="text-center">Image</th>
-          <th class="text-center">Name</th>
-          <th class="text-center">Email</th>
-          <th class="text-center">Role</th>
-          <th class="text-center">Status</th>
-          <th class="text-center">Action</th>
+          <th class="text-center text-white">Consumer</th>
+          <th class="text-center text-white">Products</th>
+          <th class="text-center text-white">Cuantity</th>
+          <th class="text-center text-white">Address</th>
+          <th class="text-center text-white">Total Price</th>
+          <th class="text-center text-white">Action</th>
         </tr>
       </thead>
       <tbody>
@@ -35,7 +35,7 @@ const actions = ref([
               <v-img alt="Avatar" src="../../assets/109715820.jpg"></v-img>
             </v-avatar>
           </td>
-          <td>{{ n }}</td>
+          <td>ale-ale</td>
           <td>a@gmail.com</td>
           <td>user</td>
           <td>

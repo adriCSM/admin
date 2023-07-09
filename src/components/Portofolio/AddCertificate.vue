@@ -24,7 +24,6 @@ const add = async () => {
 
 const change = () => {
   const file = image.value[0];
-  console.log(file);
   if (file) {
     const blob = URL.createObjectURL(file);
     blobImage.value = blob;

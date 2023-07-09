@@ -20,8 +20,5 @@ export default createStore({
     drawer(state, drawer) {
       state.drawer = drawer;
     },
-    error(state, error) {
-      state.error = error;
-    },
   },
 });

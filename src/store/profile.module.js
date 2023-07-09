@@ -1,4 +1,5 @@
 import ProfileService from '@/services/profile.service';
+import jwtDecode from 'jwt-decode';
 import handler from '../services/error-handler';
 
 const initialState = { userProfile: null };
@@ -11,6 +12,16 @@ export const profile = {
       try {
         const users = await ProfileService.getUsers();
         commit('users', users);
+      } catch (error) {
+        handler.errorHandling(error);
+      }
+    },
+    async myProfile({ commit }) {
+      try {
+        const { id } = jwtDecode(JSON.parse(localStorage.getItem('user_id')));
+        const userProfile = await ProfileService.getProfile(id);
+        commit('userProfile', userProfile);
+        return userProfile;
       } catch (error) {
         handler.errorHandling(error);
       }

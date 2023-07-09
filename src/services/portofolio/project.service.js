@@ -20,9 +20,7 @@ export default {
     return response.data;
   },
   async getProjects() {
-    const response = await axios.get(API_URL + '/portofolio/projects', {
-      headers: await authHeader(),
-    });
+    const response = await axios.get(API_URL + '/portofolio/projects');
     return response.data.data;
   },
   async getProject(id) {

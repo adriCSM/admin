@@ -18,9 +18,7 @@ export default {
     return response.data;
   },
   async getCertificates() {
-    const response = await axios.get(API_URL + '/portofolio/certificates', {
-      headers: await authHeader(),
-    });
+    const response = await axios.get(API_URL + '/portofolio/certificates');
     return response.data.data;
   },
   async getCertificate(id) {

@@ -15,7 +15,6 @@ export const auth = {
         const response = await AuthService.login(user);
         const { id } = jwtDecode(response.data.refreshToken);
         const userProfile = await ProfileService.getProfile(id);
-        console.log(userProfile.role);
         commit('username', userProfile.username);
         commit('isRole', userProfile.role);
 

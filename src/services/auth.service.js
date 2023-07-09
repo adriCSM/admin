@@ -34,6 +34,8 @@ export default {
       .then(() => {
         localStorage.removeItem('user_id');
         localStorage.removeItem('user');
+        localStorage.removeItem('activeTabStore');
+        localStorage.removeItem('activeTabPortofolio');
       });
   },
 

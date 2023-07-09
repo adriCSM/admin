@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import router from '@/router';
 import HeaderView from '@/components/HeaderView.vue';
+import NavigationDrawerVue from '../components/NavigationDrawer.vue';
 
 const store = useStore();
 const route = useRoute();
@@ -65,6 +66,7 @@ const back = () => {
 
 <template>
   <div>
+    <NavigationDrawerVue />
     <v-app-bar elevation="2" class="bg-dark">
       <HeaderView />
     </v-app-bar>

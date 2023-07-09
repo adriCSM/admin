@@ -1,28 +1,27 @@
 <script setup>
 import router from '@/router';
-import jwtDecode from 'jwt-decode';
 import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 const error = computed(() => store.state.error);
-const { id } = jwtDecode(localStorage.getItem('user_id'));
 const user = ref({
   username: '',
   pic: '',
 });
 
 onMounted(async () => {
-  await store.dispatch('profile/getProfile', id);
-  const { username, pic } = store.state.profile.userProfile;
-  user.value = {
-    username,
-    pic,
-  };
+  await store.dispatch('profile/myProfile');
+  if (store.state.profile.userProfile) {
+    const { username, pic } = store.state.profile.userProfile;
+    user.value = {
+      username,
+      pic,
+    };
+  }
 });
 
 const newDrawer = computed(() => {
-  const drawer = store.state.drawer;
-  return drawer;
+  return store.state.drawer;
 });
 
 const logout = async () => {
@@ -32,6 +31,10 @@ const logout = async () => {
     store.commit('drawer', false);
   }
 };
+
+const changeDrawer = () => {
+  store.commit('drawer', !newDrawer.value);
+};
 </script>
 
 <template>
@@ -40,8 +43,14 @@ const logout = async () => {
     :hidden="newDrawer ? false : true"
     temporary
     location="right"
+    style="height: auto"
   >
-    <v-list-item :prepend-avatar="user.pic" :title="user.username"></v-list-item>
+    <div class="text-right">
+      <v-btn variant="text" position="end" @click="changeDrawer">
+        <v-icon>mdi-close</v-icon>
+      </v-btn>
+    </div>
+    <v-list-item :prepend-avatar="user.pic" :title="user.username"> </v-list-item>
 
     <v-divider></v-divider>
 

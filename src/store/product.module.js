@@ -1,5 +1,5 @@
 import productService from '../services/app_store/product.service';
-import { handler } from '../services/error-handler';
+import handler from '../services/error-handler';
 
 const initialState = { products: null };
 
