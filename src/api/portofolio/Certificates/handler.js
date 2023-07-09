@@ -22,8 +22,6 @@ class CertificateHandlers {
   }
 
   async getCertificatesHandler(request, h) {
-    const { id: userId } = request.auth.credentials;
-    await this.usersService.verifyAdminAndCollaborator(userId);
     const certificates = await this.certificatesService.getCertificates();
     const response = h
       .response({

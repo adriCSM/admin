@@ -22,8 +22,6 @@ class ProjectHandlers {
   }
 
   async getProjectsHandler(request, h) {
-    const { id: userId } = request.auth.credentials;
-    await this.usersService.verifyAdminAndCollaborator(userId);
     const projects = await this.projectsService.getProjects();
     const response = h
       .response({

@@ -17,9 +17,6 @@ const routes = (handler) => [
     method: 'GET',
     path: '/portofolio/projects',
     handler: (request, h) => handler.getProjectsHandler(request, h),
-    options: {
-      auth: 'allproject_jwt',
-    },
   },
   {
     method: 'GET',
