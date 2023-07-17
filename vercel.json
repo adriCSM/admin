@@ -1,9 +1,9 @@
 {
   "version": 1,
-  "name": "admin",
+  "name": "backend",
   "builds": [
     {
-      "src": "src/server.js",
+      "src": "/src/server.js",
       "use": "@vercel/node"
     }
   ],
