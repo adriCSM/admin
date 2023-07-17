@@ -1,9 +1,9 @@
-const bcrypt = require('bcrypt');
-const User = require('../../../model/Users_db');
-const InvariantError = require('../../Error/InvariantError');
-const AuthenticationError = require('../../Error/AuthenticationError');
-const NotFoundError = require('../../Error/NotFoundError');
-const AuthorizationError = require('../../Error/AuthorizationError');
+import bcrypt from 'bcrypt';
+import User from '../../../model/Users_db.js';
+import InvariantError from '../../Error/InvariantError.js';
+import AuthenticationError from '../../Error/AuthenticationError.js';
+import NotFoundError from '../../Error/NotFoundError.js';
+import AuthorizationError from '../../Error/AuthorizationError.js';
 
 class UsersService {
   constructor(firebaseService) {
@@ -12,7 +12,7 @@ class UsersService {
   }
 
   async uploadImageInFirebase(payload) {
-    const fileBuffer = payload.image._data;
+    const fileBuffer = payload.image.data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -108,10 +108,10 @@ class UsersService {
     if (password !== confirmPassword) {
       throw new InvariantError('Password dan confirmPassword tidak sesuai.');
     }
-    const image_name = username + '_' + new Date().getTime();
+    const imageName = `${username}_${new Date().getTime()}`;
     const user = await this.getUserById(id);
     await this.firebaseService.deleteImageWithURL(user.pic);
-    const url = await this.uploadImageInFirebase({ name: image_name, image });
+    const url = await this.uploadImageInFirebase({ name: imageName, image });
     const result = await this.db.findOneAndUpdate(
       { _id: id },
       {
@@ -166,4 +166,4 @@ class UsersService {
   }
 }
 
-module.exports = UsersService;
+export default UsersService;

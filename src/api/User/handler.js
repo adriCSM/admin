@@ -58,6 +58,7 @@ class UserHandler {
       .code(201);
     return response;
   }
+
   async getUserByIdHandler(request, h) {
     const { id: userId } = request.params;
     const user = await this.usersService.getUserById(userId);
@@ -69,6 +70,7 @@ class UserHandler {
       .code(201);
     return response;
   }
+
   async deleteUserByIdHandler(request, h) {
     const { id: userId } = request.params;
     const user = await this.usersService.deleteUser(userId);
@@ -82,4 +84,4 @@ class UserHandler {
   }
 }
 
-module.exports = UserHandler;
+export default UserHandler;

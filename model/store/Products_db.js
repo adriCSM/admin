@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const Product = mongoose.model(
   'Product',
@@ -19,4 +19,4 @@ const Product = mongoose.model(
   }),
 );
 
-module.exports = Product;
+export default Product;

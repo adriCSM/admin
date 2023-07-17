@@ -1,7 +1,7 @@
-const ProductHandler = require('./handler');
-const routes = require('./routes');
+import ProductHandler from './handler.js';
+import routes from './routes.js';
 
-module.exports = {
+export default {
   name: 'products',
   version: '1.0.0',
   register: async (server, { productsService, usersService, validator }) => {

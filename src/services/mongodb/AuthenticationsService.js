@@ -1,6 +1,6 @@
-const Authentication = require('../../../model/Authentications_db');
-const User = require('../../../model/Users_db');
-const InvariantError = require('../../Error/InvariantError');
+import Authentication from '../../../model/Authentications_db.js';
+import User from '../../../model/Users_db.js';
+import InvariantError from '../../Error/InvariantError.js';
 
 class AuthenticationsService {
   constructor() {
@@ -34,17 +34,17 @@ class AuthenticationsService {
     }
   }
 
-  async deleteRefreshToken(user_id) {
+  async deleteRefreshToken(userId) {
     await this.user_db.findByIdAndUpdate(
-      { _id: user_id },
+      { _id: userId },
       {
         isOnline: false,
       },
     );
     await this.db.findOneAndDelete({
-      user_id,
+      user_id: userId,
     });
   }
 }
 
-module.exports = AuthenticationsService;
+export default AuthenticationsService;

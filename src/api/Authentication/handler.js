@@ -1,4 +1,4 @@
-class AuthenticationHandler {
+export default class AuthenticationHandler {
   constructor(AuthenticationsService, usersService, tokenManager, validator) {
     this.authenticationsService = AuthenticationsService;
     this.usersService = usersService;
@@ -58,5 +58,3 @@ class AuthenticationHandler {
     return response;
   }
 }
-
-module.exports = AuthenticationHandler;

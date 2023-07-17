@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const Authentication = mongoose.model(
   'Authentication',
@@ -15,4 +15,4 @@ const Authentication = mongoose.model(
   }),
 );
 
-module.exports = Authentication;
+export default Authentication;

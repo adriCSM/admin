@@ -1,4 +1,4 @@
-const ClientError = require('./CLientError');
+import ClientError from './CLientError.js';
 
 const errorHandling = (request, h) => {
   const { response } = request;
@@ -29,4 +29,4 @@ const errorHandling = (request, h) => {
   return h.continue;
 };
 
-module.exports = errorHandling;
+export default errorHandling;

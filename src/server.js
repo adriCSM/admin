@@ -1,48 +1,51 @@
-const Hapi = require('@hapi/hapi');
-require('dotenv').config();
-const Jwt = require('@hapi/jwt');
-const Inert = require('@hapi/inert');
-const mongoose = require('mongoose');
+import Hapi from '@hapi/hapi';
+import dotenv from 'dotenv';
+
+import Jwt from '@hapi/jwt';
+import Inert from '@hapi/inert';
+import mongoose from 'mongoose';
 
 // USER
-const users = require('./api/User');
-const UsersService = require('./services/mongodb/UsersService');
-const UserValidator = require('./validators/User');
+import users from './api/User/index.js';
+import UsersService from './services/mongodb/UsersService.js';
+import UserValidator from './validators/User/index.js';
 
 // AUTHENTICATION
-const authentication = require('./api/Authentication');
-const AuthenticationService = require('./services/mongodb/AuthenticationsService');
-const AuthenticationValidator = require('./validators/Authentication');
-const TokenManager = require('./token/TokenManager');
+import authentication from './api/Authentication/index.js';
+import AuthenticationService from './services/mongodb/AuthenticationsService.js';
+import AuthenticationValidator from './validators/Authentication/index.js';
+import TokenManager from './token/TokenManager.js';
 
 // PORTOFOLIO PROJECTS
-const projects = require('./api/portofolio/Projects');
-const ProjectsService = require('./services/mongodb/portofolio/ProjectsService');
-const ProjectValidator = require('./validators/Portofolio/Projects');
+import projects from './api/portofolio/Projects/index.js';
+import ProjectsService from './services/mongodb/portofolio/ProjectsService.js';
+import ProjectValidator from './validators/Portofolio/Projects/index.js';
 
 // PORTOFOLIO CERTIFICATE
-const certificates = require('./api/portofolio/Certificates');
-const CertificatesService = require('./services/mongodb/portofolio/CertificatesService');
-const CertificateValidator = require('./validators/Portofolio/Certificates');
+import certificates from './api/portofolio/Certificates/index.js';
+import CertificatesService from './services/mongodb/portofolio/CertificatesService.js';
+import CertificateValidator from './validators/Portofolio/Certificates/index.js';
 
 // STORE PRODUCT
-const products = require('./api/store/Product');
-const ProductsService = require('./services/mongodb/store/ProductsService');
-const ProductValidator = require('./validators/Store/Product');
-const FirebaseService = require('./services/firebase/FirebaseService');
+import products from './api/store/Product/index.js';
+import ProductsService from './services/mongodb/store/ProductsService.js';
+import FirebaseService from './services/firebase/FirebaseService.js';
+import ProductValidator from './validators/store/Product/index.js';
 
 // STORE CART
-const carts = require('./api/store/Cart');
-const CartsService = require('./services/mongodb/store/CartsService');
-const CartValidator = require('./validators/Store/Cart');
+import carts from './api/store/Cart/index.js';
+import CartsService from './services/mongodb/store/CartsService.js';
+import CartValidator from './validators/store/Cart/index.js';
 
 // CACHE SERVER-SIDE (REDIS)
-const CacheService = require('./services/redis/CacheService');
+import CacheService from './services/redis/CacheService.js';
 
 // ERROR HANDLING
-const errorHandling = require('./Error/errorHandling');
+import errorHandling from './Error/errorHandling.js';
 
 const init = async () => {
+  dotenv.config();
+
   const firebaseService = new FirebaseService();
   const cacheService = new CacheService();
   const usersService = new UsersService(firebaseService);

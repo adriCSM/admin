@@ -1,5 +1,5 @@
-const Cart = require('../../../../model/store/Carts_db');
-const InvariantError = require('../../../Error/InvariantError');
+import Cart from '../../../../model/store/Carts_db.js';
+import InvariantError from '../../../Error/InvariantError.js';
 
 class CartsService {
   constructor() {
@@ -73,4 +73,4 @@ class CartsService {
   }
 }
 
-module.exports = CartsService;
+export default CartsService;

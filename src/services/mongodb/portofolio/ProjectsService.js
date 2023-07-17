@@ -1,6 +1,6 @@
-const Project = require('../../../../model/portofolio/Projects_db');
-const InvariantError = require('../../../Error/InvariantError');
-const NotFoundError = require('../../../Error/NotFoundError');
+import Project from '../../../../model/portofolio/Projects_db.js';
+import InvariantError from '../../../Error/InvariantError.js';
+import NotFoundError from '../../../Error/NotFoundError.js';
 
 class ProjectsService {
   constructor(firebaseService) {
@@ -15,7 +15,8 @@ class ProjectsService {
   }
 
   async uploadImageInFirebase(payload) {
-    const fileBuffer = payload.image._data;
+    const { _data: data } = payload.image;
+    const fileBuffer = data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -23,15 +24,15 @@ class ProjectsService {
     return url;
   }
 
-  async addProject({ name, description, image, url_site }) {
-    const image_name = name + '_' + new Date().getTime();
-    const url = await this.uploadImageInFirebase({ name: image_name, image });
+  async addProject({ name, description, image, urlSite }) {
+    const imageName = `${name}_${new Date().getTime()}`;
+    const url = await this.uploadImageInFirebase({ name: imageName, image });
     const result = await this.db.create({
       name,
       description,
       image: url,
-      image_name,
-      url_site,
+      image_name: imageName,
+      url_site: urlSite,
     });
     if (!result) {
       throw new InvariantError('Gagal menambahkan ptoject');
@@ -52,17 +53,17 @@ class ProjectsService {
     return result;
   }
 
-  async putProject(id, { name, description, image, url_site }) {
-    const image_name = name + '_' + new Date().getTime();
+  async putProject(id, { name, description, image, urlSite }) {
+    const imageName = `${name}_${new Date().getTime()}`;
     const oldProjectDetile = await this.getProject(id);
     const oldFileName = oldProjectDetile.image_name;
-    if (image.hapi.filename == oldFileName) {
+    if (image.hapi.filename === oldFileName) {
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
           name,
           description,
-          url_site,
+          url_site: urlSite,
         },
       );
       if (!result) {
@@ -70,15 +71,15 @@ class ProjectsService {
       }
     } else {
       await this.firebaseService.deleteImage(oldFileName);
-      const url = await this.uploadImageInFirebase({ name, image });
+      const url = await this.uploadImageInFirebase({ name: imageName, image });
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
           name,
           description,
           image: url,
-          image_name,
-          url_site,
+          image_name: imageName,
+          url_site: urlSite,
         },
       );
       if (!result) {
@@ -97,4 +98,4 @@ class ProjectsService {
   }
 }
 
-module.exports = ProjectsService;
+export default ProjectsService;

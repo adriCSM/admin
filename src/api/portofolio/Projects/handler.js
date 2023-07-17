@@ -91,4 +91,4 @@ class ProjectHandlers {
   }
 }
 
-module.exports = ProjectHandlers;
+export default ProjectHandlers;

@@ -1,9 +1,9 @@
-const InvariantError = require('../../../Error/InvariantError');
-const {
+import InvariantError from '../../../Error/InvariantError.js';
+import {
   postProjectPayloadSchema,
   putProjectPayloadSchema,
   imageHeadersPayloadScema,
-} = require('./schema');
+} from './schema.js';
 
 const ProjectValidator = {
   validatePostProjectPayload: (payload) => {
@@ -29,4 +29,4 @@ const ProjectValidator = {
   },
 };
 
-module.exports = ProjectValidator;
+export default ProjectValidator;

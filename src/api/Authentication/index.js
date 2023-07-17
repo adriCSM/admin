@@ -1,7 +1,7 @@
-const AuthenticationHandler = require('./handler');
-const routes = require('./routes');
+import AuthenticationHandler from './handler.js';
+import routes from './routes.js';
 
-module.exports = {
+export default {
   name: 'authnetication',
   version: '1.0.0',
   register: async (server, { authenticationsService, usersService, TokenManager, validator }) => {
@@ -9,7 +9,6 @@ module.exports = {
       authenticationsService,
       usersService,
       TokenManager,
-
       validator,
     );
     await server.route(routes(authenticationHandler));

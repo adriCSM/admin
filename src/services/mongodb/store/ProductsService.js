@@ -1,6 +1,6 @@
-const Product = require('../../../../model/store/Products_db');
-const InvariantError = require('../../../Error/InvariantError');
-const NotFoundError = require('../../../Error/NotFoundError');
+import Product from '../../../../model/store/Products_db.js';
+import InvariantError from '../../../Error/InvariantError.js';
+import NotFoundError from '../../../Error/NotFoundError.js';
 
 class ProductsService {
   constructor(firebaseService, cacheService) {
@@ -12,7 +12,7 @@ class ProductsService {
   async uploadProductImageInFirebase(payload) {
     const { productName } = payload;
     const newName = productName.split(' ').join('_');
-    const fileBuffer = payload.image._data;
+    const fileBuffer = payload.image.data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -102,4 +102,4 @@ class ProductsService {
   }
 }
 
-module.exports = ProductsService;
+export default ProductsService;

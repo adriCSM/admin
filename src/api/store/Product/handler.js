@@ -94,4 +94,4 @@ class ProductHandler {
   }
 }
 
-module.exports = ProductHandler;
+export default ProductHandler;

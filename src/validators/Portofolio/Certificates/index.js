@@ -1,9 +1,9 @@
-const InvariantError = require('../../../Error/InvariantError');
-const {
+import InvariantError from '../../../Error/InvariantError.js';
+import {
   postCertificatePayloadSchema,
   imageHeadersPayloadSchema,
   putCertificatePayloadSchema,
-} = require('./schema');
+} from './schema.js';
 
 const CertificateValidator = {
   validatePostCertificatePayload: (payload) => {
@@ -26,4 +26,4 @@ const CertificateValidator = {
   },
 };
 
-module.exports = CertificateValidator;
+export default CertificateValidator;

@@ -1,6 +1,6 @@
-const Certificate = require('../../../../model/portofolio/Certificates_db');
-const InvariantError = require('../../../Error/InvariantError');
-const NotFoundError = require('../../../Error/NotFoundError');
+import Certificate from '../../../../model/portofolio/Certificates_db.js';
+import InvariantError from '../../../Error/InvariantError.js';
+import NotFoundError from '../../../Error/NotFoundError.js';
 
 class CertificateServices {
   constructor(firebaseService) {
@@ -15,7 +15,8 @@ class CertificateServices {
   }
 
   async uploadImageInFirebase(payload) {
-    const fileBuffer = payload.image._data;
+    const { _data: data } = payload.image;
+    const fileBuffer = data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -24,12 +25,12 @@ class CertificateServices {
   }
 
   async addCertificate({ name, image }) {
-    const image_name = name + '_' + new Date().getTime();
-    const url = await this.uploadImageInFirebase({ name: image_name, image });
+    const imageName = `${name}_${new Date().getTime()}`;
+    const url = await this.uploadImageInFirebase({ name: imageName, image });
     const result = await this.db.create({
       name,
       image: url,
-      image_name,
+      image_name: imageName,
     });
     if (!result) {
       throw new InvariantError('Gagal menambahkan certificate');
@@ -51,10 +52,10 @@ class CertificateServices {
   }
 
   async putCertificate(id, { name, image }) {
-    const image_name = name + '_' + new Date().getTime();
+    const imageName = `${name}_${new Date().getTime()}`;
     const oldCertificateDetile = await this.getCertificate(id);
     const oldFileName = oldCertificateDetile.image_name;
-    if (image.hapi.filename == oldFileName) {
+    if (image.hapi.filename === oldFileName) {
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
@@ -66,13 +67,13 @@ class CertificateServices {
       }
     } else {
       await this.firebaseService.deleteImage(oldFileName);
-      const url = await this.uploadImageInFirebase({ name: image_name, image });
+      const url = await this.uploadImageInFirebase({ name: imageName, image });
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
           name,
           image: url,
-          image_name,
+          image_name: imageName,
         },
       );
       if (!result) {
@@ -91,4 +92,4 @@ class CertificateServices {
   }
 }
 
-module.exports = CertificateServices;
+export default CertificateServices;

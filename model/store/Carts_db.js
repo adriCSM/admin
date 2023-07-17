@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const Cart = mongoose.model(
   'Cart',
@@ -20,4 +20,4 @@ const Cart = mongoose.model(
   }),
 );
 
-module.exports = Cart;
+export default Cart;

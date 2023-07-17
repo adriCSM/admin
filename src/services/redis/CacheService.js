@@ -1,4 +1,4 @@
-const redis = require('redis');
+import redis from 'redis';
 
 class CacheService {
   constructor() {
@@ -33,4 +33,4 @@ class CacheService {
     this.client.del(key);
   }
 }
-module.exports = CacheService;
+export default CacheService;

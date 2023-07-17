@@ -1,13 +1,13 @@
-const { initializeApp } = require('firebase/app');
-const {
-  getStorage,
+import { initializeApp } from 'firebase/app';
+import {
   ref,
   uploadBytes,
   getDownloadURL,
   deleteObject,
   getMetadata,
-} = require('firebase/storage');
-const InvariantError = require('../../Error/InvariantError');
+  getStorage,
+} from 'firebase/storage';
+import InvariantError from '../../Error/InvariantError.js';
 
 class FirebaseService {
   constructor() {
@@ -38,17 +38,18 @@ class FirebaseService {
 
   async deleteImage(filename) {
     try {
-      const storageRef = ref(this.storage, 'image/' + filename);
-      await deleteObject(storageRef);
+      const storageRef = ref(this.storage, `image/${filename}`);
+      return await deleteObject(storageRef);
     } catch (err) {
       console.log(err.message);
       return true;
     }
   }
+
   async deleteImageWithURL(url) {
     try {
       const storageRef = ref(this.storage, url);
-      await deleteObject(storageRef);
+      return await deleteObject(storageRef);
     } catch (err) {
       console.log(err.message);
       return true;
@@ -66,4 +67,4 @@ class FirebaseService {
   }
 }
 
-module.exports = FirebaseService;
+export default FirebaseService;

@@ -51,4 +51,4 @@ class CartHandler {
   }
 }
 
-module.exports = CartHandler;
+export default CartHandler;

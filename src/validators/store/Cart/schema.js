@@ -1,5 +1,5 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const CartPostPayloadSchema = Joi.object({});
 
-module.exports = { CartPostPayloadSchema };
+export default CartPostPayloadSchema;

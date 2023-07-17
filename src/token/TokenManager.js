@@ -1,5 +1,5 @@
-const Jwt = require('@hapi/jwt');
-const InvariantError = require('../Error/InvariantError');
+import Jwt from '@hapi/jwt';
+import InvariantError from '../Error/InvariantError.js';
 
 const TokenManager = {
   generateRefreshToken: (payload) => Jwt.token.generate(payload, process.env.REFRESH_TOKEN_KEY),
@@ -15,4 +15,4 @@ const TokenManager = {
     }
   },
 };
-module.exports = TokenManager;
+export default TokenManager;

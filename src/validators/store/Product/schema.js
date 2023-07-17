@@ -1,4 +1,4 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const PostProductPayloadSchema = Joi.object({
   productName: Joi.string().required(),
@@ -25,4 +25,4 @@ const ImageHeadersSchema = Joi.object({
     .required(),
 }).unknown();
 
-module.exports = { PostProductPayloadSchema, ImageHeadersSchema, PutProductPayloadSchema };
+export { PostProductPayloadSchema, ImageHeadersSchema, PutProductPayloadSchema };

@@ -1,7 +1,7 @@
-const routes = require('./routes');
-const CertificateHandlers = require('./handler');
+import routes from './routes.js';
+import CertificateHandlers from './handler.js';
 
-module.exports = {
+export default {
   name: 'certificates',
   version: '1.0.0',
   register: async (server, { certificatesService, usersService, validator }) => {

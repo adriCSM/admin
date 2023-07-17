@@ -1,7 +1,7 @@
-const CartHandler = require('./handler');
-const routes = require('./routes');
+import CartHandler from './handler.js';
+import routes from './routes.js';
 
-module.exports = {
+export default {
   name: 'carts',
   version: '1.0.0',
   register: async (server, { cartsService, validator }) => {

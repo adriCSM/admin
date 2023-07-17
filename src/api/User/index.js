@@ -1,7 +1,7 @@
-const UserHandler = require('./handler');
-const routes = require('./routes');
+import UserHandler from './handler.js';
+import routes from './routes.js';
 
-module.exports = {
+export default {
   name: 'users',
   version: '1.0.0',
   register: async (server, { usersService, validator }) => {

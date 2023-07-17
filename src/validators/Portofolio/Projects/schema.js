@@ -1,16 +1,16 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 const postProjectPayloadSchema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
   image: Joi.required(),
-  url_site: Joi.string().required(),
+  urlSite: Joi.string().required(),
 });
 const putProjectPayloadSchema = Joi.object({
   name: Joi.string().required(),
   description: Joi.string().required(),
   image: Joi.required(),
-  url_site: Joi.string().required(),
+  urlSite: Joi.string().required(),
 });
 
 const imageHeadersPayloadScema = Joi.object({
@@ -27,4 +27,4 @@ const imageHeadersPayloadScema = Joi.object({
     .required(),
 }).unknown();
 
-module.exports = { postProjectPayloadSchema, putProjectPayloadSchema, imageHeadersPayloadScema };
+export { postProjectPayloadSchema, putProjectPayloadSchema, imageHeadersPayloadScema };

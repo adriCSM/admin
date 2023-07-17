@@ -45,6 +45,7 @@ class CertificateHandlers {
       .code(200);
     return response;
   }
+
   async getMetadataImageHandler(request, h) {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
@@ -58,6 +59,7 @@ class CertificateHandlers {
       .code(200);
     return response;
   }
+
   async putCertificateHandler(request, h) {
     const { id: certificateId } = request.params;
     const { id: userId } = request.auth.credentials;
@@ -89,4 +91,4 @@ class CertificateHandlers {
   }
 }
 
-module.exports = CertificateHandlers;
+export default CertificateHandlers;

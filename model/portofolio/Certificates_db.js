@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const Certificate = mongoose.model(
   'Certificate',
@@ -23,4 +23,4 @@ const Certificate = mongoose.model(
   ),
 );
 
-module.exports = Certificate;
+export default Certificate;

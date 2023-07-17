@@ -1,9 +1,6 @@
-const InvariantError = require('../../../Error/InvariantError');
-const {
-  PostProductPayloadSchema,
-  ImageHeadersSchema,
-  PutProductPayloadSchema,
-} = require('./schema');
+import InvariantError from '../../../Error/InvariantError.js';
+
+import { PostProductPayloadSchema, ImageHeadersSchema, PutProductPayloadSchema } from './schema.js';
 
 const ProductValidator = {
   validatePostProductPayload: (payload) => {
@@ -25,4 +22,4 @@ const ProductValidator = {
     }
   },
 };
-module.exports = ProductValidator;
+export default ProductValidator;
