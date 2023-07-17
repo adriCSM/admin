@@ -6,5 +6,5 @@
       "use": "@varcel/node"
     }
   ],
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
+  "routes": [{ "source": "/(.*)", "destination": "/" }]
 }
