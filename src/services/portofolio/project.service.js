@@ -11,7 +11,7 @@ export default {
         name: project.name,
         description: project.description,
         image: project.image,
-        url_site: project.url_site,
+        urlSite: project.url_site,
       },
       {
         headers: await authHeader(),
@@ -36,7 +36,7 @@ export default {
         name: project.name,
         description: project.description,
         image: project.image,
-        url_site: project.url_site,
+        urlSite: project.url_site,
       },
       {
         headers: await authHeader(),
