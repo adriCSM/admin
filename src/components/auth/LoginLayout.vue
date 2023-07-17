@@ -15,7 +15,7 @@ const emailRules = ref([
   },
 ]);
 
-const user = ref({ email: 'admin@gmail.com', password: 'admin' });
+const user = ref({ email: '', password: '' });
 const error = ref(null);
 const progres_linear = ref(0);
 let idInterval = [];
