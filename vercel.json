@@ -1,5 +1,5 @@
 {
   "version": 2,
-  "builds": [{ "src": "src/server.js", "use": "@vercel/node", "config": { "maxDuration": 60 } }],
+  "builds": [{ "src": "src/server.js", "use": "@vercel/node", "config": { "maxDuration": 600 } }],
   "routes": [{ "src": "/(.*)", "dest": "/src/server.js" }]
 }
