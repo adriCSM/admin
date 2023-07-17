@@ -3,9 +3,7 @@ import redis from 'redis';
 class CacheService {
   constructor() {
     this.client = redis.createClient({
-      socket: {
-        host: process.env.REDIS_HOST,
-      },
+      url: process.env.REDIS_URL,
     });
     // url: process.env.REDIS_URL,
 
