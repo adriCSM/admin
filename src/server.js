@@ -62,7 +62,7 @@ const init = async () => {
     port: process.env.PORT,
     routes: {
       cors: {
-        origin: ['http://localhost:8080', 'https://adri-csm.my.id/', 'https://adricsm.github.io'],
+        origin: ['http://localhost:8080', 'https://adri-csm.my.id', 'https://adricsm.github.io'],
         additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
       },
