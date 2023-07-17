@@ -154,5 +154,3 @@ const init = async () => {
   });
 };
 init();
-
-export default init;
