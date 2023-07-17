@@ -1,3 +1,10 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/api" }]
+  "version": "latest",
+  "builds": [
+    {
+      "src": "./src/server.js",
+      "use": "@varcel/node"
+    }
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }
