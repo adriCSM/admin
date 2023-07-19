@@ -1,0 +1,56 @@
+<script setup>
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const progres_linear = ref(0);
+const error = computed(() => {
+  if (store.state.error) {
+    timer('error');
+  }
+  return store.state.error;
+});
+const success = computed(() => {
+  if (store.state.success) {
+    timer('success');
+  }
+  return store.state.success;
+});
+const info = computed(() => {
+  if (store.state.info) {
+    timer('info');
+  }
+  return store.state.info;
+});
+
+// timer
+const timer = (mutation) => {
+  progres_linear.value = 0;
+  const id = setInterval(() => {
+    progres_linear.value++;
+    if (progres_linear.value > 100) {
+      progres_linear.value = 0;
+      store.commit(mutation, '');
+      return clearInterval(id);
+    }
+  }, 40);
+};
+</script>
+
+<template>
+  <v-row style="max-width: 400px; position: fixed; z-index: 1">
+    <v-col>
+      <v-alert
+        v-if="error || success || info"
+        :color="error ? 'red' : success ? 'success' : 'info'"
+        elevation="2"
+        type="warning"
+        border="start"
+        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
+        >{{ error || success || info }}
+        <v-progress-linear v-model="progres_linear" color="white" absolute location="bottom">
+        </v-progress-linear>
+      </v-alert>
+    </v-col>
+  </v-row>
+</template>

@@ -1,11 +1,14 @@
 <script setup>
-import { ref, defineProps } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import AddCertificate from './AddCertificate.vue';
-defineProps(['data']);
 const store = useStore();
 const router = useRouter();
+onMounted(async () => {
+  await store.dispatch('certificates/getCertificates');
+});
+const data = computed(() => store.state.certificates.data);
 
 const actions = ref([
   {
@@ -32,7 +35,7 @@ const actions = ref([
     <v-row justify="center pt-5">
       <AddCertificate />
     </v-row>
-    <v-table class="pa-5 bg-dark" style="color: #0fe">
+    <v-table class="bg-dark pa-10" style="color: #0fe">
       <thead>
         <tr>
           <th class="text-center text-white">Name</th>

@@ -25,6 +25,7 @@ export default {
     const response = await axios.get(API_URL + '/portofolio/certificates/' + id, {
       headers: await authHeader(),
     });
+
     return response.data.data;
   },
   async editCertificate(certificate) {
@@ -38,7 +39,7 @@ export default {
         headers: await authHeader(),
       },
     );
-    return response.data.data;
+    return response.data.message;
   },
   async deleteCertificates(id) {
     const response = await axios.delete(API_URL + '/portofolio/certificates/' + id, {

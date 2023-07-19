@@ -15,10 +15,26 @@ export default createStore({
   },
   state: {
     drawer: false,
+    error: '',
+    success: '',
+    info: '',
+    loading: false,
   },
   mutations: {
     drawer(state, drawer) {
       state.drawer = drawer;
+    },
+    success(state, success) {
+      state.success = success;
+    },
+    error(state, error) {
+      state.error = error;
+    },
+    info(state, info) {
+      state.info = info;
+    },
+    loading(state, loading) {
+      state.loading = loading;
     },
   },
 });

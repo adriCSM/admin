@@ -1,18 +1,16 @@
 <script setup>
 import HeaderView from '@/components/HeaderView.vue';
-import PortofolioLayout from '@/components/Portofolio/PortofolioLayout.vue';
+import CertificatesLayout from '@/components/Portofolio/CertificatesLayout.vue';
 import NavigationDrawerVue from '../components/NavigationDrawer.vue';
 </script>
 
 <template>
   <div>
     <NavigationDrawerVue />
-    <v-app-bar elevation="2" class="bg-dark">
-      <HeaderView />
-    </v-app-bar>
+    <HeaderView />
 
     <main>
-      <PortofolioLayout class="ma-3 rounded-xl" />
+      <CertificatesLayout class="rounded-xl" />
     </main>
   </div>
 </template>

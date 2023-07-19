@@ -1,22 +1,17 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const dialog = ref(false);
-const error = computed(() => store.state.error);
 const name = ref();
 const image = ref([]);
 const blobImage = ref(null);
 
 const add = async () => {
   await store.dispatch('certificates/postCertificate', { name: name.value, image: image.value[0] });
-  if (!error.value) {
-    image.value = '';
-    name.value = '';
-    dialog.value = false;
-  }
+
   if (!image.value[0]) {
     blobImage.value = null;
   }

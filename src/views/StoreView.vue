@@ -6,9 +6,7 @@ import NavigationDrawerVue from '../components/NavigationDrawer.vue';
 <template>
   <div>
     <NavigationDrawerVue />
-    <v-app-bar elevation="2" class="bg-dark">
-      <HeaderView />
-    </v-app-bar>
+    <HeaderView />
     <main>
       <StoreLayout></StoreLayout>
     </main>

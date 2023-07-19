@@ -6,7 +6,7 @@ export const refreshAccessTokenHandler = {
     const accessToken = localStorage.getItem('user');
     const tokenDecoded = jwtDecode(JSON.parse(accessToken));
     const currentTime = new Date().getTime();
-    if (currentTime > (tokenDecoded.iat + 13) * 1000) {
+    if (currentTime > (tokenDecoded.iat + 10) * 1000) {
       await axios
         .put('/auth', {
           refreshToken: JSON.parse(localStorage.getItem('user_id')),

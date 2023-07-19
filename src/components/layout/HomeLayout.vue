@@ -4,12 +4,15 @@ import { ref } from 'vue';
 const items = ref([
   {
     name: 'Web Portofolio',
-    path: '/portofolio',
+    path: [
+      { url: '/portofolio/projects', name: 'Projects' },
+      { url: '/portofolio/certificates', name: 'Certificates' },
+    ],
     image: '../../assets/wlppr.jpg',
   },
   {
     name: 'Store',
-    path: '/store',
+    path: [{ url: '/store', name: 'Store' }],
     image: '../../assets/wlppr.jpg',
   },
 ]);
@@ -19,7 +22,7 @@ const items = ref([
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h4 class="text-white"><strong>Projects</strong></h4>
+        <h4 class="text-dark"><strong>Projects</strong></h4>
       </v-col>
       <v-col cols="12" sm="6" md="4" v-for="item in items" :key="item">
         <v-hover v-slot="{ isHovering, props }">
@@ -39,11 +42,17 @@ const items = ref([
                   <strong class="text-black" style="text-shadow: 0 0 1rem white">
                     {{ item.name }}
                   </strong>
-                  <router-link :to="item.path">
-                    <v-avatar color="white" size="35">
-                      <v-icon size="25" color="orange"> mdi-open-in-new </v-icon>
-                    </v-avatar>
-                  </router-link>
+                  <div class="flex-row">
+                    <router-link v-for="path in item.path" :key="path" :to="path.url" class="mx-3">
+                      <v-tooltip :text="path.name" location="top">
+                        <template v-slot:activator="{ props }">
+                          <v-avatar v-bind="props" color="white" size="35">
+                            <v-icon size="25" color="orange"> mdi-open-in-new </v-icon>
+                          </v-avatar>
+                        </template>
+                      </v-tooltip>
+                    </router-link>
+                  </div>
                 </div>
               </v-expand-transition>
             </v-img>

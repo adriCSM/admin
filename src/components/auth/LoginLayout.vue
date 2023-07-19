@@ -16,87 +16,33 @@ const emailRules = ref([
 ]);
 
 const user = ref({ email: '', password: '' });
-const error = ref(null);
-const progres_linear = ref(0);
-let idInterval = [];
+
 const show = ref(false);
 const store = useStore();
 const username = ref(null);
 onMounted(() => {
   username.value = store.state.auth.username;
-  if (user.value) {
-    setTimeout(() => {
-      username.value = null;
-    }, 3000);
-    timer();
-  }
 });
 
-const timer = () => {
-  progres_linear.value = 0;
-  error.value = store.state.auth.errorMessage;
-
-  const interval = setInterval(() => {
-    progres_linear.value++;
-    if (progres_linear.value >= 100) {
-      error.value = null;
-
-      idInterval.map((id) => {
-        clearInterval(id);
-      });
-      idInterval = [];
-    }
-  }, 30);
-  idInterval.push(interval);
-};
-
 const login = async () => {
-  show.value = true;
   const response = await store.dispatch('auth/login', user.value);
   if (response) {
     router.push({ name: 'Home' });
-    show.value = false;
-  } else {
-    timer();
   }
-  show.value = false;
 };
 </script>
 
 <template>
   <div class="contain">
-    <v-alert
-      v-if="error"
-      color="red"
-      elevation="2"
-      type="warning"
-      border="start"
-      class="message text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-      >{{ error }}
-      <v-progress-linear v-model="progres_linear" bg-color="white" color="white">
-      </v-progress-linear
-    ></v-alert>
-    <v-alert
-      v-if="username"
-      color="success"
-      elevation="2"
-      type="success"
-      border="start"
-      class="message text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-      >Sampai jumpa lagi "{{ username }}"
-      <v-progress-linear v-model="progres_linear" bg-color="white" color="white">
-      </v-progress-linear
-    ></v-alert>
-
     <v-row style="height: 100vh">
-      <v-col align-self="center" cols="auto mx-auto">
-        <v-card class="pa-3 overflow-visible" elevation="20" min-width="320" rounded="lg">
+      <v-col align-self="center" cols="12 " class="d-flex justify-center">
+        <v-card class="pa-3 overflow-visible" elevation="20" min-width="300" rounded="lg">
           <v-card class="bg-teal mt-0 rounded-lg align-end" style="top: -40px" elevation="5">
             <v-img
               class="mx-auto my-8"
               max-width="120"
               max-height="70px"
-              src="../../assets/logoam2.png"
+              src="../../../public/LOGO.png"
             >
             </v-img>
           </v-card>

@@ -3,6 +3,7 @@ import store from '@/store';
 
 export default {
   errorHandling(err) {
+    store.commit('loading', false);
     console.log(err.message);
     if (
       err.message == 'Invalid token specified' ||
@@ -15,9 +16,6 @@ export default {
     if (err.response) {
       console.log(err.response.data.message);
       store.commit('error', err.response.data.message);
-      setTimeout(() => {
-        store.commit('error', null);
-      }, 3000);
     }
   },
 };

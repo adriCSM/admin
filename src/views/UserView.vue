@@ -6,9 +6,8 @@ import UserLayoutVue from '@/components/layout/UserLayout.vue';
 <template>
   <div>
     <NavigationDrawerVue />
-    <v-app-bar elevation="2" class="bg-dark">
-      <HeaderView />
-    </v-app-bar>
+
+    <HeaderView />
 
     <main>
       <UserLayoutVue />

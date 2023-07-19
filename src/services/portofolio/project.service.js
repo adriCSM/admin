@@ -1,8 +1,6 @@
 import axios from 'axios';
 import authHeader from '../auth-header';
-
 const API_URL = process.env.VUE_APP_API_BASE_URL;
-
 export default {
   async postProject(project) {
     const response = await axios.post(
@@ -21,6 +19,7 @@ export default {
   },
   async getProjects() {
     const response = await axios.get(API_URL + '/portofolio/projects');
+
     return response.data.data;
   },
   async getProject(id) {

@@ -1,11 +1,15 @@
 <script setup>
 import router from '@/router';
-import { ref, defineProps } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import AddProject from './AddProject.vue';
-
-defineProps(['data']);
 const store = useStore();
+
+onMounted(async () => {
+  await store.dispatch('projects/getProjects');
+});
+
+const data = computed(() => store.state.projects.data);
 
 const actions = ref([
   {
@@ -28,7 +32,7 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="data">
     <v-row justify="center pt-5">
       <AddProject />
     </v-row>
