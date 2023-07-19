@@ -7,7 +7,6 @@ class ProductHandler {
 
   async postProductHandler(request, h) {
     const { image } = request.payload;
-    console.log(image);
     const { id } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(id);
     this.validator.validateImageHeaders(image.hapi.headers);

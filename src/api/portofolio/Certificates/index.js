@@ -8,6 +8,7 @@ export default {
     const certificateHandlers = new CertificateHandlers(
       certificatesService,
       usersService,
+
       validator,
     );
 

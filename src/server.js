@@ -26,6 +26,11 @@ import certificates from './api/portofolio/Certificates/index.js';
 import CertificatesService from './services/mongodb/portofolio/CertificatesService.js';
 import CertificateValidator from './validators/Portofolio/Certificates/index.js';
 
+// PORTOFOLIO CV
+import cv from './api/portofolio/cv/index.js';
+import CvService from './services/mongodb/portofolio/Cv.service.js';
+import CvValidator from './validators/Portofolio/Cv/index.js';
+
 // STORE PRODUCT
 import products from './api/store/Product/index.js';
 import ProductsService from './services/mongodb/store/ProductsService.js';
@@ -53,6 +58,7 @@ const init = async () => {
 
   const projectsService = new ProjectsService(firebaseService);
   const certificatesService = new CertificatesService(firebaseService);
+  const cvService = new CvService(firebaseService);
 
   const productsService = new ProductsService(firebaseService, cacheService);
   const cartsService = new CartsService();
@@ -145,6 +151,14 @@ const init = async () => {
         certificatesService,
         usersService,
         validator: CertificateValidator,
+      },
+    },
+    {
+      plugin: cv,
+      options: {
+        usersService,
+        cvService,
+        validator: CvValidator,
       },
     },
   ]);
