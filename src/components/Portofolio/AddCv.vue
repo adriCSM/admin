@@ -1,0 +1,83 @@
+<script setup>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const dialog = ref(false);
+const name = ref('');
+const image = ref([]);
+const blobImage = ref(null);
+
+const add = async () => {
+  await store.dispatch('cv/addCv', { name: name.value, image: image.value[0] });
+  dialog.value = false;
+  name.value = '';
+  image.value = [];
+  blobImage.value = null;
+};
+
+const change = () => {
+  const file = image.value[0];
+  if (file) {
+    const blob = URL.createObjectURL(file);
+    blobImage.value = blob;
+  } else {
+    blobImage.value = null;
+  }
+};
+</script>
+
+<template>
+  <v-dialog v-model="dialog" persistent width="1024">
+    <template v-slot:activator="{ props }">
+      <v-btn color="#0fe" v-bind="props" @click="show" position="fixed" style="z-index: 9"
+        ><v-icon>mdi-plus</v-icon> CV
+      </v-btn>
+    </template>
+    <v-card class="bg-dark">
+      <div v-if="error">
+        <h1 class="text-white">{{ error }}</h1>
+      </div>
+      <v-card-title style="color: #0fe">
+        <span class="text-h5">Add CV</span>
+      </v-card-title>
+
+      <v-card-text style="color: #0fe">
+        <v-container>
+          <v-row>
+            <v-col cols="12">
+              <v-text-field
+                label="CV Name"
+                name="CV"
+                variant="outlined"
+                v-model="name"
+                required
+                type="text"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-file-input
+                label="Image"
+                variant="outlined"
+                prepend-icon="mdi-image"
+                v-model="image"
+                accept="image/*"
+                type="file"
+                maxFileSize="512000"
+                @change="change"
+              ></v-file-input>
+              <v-card width="25%" v-if="blobImage">
+                <v-img :src="blobImage"></v-img>
+              </v-card>
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer></v-spacer>
+        <v-btn color="blue-darken-1" variant="text" @click="dialog = false"> Close </v-btn>
+        <v-btn color="blue-darken-1" variant="text" @click="add"> Save </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</template>

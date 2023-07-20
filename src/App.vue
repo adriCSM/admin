@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <NavigationDrawerVue />
+    <ButtonBackVue style="position: fixed; z-index: 999" class="mt-15" />
 
     <HeaderView style="position: fixed; z-index: 99" />
     <AlertWeb style="max-width: 400px; position: fixed; z-index: 9999" class="mt-15" />
@@ -18,6 +19,7 @@ import AlertWeb from '@/components/AlertWeb.vue';
 import LoadProgres from '@/components/LoadProgres.vue';
 import HeaderView from '@/components/HeaderView.vue';
 import NavigationDrawerVue from '@/components/NavigationDrawer.vue';
+import ButtonBackVue from '@/components/ButtonBack.vue';
 </script>
 <style>
 main {

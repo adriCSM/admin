@@ -1,7 +1,7 @@
 <script setup>
-import CertificatesLayout from '@/components/Portofolio/CertificatesLayout.vue';
+import certificates from '@/components/Portofolio/CertificatesLayout.vue';
 </script>
 
 <template>
-  <CertificatesLayout class="rounded-xl mt-15 pa-md-10" />
+  <certificates class="rounded-xl mt-15 pa-md-10" />
 </template>

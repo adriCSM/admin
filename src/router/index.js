@@ -38,6 +38,11 @@ const routes = [
     component: () => import('../views/CvView.vue'),
   },
   {
+    path: '/portofolio/cv/:id',
+    name: 'Edit CV',
+    component: () => import('../views/EditCv.vue'),
+  },
+  {
     path: '/portofolio/projects',
     name: 'Projects',
     component: () => import('../views/ProjectsView.vue'),

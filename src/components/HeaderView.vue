@@ -20,7 +20,7 @@ const isLogin = computed(() => {
 });
 </script>
 <template>
-  <v-container style="max-width: 100vw" class="px-md-15 pt-md-8" v-if="isLogin">
+  <v-container style="max-width: 100vw" class="px-md-15 pt-md-8" v-if="isLogin && pic">
     <v-row class="text-white bg-dark rounded-xl">
       <v-col cols="4" class="text-center" align-self="center">
         <v-app-bar-icon class="font-weight-bold">AM</v-app-bar-icon>

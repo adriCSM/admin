@@ -9,12 +9,12 @@ const items = ref([
       { url: '/portofolio/certificates', name: 'Certificates' },
       { url: '/portofolio/cvs', name: 'Curiculum Vitae' },
     ],
-    image: '../../assets/S1.png',
+    image: require('../../assets/S1.png'),
   },
   {
     name: 'Store',
     path: [{ url: '/store', name: 'Store' }],
-    image: '../../assets/wlppr.jpg',
+    image: require('../../assets/wlppr.jpg'),
   },
 ]);
 </script>
@@ -31,7 +31,7 @@ const items = ref([
             <v-img
               :aspect-ratio="16 / 12"
               cover
-              src="../../assets/wlppr.jpg"
+              :src="item.image"
               :style="isHovering ? { transform: 'scale(1.1)', transition: '.5s' } : null"
             >
               <v-expand-transition>

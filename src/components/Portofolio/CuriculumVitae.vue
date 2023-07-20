@@ -1,17 +1,24 @@
 <script setup>
 import router from '@/router';
-import { ref } from 'vue';
 import { useStore } from 'vuex';
-
+import AddCv from '@/components/Portofolio/AddCv.vue';
+import { computed, onMounted, ref } from 'vue';
 const store = useStore();
 
+onMounted(async () => {
+  if (!store.state.cv.data) {
+    await store.dispatch('cv/getCvs');
+  }
+});
+
+const data = computed(() => store.state.cv.data);
 const actions = ref([
   {
     text: 'Delete',
     icon: 'mdi-delete-outline',
     color: 'error',
     method: async (id) => {
-      await store.dispatch('certificates/deleteCertificates', id);
+      await store.dispatch('cv/deleteCv', id);
     },
   },
   {
@@ -19,46 +26,24 @@ const actions = ref([
     icon: 'mdi-pencil-outline',
     color: 'info',
     method: async (id) => {
-      router.push({ name: 'Edit Certificate', params: { id } });
+      router.push({ name: 'Edit CV', params: { id } });
     },
   },
 ]);
 </script>
 <template>
-  <v-container fluid>
+  <v-container>
     <v-row justify="center pt-5">
-      <AddCertificate />
+      <AddCv />
     </v-row>
-    <v-table class="bg-dark pa-10" style="color: #0fe">
-      <thead>
-        <tr>
-          <th class="text-center text-white">Name</th>
-          <th class="text-center text-white">Image</th>
-          <th class="text-center text-white">Link Image</th>
-          <th class="text-center text-white">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in data" :key="item" class="text-center">
-          <td class="text-start">{{ item.name }}</td>
-          <td>
-            <v-card width="100px">
-              <v-img :alt="item.name" :src="item.image"></v-img>
-            </v-card>
-          </td>
-          <td>
-            <div class="overText" style="max-width: 40vw">
-              <v-tooltip text="Open Link">
-                <template v-slot:activator="{ props }">
-                  <a :href="item.image" target="_blank" style="color: #0fe">
-                    <v-btn v-bind="props" variant="outlined" icon="mdi-open-in-new" color="info">
-                    </v-btn>
-                  </a>
-                </template>
-              </v-tooltip>
-            </div>
-          </td>
-          <td class="w-25">
+    <v-row class="pt-10">
+      <v-col cols="12" md="6" v-for="item in data" :key="item">
+        <v-card height="auto" class="bg-dark rounded" style="box-shadow: 0 0 1rem #0fe">
+          <div class="d-flex flex-row">
+            <v-card-title class="text-white" style="max-width: 60%">
+              {{ item.name }}
+            </v-card-title>
+            <v-spacer></v-spacer>
             <v-tooltip :text="action.text" v-for="action in actions" :key="action">
               <template v-slot:activator="{ props }">
                 <v-btn
@@ -71,9 +56,10 @@ const actions = ref([
                 ></v-btn>
               </template>
             </v-tooltip>
-          </td>
-        </tr>
-      </tbody>
-    </v-table>
+          </div>
+          <v-img :src="item.image" height="100%" cover />
+        </v-card>
+      </v-col>
+    </v-row>
   </v-container>
 </template>

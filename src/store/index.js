@@ -4,6 +4,7 @@ import { productsStore } from './product.module';
 import { profile } from './profile.module';
 import { certificates } from './certificate.module';
 import { projects } from './project.module';
+import { cv } from './cv.module';
 
 export default createStore({
   modules: {
@@ -12,6 +13,7 @@ export default createStore({
     profile,
     certificates,
     projects,
+    cv,
   },
   state: {
     drawer: false,

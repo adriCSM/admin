@@ -7,6 +7,7 @@ export const refreshAccessTokenHandler = {
     const tokenDecoded = jwtDecode(JSON.parse(accessToken));
     const currentTime = new Date().getTime();
     if (currentTime > (tokenDecoded.iat + 10) * 1000) {
+      console.log('update');
       await axios
         .put('/auth', {
           refreshToken: JSON.parse(localStorage.getItem('user_id')),
