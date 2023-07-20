@@ -65,6 +65,16 @@ class FirebaseService {
       throw new InvariantError(error.message);
     }
   }
+
+  async metadataWithUrl(url) {
+    try {
+      const storageRef = ref(this.storage, url);
+      const metadata = await getMetadata(storageRef);
+      return metadata;
+    } catch (error) {
+      throw new InvariantError(error.message);
+    }
+  }
 }
 
 export default FirebaseService;

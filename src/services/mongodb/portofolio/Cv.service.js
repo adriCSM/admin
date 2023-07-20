@@ -7,6 +7,12 @@ export default class CvService {
     this.firebaseService = firebaseService;
   }
 
+  async getMetadata(id) {
+    const result = await this.db.findOne({ _id: id }).select('-__v');
+    const metadata = await this.firebaseService.metadataWithUrl(result.image);
+    return metadata;
+  }
+
   async uploadImageInFirebase(payload) {
     const { _data: data } = payload.image;
     const fileBuffer = data;
@@ -53,8 +59,8 @@ export default class CvService {
 
   async putCv(id, { name, image }) {
     const imageName = `${name}_${new Date().getTime()}`;
-    const imageCv = await this.getCv(id);
-    await this.firebaseService.deleteImageWithURL(imageCv);
+    const cv = await this.getCv({ id });
+    await this.firebaseService.deleteImageWithURL(cv.image);
     const url = await this.uploadImageInFirebase({ name: imageName, image });
     const result = await this.db.findOneAndUpdate(
       { _id: id },

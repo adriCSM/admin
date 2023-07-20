@@ -16,8 +16,13 @@ const routes = (handler) => [
 
   {
     method: 'GET',
-    path: '/portofolio/adri',
+    path: '/portofolio/cv',
     handler: (request, h) => handler.getCvHandler(request, h),
+  },
+  {
+    method: 'GET',
+    path: '/portofolio/cv/metadata/{id}',
+    handler: (request, h) => handler.getCvMetadataHandler(request, h),
   },
   {
     method: 'GET',

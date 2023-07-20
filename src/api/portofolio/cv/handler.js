@@ -14,7 +14,7 @@ class CvHandlers {
     const response = h
       .response({
         status: 'success',
-        data: { cvId },
+        data: { cvId, message: 'Cv berhasili ditambahkan' },
       })
       .code(200);
     return response;
@@ -53,6 +53,17 @@ class CvHandlers {
       .response({
         status: 'success',
         data: image,
+      })
+      .code(200);
+    return response;
+  }
+
+  async getCvMetadataHandler(request, h) {
+    const metadata = await this.cvService.getMetadata(request.params.id);
+    const response = h
+      .response({
+        status: 'success',
+        data: metadata,
       })
       .code(200);
     return response;
