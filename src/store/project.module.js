@@ -18,8 +18,11 @@ export const projects = {
     },
     async postProject({ commit }, project) {
       try {
+        store.commit('loading', true);
+
         await projectService.postProject(project);
         const response = await projectService.getProjects();
+        store.commit('loading', false);
         commit('data', response.projects);
       } catch (err) {
         handler.errorHandling(err);
@@ -61,9 +64,12 @@ export const projects = {
     },
     async deleteProject({ commit }, id) {
       try {
+        store.commit('loading', true);
+
         const message = await projectService.deleteProject(id);
         store.commit('success', message);
 
+        store.commit('loading', false);
         commit('delete', id);
       } catch (err) {
         handler.errorHandling(err);

@@ -65,8 +65,10 @@ export const certificates = {
     },
     async deleteCertificates({ commit }, id) {
       try {
+        store.commit('loading', true);
         const message = await certificateService.deleteCertificates(id);
         commit('delete', id);
+        store.commit('loading', false);
         store.commit('success', message);
       } catch (err) {
         handler.errorHandling(err);
