@@ -9,7 +9,7 @@ const items = ref([
       { url: '/portofolio/certificates', name: 'Certificates' },
       { url: '/portofolio/cvs', name: 'Curiculum Vitae' },
     ],
-    image: '../../assets/wlppr.jpg',
+    image: '../../assets/S1.png',
   },
   {
     name: 'Store',
