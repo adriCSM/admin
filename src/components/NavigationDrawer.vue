@@ -1,25 +1,13 @@
 <script setup>
 import router from '@/router';
-import { computed, onMounted, ref } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 const error = computed(() => store.state.error);
-const user = ref({
-  username: '',
-  pic: '',
-});
 
-onMounted(async () => {
-  await store.dispatch('profile/myProfile');
-  if (store.state.profile.userProfile) {
-    const { username, pic } = store.state.profile.userProfile;
-    user.value = {
-      username,
-      pic,
-    };
-  }
-});
-
+const user = computed(() =>
+  store.state.profile.userProfile ? store.state.profile.userProfile : false,
+);
 const newDrawer = computed(() => {
   return store.state.drawer;
 });
