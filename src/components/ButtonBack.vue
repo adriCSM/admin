@@ -1,10 +1,5 @@
 <script setup>
 import router from '@/router';
-import { computed } from 'vue';
-import { useStore } from 'vuex';
-
-const store = useStore();
-const isLogin = computed(() => store.state.auth.loggedIn);
 
 const back = () => {
   router.go(-1);
@@ -12,7 +7,10 @@ const back = () => {
 </script>
 
 <template>
-  <v-row class="ps-md-5 pt-md-5" v-if="isLogin">
+  <v-row
+    class="ps-md-15 pt-5 ms-md-15"
+    v-if="router.currentRoute.value.name !== 'Home' && router.currentRoute.value.name !== 'Login'"
+  >
     <v-col>
       <v-btn
         icon="mdi-arrow-left"
