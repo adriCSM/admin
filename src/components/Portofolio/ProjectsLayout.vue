@@ -38,7 +38,7 @@ const actions = ref([
     <v-row justify="center pt-5">
       <AddProject />
     </v-row>
-    <v-table class="pa-5 bg-dark" style="color: #0fe">
+    <v-table class="bg-dark pa-10" style="color: #0fe">
       <thead>
         <tr>
           <th class="text-center text-white">Name</th>

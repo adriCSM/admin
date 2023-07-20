@@ -28,7 +28,9 @@ onMounted(() => {
 });
 
 const login = async () => {
+  show.value = true;
   await store.dispatch('auth/login', user.value);
+  show.value = false;
 };
 </script>
 

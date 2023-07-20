@@ -43,7 +43,7 @@ const back = () => {
 </script>
 
 <template>
-  <div class="mt-15 pa-md-10">
+  <div class="rounded-xl mt-15 pa-md-10 mx-md-10">
     <v-card class="bg-dark rounded-xl">
       <v-card-title style="color: #0fe" class="text-center">
         <span class="text-h5">Edit certificate</span>
