@@ -2,6 +2,9 @@ import jwtDecode from 'jwt-decode';
 import AuthService from '../services/auth.service';
 import ProfileService from '@/services/profile.service';
 import handler from '../services/error-handler';
+import store from '@/store';
+import profileService from '@/services/profile.service';
+import router from '@/router';
 
 const user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true } : { loggedIn: false };
@@ -15,15 +18,15 @@ export const auth = {
         const response = await AuthService.login(user);
         const { id } = jwtDecode(response.data.refreshToken);
         const userProfile = await ProfileService.getProfile(id);
-        commit('username', userProfile.username);
-        commit('isRole', userProfile.role);
-
-        commit('successMessage', `Selamat datang ${userProfile.username}`);
-        setTimeout(() => {
-          commit('successMessage', null);
-        }, 1000);
+        if (userProfile.role == 'user') {
+          localStorage.removeItem('user_id');
+          localStorage.removeItem('user');
+          store.commit('error', `Anda tidak berhak login`);
+          return router.push('/auth/login');
+        }
+        store.commit('info', `Selamat datang ${userProfile.username}`);
         commit('isLoggedIn', true);
-        return response.data;
+        router.push({ name: 'Home' });
       } catch (error) {
         commit('isLoggedIn', false);
         handler.errorHandling(error);
@@ -44,17 +47,12 @@ export const auth = {
     },
     async register({ commit }, user) {
       try {
-        const response = await AuthService.register(user);
-        commit('isLoggedIn', true);
-
-        if (response) {
-          commit('successMessage', response.message);
-          setTimeout(() => {
-            commit('successMessage', null);
-          }, 1000);
-        }
+        commit;
+        const message = await AuthService.register(user);
+        const users = await profileService.getUsers();
+        store.commit('profile/users', users);
+        store.commit('success', message);
       } catch (error) {
-        commit('isLoggedIn', false);
         handler.errorHandling(error);
       }
     },
@@ -71,15 +69,7 @@ export const auth = {
     isLoggedIn(state, loggedIn) {
       state.loggedIn = loggedIn;
     },
-    isRole(state, isRole) {
-      state.isRole = isRole;
-    },
-    errorMessage(state, errorMessage) {
-      state.errorMessage = errorMessage;
-    },
-    successMessage(state, successMessage) {
-      state.successMessage = successMessage;
-    },
+
     username(state, username) {
       state.username = username;
     },

@@ -1,13 +1,13 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import AddUser from './AddUser.vue';
 
 const store = useStore();
-onMounted(async () => {
-  await store.dispatch('profile/getUsers');
-});
 const dataUsers = computed(() => {
+  if (!store.state.profile.users) {
+    store.dispatch('profile/getUsers');
+  }
   return store.state.profile.users;
 });
 

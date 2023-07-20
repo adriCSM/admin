@@ -3,7 +3,9 @@ import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const progres_linear = ref(0);
+const errorPercent = ref(0);
+const successPercent = ref(0);
+const infoPercent = ref(0);
 const error = computed(() => {
   if (store.state.error) {
     timer('error');
@@ -25,15 +27,36 @@ const info = computed(() => {
 
 // timer
 const timer = (mutation) => {
-  progres_linear.value = 0;
-  const id = setInterval(() => {
-    progres_linear.value++;
-    if (progres_linear.value > 100) {
-      progres_linear.value = 0;
-      store.commit(mutation, '');
-      return clearInterval(id);
-    }
-  }, 40);
+  if (mutation == 'error') {
+    const id = setInterval(() => {
+      errorPercent.value++;
+      if (errorPercent.value > 100) {
+        errorPercent.value = 0;
+        store.commit(mutation, '');
+        return clearInterval(id);
+      }
+    }, 40);
+  }
+  if (mutation == 'success') {
+    const id = setInterval(() => {
+      successPercent.value++;
+      if (successPercent.value > 100) {
+        successPercent.value = 0;
+        store.commit(mutation, '');
+        return clearInterval(id);
+      }
+    }, 40);
+  }
+  if (mutation == 'info') {
+    const id = setInterval(() => {
+      infoPercent.value++;
+      if (infoPercent.value > 100) {
+        infoPercent.value = 0;
+        store.commit(mutation, '');
+        return clearInterval(id);
+      }
+    }, 40);
+  }
 };
 </script>
 
@@ -41,14 +64,35 @@ const timer = (mutation) => {
   <v-row>
     <v-col>
       <v-alert
-        v-if="error || success || info"
-        :color="error ? 'red' : success ? 'success' : 'info'"
+        v-if="success"
+        color="success"
+        elevation="2"
+        type="success"
+        border="start"
+        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
+        >{{ success }}
+        <v-progress-linear v-model="successPercent" color="white" absolute location="bottom">
+        </v-progress-linear>
+      </v-alert>
+      <v-alert
+        v-if="error"
+        color="red"
         elevation="2"
         type="warning"
         border="start"
         class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-        >{{ error || success || info }}
-        <v-progress-linear v-model="progres_linear" color="white" absolute location="bottom">
+        >{{ error }}
+        <v-progress-linear v-model="errorPercent" color="white" absolute location="bottom">
+        </v-progress-linear>
+      </v-alert>
+      <v-alert
+        v-if="info"
+        color="info"
+        elevation="2"
+        border="start"
+        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
+        >{{ info }}
+        <v-progress-linear v-model="infoPercent" color="white" absolute location="bottom">
         </v-progress-linear>
       </v-alert>
     </v-col>

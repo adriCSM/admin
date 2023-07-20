@@ -6,7 +6,7 @@ const store = useStore();
 const stateDrawer = computed(() => store.state.drawer);
 
 const pic = computed(() =>
-  store.state.profile.userProfile ? store.state.profile.userProfile.pic : false,
+  store.state.profile.myProfile ? store.state.profile.myProfile.pic : false,
 );
 onMounted(async () => {});
 const changeDrawer = () => {

@@ -1,8 +1,9 @@
 import ProfileService from '@/services/profile.service';
+import store from '@/store';
 import jwtDecode from 'jwt-decode';
 import handler from '../services/error-handler';
 
-const initialState = { userProfile: null };
+const initialState = { userProfile: null, myProfile: null };
 
 export const profile = {
   namespaced: true,
@@ -20,8 +21,7 @@ export const profile = {
       try {
         const { id } = jwtDecode(JSON.parse(localStorage.getItem('user_id')));
         const userProfile = await ProfileService.getProfile(id);
-        commit('userProfile', userProfile);
-        return userProfile;
+        commit('myProfile', userProfile);
       } catch (error) {
         handler.errorHandling(error);
       }
@@ -30,16 +30,15 @@ export const profile = {
       try {
         const userProfile = await ProfileService.getProfile(id);
         commit('userProfile', userProfile);
-        return userProfile;
       } catch (error) {
         handler.errorHandling(error);
       }
     },
     async deleteUser({ commit }, userId) {
       try {
-        await ProfileService.deleteUser(userId);
-        const users = await ProfileService.getUsers();
-        commit('users', users);
+        const message = await ProfileService.deleteUser(userId);
+        commit('delete', userId);
+        store.commit('success', message);
       } catch (error) {
         handler.errorHandling(error);
       }
@@ -59,8 +58,14 @@ export const profile = {
     userProfile(state, userProfile) {
       state.userProfile = userProfile;
     },
+    myProfile(state, userProfile) {
+      state.myProfile = userProfile;
+    },
     users(state, users) {
       state.users = users;
+    },
+    delete(state, id) {
+      state.users = state.users.filter((user) => user._id !== id);
     },
   },
 };

@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
-import router from '@/router';
 
 const visible = ref(false);
 const emailRules = ref([
@@ -15,7 +14,8 @@ const emailRules = ref([
   },
 ]);
 
-const user = ref({ email: '', password: '' });
+// const user = ref({ email: 'a@gmail.com', password: '#Mangidi7' });
+const user = ref({ email: 'admin@gmail.com', password: 'admin' });
 
 const show = ref(false);
 const store = useStore();
@@ -28,10 +28,7 @@ onMounted(() => {
 });
 
 const login = async () => {
-  const response = await store.dispatch('auth/login', user.value);
-  if (response) {
-    router.push({ name: 'Home' });
-  }
+  await store.dispatch('auth/login', user.value);
 };
 </script>
 

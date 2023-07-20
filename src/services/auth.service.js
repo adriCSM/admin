@@ -47,7 +47,7 @@ export default {
       password: user.password,
       confirmPassword: user.confirmPassword,
     });
-    return response.data;
+    return response.data.message;
   },
 
   async passwordForgot(userEmail) {
@@ -65,6 +65,6 @@ export default {
       email: passwordDTO.email,
       token: passwordDTO.token,
     });
-    return response.status;
+    return response.data.message;
   },
 };

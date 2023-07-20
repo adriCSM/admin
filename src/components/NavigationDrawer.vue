@@ -6,7 +6,7 @@ const store = useStore();
 const error = computed(() => store.state.error);
 
 const user = computed(() =>
-  store.state.profile.userProfile ? store.state.profile.userProfile : false,
+  store.state.profile.myProfile ? store.state.profile.myProfile : false,
 );
 const newDrawer = computed(() => {
   return store.state.drawer;

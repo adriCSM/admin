@@ -1,11 +1,10 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const dialog = ref(false);
-const error = computed(() => store.state.error);
 const visible = ref(false);
 const visible1 = ref(false);
 
@@ -20,8 +19,7 @@ const user = ref({
 
 const add = async () => {
   await store.dispatch('auth/register', user.value);
-  await store.dispatch('profile/getUsers');
-  if (!error.value) {
+  if (!store.state.error) {
     user.value = {
       ...user.value,
       username: '',
@@ -36,16 +34,10 @@ const add = async () => {
 
 <template>
   <v-dialog v-model="dialog" persistent width="1024">
-    <div v-if="error">
-      <h1>{{ error }}</h1>
-    </div>
     <template v-slot:activator="{ props }">
       <v-btn color="success" v-bind="props" @click="show"><v-icon>mdi-plus</v-icon> User </v-btn>
     </template>
     <v-card class="bg-dark">
-      <div v-if="error">
-        <h1 class="text-white">{{ error }}</h1>
-      </div>
       <v-card-title style="color: #0fe">
         <span class="text-h5">Add User</span>
       </v-card-title>

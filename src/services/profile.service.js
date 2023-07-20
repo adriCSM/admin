@@ -18,7 +18,7 @@ export default {
     const response = await axios.delete(API_URL + `/users/${userId}`, {
       headers: await authHeader(),
     });
-    return response.data.data;
+    return response.data.message;
   },
 
   async uploadPic(pic, userId) {
