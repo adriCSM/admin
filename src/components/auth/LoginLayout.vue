@@ -14,8 +14,8 @@ const emailRules = ref([
   },
 ]);
 
-// const user = ref({ email: 'a@gmail.com', password: '#Mangidi7' });
-const user = ref({ email: 'admin@gmail.com', password: 'admin' });
+const user = ref({ email: 'a@gmail.com', password: '#Mangidi7' });
+// const user = ref({ email: 'admin@gmail.com', password: 'admin' });
 
 const show = ref(false);
 const store = useStore();

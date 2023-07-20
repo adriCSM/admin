@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import { useStore } from 'vuex';
 import LoginView from '../views/LoginView.vue';
 
 const routes = [
@@ -74,7 +75,10 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.name) {
+  const store = useStore();
+  if (to.name !== 'Login' && to.name !== 'Notfound' && !store.state.auth.loggedIn) {
+    next({ name: 'Login' });
+  } else if (to.name) {
     document.title = ` ${to.name} || Store`;
     next();
   } else {

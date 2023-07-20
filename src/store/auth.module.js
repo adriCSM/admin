@@ -21,11 +21,10 @@ export const auth = {
         if (userProfile.role == 'user') {
           localStorage.removeItem('user_id');
           localStorage.removeItem('user');
-          store.commit('error', `Anda tidak berhak login`);
-          return router.push('/auth/login');
+          return store.commit('error', `Anda tidak berhak login`);
         }
-        store.commit('info', `Selamat datang ${userProfile.username}`);
         commit('isLoggedIn', true);
+        store.commit('info', `Selamat datang ${userProfile.username}`);
         router.push({ name: 'Home' });
       } catch (error) {
         commit('isLoggedIn', false);

@@ -6,7 +6,9 @@ import AddProject from './AddProject.vue';
 const store = useStore();
 
 onMounted(async () => {
-  await store.dispatch('projects/getProjects');
+  if (!store.state.projects.data) {
+    await store.dispatch('projects/getProjects');
+  }
 });
 
 const data = computed(() => store.state.projects.data);
