@@ -3,9 +3,9 @@
     <NavigationDrawerVue />
 
     <HeaderView style="position: fixed; z-index: 99" />
-    <AlertWeb style="max-width: 400px; position: fixed; z-index: 9999" class="mt-10" />
+    <AlertWeb style="max-width: 400px; position: fixed; z-index: 9999" class="mt-15" />
     <LoadProgres
-      style="position: fixed; z-index: 5; align-self: center; justify-self: center"
+      style="position: fixed; z-index: 9999; align-self: center; justify-self: center"
       class="mt-15"
     />
 

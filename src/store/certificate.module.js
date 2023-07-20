@@ -19,10 +19,12 @@ export const certificates = {
     },
     async postCertificate({ commit }, certificate) {
       try {
+        store.commit('loading', true);
         const message = await certificateService.postCertificate(certificate);
         const response = await certificateService.getCertificates();
         commit('data', response.certificates);
         router.push({ name: 'Certificates' });
+        store.commit('loading', false);
         store.commit('success', message);
       } catch (err) {
         handler.errorHandling(err);
@@ -50,7 +52,6 @@ export const certificates = {
     },
     async editCertificate({ commit }, id) {
       try {
-        commit;
         store.commit('loading', true);
         const message = await certificateService.editCertificate(id);
         const response = await certificateService.getCertificates();

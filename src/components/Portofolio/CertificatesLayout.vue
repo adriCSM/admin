@@ -35,10 +35,10 @@ const actions = ref([
 
 <template>
   <v-container fluid>
-    <v-row justify="center pt-5">
+    <v-row justify="center " class="pt-5">
       <AddCertificate />
     </v-row>
-    <v-table class="bg-dark pa-10" style="color: #0fe">
+    <v-table class="bg-dark pa-5" style="color: #0fe">
       <thead>
         <tr>
           <th class="text-center text-white">Name</th>

@@ -11,6 +11,9 @@ const blobImage = ref(null);
 const add = async () => {
   await store.dispatch('certificates/postCertificate', { name: name.value, image: image.value[0] });
   dialog.value = false;
+  name.value = '';
+  image.value = [];
+  blobImage.value = null;
 };
 
 const change = () => {
