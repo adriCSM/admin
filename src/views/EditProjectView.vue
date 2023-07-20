@@ -3,8 +3,6 @@ import { onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from 'vuex';
 import router from '@/router';
-import HeaderView from '@/components/HeaderView.vue';
-import NavigationDrawerVue from '../components/NavigationDrawer.vue';
 
 const store = useStore();
 const route = useRoute();
@@ -62,12 +60,10 @@ const back = () => {
 </script>
 
 <template>
-  <div>
-    <NavigationDrawerVue />
-    <HeaderView />
-    <v-row justify="center">
+  <div class="mt-15">
+    <v-row justify="center ">
       <v-col cols="12" md="10">
-        <v-card class="bg-dark ma-3 pt-5">
+        <v-card class="bg-dark ma-3 pt-5 rounded-xl">
           <v-card-title style="color: #0fe" class="text-center">
             <span class="text-h5">Edit Project</span>
           </v-card-title>

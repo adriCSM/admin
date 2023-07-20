@@ -4,7 +4,6 @@ import store from '@/store';
 export default {
   errorHandling(err) {
     store.commit('loading', false);
-    console.log(err.message);
     if (
       err.message == 'Invalid token specified' ||
       (err.response && err.response.status == 401) ||

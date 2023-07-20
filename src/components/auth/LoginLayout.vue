@@ -22,6 +22,9 @@ const store = useStore();
 const username = ref(null);
 onMounted(() => {
   username.value = store.state.auth.username;
+  localStorage.removeItem('user_id');
+  localStorage.removeItem('user');
+  localStorage.removeItem('activeTabStore');
 });
 
 const login = async () => {

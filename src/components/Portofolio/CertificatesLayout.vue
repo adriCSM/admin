@@ -5,9 +5,12 @@ import { useStore } from 'vuex';
 import AddCertificate from './AddCertificate.vue';
 const store = useStore();
 const router = useRouter();
-onMounted(async () => {
-  await store.dispatch('certificates/getCertificates');
-});
+
+if (!store.state.certificates.data) {
+  onMounted(async () => {
+    await store.dispatch('certificates/getCertificates');
+  });
+}
 const data = computed(() => store.state.certificates.data);
 
 const actions = ref([

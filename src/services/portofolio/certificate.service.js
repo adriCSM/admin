@@ -15,7 +15,7 @@ export default {
         headers: await authHeader(),
       },
     );
-    return response.data;
+    return response.data.message;
   },
   async getCertificates() {
     const response = await axios.get(API_URL + '/portofolio/certificates');
@@ -45,7 +45,7 @@ export default {
     const response = await axios.delete(API_URL + '/portofolio/certificates/' + id, {
       headers: await authHeader(),
     });
-    return response.data.data;
+    return response.data.message;
   },
   async getMetadataImageCertificate(id) {
     const response = await axios.get(API_URL + '/portofolio/certificates/metadata/' + id, {

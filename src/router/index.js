@@ -32,6 +32,11 @@ const routes = [
   },
 
   {
+    path: '/portofolio/cvs',
+    name: 'Curiculum Vitae',
+    component: () => import('../views/CvView.vue'),
+  },
+  {
     path: '/portofolio/projects',
     name: 'Projects',
     component: () => import('../views/ProjectsView.vue'),

@@ -38,7 +38,7 @@ const timer = (mutation) => {
 </script>
 
 <template>
-  <v-row style="max-width: 400px; position: fixed; z-index: 1">
+  <v-row>
     <v-col>
       <v-alert
         v-if="error || success || info"

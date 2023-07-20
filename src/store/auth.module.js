@@ -3,7 +3,7 @@ import AuthService from '../services/auth.service';
 import ProfileService from '@/services/profile.service';
 import handler from '../services/error-handler';
 
-const user = JSON.parse(localStorage.getItem('user_free'));
+const user = JSON.parse(localStorage.getItem('user'));
 const initialState = user ? { loggedIn: true } : { loggedIn: false };
 
 export const auth = {

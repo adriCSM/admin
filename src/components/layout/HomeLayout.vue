@@ -7,6 +7,7 @@ const items = ref([
     path: [
       { url: '/portofolio/projects', name: 'Projects' },
       { url: '/portofolio/certificates', name: 'Certificates' },
+      { url: '/portofolio/cvs', name: 'Curiculum Vitae' },
     ],
     image: '../../assets/wlppr.jpg',
   },
@@ -39,18 +40,19 @@ const items = ref([
                   class="d-flex flex-column transition-fast-in-fast-out v-card--reveal text-h6 text-white"
                   style="height: 100%"
                 >
-                  <strong class="text-black" style="text-shadow: 0 0 1rem white">
-                    {{ item.name }}
-                  </strong>
-                  <div class="flex-row">
-                    <router-link v-for="path in item.path" :key="path" :to="path.url" class="mx-3">
-                      <v-tooltip :text="path.name" location="top">
-                        <template v-slot:activator="{ props }">
-                          <v-avatar v-bind="props" color="white" size="35">
-                            <v-icon size="25" color="orange"> mdi-open-in-new </v-icon>
-                          </v-avatar>
-                        </template>
-                      </v-tooltip>
+                  <div class="flex-row text-center">
+                    <router-link
+                      v-for="path in item.path"
+                      :key="path"
+                      :to="path.url"
+                      class="mx-3 text-dark"
+                    >
+                      <v-btn
+                        class="my-1 rounded-xl text-capitalize"
+                        style="box-shadow: 0 0 1rem white"
+                      >
+                        {{ path.name }}
+                      </v-btn>
                     </router-link>
                   </div>
                 </div>

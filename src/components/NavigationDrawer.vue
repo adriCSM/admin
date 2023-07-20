@@ -39,11 +39,12 @@ const changeDrawer = () => {
 
 <template>
   <v-navigation-drawer
+    theme="light"
     v-model="newDrawer"
     :hidden="newDrawer ? false : true"
     temporary
+    style="height: 100vh"
     location="right"
-    style="height: auto"
   >
     <div class="text-right">
       <v-btn variant="text" position="end" @click="changeDrawer">

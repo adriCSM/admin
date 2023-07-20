@@ -1,22 +1,23 @@
 <template>
   <v-app>
-    <AlertWeb style="max-width: 400px; position: fixed; z-index: 1" />
+    <NavigationDrawerVue />
 
-    <LoadProgres style="position: fixed; z-index: 5; align-self: center; justify-self: center" />
-    <v-main class="bg-light">
-      <router-view />
-    </v-main>
+    <HeaderView style="position: fixed; z-index: 99" />
+    <AlertWeb style="max-width: 400px; position: fixed; z-index: 9999" class="mt-10" />
+    <LoadProgres
+      style="position: fixed; z-index: 5; align-self: center; justify-self: center"
+      class="mt-15"
+    />
+
+    <router-view />
   </v-app>
 </template>
 
-<script>
+<script setup>
 import AlertWeb from '@/components/AlertWeb.vue';
 import LoadProgres from '@/components/LoadProgres.vue';
-
-export default {
-  name: 'App',
-  components: { AlertWeb, LoadProgres },
-};
+import HeaderView from '@/components/HeaderView.vue';
+import NavigationDrawerVue from '@/components/NavigationDrawer.vue';
 </script>
 <style>
 main {

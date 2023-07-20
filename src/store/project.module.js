@@ -20,7 +20,7 @@ export const projects = {
       try {
         await projectService.postProject(project);
         const response = await projectService.getProjects();
-        commit('projects', response.projects);
+        commit('data', response.projects);
       } catch (err) {
         handler.errorHandling(err);
       }
@@ -45,13 +45,15 @@ export const projects = {
         handler.errorHandling(err);
       }
     },
-    async editProject({ commit }, id) {
+    async editProject({ commit }, project) {
       try {
+        commit;
         store.commit('loading', true);
-        const response = await projectService.editProject(id);
-
+        const message = await projectService.editProject(project);
+        const response = await projectService.getProjects();
+        commit('data', response.projects);
         store.commit('loading', false);
-        commit('success', response);
+        store.commit('success', message);
         router.push({ name: 'Projects' });
       } catch (err) {
         handler.errorHandling(err);
@@ -59,9 +61,10 @@ export const projects = {
     },
     async deleteProject({ commit }, id) {
       try {
-        await projectService.deleteProject(id);
-        const response = await projectService.getProjects();
-        commit('projects', response.projects);
+        const message = await projectService.deleteProject(id);
+        store.commit('success', message);
+
+        commit('delete', id);
       } catch (err) {
         handler.errorHandling(err);
       }
@@ -70,6 +73,10 @@ export const projects = {
   mutations: {
     data(state, data) {
       state.data = data;
+    },
+
+    delete(state, id) {
+      state.data = state.data.filter((project) => project._id !== id);
     },
     project(state, project) {
       state.project = project;

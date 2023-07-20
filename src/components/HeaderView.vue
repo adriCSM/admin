@@ -1,39 +1,41 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 const stateDrawer = computed(() => store.state.drawer);
-const pic = ref();
-onMounted(async () => {
-  await store.dispatch('profile/myProfile');
-  if (store.state.profile.userProfile) {
-    pic.value = store.state.profile.userProfile.pic;
-  }
-});
+
+const pic = computed(() =>
+  store.state.profile.userProfile ? store.state.profile.userProfile.pic : false,
+);
+onMounted(async () => {});
 const changeDrawer = () => {
   store.commit('drawer', !stateDrawer.value);
 };
+const isLogin = computed(() => {
+  if (store.state.auth.loggedIn) {
+    store.dispatch('profile/myProfile');
+  }
+  return store.state.auth.loggedIn;
+});
 </script>
 <template>
-  <v-app-bar elevation="2" class="bg-dark">
-    <div class="w-100 text-white">
-      <v-row>
-        <v-col cols="4" class="text-center" align-self="center">
-          <v-app-bar-icon class="font-weight-bold">AM</v-app-bar-icon>
-        </v-col>
-        <v-col cols="4" class="text-center d-flex justify-center align-center">
-          <router-link to="/home" class="px-5"> Home </router-link>
-          <router-link to="/users" class="px-5"> Users </router-link>
-        </v-col>
-        <v-col cols="4" class="text-end pe-10">
-          <v-avatar size="40px" class="bg-white">
-            <v-img alt="Avatar" :src="pic">
-              <v-btn variant="text" @click="changeDrawer"> </v-btn>
-            </v-img>
-          </v-avatar>
-        </v-col>
-      </v-row>
-    </div>
-  </v-app-bar>
+  <v-container style="max-width: 100vw" class="px-md-15 pt-md-8" v-if="isLogin">
+    <v-row class="text-white bg-dark rounded-xl">
+      <v-col cols="4" class="text-center" align-self="center">
+        <v-app-bar-icon class="font-weight-bold">AM</v-app-bar-icon>
+      </v-col>
+      <v-col :cols="pic ? '4' : '8'" class="text-center d-flex justify-center align-center">
+        <router-link to="/home" class="px-5"> Home </router-link>
+        <router-link to="/users" class="px-5"> Users </router-link>
+      </v-col>
+      <v-col cols="4" class="text-end pe-10" v-if="pic">
+        <v-avatar size="40px" class="bg-white">
+          <v-img alt="Avatar" :src="pic">
+            <v-btn variant="text" @click="changeDrawer"> </v-btn>
+          </v-img>
+        </v-avatar>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>

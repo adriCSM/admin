@@ -19,9 +19,11 @@ export const certificates = {
     },
     async postCertificate({ commit }, certificate) {
       try {
-        await certificateService.postCertificate(certificate);
+        const message = await certificateService.postCertificate(certificate);
         const response = await certificateService.getCertificates();
-        commit('certificates', response.certificates);
+        commit('data', response.certificates);
+        router.push({ name: 'Certificates' });
+        store.commit('success', message);
       } catch (err) {
         handler.errorHandling(err);
       }
@@ -51,6 +53,8 @@ export const certificates = {
         commit;
         store.commit('loading', true);
         const message = await certificateService.editCertificate(id);
+        const response = await certificateService.getCertificates();
+        commit('data', response.certificates);
         store.commit('loading', false);
         store.commit('success', message);
         router.push({ name: 'Certificates' });
@@ -60,9 +64,9 @@ export const certificates = {
     },
     async deleteCertificates({ commit }, id) {
       try {
-        await certificateService.deleteCertificates(id);
-        const response = await certificateService.getCertificates();
-        commit('certificates', response.certificates);
+        const message = await certificateService.deleteCertificates(id);
+        commit('delete', id);
+        store.commit('success', message);
       } catch (err) {
         handler.errorHandling(err);
       }
@@ -71,6 +75,9 @@ export const certificates = {
   mutations: {
     data(state, data) {
       state.data = data;
+    },
+    delete(state, id) {
+      state.data = state.data.filter((item) => item._id !== id);
     },
     certificate(state, certificate) {
       state.certificate = certificate;
