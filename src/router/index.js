@@ -48,6 +48,11 @@ const routes = [
     component: () => import('../views/portofolio/ProjectsView.vue'),
   },
   {
+    path: '/portofolio/contacts',
+    name: 'Contacts',
+    component: () => import('../views/portofolio/ContactView.vue'),
+  },
+  {
     path: '/portofolio/certificates',
     name: 'Certificates',
     component: () => import('../views/portofolio/CertificatesView.vue'),

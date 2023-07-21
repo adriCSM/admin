@@ -5,6 +5,7 @@ import { profile } from './profile.module';
 import { certificates } from './certificate.module';
 import { projects } from './project.module';
 import { cv } from './cv.module';
+import { contact } from './contact.module';
 
 export default createStore({
   modules: {
@@ -14,6 +15,7 @@ export default createStore({
     certificates,
     projects,
     cv,
+    contact,
   },
   state: {
     drawer: false,

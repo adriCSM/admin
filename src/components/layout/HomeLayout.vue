@@ -15,6 +15,7 @@ const items = ref([
       { url: '/portofolio/projects', name: 'Projects' },
       { url: '/portofolio/certificates', name: 'Certificates' },
       { url: '/portofolio/cvs', name: 'Curiculum Vitae' },
+      { url: '/portofolio/contacts', name: 'Contact' },
     ],
     image: require('../../assets/S1.png'),
   },
