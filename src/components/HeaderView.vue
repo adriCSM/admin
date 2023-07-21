@@ -42,7 +42,7 @@ const isLogin = computed(() => {
         <router-link to="/home" class="px-5"> Home </router-link>
         <router-link to="/users" class="px-5"> Users </router-link>
       </v-col>
-      <v-col :cols="pic ? '4' : null" class="text-end pe-10">
+      <v-col cols="4" class="text-end pe-10" :style="pic ? true : { display: 'none' }">
         <v-avatar size="40px" class="bg-white">
           <v-img alt="Avatar" :src="pic">
             <v-btn variant="text" @click="changeDrawer"> </v-btn>
