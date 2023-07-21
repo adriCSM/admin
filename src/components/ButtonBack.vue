@@ -9,7 +9,11 @@ const back = () => {
 <template>
   <v-row
     class="ps-md-15 pt-5 ms-md-15"
-    v-if="router.currentRoute.value.name !== 'Home' && router.currentRoute.value.name !== 'Login'"
+    v-if="
+      router.currentRoute.value.name !== 'Home' &&
+      router.currentRoute.value.name !== 'Login' &&
+      router.currentRoute.value.name !== 'Notfound'
+    "
   >
     <v-col>
       <v-btn
