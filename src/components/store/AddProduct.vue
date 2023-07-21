@@ -1,40 +1,36 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const dialog = ref(false);
-const error = computed(() => store.state.error);
 const product = ref({
   name: '',
   price: '',
-  cuantity: 0,
+  cuantity: '',
   image: [],
-  url: '',
   blob: null,
 });
 
 const add = async () => {
-  console.log(product.value);
-  // await store.dispatch('projects/postProject', {
-  //   name: product.value.name,
-  //   price: product.value.price,
-  //   cuantity: product.value.cuantity,
-  //   image: product.value.image,
-  //   url: product.value.url,
-  // });
-  // if (!error.value) {
-  //   product.value = {
-  //     ...product.value,
-  //     name: '',
-  //     price: '',
-  //     cuantity: '',
-  //     image: [],
-  //     url: '',
-  //     blob: '',
-  //   };
-  // }
+  await store.dispatch('productsStore/addProduct', {
+    name: product.value.name,
+    price: product.value.price,
+    cuantity: product.value.cuantity,
+    image: product.value.image[0],
+  });
+  if (store.state.error) {
+    product.value = {
+      ...product.value,
+      name: '',
+      price: '',
+      cuantity: '',
+      image: [],
+      blob: null,
+    };
+  }
+  dialog.value = false;
 };
 
 const change = () => {
@@ -64,7 +60,7 @@ const change = () => {
       <v-card-text style="color: #0fe">
         <v-container>
           <v-row>
-            <v-col cols="12" md="6">
+            <v-col cols="12" md="6" sm="6">
               <v-text-field
                 label="Product Name"
                 name="product"
@@ -74,7 +70,7 @@ const change = () => {
                 type="text"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" sm="3">
               <v-text-field
                 label="Price"
                 name="price"
@@ -84,7 +80,7 @@ const change = () => {
                 type="text"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="3">
+            <v-col cols="12" md="3" sm="3">
               <v-text-field
                 label="Cuantity"
                 name="url"
@@ -94,16 +90,7 @@ const change = () => {
                 type="number"
               ></v-text-field>
             </v-col>
-            <v-col cols="12">
-              <v-text-field
-                label="url"
-                name="url"
-                variant="outlined"
-                v-model="product.url"
-                required
-                type="text"
-              ></v-text-field>
-            </v-col>
+
             <v-col cols="12">
               <v-file-input
                 label="Image"

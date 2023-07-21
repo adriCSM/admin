@@ -7,7 +7,6 @@ const store = useStore();
 onMounted(async () => {
   if (!store.state.productsStore.products) {
     await store.dispatch('productsStore/getProducts');
-    console.log(store.state.productsStore.products);
   }
 });
 const data = computed(() => store.state.productsStore.products);
@@ -44,10 +43,10 @@ const actions = ref([
       </thead>
       <tbody>
         <tr v-for="product in data" :key="product" class="text-center">
-          <td>jhon doe</td>
-          <td>Rp21.000</td>
-          <td>20 pcs</td>
-          <td><v-img alt="Avatar" height="60px" src="../../assets/109715820.jpg"></v-img></td>
+          <td class="text-capitalize">{{ product.name }}</td>
+          <td>Rp{{ product.price }}</td>
+          <td>{{ product.cuantity }} pcs</td>
+          <td><v-img alt="Avatar" height="60px" :src="product.image"></v-img></td>
           <td>
             <v-badge dot color="success" inline> </v-badge>
             active
