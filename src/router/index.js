@@ -95,7 +95,7 @@ router.beforeEach((to, from, next) => {
   if (to.name !== 'Login' && to.name !== 'Notfound' && !store.state.auth.loggedIn) {
     next({ name: 'Login' });
   } else if (to.name) {
-    document.title = ` ${to.name} || Store`;
+    document.title = `AM || ${to.name}`;
     next();
   } else {
     next({ name: 'Notfound' });
