@@ -7,7 +7,7 @@ export const productsStore = {
   namespaced: true,
   state: initialState,
   mutations: {
-    successGet(state, products) {
+    products(state, products) {
       state.products = products;
     },
     message(state, message) {
@@ -24,7 +24,7 @@ export const productsStore = {
     async getProducts({ commit }) {
       try {
         const response = await productService.getProducts();
-        commit('successGet', response.data.products);
+        commit('products', response.data.products);
       } catch (error) {
         handler.errorHandling(error);
       }

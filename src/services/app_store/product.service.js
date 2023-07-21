@@ -3,7 +3,8 @@ import authHeader from '../auth-header';
 export default {
   async getProducts() {
     const response = await axios.get('/products');
-    return response.data;
+    console.log(response);
+    return response.data.data;
   },
 
   async searchProduct(query) {

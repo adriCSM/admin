@@ -1,5 +1,16 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+import AddProduct from '@/components/store/AddProduct.vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+onMounted(async () => {
+  if (!store.state.productsStore.products) {
+    await store.dispatch('productsStore/getProducts');
+    console.log(store.state.productsStore.products);
+  }
+});
+const data = computed(() => store.state.productsStore.products);
 
 const actions = ref([
   {
@@ -17,6 +28,9 @@ const actions = ref([
 
 <template>
   <v-container fluid class="overflow-y-auto" style="max-height: 100vh">
+    <v-row justify="center pt-5">
+      <AddProduct />
+    </v-row>
     <v-table class="pa-5 bg-dark" style="color: #0fe">
       <thead>
         <tr class="">
@@ -29,7 +43,7 @@ const actions = ref([
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in 2" :key="item.name" class="text-center">
+        <tr v-for="product in data" :key="product" class="text-center">
           <td>jhon doe</td>
           <td>Rp21.000</td>
           <td>20 pcs</td>

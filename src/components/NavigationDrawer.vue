@@ -33,6 +33,7 @@ const changeDrawer = () => {
     temporary
     style="height: 100vh"
     location="right"
+    v-if="router.currentRoute.value.name !== 'Login'"
   >
     <div class="text-right">
       <v-btn variant="text" position="end" @click="changeDrawer">

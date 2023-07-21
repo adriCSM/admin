@@ -52,7 +52,6 @@ const login = async () => {
           <label for="email" class="text-subtitle-2 text-medium-emphasis">Email</label>
           <v-text-field
             id="email"
-            name="email"
             color="teal"
             v-model="user.email"
             :rules="emailRules"
@@ -80,7 +79,6 @@ const login = async () => {
           <v-text-field
             id="password"
             required
-            name="password"
             :append-inner-icon="visible ? 'mdi-eye-off' : 'mdi-eye'"
             :type="visible ? 'text' : 'password'"
             density="compact"

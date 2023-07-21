@@ -13,7 +13,11 @@ const items = ref([
   },
   {
     name: 'Store',
-    path: [{ url: '/store', name: 'Store' }],
+    path: [
+      { url: '/store/products', name: 'Product' },
+      { url: '/store/carts', name: 'Cart' },
+      { url: '/store/Orders', name: 'Order' },
+    ],
     image: require('../../assets/wlppr.jpg'),
   },
 ]);

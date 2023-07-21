@@ -17,6 +17,9 @@ const actions = ref([
 
 <template>
   <v-container fluid class="overflow-y-auto" style="max-height: 100vh">
+    <v-row justify="center pt-5">
+      <AddProject />
+    </v-row>
     <v-table class="pa-5 bg-dark" style="color: #0fe">
       <thead>
         <tr>
