@@ -2,6 +2,7 @@
 import { computed, onMounted, ref } from 'vue';
 import AddProduct from '@/components/store/AddProduct.vue';
 import { useStore } from 'vuex';
+import router from '@/router';
 
 const store = useStore();
 onMounted(async () => {
@@ -16,11 +17,17 @@ const actions = ref([
     text: 'Delete',
     icon: 'mdi-delete-outline',
     color: 'error',
+    method: async (id) => {
+      await store.dispatch('productsStore/deleteProduct', id);
+    },
   },
   {
     text: 'Edit',
     icon: 'mdi-pencil-outline',
     color: 'info',
+    method: async (id) => {
+      router.push({ name: 'Edit Product', params: { id } });
+    },
   },
 ]);
 </script>
@@ -37,7 +44,6 @@ const actions = ref([
           <th class="text-center text-white">Price</th>
           <th class="text-center text-white">Cuantity</th>
           <th class="text-center text-white">Image</th>
-          <th class="text-center text-white">Url</th>
           <th class="text-center text-white">Action</th>
         </tr>
       </thead>
@@ -47,10 +53,7 @@ const actions = ref([
           <td>Rp{{ product.price }}</td>
           <td>{{ product.cuantity }} pcs</td>
           <td><v-img alt="Avatar" height="60px" :src="product.image"></v-img></td>
-          <td>
-            <v-badge dot color="success" inline> </v-badge>
-            active
-          </td>
+
           <td>
             <v-tooltip :text="action.text" v-for="action in actions" :key="action">
               <template v-slot:activator="{ props }">
@@ -59,7 +62,8 @@ const actions = ref([
                   size="small"
                   :color="action.color"
                   :icon="action.icon"
-                  class="mx-2"
+                  class="ma-2"
+                  @click="action.method(product._id)"
                 ></v-btn>
               </template>
             </v-tooltip>

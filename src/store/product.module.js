@@ -1,8 +1,9 @@
+import router from '@/router';
 import store from '@/store';
 import productService from '../services/app_store/product.service';
 import handler from '../services/error-handler';
 
-const initialState = { products: null };
+const initialState = { product: null, products: null, metadata: null };
 
 export const productsStore = {
   namespaced: true,
@@ -11,22 +12,47 @@ export const productsStore = {
     products(state, products) {
       state.products = products;
     },
-    message(state, message) {
-      state.message = message;
+    product(state, product) {
+      state.product = product;
     },
+    metadata(state, metadata) {
+      state.metadata = metadata;
+    },
+
     contentValue(state, contentValue) {
       state.contentValue = contentValue;
     },
     cartProducts(state, cartProducts) {
       state.cartProducts = cartProducts;
     },
+    delete(state, id) {
+      state.products = state.products.filter((product) => product._id !== id);
+    },
   },
   actions: {
+    async getMetadataImageProduct({ commit }, id) {
+      try {
+        const response = await productService.getMetadata(id);
+        commit('metadata', response);
+      } catch (err) {
+        handler.errorHandling(err);
+      }
+    },
     async getProducts({ commit }) {
       try {
         store.commit('loading', true);
         const response = await productService.getProducts();
         commit('products', response);
+        store.commit('loading', false);
+      } catch (error) {
+        handler.errorHandling(error);
+      }
+    },
+    async getProduct({ commit }, id) {
+      try {
+        store.commit('loading', true);
+        const response = await productService.getProduct(id);
+        commit('product', response);
         store.commit('loading', false);
       } catch (error) {
         handler.errorHandling(error);
@@ -47,8 +73,35 @@ export const productsStore = {
 
     async searchProduct({ commit }, query) {
       try {
+        store.commit('loading', true);
         const response = await productService.searchProduct(query);
-        commit('successGet', response.data.products);
+        commit('products', response.data.products);
+        store.commit('loading', false);
+      } catch (error) {
+        handler.errorHandling(error);
+      }
+    },
+    async editProduct({ commit }, payload) {
+      try {
+        commit;
+        store.commit('loading', true);
+        const message = await productService.updateProduct(payload);
+        const response = await productService.getProducts();
+        commit('products', response);
+        store.commit('success', message);
+        store.commit('loading', false);
+        router.push({ name: 'Product' });
+      } catch (error) {
+        handler.errorHandling(error);
+      }
+    },
+    async deleteProduct({ commit }, id) {
+      try {
+        store.commit('loading', true);
+        const message = await productService.deleteProduct(id);
+        store.commit('loading', false);
+        store.commit('success', message);
+        commit('delete', id);
       } catch (error) {
         handler.errorHandling(error);
       }

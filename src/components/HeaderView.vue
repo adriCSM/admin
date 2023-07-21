@@ -7,7 +7,7 @@ const store = useStore();
 const stateDrawer = computed(() => store.state.drawer);
 
 onMounted(async () => {
-  if (!store.state.profile.myProfile) {
+  if (!store.state.profile.myProfile && store.state.auth.loggedIn) {
     await store.dispatch('profile/myProfile');
   }
 });
