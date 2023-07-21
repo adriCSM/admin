@@ -31,6 +31,11 @@ import cv from './api/portofolio/cv/index.js';
 import CvService from './services/mongodb/portofolio/Cv.service.js';
 import CvValidator from './validators/Portofolio/Cv/index.js';
 
+// PORTOFOLIO CV
+import contact from './api/portofolio/Contact/index.js';
+import ContactService from './services/mongodb/portofolio/Contact.service.js';
+import ContactValidator from './validators/Portofolio/Contact/index.js';
+
 // STORE PRODUCT
 import products from './api/store/Product/index.js';
 import ProductsService from './services/mongodb/store/ProductsService.js';
@@ -59,6 +64,7 @@ const init = async () => {
   const projectsService = new ProjectsService(firebaseService);
   const certificatesService = new CertificatesService(firebaseService);
   const cvService = new CvService(firebaseService);
+  const contactService = new ContactService();
 
   const productsService = new ProductsService(firebaseService, cacheService);
   const cartsService = new CartsService();
@@ -159,6 +165,14 @@ const init = async () => {
         usersService,
         cvService,
         validator: CvValidator,
+      },
+    },
+    {
+      plugin: contact,
+      options: {
+        contactService,
+        usersService,
+        validator: ContactValidator,
       },
     },
   ]);
