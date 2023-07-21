@@ -20,7 +20,6 @@ export default {
     return response.data.data;
   },
   async addProduct(product) {
-    console.log(product);
     const response = await axios.post(
       '/store/products',
       { ...product },

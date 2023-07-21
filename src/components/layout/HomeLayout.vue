@@ -1,6 +1,13 @@
 <script setup>
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
+onMounted(async () => {
+  if (!store.state.profile.myProfile && store.state.auth.loggedIn) {
+    await store.dispatch('profile/myProfile');
+  }
+});
 const items = ref([
   {
     name: 'Web Portofolio',
