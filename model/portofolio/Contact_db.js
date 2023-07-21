@@ -20,6 +20,10 @@ const Contact = mongoose.model(
         type: String,
         required: true,
       },
+      isRead: {
+        type: Boolean,
+        default: false,
+      },
     },
     {
       timestamps: true,

@@ -6,6 +6,12 @@ class ContactService {
     this.db = Contact;
   }
 
+  async read() {
+    await this.db.updateMany({
+      isRead: true,
+    });
+  }
+
   async addMessage({ name, email, mobileNumber, message }) {
     const result = await this.db.create({
       name,
