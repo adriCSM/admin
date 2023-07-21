@@ -9,10 +9,17 @@ class ProductsService {
     this.cacheService = cacheService;
   }
 
+  async getMetadata(id) {
+    const result = await this.db.findOne({ _id: id }).select('-__v');
+    const metadata = await this.firebaseService.metadataWithUrl(result.image);
+    return metadata;
+  }
+
   async uploadProductImageInFirebase(payload) {
-    const { productName } = payload;
-    const newName = productName.split(' ').join('_');
-    const fileBuffer = payload.image.data;
+    const { name } = payload;
+    const newName = `${name}_${new Date().getTime()}`;
+    const { _data: data } = payload.image;
+    const fileBuffer = data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -29,12 +36,14 @@ class ProductsService {
     }
   }
 
-  async addProduct(productName, price, image) {
-    await this.checkNameProductExist(productName);
+  async addProduct({ name, price, image, cuantity }) {
+    await this.checkNameProductExist(name);
+    const url = await this.uploadProductImageInFirebase({ name, image });
     const result = await this.db.create({
-      name: productName,
+      name,
       price,
-      image,
+      image: url,
+      cuantity,
     });
     if (!result) {
       throw new InvariantError('Product gagal ditambahkan');
@@ -63,26 +72,38 @@ class ProductsService {
     return result;
   }
 
-  async putProduct(id, payload) {
-    const { productName, price } = payload;
-    const rows = await this.getProduct(id);
-    const oldName = rows.name.split(' ').join('_');
-    await this.firebaseService.deleteImage(oldName);
-
-    const url = await this.uploadProductImageInFirebase(payload);
-    const result = await this.db.findOneAndUpdate(
-      { _id: id },
-      {
-        name: productName,
-        price,
-        image: url,
-      },
-    );
-    if (!result) {
-      throw new InvariantError('Product gagal diperbarui');
+  async putProduct(id, { name, price, cuantity, image }) {
+    const imageName = `${name}_${new Date().getTime()}`;
+    const product = await this.getProduct(id);
+    const metadata = await this.getMetadata(id);
+    if (image.hapi.filename === metadata.name) {
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          price,
+          cuantity,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui project');
+      }
+    } else {
+      await this.firebaseService.deleteImageWithURL(product.image);
+      const url = await this.uploadProductImageInFirebase({ name: imageName, image });
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          price,
+          cuantity,
+          image: url,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui CV');
+      }
     }
-    await this.cacheService.delete('allProduct');
-    return result.id;
   }
 
   async deleteProduct(id) {
@@ -90,14 +111,13 @@ class ProductsService {
     if (!result) {
       throw new InvariantError('Product gagal dihapus');
     }
-    const newName = result.name.split(' ').join('_');
-    await this.cacheService.delete('allProduct');
-    await this.firebaseService.deleteImage(newName);
+    const data = await this.db.find().select('-__v');
+    await this.cacheService.set('allProduct', JSON.stringify(data));
+    await this.firebaseService.deleteImageWithURL(result.image);
   }
 
   async searchProducts(query) {
     const result = await this.db.find({ name: { $regex: query, $options: 'i' } });
-
     return result;
   }
 }

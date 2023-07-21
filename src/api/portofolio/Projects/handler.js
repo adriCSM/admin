@@ -49,8 +49,8 @@ class ProjectHandlers {
   async getMetadataImageHandler(request, h) {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
-    const { id: certificateId } = request.params;
-    const metadata = await this.projectsService.getMetadata(certificateId);
+    const { id: projectId } = request.params;
+    const metadata = await this.projectsService.getMetadata(projectId);
     const response = h
       .response({
         status: 'success',

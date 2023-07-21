@@ -9,11 +9,9 @@ class ProductHandler {
     const { image } = request.payload;
     const { id } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(id);
-    this.validator.validateImageHeaders(image.hapi.headers);
     this.validator.validatePostProductPayload(request.payload);
-    const url = await this.productService.uploadProductImageInFirebase(request.payload);
-    const { productName, price } = request.payload;
-    const productId = await this.productService.addProduct(productName, price, url);
+    this.validator.validateImageHeaders(image.hapi.headers);
+    const productId = await this.productService.addProduct(request.payload);
     const response = h
       .response({
         status: 'success',
@@ -52,6 +50,20 @@ class ProductHandler {
       .code(200);
   }
 
+  async getMetadataImageHandler(request, h) {
+    const { id: userId } = request.auth.credentials;
+    await this.usersService.verifyAdminAndCollaborator(userId);
+    const { id: productId } = request.params;
+    const metadata = await this.productService.getMetadata(productId);
+    const response = h
+      .response({
+        status: 'success',
+        data: metadata,
+      })
+      .code(200);
+    return response;
+  }
+
   async serchProductsHandler(request, h) {
     const { productName } = request.query;
     const products = await this.productService.searchProducts(productName);
@@ -67,7 +79,7 @@ class ProductHandler {
 
   async putProductHandler(request, h) {
     const { id: userId } = request.auth.credentials;
-    await this.usersService.verifyAdmin(userId);
+    await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePuttProductPayload(request.payload);
     const { image } = request.payload;
     this.validator.validateImageHeaders(image.hapi.headers);
@@ -82,7 +94,7 @@ class ProductHandler {
 
   async deleteProductHandler(request, h) {
     const { id: userId } = request.auth.credentials;
-    await this.usersService.verifyAdmin(userId);
+    await this.usersService.verifyAdminAndCollaborator(userId);
     const { id } = request.params;
     await this.productService.deleteProduct(id);
     return h.response({

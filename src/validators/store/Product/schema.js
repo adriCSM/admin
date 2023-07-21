@@ -1,13 +1,16 @@
 import Joi from 'joi';
 
 const PostProductPayloadSchema = Joi.object({
-  productName: Joi.string().required(),
+  name: Joi.string().required(),
   price: Joi.string().required(),
+  cuantity: Joi.string().required(),
   image: Joi.required(),
 });
+
 const PutProductPayloadSchema = Joi.object({
-  productName: Joi.string().required(),
+  name: Joi.string().required(),
   price: Joi.string().required(),
+  cuantity: Joi.string().required(),
   image: Joi.required(),
 });
 

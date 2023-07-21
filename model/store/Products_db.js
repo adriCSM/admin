@@ -16,6 +16,10 @@ const Product = mongoose.model(
       type: String,
       require: true,
     },
+    cuantity: {
+      type: String,
+      require: true,
+    },
   }),
 );
 

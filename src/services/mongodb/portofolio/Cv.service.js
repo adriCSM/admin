@@ -60,17 +60,30 @@ export default class CvService {
   async putCv(id, { name, image }) {
     const imageName = `${name}_${new Date().getTime()}`;
     const cv = await this.getCv({ id });
-    await this.firebaseService.deleteImageWithURL(cv.image);
-    const url = await this.uploadImageInFirebase({ name: imageName, image });
-    const result = await this.db.findOneAndUpdate(
-      { _id: id },
-      {
-        name,
-        image: url,
-      },
-    );
-    if (!result) {
-      throw new InvariantError('Gagal memperbarui certificate');
+    const metadata = await this.getMetadata(id);
+    if (image.hapi.filename === metadata.name) {
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui project');
+      }
+    } else {
+      await this.firebaseService.deleteImageWithURL(cv.image);
+      const url = await this.uploadImageInFirebase({ name: imageName, image });
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          image: url,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui CV');
+      }
     }
   }
 
