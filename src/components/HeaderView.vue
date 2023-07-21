@@ -6,14 +6,14 @@ import { useStore } from 'vuex';
 const store = useStore();
 const stateDrawer = computed(() => store.state.drawer);
 
-const pic = computed(() =>
-  store.state.profile.myProfile ? store.state.profile.myProfile.pic : false,
-);
 onMounted(async () => {
   if (!store.state.profile.myProfile) {
     await store.dispatch('profile/myProfile');
   }
 });
+const pic = computed(() =>
+  store.state.profile.myProfile ? store.state.profile.myProfile.pic : null,
+);
 const changeDrawer = () => {
   store.commit('drawer', !stateDrawer.value);
 };
