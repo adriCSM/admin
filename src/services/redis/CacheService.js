@@ -1,17 +1,12 @@
-import redis from 'redis';
+import { createClient } from '@vercel/kv';
 
 class CacheService {
   constructor() {
-    this.client = redis.createClient({
-      url: process.env.REDIS_URL,
+    this.client = createClient({
+      url: process.env.KV_REST_API_URL,
+      token: process.env.KV_REST_API_TOKEN,
     });
     // url: process.env.REDIS_URL,
-
-    this.client.on('error', (error) => {
-      console.log(` Redis client error:${error}`);
-    });
-
-    this.client.connect();
   }
 
   async set(key, value, expiredIn = 1800) {

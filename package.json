@@ -15,12 +15,12 @@
     "@hapi/hapi": "^21.3.2",
     "@hapi/inert": "^7.1.0",
     "@hapi/jwt": "^3.2.0",
+    "@vercel/kv": "^0.2.2",
     "bcrypt": "^5.1.0",
     "dotenv": "^16.3.1",
     "firebase": "^10.0.0",
     "joi": "^17.9.2",
     "mongoose": "^7.3.4",
-    "redis": "^4.6.7",
     "source-map-url": "^0.4.1"
   },
   "devDependencies": {
