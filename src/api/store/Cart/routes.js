@@ -1,7 +1,7 @@
 const routes = (handler) => [
   {
     method: 'GET',
-    path: '/store/carts/products',
+    path: '/store/carts',
     handler: (request, h) => handler.getProductsInCartHandler(request, h),
     options: {
       auth: 'allproject_jwt',
