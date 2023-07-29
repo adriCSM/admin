@@ -36,7 +36,7 @@ class ProductsService {
     }
   }
 
-  async addProduct({ name, price, image, cuantity }) {
+  async addProduct({ name, price, image, cuantity, category }) {
     await this.checkNameProductExist(name);
     const url = await this.uploadProductImageInFirebase({ name, image });
     const result = await this.db.create({
@@ -44,6 +44,7 @@ class ProductsService {
       price,
       image: url,
       cuantity,
+      category,
     });
     if (!result) {
       throw new InvariantError('Product gagal ditambahkan');
@@ -119,6 +120,42 @@ class ProductsService {
   async searchProducts(query) {
     const result = await this.db.find({ name: { $regex: query, $options: 'i' } });
     return result;
+  }
+
+  async evaluation(id, star) {
+    const result = await this.db.findByIdAndUpdate(
+      { _id: id },
+      {
+        $inc: { evaluation: 1, star },
+      },
+    );
+    if (!result) {
+      throw new InvariantError('Gagal memperbarui evaluasi dan star');
+    }
+  }
+
+  async favorite(id) {
+    const result = await this.db.findByIdAndUpdate(
+      { _id: id },
+      {
+        $inc: { favorite: 1 },
+      },
+    );
+    if (!result) {
+      throw new InvariantError('Gagal memperbarui favorite');
+    }
+  }
+
+  async soldOut(id) {
+    const result = await this.db.findByIdAndUpdate(
+      { _id: id },
+      {
+        $inc: { sold_out: 1, quantity: -1 },
+      },
+    );
+    if (!result) {
+      throw new InvariantError('Gagal memperbarui favorite');
+    }
   }
 }
 

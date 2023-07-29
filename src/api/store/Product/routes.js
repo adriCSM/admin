@@ -51,6 +51,16 @@ const routes = (handler) => [
     },
   },
   {
+    method: 'PUT',
+    path: '/store/products/{id}/evaluation',
+    handler: (request, h) => handler.putEvaluationHandler(request, h),
+  },
+  {
+    method: 'PUT',
+    path: '/store/products/{id}/favorite',
+    handler: (request, h) => handler.putFavoriteHandler(request, h),
+  },
+  {
     method: 'DELETE',
     path: '/store/products/{id}',
     handler: (request, h) => handler.deleteProductHandler(request, h),

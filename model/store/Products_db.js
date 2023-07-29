@@ -16,9 +16,29 @@ const Product = mongoose.model(
       type: String,
       require: true,
     },
-    cuantity: {
+    quantity: {
       type: String,
       require: true,
+    },
+    category: {
+      type: String,
+      require: true,
+    },
+    evaluation: {
+      type: Number,
+      default: 0,
+    },
+    star: {
+      type: Number,
+      default: 0,
+    },
+    sold_out: {
+      type: Number,
+      default: 0,
+    },
+    favorite: {
+      type: Number,
+      default: 0,
     },
   }),
 );

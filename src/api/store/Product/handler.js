@@ -97,10 +97,35 @@ class ProductHandler {
     await this.usersService.verifyAdminAndCollaborator(userId);
     const { id } = request.params;
     await this.productService.deleteProduct(id);
-    return h.response({
-      status: 'success',
-      message: 'Product berhasil dihapus',
-    });
+    return h
+      .response({
+        status: 'success',
+        message: 'Product berhasil dihapus',
+      })
+      .statusCode(200);
+  }
+
+  async putEvaluationHandler(request, h) {
+    const { star } = request.payload;
+    const { id: productId } = request.params;
+    await this.productService.evaluation(productId, star);
+    return h
+      .response({
+        status: 'success',
+        message: 'Berhasil memberikan penilaian',
+      })
+      .statusCode(200);
+  }
+
+  async putFavoriteHandler(request, h) {
+    const { id: productId } = request.params;
+    await this.productService.favorite(productId);
+    return h
+      .response({
+        status: 'success',
+        message: 'Berhasil menambahkan favorite',
+      })
+      .statusCode(200);
   }
 }
 
