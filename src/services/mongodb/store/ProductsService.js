@@ -36,14 +36,14 @@ class ProductsService {
     }
   }
 
-  async addProduct({ name, price, image, cuantity, category }) {
+  async addProduct({ name, price, image, quantity, category }) {
     await this.checkNameProductExist(name);
     const url = await this.uploadProductImageInFirebase({ name, image });
     const result = await this.db.create({
       name,
       price,
       image: url,
-      cuantity,
+      quantity,
       category,
     });
     if (!result) {
@@ -73,7 +73,7 @@ class ProductsService {
     return result;
   }
 
-  async putProduct(id, { name, price, cuantity, image }) {
+  async putProduct(id, { name, price, quantity, image, category }) {
     const imageName = `${name}_${new Date().getTime()}`;
     const product = await this.getProduct(id);
     const metadata = await this.getMetadata(id);
@@ -83,7 +83,8 @@ class ProductsService {
         {
           name,
           price,
-          cuantity,
+          quantity,
+          category,
         },
       );
       if (!result) {
@@ -97,8 +98,9 @@ class ProductsService {
         {
           name,
           price,
-          cuantity,
+          quantity,
           image: url,
+          category,
         },
       );
       if (!result) {

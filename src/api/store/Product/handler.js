@@ -85,11 +85,13 @@ class ProductHandler {
     this.validator.validateImageHeaders(image.hapi.headers);
     const { id } = request.params;
     const productId = await this.productService.putProduct(id, request.payload);
-    return h.response({
-      status: 'success',
-      message: 'Product berhasil diperbarui',
-      productId,
-    });
+    return h
+      .response({
+        status: 'success',
+        message: 'Product berhasil diperbarui',
+        productId,
+      })
+      .code(200);
   }
 
   async deleteProductHandler(request, h) {
@@ -102,7 +104,7 @@ class ProductHandler {
         status: 'success',
         message: 'Product berhasil dihapus',
       })
-      .statusCode(200);
+      .code(200);
   }
 
   async putEvaluationHandler(request, h) {
@@ -114,7 +116,7 @@ class ProductHandler {
         status: 'success',
         message: 'Berhasil memberikan penilaian',
       })
-      .statusCode(200);
+      .code(200);
   }
 
   async putFavoriteHandler(request, h) {
@@ -125,7 +127,7 @@ class ProductHandler {
         status: 'success',
         message: 'Berhasil menambahkan favorite',
       })
-      .statusCode(200);
+      .code(200);
   }
 }
 
