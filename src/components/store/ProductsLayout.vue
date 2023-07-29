@@ -40,6 +40,7 @@ const actions = ref([
     <v-table class="pa-5 bg-dark" style="color: #0fe">
       <thead>
         <tr class="">
+          <th class="text-center text-white">No</th>
           <th class="text-center text-white">Name</th>
           <th class="text-center text-white">Price</th>
           <th class="text-center text-white">Cuantity</th>
@@ -48,10 +49,11 @@ const actions = ref([
         </tr>
       </thead>
       <tbody>
-        <tr v-for="product in data" :key="product" class="text-center">
+        <tr v-for="(product, i) in data" :key="product" class="text-center">
+          <td class="text-capitalize">{{ i + 1 }}</td>
           <td class="text-capitalize">{{ product.name }}</td>
           <td>Rp{{ product.price }}</td>
-          <td>{{ product.cuantity }} pcs</td>
+          <td>{{ product.quantity }} pcs</td>
           <td><v-img alt="Avatar" height="60px" :src="product.image"></v-img></td>
 
           <td>

@@ -10,6 +10,7 @@ const product = ref({
   price: '',
   cuantity: '',
   image: [],
+  category: '',
   blob: null,
 });
 
@@ -19,6 +20,7 @@ const add = async () => {
     price: product.value.price,
     cuantity: product.value.cuantity,
     image: product.value.image[0],
+    category: product.value.category,
   });
   if (store.state.error) {
     product.value = {
@@ -28,6 +30,7 @@ const add = async () => {
       cuantity: '',
       image: [],
       blob: null,
+      category: '',
     };
   }
   dialog.value = false;
@@ -70,7 +73,7 @@ const change = () => {
                 type="text"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="3" sm="3">
+            <v-col cols="12" md="2" sm="2">
               <v-text-field
                 label="Price"
                 name="price"
@@ -80,7 +83,7 @@ const change = () => {
                 type="text"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" md="3" sm="3">
+            <v-col cols="12" md="2" sm="2">
               <v-text-field
                 label="Cuantity"
                 name="url"
@@ -89,6 +92,14 @@ const change = () => {
                 required
                 type="number"
               ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="2" sm="2">
+              <v-autocomplete
+                label="Category"
+                :items="['Makanan', 'Pakaian', 'Skincare']"
+                variant="outlined"
+                v-model="product.category"
+              ></v-autocomplete>
             </v-col>
 
             <v-col cols="12">

@@ -35,14 +35,15 @@ export default {
     return response.data;
   },
   async updateProduct(product) {
-    const { name, price, cuantity, image } = product;
+    const { name, price, quantity, image, category } = product;
     const response = await axios.put(
       `/store/products/${product.id}`,
       {
         name,
         price,
-        cuantity,
+        quantity,
         image,
+        category,
       },
       {
         headers: await authHeader(),

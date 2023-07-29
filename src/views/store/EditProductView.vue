@@ -11,9 +11,10 @@ const id = route.params.id;
 const product = ref({
   name: '',
   price: '',
-  cuantity: '',
+  quantity: '',
   image: [],
   blob: null,
+  category: '',
 });
 
 onMounted(async () => {
@@ -21,17 +22,18 @@ onMounted(async () => {
   await store.dispatch('productsStore/getMetadataImageProduct', id);
   if (store.state.productsStore.product) {
     const metadata = store.state.productsStore.metadata;
-    const { name, price, cuantity, image: blob } = store.state.productsStore.product;
+    const { name, price, quantity, image: blob, category } = store.state.productsStore.product;
     product.value = {
       name,
       price,
-      cuantity,
+      quantity,
       image: [
         new File([metadata], metadata.name, {
           type: metadata.contentType,
         }),
       ],
       blob,
+      category,
     };
   }
 });
@@ -50,7 +52,8 @@ const update = async () => {
     name: product.value.name,
     price: product.value.price,
     image: product.value.image[0],
-    cuantity: product.value.cuantity,
+    quantity: product.value.quantity,
+    category: product.value.category,
   });
 };
 
@@ -71,35 +74,43 @@ const back = () => {
           <v-card-text style="color: #0fe">
             <v-container>
               <v-row>
-                <v-col cols="12">
+                <v-col cols="12" md="6" sm="6">
                   <v-text-field
-                    label="Project Name"
-                    name="project"
+                    label="Product Name"
+                    name="product"
                     variant="outlined"
                     v-model="product.name"
                     required
                     type="text"
                   ></v-text-field>
                 </v-col>
-                <v-col cols="12">
-                  <v-textarea
-                    label="Description"
-                    name="description"
+                <v-col cols="12" md="2" sm="2">
+                  <v-text-field
+                    label="Price"
+                    name="price"
                     variant="outlined"
                     v-model="product.price"
                     required
                     type="text"
-                  ></v-textarea>
+                  ></v-text-field>
                 </v-col>
-                <v-col cols="12">
+                <v-col cols="12" md="2" sm="2">
                   <v-text-field
-                    label="Url Web Site"
-                    name="url"
+                    label="Quantity"
+                    name="quantity"
                     variant="outlined"
-                    v-model="product.cuantity"
+                    v-model="product.quantity"
                     required
                     type="text"
                   ></v-text-field>
+                </v-col>
+                <v-col cols="12" md="2" sm="2">
+                  <v-autocomplete
+                    label="Category"
+                    :items="['Makanan', 'Pakaian', 'Skincare']"
+                    variant="outlined"
+                    v-model="product.category"
+                  ></v-autocomplete>
                 </v-col>
                 <v-col cols="12">
                   <v-file-input
