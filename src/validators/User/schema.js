@@ -22,11 +22,6 @@ const putUserPayloadSchema = Joi.object({
   email: Joi.string()
     .email({ tlds: { allow: ['com', 'net', 'id', 'ac', 'uho'] } })
     .required(),
-  password: Joi.string()
-    .min(8)
-    .regex(/^(?=.*[A-Z])(?=.*[!@#$%^&*])/)
-    .required(),
-  confirmPassword: Joi.string().required(),
   image: Joi.required(),
 });
 

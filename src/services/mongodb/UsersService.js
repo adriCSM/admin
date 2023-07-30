@@ -12,7 +12,8 @@ class UsersService {
   }
 
   async uploadImageInFirebase(payload) {
-    const fileBuffer = payload.image.data;
+    const { _data: data } = payload.image;
+    const fileBuffer = data;
     const metadata = {
       contentType: payload.image.hapi.headers['content-type'],
     };
@@ -104,18 +105,11 @@ class UsersService {
     return result;
   }
 
-  async getMetadata(id) {
-    const result = await this.db.findOne({ _id: id }).select('-__v');
-    const metadata = await this.firebaseService.metadataWithUrl(result.pic);
-    return metadata;
-  }
-
-  async editUser(id, { name, username, phoneNumber, email, image }) {
+  async putUserById(id, { name, username, phoneNumber, email, image, gender, birth }) {
     const imageName = `${username}_${new Date().getTime()}`;
     const user = await this.getUserById(id);
     await this.firebaseService.deleteImageWithURL(user.pic);
-    const metadata = await this.getMetadata(id);
-    if (image.hapi.filename === metadata.name) {
+    if (image.hapi.filename === 'default profile') {
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
@@ -123,6 +117,8 @@ class UsersService {
           username,
           phoneNumber,
           email,
+          gender,
+          birth,
         },
       );
       if (!result) {
@@ -130,7 +126,7 @@ class UsersService {
       }
     } else {
       await this.firebaseService.deleteImageWithURL(user.pic);
-      const url = await this.uploadProductImageInFirebase({ name: imageName, image });
+      const url = await this.uploadImageInFirebase({ name: imageName, image });
       const result = await this.db.findOneAndUpdate(
         { _id: id },
         {
@@ -139,6 +135,8 @@ class UsersService {
           phoneNumber,
           email,
           pic: url,
+          gender,
+          birth,
         },
       );
       if (!result) {

@@ -74,16 +74,17 @@ class UserHandler {
   }
 
   async putUserByIdHandler(request, h) {
-    console.log(request.payload);
-    const { id: userId } = request.params;
+    const { id: userId } = request.auth.credentials;
     this.validator.validatePutUserPayload(request.payload);
     this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     await this.usersService.putUserById(userId, request.payload);
     const response = h
       .response({
         status: 'success',
+        message: 'Profil berhasil diperbarui',
+        id: userId,
       })
-      .code(201);
+      .code(200);
     return response;
   }
 

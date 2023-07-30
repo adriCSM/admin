@@ -32,10 +32,16 @@ const routes = (handler) => [
   },
   {
     method: 'PUT',
-    path: '/users/{id}',
+    path: '/users',
     handler: (request, h) => handler.putUserByIdHandler(request, h),
     options: {
       auth: 'allproject_jwt',
+      payload: {
+        allow: 'multipart/form-data',
+        multipart: true,
+        output: 'stream',
+        maxBytes: 5120000,
+      },
     },
   },
   {
