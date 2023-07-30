@@ -66,7 +66,6 @@ const change = () => {
             <v-col cols="12" md="6" sm="6">
               <v-text-field
                 label="Product Name"
-                name="product"
                 variant="outlined"
                 v-model="product.name"
                 required
@@ -76,7 +75,6 @@ const change = () => {
             <v-col cols="12" md="2" sm="2">
               <v-text-field
                 label="Price"
-                name="price"
                 variant="outlined"
                 v-model="product.price"
                 required

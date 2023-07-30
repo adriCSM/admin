@@ -48,7 +48,6 @@ const change = () => {
             <v-col cols="12">
               <v-text-field
                 label="CV Name"
-                name="CV"
                 variant="outlined"
                 v-model="name"
                 required
