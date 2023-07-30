@@ -8,7 +8,7 @@ const dialog = ref(false);
 const product = ref({
   name: '',
   price: '',
-  cuantity: '',
+  quantity: '',
   image: [],
   category: '',
   blob: null,
@@ -18,7 +18,7 @@ const add = async () => {
   await store.dispatch('productsStore/addProduct', {
     name: product.value.name,
     price: product.value.price,
-    cuantity: product.value.cuantity,
+    quantity: product.value.quantity,
     image: product.value.image[0],
     category: product.value.category,
   });
@@ -88,7 +88,7 @@ const change = () => {
                 label="Cuantity"
                 name="url"
                 variant="outlined"
-                v-model="product.cuantity"
+                v-model="product.quantity"
                 required
                 type="number"
               ></v-text-field>
