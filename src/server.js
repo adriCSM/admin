@@ -58,7 +58,6 @@ import errorHandling from './Error/errorHandling.js';
 
 const init = async () => {
   dotenv.config();
-
   const firebaseService = new FirebaseService();
   const cacheService = new CacheService();
   const usersService = new UsersService(firebaseService);
@@ -139,6 +138,7 @@ const init = async () => {
         productsService,
         usersService,
         validator: ProductValidator,
+        imageValidator: ImageValidator,
       },
     },
     {
@@ -154,6 +154,7 @@ const init = async () => {
         projectsService,
         usersService,
         validator: ProjectValidator,
+        imageValidator: ImageValidator,
       },
     },
     {
@@ -162,6 +163,7 @@ const init = async () => {
         certificatesService,
         usersService,
         validator: CertificateValidator,
+        imageValidator: ImageValidator,
       },
     },
     {
@@ -170,6 +172,7 @@ const init = async () => {
         usersService,
         cvService,
         validator: CvValidator,
+        imageValidator: ImageValidator,
       },
     },
     {

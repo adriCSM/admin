@@ -104,26 +104,46 @@ class UsersService {
     return result;
   }
 
-  async editUser(id, { username, phoneNumber, email, password, image, confirmPassword }) {
-    if (password !== confirmPassword) {
-      throw new InvariantError('Password dan confirmPassword tidak sesuai.');
-    }
+  async getMetadata(id) {
+    const result = await this.db.findOne({ _id: id }).select('-__v');
+    const metadata = await this.firebaseService.metadataWithUrl(result.pic);
+    return metadata;
+  }
+
+  async editUser(id, { name, username, phoneNumber, email, image }) {
     const imageName = `${username}_${new Date().getTime()}`;
     const user = await this.getUserById(id);
     await this.firebaseService.deleteImageWithURL(user.pic);
-    const url = await this.uploadImageInFirebase({ name: imageName, image });
-    const result = await this.db.findOneAndUpdate(
-      { _id: id },
-      {
-        username,
-        phoneNumber,
-        email,
-        password,
-        pic: url,
-      },
-    );
-    if (!result) {
-      throw new InvariantError('Gagal memperbarui project');
+    const metadata = await this.getMetadata(id);
+    if (image.hapi.filename === metadata.name) {
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          username,
+          phoneNumber,
+          email,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui project');
+      }
+    } else {
+      await this.firebaseService.deleteImageWithURL(user.pic);
+      const url = await this.uploadProductImageInFirebase({ name: imageName, image });
+      const result = await this.db.findOneAndUpdate(
+        { _id: id },
+        {
+          name,
+          username,
+          phoneNumber,
+          email,
+          pic: url,
+        },
+      );
+      if (!result) {
+        throw new InvariantError('Gagal memperbarui CV');
+      }
     }
   }
 

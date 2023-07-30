@@ -73,6 +73,20 @@ class UserHandler {
     return response;
   }
 
+  async putUserByIdHandler(request, h) {
+    console.log(request.payload);
+    const { id: userId } = request.params;
+    this.validator.validatePutUserPayload(request.payload);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
+    await this.usersService.putUserById(userId, request.payload);
+    const response = h
+      .response({
+        status: 'success',
+      })
+      .code(201);
+    return response;
+  }
+
   async deleteUserByIdHandler(request, h) {
     const { id: userId } = request.params;
     const user = await this.usersService.deleteUser(userId);

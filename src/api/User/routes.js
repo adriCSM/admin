@@ -31,6 +31,14 @@ const routes = (handler) => [
     },
   },
   {
+    method: 'PUT',
+    path: '/users/{id}',
+    handler: (request, h) => handler.putUserByIdHandler(request, h),
+    options: {
+      auth: 'allproject_jwt',
+    },
+  },
+  {
     method: 'DELETE',
     path: '/users/{id}',
     handler: (request, h) => handler.deleteUserByIdHandler(request, h),
