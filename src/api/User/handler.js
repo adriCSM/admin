@@ -1,7 +1,8 @@
 class UserHandler {
-  constructor(usersService, validator) {
+  constructor(usersService, validator, imageValidator) {
     this.usersService = usersService;
     this.validator = validator;
+    this.imageValidator = imageValidator;
   }
 
   async postAdminHandler(request, h) {
@@ -33,6 +34,7 @@ class UserHandler {
 
   async postUserCollaboratorHandler(request, h) {
     this.validator.validateUserPayload(request.payload);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     const userId = await this.usersService.addCollaborator(request.payload);
     const response = h
       .response({

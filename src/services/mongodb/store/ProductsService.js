@@ -124,11 +124,11 @@ class ProductsService {
     return result;
   }
 
-  async evaluation(id, star) {
+  async evaluation(id, rating) {
     const result = await this.db.findByIdAndUpdate(
       { _id: id },
       {
-        $inc: { evaluation: 1, star },
+        $inc: { evaluation: 1, rating },
       },
     );
     if (!result) {

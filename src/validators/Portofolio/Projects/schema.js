@@ -13,18 +13,4 @@ const putProjectPayloadSchema = Joi.object({
   urlSite: Joi.string().required(),
 });
 
-const imageHeadersPayloadScema = Joi.object({
-  'content-type': Joi.string()
-    .valid(
-      'image/apng',
-      'image/avif',
-      'image/gif',
-      'image/jpeg',
-      'image/png',
-      'image/svg+xml',
-      'image/webp',
-    )
-    .required(),
-}).unknown();
-
-export { postProjectPayloadSchema, putProjectPayloadSchema, imageHeadersPayloadScema };
+export { postProjectPayloadSchema, putProjectPayloadSchema };

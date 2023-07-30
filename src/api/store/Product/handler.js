@@ -1,8 +1,9 @@
 class ProductHandler {
-  constructor(productsService, usersService, validator) {
+  constructor(productsService, usersService, validator, imageValidator) {
     this.productService = productsService;
     this.usersService = usersService;
     this.validator = validator;
+    this.imageValidator = imageValidator;
   }
 
   async postProductHandler(request, h) {
@@ -10,7 +11,7 @@ class ProductHandler {
     const { id } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(id);
     this.validator.validatePostProductPayload(request.payload);
-    this.validator.validateImageHeaders(image.hapi.headers);
+    this.imageValidator.validateImageHeaders(image.hapi.headers);
     const productId = await this.productService.addProduct(request.payload);
     const response = h
       .response({
@@ -64,7 +65,7 @@ class ProductHandler {
     return response;
   }
 
-  async serchProductsHandler(request, h) {
+  async searchProductsHandler(request, h) {
     const { productName } = request.query;
     const products = await this.productService.searchProducts(productName);
     return h
@@ -82,7 +83,7 @@ class ProductHandler {
     await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePuttProductPayload(request.payload);
     const { image } = request.payload;
-    this.validator.validateImageHeaders(image.hapi.headers);
+    this.imageValidator.validateImageHeaders(image.hapi.headers);
     const { id } = request.params;
     const productId = await this.productService.putProduct(id, request.payload);
     return h

@@ -28,7 +28,7 @@ const Product = mongoose.model(
       type: Number,
       default: 0,
     },
-    star: {
+    rating: {
       type: Number,
       default: 0,
     },

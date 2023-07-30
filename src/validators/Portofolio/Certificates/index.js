@@ -1,9 +1,5 @@
 import InvariantError from '../../../Error/InvariantError.js';
-import {
-  postCertificatePayloadSchema,
-  imageHeadersPayloadSchema,
-  putCertificatePayloadSchema,
-} from './schema.js';
+import { postCertificatePayloadSchema, putCertificatePayloadSchema } from './schema.js';
 
 const CertificateValidator = {
   validatePostCertificatePayload: (payload) => {
@@ -14,12 +10,6 @@ const CertificateValidator = {
   },
   validatePutCertificatePayload: (payload) => {
     const validationResult = putCertificatePayloadSchema.validate(payload);
-    if (validationResult.error) {
-      throw new InvariantError(validationResult.error.message);
-    }
-  },
-  validateImageHeadersPayload: (payload) => {
-    const validationResult = imageHeadersPayloadSchema.validate(payload);
     if (validationResult.error) {
       throw new InvariantError(validationResult.error.message);
     }

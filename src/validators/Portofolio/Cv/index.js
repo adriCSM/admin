@@ -1,5 +1,5 @@
 import InvariantError from '../../../Error/InvariantError.js';
-import { postCvPayloadSchema, imageHeadersPayloadSchema, putCvPayloadSchema } from './schema.js';
+import { postCvPayloadSchema, putCvPayloadSchema } from './schema.js';
 
 const CvValidator = {
   validatePostCvPayload: (payload) => {
@@ -10,12 +10,6 @@ const CvValidator = {
   },
   validatePutCvPayload: (payload) => {
     const validationResult = putCvPayloadSchema.validate(payload);
-    if (validationResult.error) {
-      throw new InvariantError(validationResult.error.message);
-    }
-  },
-  validateImageHeadersPayload: (payload) => {
-    const validationResult = imageHeadersPayloadSchema.validate(payload);
     if (validationResult.error) {
       throw new InvariantError(validationResult.error.message);
     }

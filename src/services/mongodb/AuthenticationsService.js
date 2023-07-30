@@ -41,7 +41,7 @@ class AuthenticationsService {
         isOnline: false,
       },
     );
-    await this.db.findOneAndDelete({
+    await this.db.deleteMany({
       user_id: userId,
     });
   }

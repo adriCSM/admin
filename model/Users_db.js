@@ -4,6 +4,9 @@ const Product = mongoose.model(
   'User',
   new mongoose.Schema(
     {
+      name: {
+        type: String,
+      },
       username: {
         type: String,
         required: true,
@@ -20,6 +23,12 @@ const Product = mongoose.model(
       password: {
         type: String,
         require: true,
+      },
+      birth: {
+        type: String,
+      },
+      gender: {
+        type: String,
       },
       role: {
         type: String,

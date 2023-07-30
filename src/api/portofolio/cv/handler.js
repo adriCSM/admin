@@ -1,15 +1,16 @@
 class CvHandlers {
-  constructor(usersService, cvService, validator) {
+  constructor(usersService, cvService, validator, imageValidator) {
     this.usersService = usersService;
     this.validator = validator;
     this.cvService = cvService;
+    this.imageValidator = imageValidator;
   }
 
   async addCvHandler(request, h) {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePostCvPayload(request.payload);
-    this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     const cvId = await this.cvService.addCv(request.payload);
     const response = h
       .response({
@@ -25,7 +26,7 @@ class CvHandlers {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePostCvPayload(request.payload);
-    this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     await this.cvService.putCv(cvId, request.payload);
     const response = h
       .response({

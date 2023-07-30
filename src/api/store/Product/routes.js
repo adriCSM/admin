@@ -25,8 +25,8 @@ const routes = (handler) => [
   },
   {
     method: 'GET',
-    path: '/store/products/',
-    handler: (request, h) => handler.serchProductsHandler(request, h),
+    path: '/store/products/search',
+    handler: (request, h) => handler.searchProductsHandler(request, h),
   },
   {
     method: 'GET',

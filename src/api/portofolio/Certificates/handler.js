@@ -1,15 +1,16 @@
 class CertificateHandlers {
-  constructor(certificatesService, usersService, validator) {
+  constructor(certificatesService, usersService, validator, imageValidator) {
     this.certificatesService = certificatesService;
     this.usersService = usersService;
     this.validator = validator;
+    this.imageValidator = imageValidator;
   }
 
   async postCertificateHandler(request, h) {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePostCertificatePayload(request.payload);
-    this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     const certificateId = await this.certificatesService.addCertificate(request.payload);
     const response = h
       .response({
@@ -65,7 +66,7 @@ class CertificateHandlers {
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     this.validator.validatePutCertificatePayload(request.payload);
-    this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     await this.certificatesService.putCertificate(certificateId, request.payload);
     const response = h
       .response({

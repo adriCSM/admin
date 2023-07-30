@@ -50,6 +50,9 @@ import CartValidator from './validators/store/Cart/index.js';
 // CACHE SERVER-SIDE (REDIS)
 import CacheService from './services/redis/CacheService.js';
 
+// IMAGE VALIDATOR
+import ImageValidator from './validators/Image/index.js';
+
 // ERROR HANDLING
 import errorHandling from './Error/errorHandling.js';
 
@@ -118,6 +121,7 @@ const init = async () => {
       options: {
         usersService,
         validator: UserValidator,
+        imageValidator: ImageValidator,
       },
     },
     {

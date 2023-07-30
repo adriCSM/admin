@@ -1,13 +1,14 @@
 class ProjectHandlers {
-  constructor(projectsService, usersService, validator) {
+  constructor(projectsService, usersService, validator, imageValidator) {
     this.projectsService = projectsService;
     this.usersService = usersService;
     this.validator = validator;
+    this.imageValidator = imageValidator;
   }
 
   async postProjectHandler(request, h) {
     await this.validator.validatePostProjectPayload(request.payload);
-    await this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    await this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     const projectId = await this.projectsService.addProject(request.payload);
@@ -62,7 +63,7 @@ class ProjectHandlers {
 
   async putProjectHandler(request, h) {
     await this.validator.validatePutProjectPayload(request.payload);
-    await this.validator.validateImageHeadersPayload(request.payload.image.hapi.headers);
+    await this.imageValidator.validateImageHeaders(request.payload.image.hapi.headers);
     const { id: userId } = request.auth.credentials;
     await this.usersService.verifyAdminAndCollaborator(userId);
     const { id: projectId } = request.params;
