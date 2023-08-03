@@ -30,7 +30,7 @@ npm init @eslint/config
 POST /users
 ```
 
-<h4>Payload</h4>
+`Payload`
 
 ```
 {
@@ -42,7 +42,7 @@ POST /users
 }
 ```
 
-#### Response
+`Response`
 
 ```
 {
@@ -60,7 +60,7 @@ POST /users
 POST /auth
 ```
 
-#### Payload
+`Payload`
 
 ```
 {
@@ -69,7 +69,7 @@ POST /auth
 }
 ```
 
-#### Response
+`Response`
 
 ```
 {
@@ -88,7 +88,7 @@ GET /users
 
 ```
 
-#### Headers
+`Headers`
 
 ```
 {
@@ -98,7 +98,7 @@ GET /users
 }
 ```
 
-#### Response
+`Response`
 
 ```
 {
