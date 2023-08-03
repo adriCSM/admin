@@ -1,5 +1,9 @@
 # API AdriCSM
 
+#### Follow my social media:
+
+[![Instagram Icon](https://img.shields.io/badge/instagram-E1306C?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm)
+
 ## Project setup
 
 #### Clone Repository
@@ -159,7 +163,3 @@ GET /store/products
   }
 }
 ```
-
-#### Follow my social media:
-
-[![Instagram Icon](https://img.shields.io/badge/instagram-E1306C?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm)
