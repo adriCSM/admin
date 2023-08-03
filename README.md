@@ -26,6 +26,8 @@ npm init @eslint/config
 
 ### Register
 
+`Endpoint`
+
 ```
 POST /users
 ```
@@ -56,6 +58,8 @@ POST /users
 
 ### Login
 
+`Endpoint`
+
 ```
 POST /auth
 ```
@@ -83,9 +87,10 @@ POST /auth
 
 ### GET users
 
+`Endpoint`
+
 ```
 GET /users
-
 ```
 
 `Headers`
