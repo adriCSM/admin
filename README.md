@@ -6,13 +6,13 @@
 npm install
 ```
 
-## Eslint setup
+### Eslint
 
 ```
 npm init @eslint/config
 ```
 
-## Clone Repository
+### Clone Repository
 
 ```
 git init
@@ -22,9 +22,13 @@ git init
 git clone https://github.com/adriCSM/admin.git
 ```
 
+## Technology
+
+Node JS, Hapi Framework, redis, mongoDB, Firebase
+
 ## Using API
 
-<kbd style="background-color:red; padding: 5px;">Register</kbd>
+### Register
 
 ```
 POST /users
