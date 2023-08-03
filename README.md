@@ -24,7 +24,7 @@ git clone https://github.com/adriCSM/admin.git
 
 ## Using API
 
-### <span style="background-color:gray">Register</span>
+### <kbd style="background-color:gray">Register</kbd>
 
 ```
 POST /users
@@ -38,6 +38,7 @@ POST /users
   "phoneNumber": "081234567890",
   "email":"adri@gmail.com",
   "password": "#Adricsm10",
+  "confirmPassword":"#Adricsm10"
 }
 ```
 
