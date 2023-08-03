@@ -24,7 +24,7 @@ npm init @eslint/config
 
 ## Using API
 
-#### Register
+### Register
 
 ```
 POST /users
@@ -54,7 +54,7 @@ POST /users
 }
 ```
 
-#### Login
+### Login
 
 ```
 POST /auth
@@ -81,7 +81,7 @@ POST /auth
 }
 ```
 
-#### GET users (need access token)
+### GET users (need access token)
 
 ```
 GET /users
