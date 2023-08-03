@@ -86,7 +86,6 @@ POST /auth
 ```
 GET /users
 
-
 ```
 
 #### Headers
@@ -94,7 +93,7 @@ GET /users
 ```
 {
   Headers:{
-    Authorization: Bearer `<accessToken>`
+    Authorization: Bearer <accessToken>
   }
 }
 ```
