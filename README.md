@@ -2,7 +2,8 @@
 
 #### Follow my social media:
 
-[![Instagram Icon](https://img.shields.io/badge/instagram-E1306C?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm)
+&nbsp; [![Instagram Icon](https://img.shields.io/badge/instagram-E1306C?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm)
+&nbsp; &nbsp; [![Youtube Icon](https://img.shields.io/badge/youtube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/channel/UCsJMH2sdUe6yxj7v5rCpRIA)
 
 ## Project setup
 
