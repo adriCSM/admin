@@ -24,6 +24,62 @@ git clone https://github.com/adriCSM/admin.git
 
 ## Using API
 
+### Register
+
+```
+POST /users
+```
+
+### Payload
+
+```
+{
+  "username":"adri",
+  "phoneNumber": "081234567890",
+  "email":"adri@gmail.com",
+  "password": "#Adricsm10",
+}
+```
+
+### Response
+
+```
+{
+  "status": "success",
+  "message": "Akun berhasil dibuat",
+  "data": {
+    "userId": "64cbce0c7a4d8fc56d322b80"
+  }
+}
+```
+
+### Login
+
+```
+POST /auth
+```
+
+### Payload
+
+```
+{
+  "email":"adri@gmail.com",
+  "password":"#Adricsm10"
+}
+```
+
+### Response
+
+```
+{
+  "status": "success",
+  "data": {
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTgwZGQyMDgyZWY2ZjYxZTg3OTY3NyIsImlhdCI6MTY5MTA3NzIwMH0.hSMil0sWfLbdj6trW8YV6Ldo1otowz4T7zW5vWASD9s",
+    "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YTgwZGQyMDgyZWY2ZjYxZTg3OTY3NyIsImlhdCI6MTY5MTA3NzIwMH0.Usi6KpLe5_HiN-3ztkf-Aoxp7v5PV8fquNyUEqkrxkM"
+  }
+}
+```
+
 ### GET users (need access token)
 
 ```
