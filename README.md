@@ -2,7 +2,7 @@
 
 ## Project setup
 
-### Clone Repository
+#### Clone Repository
 
 ```
 git clone https://github.com/adriCSM/admin.git
@@ -12,7 +12,7 @@ git clone https://github.com/adriCSM/admin.git
 npm install
 ```
 
-### Eslint
+#### Eslint
 
 ```
 npm init @eslint/config
@@ -24,13 +24,13 @@ npm init @eslint/config
 
 ## Using API
 
-### Register
+#### Register
 
 ```
 POST /users
 ```
 
-### Payload
+#### Payload
 
 ```
 {
@@ -42,7 +42,7 @@ POST /users
 }
 ```
 
-### Response
+#### Response
 
 ```
 {
@@ -54,13 +54,13 @@ POST /users
 }
 ```
 
-### Login
+#### Login
 
 ```
 POST /auth
 ```
 
-### Payload
+#### Payload
 
 ```
 {
@@ -69,7 +69,7 @@ POST /auth
 }
 ```
 
-### Response
+#### Response
 
 ```
 {
@@ -81,13 +81,13 @@ POST /auth
 }
 ```
 
-### GET users (need access token)
+#### GET users (need access token)
 
 ```
 GET /users
 ```
 
-### Response
+#### Response
 
 ```
 {
