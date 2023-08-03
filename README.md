@@ -2,6 +2,12 @@
 
 ## Project setup
 
+### Clone Repository
+
+```
+git clone https://github.com/adriCSM/admin.git
+```
+
 ```
 npm install
 ```
@@ -12,19 +18,9 @@ npm install
 npm init @eslint/config
 ```
 
-### Clone Repository
-
-```
-git init
-```
-
-```
-git clone https://github.com/adriCSM/admin.git
-```
-
 ## Technology
 
-Node JS, Hapi Framework, redis, mongoDB, Firebase `#f03c15`
+`Node JS`, `Hapi` Framework, `redis`, `mongoDB`, `Firebase`
 
 ## Using API
 
