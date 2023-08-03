@@ -147,10 +147,12 @@ GET /store/products
         "rating": 0,
         "sold_out": 0,
         "favorite": 0,
-        "_id": "649956ca2bc234e1070fe2dc",
-        "name": "bakso solo enak sekali 2",
-        "price": 6000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/product-37d5c.appspot.com/o/productsImage%2Fbakso_solo_enak_sekali_2?alt=media&token=db74766f-d0b4-4993-98b1-ed9451aefa04"
+        "_id": "64ba3a3cc6b1dd4191763b45",
+        "name": "ale-ale",
+        "price": 2000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/product-37d5c.appspot.com/o/image%2Fteh%20gelas%20bapak%20budi_1689926339425_1689926340571?alt=media&token=5cb1c194-c888-4991-8c81-42256598bcdf",
+        "category": "Makanan",
+        "quantity": "49"
       },
     ...
     ]
