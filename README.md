@@ -24,7 +24,7 @@ git clone https://github.com/adriCSM/admin.git
 
 ## Technology
 
-<font style="background-color:blue">Node JS, Hapi Framework, redis, mongoDB, Firebase</font>
+<font style="color:blue">Node JS, Hapi Framework, redis, mongoDB, Firebase</font>
 
 ## Using API
 
