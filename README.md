@@ -24,7 +24,7 @@ git clone https://github.com/adriCSM/admin.git
 
 ## Using API
 
-### Register
+### <span style="background-color:gray">Register</span>
 
 ```
 POST /users
