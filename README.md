@@ -30,7 +30,7 @@ npm init @eslint/config
 POST /users
 ```
 
-#### Payload
+<h4>Payload</h4>
 
 ```
 {
@@ -81,7 +81,7 @@ POST /auth
 }
 ```
 
-### GET users (need access token)
+### GET users
 
 ```
 GET /users
