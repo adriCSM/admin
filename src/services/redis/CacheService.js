@@ -6,7 +6,6 @@ class CacheService {
       url: process.env.KV_REST_API_URL,
       token: process.env.KV_REST_API_TOKEN,
     });
-    // url: process.env.REDIS_URL,
   }
 
   async set(key, value, expiredIn = 1800) {
