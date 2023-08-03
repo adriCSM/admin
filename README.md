@@ -85,6 +85,18 @@ POST /auth
 
 ```
 GET /users
+
+
+```
+
+#### Headers
+
+```
+{
+  Headers:{
+    Authorization: Bearer `<accessToken>`
+  }
+}
 ```
 
 #### Response
