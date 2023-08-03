@@ -25,7 +25,7 @@ npm init @eslint/config
 
 ## Technology
 
-`Node JS`, `Hapi` Framework, `redis`, `mongoDB`, `Firebase`
+`Node JS`, `Hapi Framework`, `redis`, `mongoDB`, `Firebase`
 
 ## API Usage
 
