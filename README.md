@@ -27,7 +27,7 @@ npm init @eslint/config
 
 `Node JS`, `Hapi` Framework, `redis`, `mongoDB`, `Firebase`
 
-## Using API
+## API Usage
 
 ### URL : `https://admin-am.vercel.app`
 
