@@ -24,6 +24,8 @@ npm init @eslint/config
 
 ## Using API
 
+### URL : `https://admin-am.vercel.app`
+
 ### Register
 
 `Endpoint`
