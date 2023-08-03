@@ -163,4 +163,4 @@ GET /store/products
 #### Follow my social media:
 
 [![Instagram Icon](https://img.icons8.com/fluency/30/instagram-new.png)](https://instagram.com/adri_csm) [adri_csm](https://instagram.com/adri_csm)
-[![Instagram Icon](https://img.shields.io/badge/Instagram-1DA1F2?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm) [adri_csm](https://instagram.com/adri_csm)
+[![Instagram Icon](https://img.shields.io/badge/Instagram-E1306C?style=for-the-badge&logo=instagram&logoColor=white)](https://instagram.com/adri_csm) [adri_csm](https://instagram.com/adri_csm)
