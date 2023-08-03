@@ -24,13 +24,13 @@ git clone https://github.com/adriCSM/admin.git
 
 ## Using API
 
-# GET users (need access token)
+### GET users (need access token)
 
 ```
 GET /users
 ```
 
-# Response
+### Response
 
 ```
 {
