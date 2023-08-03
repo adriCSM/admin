@@ -85,7 +85,7 @@ POST /auth
 }
 ```
 
-### GET users
+### GET Users
 
 `Endpoint`
 
@@ -122,6 +122,37 @@ GET /users
       "isOnline": true
     },
     ...
+}
+```
+
+### GET Products
+
+`Endpoint`
+
+```
+GET /store/products
+```
+
+`Response`
+
+```
+{
+  "status": "success",
+  "data": {
+    "products": [
+      {
+        "evaluation": 0,
+        "rating": 0,
+        "sold_out": 0,
+        "favorite": 0,
+        "_id": "649956ca2bc234e1070fe2dc",
+        "name": "bakso solo enak sekali 2",
+        "price": 6000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/product-37d5c.appspot.com/o/productsImage%2Fbakso_solo_enak_sekali_2?alt=media&token=db74766f-d0b4-4993-98b1-ed9451aefa04"
+      },
+    ...
+    ]
+  }
 }
 ```
 
