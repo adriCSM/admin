@@ -11,7 +11,14 @@
 
     <v-card>
       <v-layout>
-        <v-navigation-drawer v-model="drawer" :rail="rail" @click="rail = false" permanent>
+        <v-navigation-drawer
+          v-model="drawer"
+          :rail="rail"
+          @click="rail = false"
+          permanent
+          class="nav"
+          v-if="isLogin"
+        >
           <v-list-item
             pre
             nav
@@ -73,7 +80,7 @@
               </template>
 
               <v-list-item
-                v-for="(item, i) in store"
+                v-for="(item, i) in stores"
                 :key="i"
                 :title="item.title"
                 :prepend-icon="item.icon"
@@ -97,14 +104,32 @@
 // import LoadProgres from '@/components/LoadProgres.vue';
 // import NavigationDrawerVue from '@/components/NavigationDrawer.vue';
 // import ButtonBackVue from '@/components/ButtonBack.vue';
-// import vuetify from '@/plugins/vuetify';
+import vuetify from '@/plugins/vuetify';
 import HeaderView from '@/components/HeaderView.vue';
 import router from '@/router';
 
-import { ref } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import { useStore } from 'vuex';
 
+const store = useStore();
 const drawer = ref(true);
 const rail = ref(false);
+onMounted(() => {
+  if (vuetify.display.smAndDown.value) {
+    rail.value = true;
+  }
+});
+const isLogin = computed(() => {
+  return store.state.auth.loggedIn;
+});
+watch(vuetify.display.smAndDown, (value) => {
+  if (value) {
+    return (rail.value = true);
+  } else {
+    return (rail.value = false);
+  }
+});
+
 const links = ref([
   {
     title: 'Home',
@@ -167,7 +192,7 @@ const portofolio = ref([
     },
   },
 ]);
-const store = ref([
+const stores = ref([
   {
     title: 'Products',
     value: 'products',
@@ -194,6 +219,13 @@ main {
   /* background-position-y: 100%; */
   /* background-color: #1d212b; */
   filter: brightness(90%);
+}
+
+.nav {
+  background-image: url('./assets/bg.jpeg');
+  background-size: cover;
+  color: white;
+  z-index: 999;
 }
 
 .router-link-active {

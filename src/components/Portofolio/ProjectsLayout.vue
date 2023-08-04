@@ -35,7 +35,7 @@ const actions = ref([
 
 <template>
   <v-container fluid v-if="data">
-    <v-row justify="center pt-5">
+    <v-row justify="center">
       <AddProject />
     </v-row>
     <v-table class="bg-dark pa-10" style="color: #0fe">

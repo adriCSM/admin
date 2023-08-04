@@ -33,7 +33,7 @@ const actions = ref([
 </script>
 <template>
   <v-container>
-    <v-row justify="center pt-5">
+    <v-row justify="center ">
       <AddCv />
     </v-row>
     <v-row class="pt-10">

@@ -44,9 +44,13 @@ const logout = async () => {
     "
   >
     <v-row class="text-white bg-dark rounded-xl">
-      <v-col :cols="pic ? '8' : '12'" class="text-center d-flex justify-center align-center">
+      <v-col :cols="pic ? '6' : '12'" class="text-center d-flex justify-center align-center">
       </v-col>
-      <v-col cols="4" class="text-end pe-10" :style="pic ? true : { display: 'none' }">
+      <v-spacer></v-spacer>
+      <v-col cols="auto" class="text-center text-end">
+        <v-btn variant="text" @click="changeDrawer" icon="mdi-bell"> </v-btn>
+      </v-col>
+      <v-col cols="auto" class="text-end pe-md-10" :style="pic ? true : { display: 'none' }">
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
             <v-avatar size="40px" class="bg-white" v-bind="props">
