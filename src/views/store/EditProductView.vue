@@ -63,7 +63,7 @@ const back = () => {
 </script>
 
 <template>
-  <div class="rounded-xl mt-15 pa-md-10 mx-md-10" @keyup.enter="update">
+  <div class="rounded-xl px-md-10 mx-md-10" @keyup.enter="update">
     <v-row justify="center ">
       <v-col cols="12" md="10">
         <v-card class="bg-dark ma-3 pt-5 rounded-xl">

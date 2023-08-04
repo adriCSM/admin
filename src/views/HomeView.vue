@@ -1,9 +1,7 @@
 <script setup>
-import HomeLayoutVue from '@/components/layout/HomeLayout.vue';
-import CrouselLayout from '@/components/CrouselLayout.vue';
+import HomeLayout from '@/components/layout/HomeLayout.vue';
 </script>
 
 <template>
-  <CrouselLayout class="mt-15 pt-8" />
-  <HomeLayoutVue />
+  <HomeLayout />
 </template>

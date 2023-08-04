@@ -1,6 +1,7 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
+import CrouselLayout from '@/components/CrouselLayout.vue';
 
 const store = useStore();
 onMounted(async () => {
@@ -31,6 +32,9 @@ const items = ref([
 </script>
 
 <template>
+  <SideNavbarVue />
+
+  <CrouselLayout />
   <v-container>
     <v-row>
       <v-col cols="12">
