@@ -5,6 +5,7 @@ export default {
   errorHandling(err) {
     console.log(err);
     store.commit('loading', false);
+    store.commit('auth/isLoggedIn', false);
     if (
       err.message == 'Invalid token specified' ||
       (err.response && err.response.status == 401) ||

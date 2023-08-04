@@ -17,7 +17,7 @@
           @click="rail = false"
           permanent
           class="nav"
-          v-if="isLogin"
+          v-if="isLogin == true"
         >
           <v-list-item
             pre
@@ -117,9 +117,7 @@ onMounted(() => {
     rail.value = true;
   }
 });
-const isLogin = computed(() => {
-  return store.state.auth.loggedIn;
-});
+const isLogin = computed(() => store.state.auth.loggedIn);
 watch(vuetify.display.smAndDown, (value) => {
   if (value) {
     return (rail.value = true);
