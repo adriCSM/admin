@@ -11,16 +11,29 @@
 
     <v-card>
       <v-layout>
-        <v-navigation-drawer v-model="drawer" :rail="rail" @click="rail = false">
+        <v-navigation-drawer v-model="drawer" :rail="rail" @click="rail = false" permanent>
           <v-list-item
-            :prepend-avatar="rail ? require('./assets/logo_am.png') : null"
             pre
             nav
             class="pt-3 text-center"
+            :prepend-avatar="rail ? require('./assets/logo_am.png') : null"
           >
-            <v-img v-if="rail == false" src="./assets/logo_am.png" height="100"></v-img>
+            <v-img src="./assets/logo_am.png" height="50"></v-img>
             <template v-slot:append>
-              <v-btn variant="text" icon="mdi-chevron-left" @click.stop="rail = !rail"></v-btn>
+              <v-btn
+                v-if="rail == false"
+                variant="text"
+                icon="mdi-chevron-left "
+                position="sticky"
+                @click.stop="rail = !rail"
+              ></v-btn>
+              <v-btn
+                v-else
+                variant="text"
+                icon="mdi-chevron-right "
+                position="sticky"
+                @click.stop="rail = !rail"
+              ></v-btn>
             </template>
           </v-list-item>
 
@@ -40,7 +53,7 @@
               <template v-slot:activator="{ props }">
                 <v-list-item
                   v-bind="props"
-                  prepend-icon="mdi-book"
+                  prepend-icon="mdi-card-account-details"
                   title="Protofolio"
                 ></v-list-item>
               </template>
@@ -84,6 +97,7 @@
 // import LoadProgres from '@/components/LoadProgres.vue';
 // import NavigationDrawerVue from '@/components/NavigationDrawer.vue';
 // import ButtonBackVue from '@/components/ButtonBack.vue';
+// import vuetify from '@/plugins/vuetify';
 import HeaderView from '@/components/HeaderView.vue';
 import router from '@/router';
 
@@ -122,6 +136,7 @@ const portofolio = ref([
   {
     title: 'Projects',
     value: 'home',
+    icon: 'mdi-book-account',
 
     to: () => {
       router.push({ name: 'Projects' });
@@ -130,6 +145,7 @@ const portofolio = ref([
   {
     title: 'Certificates',
     value: 'certificates',
+    icon: 'mdi-certificate',
     to: () => {
       router.push({ name: 'Certificates' });
     },
@@ -137,15 +153,17 @@ const portofolio = ref([
   {
     title: 'Curiculum Vitae',
     value: 'cv',
+    icon: 'mdi-image-area',
     to: () => {
       router.push({ name: 'Curiculum Vitae' });
     },
   },
   {
-    title: 'Contact',
+    title: 'Messages',
     value: 'contact',
+    icon: 'mdi-message-bookmark-outline',
     to: () => {
-      router.push({ name: 'Contacts' });
+      router.push({ name: 'Messages' });
     },
   },
 ]);
@@ -153,7 +171,7 @@ const store = ref([
   {
     title: 'Products',
     value: 'products',
-
+    icon: 'mdi-cart-variant',
     to: () => {
       router.push({ name: 'Products' });
     },
@@ -161,6 +179,7 @@ const store = ref([
   {
     title: 'Order',
     value: 'order',
+    icon: 'mdi-package-variant-closed',
     to: () => {
       router.push({ name: 'Order' });
     },

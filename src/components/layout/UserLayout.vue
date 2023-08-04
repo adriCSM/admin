@@ -25,7 +25,7 @@ const actions = ref([
 
 <template>
   <v-container fluid class="overflow-x-auto">
-    <v-row justify="center pt-5">
+    <v-row justify="center ">
       <AddUser />
     </v-row>
     <v-table class="pa-5 bg-dark" style="color: #0fe">
