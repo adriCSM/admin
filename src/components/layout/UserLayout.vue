@@ -28,7 +28,7 @@ const actions = ref([
     <v-row justify="center ">
       <AddUser />
     </v-row>
-    <v-table class="pa-5 bg-dark" style="color: #0fe">
+    <v-table class="py-5 bg-dark" style="color: #0fe">
       <thead>
         <tr>
           <th class="text-center text-white">Image</th>

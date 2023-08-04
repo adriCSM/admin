@@ -36,12 +36,12 @@ const logout = async () => {
 <template>
   <v-container
     fluid
-    class="pb-md-8"
     v-if="
       isLogin &&
       router.currentRoute.value.name !== 'Login' &&
       router.currentRoute.value.name !== 'Notfound'
     "
+    style="background: transparent"
   >
     <v-row class="text-white bg-dark rounded-xl">
       <v-col :cols="pic ? '6' : '12'" class="text-center d-flex justify-center align-center">

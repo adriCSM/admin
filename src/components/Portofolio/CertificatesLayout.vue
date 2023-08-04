@@ -38,7 +38,7 @@ const actions = ref([
     <v-row justify="center ">
       <AddCertificate />
     </v-row>
-    <v-table class="bg-dark pa-5" style="color: #0fe">
+    <v-table class="bg-dark py-5" style="color: #0fe">
       <thead>
         <tr>
           <th class="text-center text-white">Name</th>

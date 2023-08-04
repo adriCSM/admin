@@ -31,14 +31,12 @@
                 v-if="rail == false"
                 variant="text"
                 icon="mdi-chevron-left "
-                position="sticky"
                 @click.stop="rail = !rail"
               ></v-btn>
               <v-btn
                 v-else
                 variant="text"
                 icon="mdi-chevron-right "
-                position="sticky"
                 @click.stop="rail = !rail"
               ></v-btn>
             </template>
@@ -46,7 +44,7 @@
 
           <v-divider></v-divider>
 
-          <v-list density="compact" nav active-color="#1EBBD7">
+          <v-list density="compact" nav active-class="bg-blue">
             <v-list-item
               v-for="item in links"
               :key="item"
