@@ -42,7 +42,7 @@ const lists = ref([
   {
     title: 'About',
     value: 'about',
-    icon: 'mdi-information',
+    icon: 'mdi-information-outline',
     to: { name: 'About' },
   },
   {
