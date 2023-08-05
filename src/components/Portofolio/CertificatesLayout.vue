@@ -35,7 +35,7 @@ const actions = ref([
 
 <template>
   <v-container fluid>
-    <v-card class="bg-white py-5" elevation="3">
+    <v-card class="bg-white py-5 rounded-lg" elevation="3">
       <v-row>
         <v-col class="text-center">
           <AddCertificate />

@@ -34,7 +34,7 @@ const actions = ref([
 
 <template>
   <v-container fluid>
-    <v-card elevation="3" class="bg-white py-5">
+    <v-card elevation="3" class="bg-white py-5 rounded-lg">
       <v-row>
         <v-col style="z-index: 69" class="text-center">
           <AddProduct />

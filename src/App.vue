@@ -10,17 +10,8 @@
     <v-navigation-drawer v-model="drawer" elevation="3" v-if="isLogin">
       <NavBar />
     </v-navigation-drawer>
-    <v-app-bar
-      flat
-      color="light"
-      height="auto"
-      style="position: sticky; z-index: 99; top: 0"
-      v-if="isLogin"
-      scroll-behavior="elevate hide "
-      scroll-threshold="50"
-    >
-      <AppBar :drawer="drawer" @drawer="change" />
-    </v-app-bar>
+
+    <AppBar :drawer="drawer" @drawer="change" />
 
     <v-main style="height: 100vh" class="bg-light pt-3">
       <router-view />
@@ -32,7 +23,6 @@
 // import AlertWeb from '@/components/AlertWeb.vue';
 // import LoadProgres from '@/components/LoadProgres.vue';
 // import ButtonBackVue from '@/components/ButtonBack.vue';
-// import vuetify from '@/plugins/vuetify';
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 
