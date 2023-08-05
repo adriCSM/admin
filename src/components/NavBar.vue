@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-navigation-drawer v-model="drawer" elevation="3" v-if="isLogin">
     <v-list-item
       pre
       nav
@@ -11,15 +11,16 @@
 
     <v-divider></v-divider>
 
-    <v-list density="compact" nav active-class="bg-blue">
+    <v-list density="compact" nav>
       <v-list-item
         v-for="item in links"
         :key="item"
         :prepend-icon="item.icon"
         :title="item.title"
-        :value="item.value"
-        @click="item.to"
-      ></v-list-item>
+        :to="item.to"
+        active-class="bg-blue"
+      >
+      </v-list-item>
 
       <v-list-group value="Protofolio">
         <template v-slot:activator="{ props }">
@@ -36,7 +37,8 @@
           :title="item.title"
           :prepend-icon="item.icon"
           :value="item.title"
-          @click="item.to"
+          :to="item.to"
+          active-class="bg-blue"
         ></v-list-item>
       </v-list-group>
       <v-list-group value="Store">
@@ -50,41 +52,51 @@
           :title="item.title"
           :prepend-icon="item.icon"
           :value="item.title"
-          @click="item.to"
+          :to="item.to"
+          active-class="bg-blue"
+          exact
         ></v-list-item>
       </v-list-group>
     </v-list>
-  </div>
+  </v-navigation-drawer>
 </template>
 
 <script setup>
-import router from '@/router';
-import { ref } from 'vue';
+import { ref, defineProps, computed, watch } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const props = defineProps(['nav']);
+const isLogin = computed(() => {
+  if (store.state.auth.loggedIn) {
+    store.dispatch('profile/myProfile');
+  }
+  return store.state.auth.loggedIn;
+});
+
+const drawer = ref(null);
+watch(props, (value) => {
+  drawer.value = value;
+});
 
 const links = ref([
   {
     title: 'Home',
     value: 'home',
     icon: 'mdi-home-city',
-    to: () => {
-      router.push({ name: 'Home' });
-    },
+    to: { name: 'Home' },
   },
   {
     title: 'Profile',
     value: 'profile',
     icon: 'mdi-account-circle',
-    to: () => {
-      router.push({ name: 'Home' });
-    },
+    to: { name: 'Profile' },
   },
   {
     title: 'Users',
     value: 'users',
     icon: 'mdi-account-group-outline',
-    to: () => {
-      router.push({ name: 'Users' });
-    },
+    to: { name: 'Users' },
   },
 ]);
 
@@ -94,33 +106,25 @@ const portofolio = ref([
     value: 'home',
     icon: 'mdi-book-account',
 
-    to: () => {
-      router.push({ name: 'Projects' });
-    },
+    to: { name: 'Projects' },
   },
   {
     title: 'Certificates',
     value: 'certificates',
     icon: 'mdi-certificate',
-    to: () => {
-      router.push({ name: 'Certificates' });
-    },
+    to: { name: 'Certificates' },
   },
   {
     title: 'Curiculum Vitae',
     value: 'cv',
     icon: 'mdi-image-area',
-    to: () => {
-      router.push({ name: 'Curiculum Vitae' });
-    },
+    to: { name: 'Curiculum Vitae' },
   },
   {
     title: 'Messages',
     value: 'contact',
     icon: 'mdi-message-bookmark-outline',
-    to: () => {
-      router.push({ name: 'Messages' });
-    },
+    to: { name: 'Messages' },
   },
 ]);
 const stores = ref([
@@ -128,17 +132,19 @@ const stores = ref([
     title: 'Products',
     value: 'products',
     icon: 'mdi-cart-variant',
-    to: () => {
-      router.push({ name: 'Products' });
-    },
+    to: { name: 'Products' },
   },
   {
     title: 'Order',
     value: 'order',
     icon: 'mdi-package-variant-closed',
-    to: () => {
-      router.push({ name: 'Order' });
-    },
+    to: { name: 'Order' },
   },
 ]);
 </script>
+
+<style scoped>
+.router-link-exact-active {
+  background-color: red;
+}
+</style>

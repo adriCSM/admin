@@ -7,10 +7,7 @@
     class="mt-15"
   />
   <v-app id="inspire">
-    <v-navigation-drawer v-model="drawer" elevation="3" v-if="isLogin">
-      <NavBar />
-    </v-navigation-drawer>
-
+    <NavBar :nav="drawer" />
     <AppBar :drawer="drawer" @drawer="change" />
 
     <v-main style="height: 100vh" class="bg-light pt-3">
@@ -26,26 +23,11 @@
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 
-import { computed, ref } from 'vue';
-import { useStore } from 'vuex';
+import { ref } from 'vue';
 
-const store = useStore();
 const drawer = ref(null);
 
 const change = (value) => {
   drawer.value = value;
 };
-
-const isLogin = computed(() => {
-  if (store.state.auth.loggedIn) {
-    store.dispatch('profile/myProfile');
-  }
-  return store.state.auth.loggedIn;
-});
 </script>
-
-<style>
-.router-link-active {
-  color: #0fe;
-}
-</style>
