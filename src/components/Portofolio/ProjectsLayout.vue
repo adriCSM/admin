@@ -35,13 +35,13 @@ const actions = ref([
 
 <template>
   <v-container fluid v-if="data">
-    <v-card class="py-5 rounded-lg bg-light" elevation="3">
+    <v-card class="py-5 rounded-lg bg-white" elevation="3">
       <v-row>
         <v-col class="text-center">
           <AddProject />
         </v-col>
       </v-row>
-      <v-table class="px-5 bg-light" hover>
+      <v-table class="px-5 bg-white" hover>
         <thead>
           <tr>
             <th class="text-center">Name</th>

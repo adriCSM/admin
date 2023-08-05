@@ -32,7 +32,7 @@ const logout = async () => {
 
 <template>
   <v-container fluid>
-    <v-card class="bg-light rounded-lg pa-2 d-flex align-center" elevation="2" width="100%">
+    <v-card class="bg-white rounded-lg pa-2 d-flex align-center" elevation="2" width="100%">
       <v-app-bar-nav-icon @click="emit('drawer', !drawer)"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-btn icon>

@@ -17,8 +17,8 @@ const actions = ref([
 
 <template>
   <v-container fluid>
-    <v-card class="py-5 bg-light" elevation="3">
-      <v-table class="px-5 bg-light overflow-y-auto" style="max-height: 90vh" hover>
+    <v-card class="py-5 bg-white" elevation="3">
+      <v-table class="px-5 bg-white overflow-y-auto" style="max-height: 90vh" hover>
         <thead>
           <tr>
             <th class="text-center">Consumer</th>

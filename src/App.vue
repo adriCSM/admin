@@ -11,9 +11,8 @@
       <NavBar />
     </v-navigation-drawer>
     <v-app-bar
-      class="mt-2"
       flat
-      color="transparent"
+      color="light"
       height="auto"
       style="position: sticky; z-index: 99; top: 0"
       v-if="isLogin"
@@ -23,7 +22,7 @@
       <AppBar :drawer="drawer" @drawer="change" />
     </v-app-bar>
 
-    <v-main style="height: 100vh">
+    <v-main style="height: 100vh" class="bg-light pt-3">
       <router-view />
     </v-main>
   </v-app>
@@ -58,8 +57,5 @@ const isLogin = computed(() => {
 <style>
 .router-link-active {
   color: #0fe;
-}
-.custom-app-bar {
-  margin: 10px; /* Atur margin 10px */
 }
 </style>
