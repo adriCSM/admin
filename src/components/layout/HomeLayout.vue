@@ -12,7 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <CrouselLayout class="px-1 px-md-3" />
+  <CrouselLayout class="mx-4" />
 </template>
 <style>
 .v-card--reveal {

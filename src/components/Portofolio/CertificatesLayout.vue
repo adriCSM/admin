@@ -35,55 +35,59 @@ const actions = ref([
 
 <template>
   <v-container fluid>
-    <v-row justify="center ">
-      <AddCertificate />
-    </v-row>
-    <v-table class="bg-dark py-5" style="color: #0fe">
-      <thead>
-        <tr>
-          <th class="text-center text-white">Name</th>
-          <th class="text-center text-white">Image</th>
-          <th class="text-center text-white">Link Image</th>
-          <th class="text-center text-white">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="item in data" :key="item" class="text-center">
-          <td class="text-start">{{ item.name }}</td>
-          <td>
-            <v-card width="100px">
-              <v-img :alt="item.name" :src="item.image"></v-img>
-            </v-card>
-          </td>
-          <td>
-            <div class="overText" style="max-width: 40vw">
-              <v-tooltip text="Open Link">
+    <v-card class="bg-light py-5" elevation="3">
+      <v-row>
+        <v-col class="text-center">
+          <AddCertificate />
+        </v-col>
+      </v-row>
+      <v-table class="bg-light px-5" hover>
+        <thead>
+          <tr>
+            <th class="text-center">Name</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Link Image</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in data" :key="item" class="text-center">
+            <td class="text-start">{{ item.name }}</td>
+            <td>
+              <v-card width="100px">
+                <v-img :alt="item.name" :src="item.image"></v-img>
+              </v-card>
+            </td>
+            <td>
+              <div class="overText" style="max-width: 40vw">
+                <v-tooltip text="Open Link">
+                  <template v-slot:activator="{ props }">
+                    <a :href="item.image" target="_blank" style="color: #0fe">
+                      <v-btn v-bind="props" variant="outlined" icon="mdi-open-in-new" color="info">
+                      </v-btn>
+                    </a>
+                  </template>
+                </v-tooltip>
+              </div>
+            </td>
+            <td class="w-25">
+              <v-tooltip :text="action.text" v-for="action in actions" :key="action">
                 <template v-slot:activator="{ props }">
-                  <a :href="item.image" target="_blank" style="color: #0fe">
-                    <v-btn v-bind="props" variant="outlined" icon="mdi-open-in-new" color="info">
-                    </v-btn>
-                  </a>
+                  <v-btn
+                    v-bind="props"
+                    size="small"
+                    :color="action.color"
+                    :icon="action.icon"
+                    class="ma-2"
+                    @click="action.method(item._id)"
+                  ></v-btn>
                 </template>
               </v-tooltip>
-            </div>
-          </td>
-          <td class="w-25">
-            <v-tooltip :text="action.text" v-for="action in actions" :key="action">
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  v-bind="props"
-                  size="small"
-                  :color="action.color"
-                  :icon="action.icon"
-                  class="ma-2"
-                  @click="action.method(item._id)"
-                ></v-btn>
-              </template>
-            </v-tooltip>
-          </td>
-        </tr>
-      </tbody>
-    </v-table>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-card>
   </v-container>
 </template>
 

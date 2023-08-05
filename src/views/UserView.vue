@@ -2,5 +2,5 @@
 import UserLayoutVue from '@/components/layout/UserLayout.vue';
 </script>
 <template>
-  <UserLayoutVue />
+  <UserLayoutVue class="mt-3" />
 </template>

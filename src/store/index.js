@@ -18,7 +18,7 @@ export default createStore({
     contact,
   },
   state: {
-    drawer: false,
+    drawer: null,
     error: '',
     success: '',
     info: '',

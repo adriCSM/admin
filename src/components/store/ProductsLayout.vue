@@ -33,45 +33,49 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid class="overflow-y-auto" style="max-height: 100vh">
-    <v-row justify="center ">
-      <AddProduct />
-    </v-row>
-    <v-table class="pa-5 bg-dark" style="color: #0fe">
-      <thead>
-        <tr class="">
-          <th class="text-center text-white">No</th>
-          <th class="text-center text-white">Name</th>
-          <th class="text-center text-white">Price</th>
-          <th class="text-center text-white">Cuantity</th>
-          <th class="text-center text-white">Image</th>
-          <th class="text-center text-white">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(product, i) in data" :key="product" class="text-center">
-          <td class="text-capitalize">{{ i + 1 }}</td>
-          <td class="text-capitalize">{{ product.name }}</td>
-          <td>Rp{{ product.price }}</td>
-          <td>{{ product.quantity }} pcs</td>
-          <td><v-img alt="Avatar" height="60px" :src="product.image"></v-img></td>
+  <v-container fluid>
+    <v-card elevation="3">
+      <v-row>
+        <v-col style="z-index: 69" class="bg-light text-center">
+          <AddProduct />
+        </v-col>
+      </v-row>
+      <v-table class="pa-5 bg-light" hover>
+        <thead>
+          <tr class="">
+            <th class="text-center">No</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Price</th>
+            <th class="text-center">Cuantity</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(product, i) in data" :key="product" class="text-center">
+            <td class="text-capitalize">{{ i + 1 }}</td>
+            <td class="text-capitalize text-start">{{ product.name }}</td>
+            <td>Rp{{ product.price }}</td>
+            <td>{{ product.quantity }} pcs</td>
+            <td><v-img alt="Avatar" height="60px" :src="product.image"></v-img></td>
 
-          <td>
-            <v-tooltip :text="action.text" v-for="action in actions" :key="action">
-              <template v-slot:activator="{ props }">
-                <v-btn
-                  v-bind="props"
-                  size="small"
-                  :color="action.color"
-                  :icon="action.icon"
-                  class="ma-2"
-                  @click="action.method(product._id)"
-                ></v-btn>
-              </template>
-            </v-tooltip>
-          </td>
-        </tr>
-      </tbody>
-    </v-table>
+            <td>
+              <v-tooltip :text="action.text" v-for="action in actions" :key="action">
+                <template v-slot:activator="{ props }">
+                  <v-btn
+                    v-bind="props"
+                    size="small"
+                    :color="action.color"
+                    :icon="action.icon"
+                    class="ma-2"
+                    @click="action.method(product._id)"
+                  ></v-btn>
+                </template>
+              </v-tooltip>
+            </td>
+          </tr>
+        </tbody>
+      </v-table>
+    </v-card>
   </v-container>
 </template>

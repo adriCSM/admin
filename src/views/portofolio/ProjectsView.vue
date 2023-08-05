@@ -2,5 +2,5 @@
 import ProjectsLayout from '@/components/Portofolio/ProjectsLayout.vue';
 </script>
 <template>
-  <ProjectsLayout />
+  <ProjectsLayout class="mt-3" />
 </template>
