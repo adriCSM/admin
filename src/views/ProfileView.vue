@@ -1,5 +1,30 @@
+<script setup>
+import { ref } from 'vue';
+
+const payload = ref({
+  username: null,
+  name: null,
+  email: null,
+  phoneNumber: null,
+  gender: null,
+  birth: null,
+});
+
+const reset = () => {
+  payload.value = {
+    ...payload.value,
+    username: null,
+    name: null,
+    email: null,
+    phoneNumber: null,
+    gender: null,
+    birth: null,
+  };
+};
+</script>
+
 <template>
-  <v-container fluid>
+  <v-container fluid class="px-7">
     <v-row>
       <v-col md="8 ">
         <v-card class="bg-white pa-3 rounded-lg h-auto" elevation="3">
@@ -7,53 +32,69 @@
             <v-col cols="12">
               <v-text-field
                 variant="outlined"
-                placeholder="Username"
+                label="Username"
                 hide-details
                 base-color="grey"
                 color="blue"
+                v-model="payload.username"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
                 variant="outlined"
-                placeholder="Email"
+                label="Name"
                 hide-details
                 base-color="grey"
                 color="blue"
+                v-model="payload.name"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
                 variant="outlined"
-                placeholder="Phone Number"
+                label="Email"
                 hide-details
                 base-color="grey"
                 color="blue"
+                v-model="payload.email"
+                type="email"
               ></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
                 variant="outlined"
-                placeholder="Gender"
+                label="Phone Number"
                 hide-details
                 base-color="grey"
                 color="blue"
+                v-model="payload.phoneNumber"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12">
+              <v-text-field
+                variant="outlined"
+                label="Gender"
+                hide-details
+                base-color="grey"
+                color="blue"
+                v-model="payload.gender"
               >
               </v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
+                label="Birth Date"
                 variant="outlined"
-                placeholder="Date"
                 hide-details
                 base-color="grey"
                 color="blue"
+                v-model="payload.birth"
               >
               </v-text-field>
             </v-col>
             <v-col class="text-end">
               <v-btn color="blue"> Ubah</v-btn>
-              <v-btn color="grey " class="ms-2"> Reset</v-btn>
+              <v-btn color="grey " class="ms-2" @click="reset"> Reset</v-btn>
             </v-col>
           </v-row>
         </v-card>

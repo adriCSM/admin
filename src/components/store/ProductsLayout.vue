@@ -33,7 +33,7 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid>
+  <v-container fluid class="px-7">
     <v-card elevation="3" class="bg-white py-5 rounded-lg">
       <v-row>
         <v-col style="z-index: 69" class="text-center">

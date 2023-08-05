@@ -64,7 +64,7 @@ const lists = ref([
     scroll-behavior="hide"
     scroll-threshold="60"
   >
-    <v-container fluid>
+    <v-container fluid class="mx-3">
       <v-card class="bg-white rounded-lg pa-2 d-flex align-center" elevation="2" width="100%">
         <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="mdUp"></v-app-bar-nav-icon>
         <v-spacer v-if="mdUp"></v-spacer>
@@ -75,7 +75,8 @@ const lists = ref([
           base-color="blue"
           placeholder="Search"
           color="blue"
-          style="max-width: 100px"
+          style="max-width: 200px"
+          class="ms-5"
         >
         </v-text-field>
         <v-text-field
@@ -85,15 +86,15 @@ const lists = ref([
           base-color="blue"
           placeholder="Search"
           color="blue"
-          :style="smDown ? { maxWidth: '100%' } : { maxWidth: '200px' }"
+          :style="smDown ? { maxWidth: '100%', width: '100%' } : { maxWidth: '200px' }"
         >
         </v-text-field>
-        <v-btn icon color="blue">
+        <v-btn icon size="30">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <v-spacer v-if="!mdUp"></v-spacer>
-        <v-btn icon color="blue">
-          <v-icon>mdi-bell</v-icon>
+        <v-btn icon size="30">
+          <v-icon>mdi-bell-outline</v-icon>
         </v-btn>
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">

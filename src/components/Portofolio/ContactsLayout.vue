@@ -22,7 +22,7 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid class="overflow-y-auto" style="max-height: 100vh">
+  <v-container fluid class="overflow-y-auto px-7" style="max-height: 100vh">
     <v-card class="bg-white rounded-lg">
       <v-table class="pa-5 bg-white" hover>
         <thead>

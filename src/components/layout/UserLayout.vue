@@ -24,7 +24,7 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid class="overflow-x-auto" elvation="10">
+  <v-container fluid class="overflow-x-auto px-7" elvation="10">
     <v-card class="py-5 bg-white rounded-lg" elevation="3">
       <v-row>
         <v-col class="text-center">

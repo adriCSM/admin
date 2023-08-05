@@ -34,7 +34,7 @@ const actions = ref([
 </script>
 
 <template>
-  <v-container fluid v-if="data">
+  <v-container fluid v-if="data" class="px-7">
     <v-card class="py-5 rounded-lg bg-white" elevation="3">
       <v-row>
         <v-col class="text-center">

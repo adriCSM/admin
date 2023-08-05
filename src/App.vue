@@ -10,7 +10,7 @@
     <NavBar :nav="drawer" />
     <AppBar :drawer="drawer" @drawer="change" />
 
-    <v-main style="height: 100vh" class="bg-light pt-3">
+    <v-main style="height: 100vh" class="bg-light pt-1">
       <router-view />
     </v-main>
   </v-app>
