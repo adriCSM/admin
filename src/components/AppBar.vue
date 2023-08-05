@@ -42,13 +42,13 @@ const lists = ref([
   {
     title: 'About',
     value: 'about',
-    icon: 'mdi-info',
+    icon: 'mdi-information',
     to: { name: 'About' },
   },
   {
     title: 'Setting',
     value: 'setting',
-    icon: 'mdi-gear',
+    icon: 'mdi-cog',
     to: { name: 'Setting' },
   },
 ]);
