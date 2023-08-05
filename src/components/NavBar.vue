@@ -11,7 +11,7 @@
 
     <v-divider></v-divider>
 
-    <v-list density="compact" nav>
+    <v-list density="compact" nav class="mx-3">
       <v-list-item
         v-for="item in links"
         :key="item"

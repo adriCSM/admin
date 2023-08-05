@@ -89,6 +89,18 @@ const routes = [
     name: 'Order',
     component: () => import('../views/store/OrderView.vue'),
   },
+
+  {
+    path: '/about',
+    name: 'About',
+    component: () => import('../views/store/OrderView.vue'),
+  },
+
+  {
+    path: '/setting',
+    name: 'Setting',
+    component: () => import('../views/store/OrderView.vue'),
+  },
   {
     path: '/:pathMatch(.*)*',
     name: 'Notfound',

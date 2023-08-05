@@ -1,7 +1,7 @@
 <script setup>
 import vuetify from '@/plugins/vuetify';
 import router from '@/router';
-import { computed, onMounted, defineEmits, defineProps } from 'vue';
+import { computed, onMounted, defineEmits, defineProps, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const props = defineProps({
@@ -37,6 +37,21 @@ const logout = async () => {
     router.push({ name: 'Login' });
   }
 };
+
+const lists = ref([
+  {
+    title: 'About',
+    value: 'about',
+    icon: 'mdi-info',
+    to: { name: 'About' },
+  },
+  {
+    title: 'Setting',
+    value: 'setting',
+    icon: 'mdi-gear',
+    to: { name: 'Setting' },
+  },
+]);
 </script>
 
 <template>
@@ -87,6 +102,15 @@ const logout = async () => {
             </v-avatar>
           </template>
           <v-list>
+            <v-list-item
+              v-for="item in lists"
+              :key="item"
+              :prepend-icon="item.icon"
+              :title="item.title"
+              :value="item.value"
+              :to="item.to"
+              theme
+            ></v-list-item>
             <v-list-item
               prepend-icon="mdi-logout"
               title="Logout"
