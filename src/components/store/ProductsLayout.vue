@@ -30,25 +30,33 @@ const actions = ref([
     },
   },
 ]);
+
+const mode = computed(() => {
+  if (store.state.mode) {
+    return 'bg-white';
+  } else {
+    return 'bg-grey-darken-3';
+  }
+});
 </script>
 
 <template>
   <v-container fluid class="px-7">
-    <v-card elevation="3" class="bg-white py-5 rounded-lg">
+    <v-card elevation="3" class="py-5 rounded-lg" :class="mode">
       <v-row>
         <v-col style="z-index: 69" class="text-center">
           <AddProduct />
         </v-col>
       </v-row>
-      <v-table class="px-5 bg-white" hover>
+      <v-table class="px-5 bg-transparent" hover>
         <thead>
           <tr class="">
-            <th class="text-center">No</th>
-            <th class="text-center">Name</th>
-            <th class="text-center">Price</th>
-            <th class="text-center">Cuantity</th>
-            <th class="text-center">Image</th>
-            <th class="text-center">Action</th>
+            <th class="text-center bg-transparent">No</th>
+            <th class="text-center bg-transparent">Name</th>
+            <th class="text-center bg-transparent">Price</th>
+            <th class="text-center bg-transparent">Cuantity</th>
+            <th class="text-center bg-transparent">Image</th>
+            <th class="text-center bg-transparent">Action</th>
           </tr>
         </thead>
         <tbody>

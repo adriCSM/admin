@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 const actions = ref([
   {
@@ -13,20 +14,28 @@ const actions = ref([
     color: 'info',
   },
 ]);
+const store = useStore();
+const mode = computed(() => {
+  if (store.state.mode) {
+    return 'bg-white';
+  } else {
+    return 'bg-grey-darken-3';
+  }
+});
 </script>
 
 <template>
   <v-container fluid class="px-7">
-    <v-card class="py-5 bg-white rounded-lg" elevation="3">
-      <v-table class="px-5 bg-white overflow-y-auto" style="max-height: 90vh" hover>
+    <v-card class="py-5 rounded-lg" :class="mode" elevation="3">
+      <v-table class="px-5bg-transparent overflow-y-auto" style="max-height: 90vh" hover>
         <thead>
           <tr>
-            <th class="text-center">Consumer</th>
-            <th class="text-center">Products</th>
-            <th class="text-center">Cuantity</th>
-            <th class="text-center">Address</th>
-            <th class="text-center">Total Price</th>
-            <th class="text-center">Action</th>
+            <th class="text-center bg-transparent">Consumer</th>
+            <th class="text-center bg-transparent">Products</th>
+            <th class="text-center bg-transparent">Cuantity</th>
+            <th class="text-center bg-transparent">Address</th>
+            <th class="text-center bg-transparent">Total Price</th>
+            <th class="text-center bg-transparent">Action</th>
           </tr>
         </thead>
         <tbody>

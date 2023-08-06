@@ -19,19 +19,27 @@ const actions = ref([
     },
   },
 ]);
+
+const mode = computed(() => {
+  if (store.state.mode) {
+    return 'bg-white';
+  } else {
+    return 'bg-grey-darken-3';
+  }
+});
 </script>
 
 <template>
   <v-container fluid class="overflow-y-auto px-7" style="max-height: 100vh">
-    <v-card class="bg-white rounded-lg">
-      <v-table class="pa-5 bg-white" hover>
+    <v-card class="rounded-lg" :class="mode">
+      <v-table class="pa-5 bg-transparent" hover>
         <thead>
           <tr>
-            <th class="text-center">Name</th>
-            <th class="text-center">Email</th>
-            <th class="text-center">No.Hp</th>
-            <th class="text-center">Message</th>
-            <th class="text-center">Action</th>
+            <th class="text-center bg-transparent">Name</th>
+            <th class="text-center bg-transparent">Email</th>
+            <th class="text-center bg-transparent">No.Hp</th>
+            <th class="text-center bg-transparent">Message</th>
+            <th class="text-center bg-transparent">Action</th>
           </tr>
         </thead>
         <tbody>
