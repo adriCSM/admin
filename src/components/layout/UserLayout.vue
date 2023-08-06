@@ -38,15 +38,15 @@ const mode = computed(() => {
           <AddUser />
         </v-col>
       </v-row>
-      <v-table class="bg-white" :class="mode" hover>
+      <v-table class="bg-transparent" hover>
         <thead>
           <tr>
-            <th class="text-center" :class="mode">Image</th>
-            <th class="text-center" :class="mode">Name</th>
-            <th class="text-center" :class="mode">Email</th>
-            <th class="text-center" :class="mode">Role</th>
-            <th class="text-center" :class="mode">Status</th>
-            <th class="text-center" :class="mode">Action</th>
+            <th class="text-center bg-transparent">Image</th>
+            <th class="text-center bg-transparent">Name</th>
+            <th class="text-center bg-transparent">Email</th>
+            <th class="text-center bg-transparent">Role</th>
+            <th class="text-center bg-transparent">Status</th>
+            <th class="text-center bg-transparent">Action</th>
           </tr>
         </thead>
         <tbody>

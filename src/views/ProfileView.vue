@@ -61,7 +61,7 @@ const mode = computed(() => store.state.mode);
               :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
               elevation="3"
             >
-              <v-table :class="mode ? 'bg-white' : 'bg-grey-darken-3'">
+              <v-table class="bg-transparent">
                 <tbody>
                   <tr>
                     <th>email</th>
