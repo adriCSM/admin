@@ -1,7 +1,7 @@
 <template>
   <v-navigation-drawer
     v-model="drawer"
-    elevation="3"
+    elevation="10"
     v-if="isLogin"
     class="ms-3 h-auto my-3 rounded-lg"
   >
@@ -142,5 +142,6 @@ const stores = ref([
 .v-navigation-drawer {
   background-image: url('../assets/bg.jpeg');
   color: white;
+  background-size: cover;
 }
 </style>
