@@ -3,7 +3,7 @@
     v-model="drawer"
     elevation="10"
     v-if="isLogin"
-    class="ms-3 h-auto my-3 rounded-lg"
+    class="ms-md-3 ms-1 h-auto my-md-3 my-1 rounded-lg"
   >
     <v-list-item pre nav class="pt-3 text-center">
       <v-img src="../assets/logo_am.png" height="50"></v-img>
