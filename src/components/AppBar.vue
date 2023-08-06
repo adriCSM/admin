@@ -74,8 +74,8 @@ const lists = ref([
     <v-container fluid class="mx-3">
       <v-card
         class="rounded-lg pa-2 d-flex align-center"
-        :class="mode ? 'bg-white ' : 'bg-dark text-white'"
-        elevation="2"
+        :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'"
+        elevation="3"
         width="100%"
       >
         <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="mdUp"></v-app-bar-nav-icon>
