@@ -29,7 +29,64 @@ const mode = computed(() => store.state.mode);
 <template>
   <v-container fluid class="px-7">
     <v-row>
-      <v-col md="8 ">
+      <v-col md="4" order-md="1">
+        <v-row>
+          <v-col md="12">
+            <v-card
+              class="pa-3 rounded-xl"
+              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+              elevation="3"
+            >
+              <v-row>
+                <v-col cols="12" class="text-center">
+                  <v-avatar
+                    :image="require('../assets/109715820.jpg')"
+                    size="200"
+                    density="compact"
+                    variant="text"
+                  ></v-avatar>
+                </v-col>
+                <v-col cols="12">
+                  <div class="text-title text-center">Adri Candra</div>
+                </v-col>
+                <v-col cols="12">
+                  <div class="text-subtitle text-center">Backend Developer</div>
+                </v-col>
+              </v-row>
+            </v-card>
+          </v-col>
+          <v-col md="12">
+            <v-card
+              class="pa-3 rounded-lg"
+              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+              elevation="3"
+            >
+              <v-table :class="mode ? 'bg-white' : 'bg-grey-darken-3'">
+                <tbody>
+                  <tr>
+                    <th>email</th>
+
+                    <td>adricandrasaputra@gmail.com</td>
+                  </tr>
+                  <tr>
+                    <th>phone number</th>
+                    <td>123995660</td>
+                  </tr>
+                  <tr>
+                    <th>Gender</th>
+                    <td>Male</td>
+                  </tr>
+                  <tr>
+                    <th>Date</th>
+                    <td>29 agustus 1998</td>
+                  </tr>
+                </tbody>
+              </v-table>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-col>
+      <v-col md="8" order-md="0">
         <v-card
           class="pa-3 rounded-lg h-auto"
           :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
@@ -106,64 +163,6 @@ const mode = computed(() => store.state.mode);
             </v-col>
           </v-row>
         </v-card>
-      </v-col>
-
-      <v-col md="4">
-        <v-row>
-          <v-col md="12">
-            <v-card
-              class="pa-3 rounded-xl"
-              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
-              elevation="3"
-            >
-              <v-row>
-                <v-col cols="12" class="text-center">
-                  <v-avatar
-                    :image="require('../assets/109715820.jpg')"
-                    size="200"
-                    density="compact"
-                    variant="text"
-                  ></v-avatar>
-                </v-col>
-                <v-col cols="12">
-                  <div class="text-title text-center">Adri Candra</div>
-                </v-col>
-                <v-col cols="12">
-                  <div class="text-subtitle text-center">Backend Developer</div>
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-col>
-          <v-col md="12">
-            <v-card
-              class="pa-3 rounded-lg"
-              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
-              elevation="3"
-            >
-              <v-table :class="mode ? 'bg-white' : 'bg-grey-darken-3'">
-                <tbody>
-                  <tr>
-                    <th>email</th>
-
-                    <td>adricandrasaputra@gmail.com</td>
-                  </tr>
-                  <tr>
-                    <th>phone number</th>
-                    <td>123995660</td>
-                  </tr>
-                  <tr>
-                    <th>Gender</th>
-                    <td>Male</td>
-                  </tr>
-                  <tr>
-                    <th>Date</th>
-                    <td>29 agustus 1998</td>
-                  </tr>
-                </tbody>
-              </v-table>
-            </v-card>
-          </v-col>
-        </v-row>
       </v-col>
     </v-row>
   </v-container>
