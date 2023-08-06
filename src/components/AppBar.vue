@@ -120,7 +120,7 @@ const lists = ref([
               <v-img alt="Avatar" :src="pic" cover> </v-img>
             </v-avatar>
           </template>
-          <v-list nav density="compact">
+          <v-list nav density="compact" :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'">
             <v-list-item
               v-for="item in lists"
               :key="item"
