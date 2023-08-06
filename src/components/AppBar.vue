@@ -15,6 +15,7 @@ const store = useStore();
 const error = computed(() => store.state.error);
 const mdUp = computed(() => vuetify.display.mdAndDown.value);
 const smDown = computed(() => vuetify.display.smAndDown.value);
+const mode = computed(() => store.state.mode);
 
 onMounted(async () => {
   if (!store.state.profile.myProfile && store.state.auth.loggedIn) {
@@ -63,7 +64,7 @@ const lists = ref([
 <template>
   <v-app-bar
     flat
-    color="transparent"
+    :color="mode ? 'transparent' : 'dark'"
     height="auto"
     style="position: sticky; z-index: 99; top: 0"
     v-if="isLogin"
@@ -71,7 +72,12 @@ const lists = ref([
     scroll-threshold="60"
   >
     <v-container fluid class="mx-3">
-      <v-card class="bg-white rounded-lg pa-2 d-flex align-center" elevation="2" width="100%">
+      <v-card
+        class="rounded-lg pa-2 d-flex align-center"
+        :class="mode ? 'bg-white ' : 'bg-dark text-white'"
+        elevation="2"
+        width="100%"
+      >
         <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="mdUp"></v-app-bar-nav-icon>
         <v-spacer v-if="mdUp"></v-spacer>
         <v-text-field
@@ -95,16 +101,22 @@ const lists = ref([
           :style="smDown ? { maxWidth: '100%', width: '100%' } : { maxWidth: '200px' }"
         >
         </v-text-field>
-        <v-btn icon size="30">
+        <v-btn icon :size="smDown ? '30' : '50'">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <v-spacer v-if="!mdUp"></v-spacer>
-        <v-btn icon size="30">
+        <v-btn icon :size="smDown ? '30' : '50'" @click="store.commit('mode', !mode)">
+          <v-avatar size="23">
+            <v-img src="../assets/sun.svg" v-if="mode"></v-img>
+            <v-img src="../assets/moon.png" v-else></v-img>
+          </v-avatar>
+        </v-btn>
+        <v-btn :size="smDown ? '30' : '50'">
           <v-icon>mdi-bell-outline</v-icon>
         </v-btn>
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
-            <v-avatar size="40px" class="mx-3 avtr" v-bind="props">
+            <v-avatar size="40px" class="mx-md-3 mx-1 avtr" color="white" v-bind="props">
               <v-img alt="Avatar" :src="pic" cover> </v-img>
             </v-avatar>
           </template>

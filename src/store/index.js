@@ -23,10 +23,14 @@ export default createStore({
     success: '',
     info: '',
     loading: false,
+    mode: true,
   },
   mutations: {
     drawer(state, drawer) {
       state.drawer = drawer;
+    },
+    mode(state, mode) {
+      state.mode = mode;
     },
     success(state, success) {
       state.success = success;

@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 const payload = ref({
   username: null,
@@ -21,20 +22,27 @@ const reset = () => {
     birth: null,
   };
 };
+const store = useStore();
+const mode = computed(() => store.state.mode);
 </script>
 
 <template>
   <v-container fluid class="px-7">
     <v-row>
       <v-col md="8 ">
-        <v-card class="bg-white pa-3 rounded-lg h-auto" elevation="3">
+        <v-card
+          class="pa-3 rounded-lg h-auto"
+          :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+          elevation="3"
+        >
           <v-row>
             <v-col cols="12">
               <v-text-field
                 variant="outlined"
                 label="Username"
                 hide-details
-                base-color="grey"
+                :base-color="mode ? 'grey' : 'white'"
+                :class="mode ? 'text-input-blue' : 'text-white'"
                 color="blue"
                 v-model="payload.username"
               ></v-text-field>
@@ -103,7 +111,11 @@ const reset = () => {
       <v-col md="4">
         <v-row>
           <v-col md="12">
-            <v-card class="bg-white pa-3 rounded-xl" elevation="3">
+            <v-card
+              class="pa-3 rounded-xl"
+              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+              elevation="3"
+            >
               <v-row>
                 <v-col cols="12" class="text-center">
                   <v-avatar
@@ -123,8 +135,12 @@ const reset = () => {
             </v-card>
           </v-col>
           <v-col md="12">
-            <v-card class="bg-white pa-3 rounded-lg" elevation="3">
-              <v-table>
+            <v-card
+              class="pa-3 rounded-lg"
+              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+              elevation="3"
+            >
+              <v-table :class="mode ? 'bg-white' : 'bg-grey-darken-3'">
                 <tbody>
                   <tr>
                     <th>email</th>

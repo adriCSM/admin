@@ -6,11 +6,11 @@
     style="position: fixed; z-index: 9999; align-self: center; justify-self: center"
     class="mt-15"
   />
-  <v-app id="inspire">
+  <v-app id="inspire" :class="mode">
     <NavBar :nav="drawer" />
     <AppBar :drawer="drawer" @drawer="change" />
 
-    <v-main style="min-height: 100vh" class="bg-light pt-1">
+    <v-main style="min-height: 100vh" class="pt-1">
       <router-view />
     </v-main>
   </v-app>
@@ -23,8 +23,16 @@
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 
-import { ref } from 'vue';
-
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
+const store = useStore();
+const mode = computed(() => {
+  if (store.state.mode) {
+    return 'bg-light';
+  } else {
+    return 'bg-dark';
+  }
+});
 const drawer = ref(null);
 
 const change = (value) => {
