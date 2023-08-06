@@ -40,6 +40,12 @@ const logout = async () => {
 
 const lists = ref([
   {
+    title: 'Profile',
+    value: 'profile',
+    icon: 'mdi-account-circle-outline',
+    to: { name: 'Profile' },
+  },
+  {
     title: 'About',
     value: 'about',
     icon: 'mdi-information-outline',
@@ -48,7 +54,7 @@ const lists = ref([
   {
     title: 'Setting',
     value: 'setting',
-    icon: 'mdi-cog',
+    icon: 'mdi-cog-outline',
     to: { name: 'Setting' },
   },
 ]);
@@ -57,7 +63,7 @@ const lists = ref([
 <template>
   <v-app-bar
     flat
-    color="light"
+    color="transparent"
     height="auto"
     style="position: sticky; z-index: 99; top: 0"
     v-if="isLogin"
@@ -98,11 +104,11 @@ const lists = ref([
         </v-btn>
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
-            <v-avatar size="40px" class="mx-3" v-bind="props">
-              <v-img alt="Avatar" :src="pic"> </v-img>
+            <v-avatar size="40px" class="mx-3 avtr" v-bind="props">
+              <v-img alt="Avatar" :src="pic" cover> </v-img>
             </v-avatar>
           </template>
-          <v-list>
+          <v-list nav density="compact">
             <v-list-item
               v-for="item in lists"
               :key="item"
@@ -110,6 +116,7 @@ const lists = ref([
               :title="item.title"
               :value="item.value"
               :to="item.to"
+              active-class="bg-blue"
               theme
             ></v-list-item>
             <v-list-item
@@ -124,3 +131,9 @@ const lists = ref([
     </v-container>
   </v-app-bar>
 </template>
+
+<style scoped>
+.avtr {
+  cursor: pointer;
+}
+</style>

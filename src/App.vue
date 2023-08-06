@@ -10,7 +10,7 @@
     <NavBar :nav="drawer" />
     <AppBar :drawer="drawer" @drawer="change" />
 
-    <v-main style="height: 100vh" class="bg-light pt-1">
+    <v-main style="min-height: 100vh" class="bg-light pt-1">
       <router-view />
     </v-main>
   </v-app>
@@ -31,3 +31,5 @@ const change = (value) => {
   drawer.value = value;
 };
 </script>
+
+<style></style>

@@ -36,7 +36,7 @@ const login = async () => {
 
 <template>
   <div class="contain">
-    <v-row style="height: 100vh">
+    <v-row style="min-height: 100vh">
       <v-col align-self="center" cols="12 " class="d-flex justify-center">
         <v-card class="pa-3 overflow-visible" elevation="20" min-width="300" rounded="lg">
           <v-card class="bg-teal mt-0 rounded-lg align-end" style="top: -40px" elevation="5">
@@ -102,18 +102,9 @@ const login = async () => {
 </template>
 
 <style>
-a {
-  text-decoration: none;
-  color: white;
-  font-weight: bolder;
-}
-.message {
-  position: absolute;
-  z-index: 1;
-}
-
 .contain {
   background-image: url('../../assets/bg.jpeg');
   background-size: cover;
+  height: max-content;
 }
 </style>

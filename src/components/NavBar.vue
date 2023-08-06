@@ -1,11 +1,11 @@
 <template>
-  <v-navigation-drawer v-model="drawer" elevation="3" v-if="isLogin">
-    <v-list-item
-      pre
-      nav
-      class="pt-3 text-center"
-      :prepend-avatar="rail ? require('../assets/logo_am.png') : null"
-    >
+  <v-navigation-drawer
+    v-model="drawer"
+    elevation="3"
+    v-if="isLogin"
+    class="ms-3 h-auto my-3 rounded-lg"
+  >
+    <v-list-item pre nav class="pt-3 text-center">
       <v-img src="../assets/logo_am.png" height="50"></v-img>
     </v-list-item>
 
@@ -86,12 +86,7 @@ const links = ref([
     icon: 'mdi-home-city',
     to: { name: 'Home' },
   },
-  {
-    title: 'Profile',
-    value: 'profile',
-    icon: 'mdi-account-circle',
-    to: { name: 'Profile' },
-  },
+
   {
     title: 'Users',
     value: 'users',
@@ -143,8 +138,9 @@ const stores = ref([
 ]);
 </script>
 
-<style scoped>
-.router-link-exact-active {
-  background-color: red;
+<style>
+.v-navigation-drawer {
+  background-image: url('../assets/bg.jpeg');
+  color: white;
 }
 </style>
