@@ -64,12 +64,10 @@ const lists = ref([
 <template>
   <v-app-bar
     flat
-    :color="mode ? 'transparent' : 'dark'"
+    color="transparent"
     height="auto"
     style="position: sticky; z-index: 99; top: 0"
     v-if="isLogin"
-    scroll-behavior="hide"
-    scroll-threshold="60"
   >
     <v-container fluid class="mx-3">
       <v-card
@@ -105,10 +103,36 @@ const lists = ref([
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <v-spacer v-if="!mdUp"></v-spacer>
+        <v-menu transition="slide-y-transition" location="bottom">
+          <template v-slot:activator="{ props }">
+            <v-btn :size="smDown ? '30' : '50'" icon v-bind="props">
+              <v-icon>mdi-bell-outline</v-icon>
+            </v-btn>
+          </template>
+          <v-list
+            nav
+            density="compact"
+            :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'"
+            width="260"
+          >
+            <div class="text-title">Notifikasi</div>
+            <v-divider :color="mode ? 'black' : 'white'" class="pt-0"></v-divider>
+            <div v-if="adri">
+              <v-list-item
+                v-for="item in lists"
+                :key="item"
+                :title="item.title"
+                :prepend-avatar="pic"
+                :value="item.value"
+                :to="item.to"
+                active-class="bg-blue"
+                theme
+              ></v-list-item>
+            </div>
+            <div v-else class="text-subtitle text-center text-grey">Empty</div>
+          </v-list>
+        </v-menu>
 
-        <v-btn :size="smDown ? '30' : '50'">
-          <v-icon>mdi-bell-outline</v-icon>
-        </v-btn>
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
             <v-avatar size="40px" class="mx-md-3 mx-1 avtr" color="white" v-bind="props">

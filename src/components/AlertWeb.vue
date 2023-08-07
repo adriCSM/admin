@@ -61,40 +61,44 @@ const timer = (mutation) => {
 </script>
 
 <template>
-  <v-row>
-    <v-col>
-      <v-alert
-        v-if="success"
-        color="success"
-        elevation="2"
-        type="success"
-        border="start"
-        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-        >{{ success }}
-        <v-progress-linear v-model="successPercent" color="white" absolute location="bottom">
-        </v-progress-linear>
-      </v-alert>
-      <v-alert
-        v-if="error"
-        color="red"
-        elevation="2"
-        type="warning"
-        border="start"
-        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-        >{{ error }}
-        <v-progress-linear v-model="errorPercent" color="white" absolute location="bottom">
-        </v-progress-linear>
-      </v-alert>
-      <v-alert
-        v-if="info"
-        color="info"
-        elevation="2"
-        border="start"
-        class="text-start text-white text-capitalize pa-3 w-auto mx-10 mt-5"
-        >{{ info }}
-        <v-progress-linear v-model="infoPercent" color="white" absolute location="bottom">
-        </v-progress-linear>
-      </v-alert>
-    </v-col>
-  </v-row>
+  <div>
+    <v-alert
+      v-if="success"
+      color="success"
+      elevation="2"
+      type="success"
+      border="start"
+      position="fixed"
+      class="text-start text-white text-capitalize pa-3 w-auto mx-10"
+      max-width="300"
+      >{{ success }}
+      <v-progress-linear v-model="successPercent" color="white" absolute location="bottom">
+      </v-progress-linear>
+    </v-alert>
+    <v-alert
+      v-if="error"
+      color="red"
+      elevation="2"
+      type="warning"
+      position="fixed"
+      border="start"
+      max-width="300"
+      class="text-start text-white text-capitalize w-auto mx-10"
+      >{{ error }}
+      <v-progress-linear v-model="errorPercent" color="white" absolute location="bottom">
+      </v-progress-linear>
+    </v-alert>
+    <v-alert
+      v-if="info"
+      color="info"
+      elevation="2"
+      border="start"
+      style="right: 0; top: 15%"
+      position="fixed"
+      class="text-start text-white text-capitalize pa-3 w-auto mx-10"
+      >{{ info }}
+      <v-progress-linear v-model="infoPercent" color="white" absolute location="bottom">
+      </v-progress-linear>
+    </v-alert>
+  </div>
 </template>

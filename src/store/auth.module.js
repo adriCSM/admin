@@ -21,7 +21,10 @@ export const auth = {
         if (userProfile.role == 'user') {
           localStorage.removeItem('user_id');
           localStorage.removeItem('user');
-          return store.commit('error', `Anda tidak berhak login`);
+          return store.commit(
+            'error',
+            `Anda tidak memiliki hak akses. Hanya Admin dan Colaborator yang dapat login. Silakan hubungi admin jika ingin berkolaborasi.`,
+          );
         }
         commit('isLoggedIn', true);
         store.commit('info', `Selamat datang ${userProfile.username}`);

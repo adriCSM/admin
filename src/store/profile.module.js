@@ -29,6 +29,7 @@ export const profile = {
     async getProfile({ commit }, id) {
       try {
         const userProfile = await ProfileService.getProfile(id);
+        console.log(userProfile);
         commit('userProfile', userProfile);
       } catch (error) {
         handler.errorHandling(error);
@@ -62,7 +63,8 @@ export const profile = {
       state.myProfile = userProfile;
     },
     users(state, users) {
-      state.users = users;
+      const { id } = jwtDecode(JSON.parse(localStorage.getItem('user_id')));
+      state.users = users.filter((user) => user._id !== id);
     },
     delete(state, id) {
       state.users = state.users.filter((user) => user._id !== id);

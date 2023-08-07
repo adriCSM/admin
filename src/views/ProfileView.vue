@@ -2,6 +2,8 @@
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
+const profile = computed(() => store.state.profile.myProfile);
+
 const payload = ref({
   username: null,
   name: null,
@@ -29,7 +31,7 @@ const mode = computed(() => store.state.mode);
 <template>
   <v-container fluid class="px-7">
     <v-row>
-      <v-col md="4" order-md="1">
+      <v-col md="4" cols="12" order-md="1">
         <v-row>
           <v-col md="12">
             <v-card
@@ -40,10 +42,10 @@ const mode = computed(() => store.state.mode);
               <v-row>
                 <v-col cols="12" class="text-center">
                   <v-avatar
-                    :image="require('../assets/109715820.jpg')"
+                    color="white"
+                    :image="profile.pic"
                     size="200"
                     density="compact"
-                    variant="text"
                   ></v-avatar>
                 </v-col>
                 <v-col cols="12">
@@ -66,24 +68,26 @@ const mode = computed(() => store.state.mode);
                   <tr>
                     <th>Username</th>
 
-                    <td>adri_csm</td>
+                    <td>{{ profile.username }}</td>
                   </tr>
                   <tr>
                     <th>Email</th>
 
-                    <td>adricandrasaputra@gmail.com</td>
+                    <td>{{ profile.email }}</td>
                   </tr>
                   <tr>
                     <th>Phone Number</th>
-                    <td>123995660</td>
+                    <td>{{ profile.phone_number }}</td>
                   </tr>
                   <tr>
                     <th>Gender</th>
-                    <td>Male</td>
+                    <td v-if="profile.gender">{{ profile.gender }}</td>
+                    <td v-else>---</td>
                   </tr>
                   <tr>
                     <th>Birth Date</th>
-                    <td>29 agustus 1998</td>
+                    <td v-if="profile.birth">{{ profile.birth }}</td>
+                    <td v-else>---</td>
                   </tr>
                 </tbody>
               </v-table>
@@ -91,7 +95,7 @@ const mode = computed(() => store.state.mode);
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="8" order-md="0">
+      <v-col md="8" cols="12" order-md="0">
         <v-card
           class="pa-3 rounded-lg h-auto"
           :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
