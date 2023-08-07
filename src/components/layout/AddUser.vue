@@ -35,7 +35,9 @@ const add = async () => {
 <template>
   <v-dialog v-model="dialog" persistent width="1024">
     <template v-slot:activator="{ props }">
-      <v-btn color="success" v-bind="props" @click="show"><v-icon>mdi-plus</v-icon> User </v-btn>
+      <v-btn color="blue" variant="tonal" v-bind="props" @click="show"
+        ><v-icon>mdi-plus</v-icon> User
+      </v-btn>
     </template>
     <v-card class="bg-dark">
       <v-card-title style="color: #0fe" class="text-center"> Add User </v-card-title>
