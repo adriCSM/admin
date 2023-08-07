@@ -105,12 +105,7 @@ const lists = ref([
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
         <v-spacer v-if="!mdUp"></v-spacer>
-        <v-btn icon :size="smDown ? '30' : '50'" @click="store.commit('mode', !mode)">
-          <v-avatar size="23">
-            <v-img src="../assets/sun.svg" v-if="mode"></v-img>
-            <v-img src="../assets/moon.png" v-else></v-img>
-          </v-avatar>
-        </v-btn>
+
         <v-btn :size="smDown ? '30' : '50'">
           <v-icon>mdi-bell-outline</v-icon>
         </v-btn>

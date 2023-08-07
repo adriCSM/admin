@@ -12,9 +12,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <CrouselLayout class="mx-7" />
-
   <v-ccontainer fluid>
+    <CrouselLayout class="mx-7" />
     <v-row class="px-7">
       <v-col cols="12" md="8">
         <v-card width="100%" height="300" elevation="5" class="bg-blue mt-5 rounded-lg"> </v-card>
@@ -27,9 +26,9 @@ onMounted(async () => {
         </v-row>
       </v-col>
     </v-row>
-    <v-row class="px-7">
+    <v-row class="px-7 py-0">
       <v-col cols="12" md="4" v-for="i in 3" :key="i">
-        <v-card width="100%" height="350" class="bg-blue rounded-lg" elevation="5"></v-card>
+        <v-card width="100%" height="150" class="bg-blue rounded-lg" elevation="5"></v-card>
       </v-col>
     </v-row>
   </v-ccontainer>

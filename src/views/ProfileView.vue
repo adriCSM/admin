@@ -64,12 +64,17 @@ const mode = computed(() => store.state.mode);
               <v-table class="bg-transparent">
                 <tbody>
                   <tr>
-                    <th>email</th>
+                    <th>Username</th>
+
+                    <td>adri_csm</td>
+                  </tr>
+                  <tr>
+                    <th>Email</th>
 
                     <td>adricandrasaputra@gmail.com</td>
                   </tr>
                   <tr>
-                    <th>phone number</th>
+                    <th>Phone Number</th>
                     <td>123995660</td>
                   </tr>
                   <tr>
@@ -77,7 +82,7 @@ const mode = computed(() => store.state.mode);
                     <td>Male</td>
                   </tr>
                   <tr>
-                    <th>Date</th>
+                    <th>Birth Date</th>
                     <td>29 agustus 1998</td>
                   </tr>
                 </tbody>
