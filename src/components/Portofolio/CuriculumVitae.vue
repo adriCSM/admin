@@ -38,7 +38,7 @@ const actions = ref([
     </v-row>
     <v-row class="pt-10">
       <v-col cols="12" md="6" v-for="item in data" :key="item">
-        <v-card height="auto" class="bg-dark rounded" style="box-shadow: 0 0 1rem #0fe">
+        <v-card height="auto" class="bg-dark rounded">
           <div class="d-flex flex-row">
             <v-card-title class="text-white" style="max-width: 60%">
               {{ item.name }}

@@ -4,15 +4,16 @@
       <v-btn
         v-bind="props"
         position="fixed"
-        elevation="20"
+        elevation="10"
         style="z-index: 99; right: 30px; bottom: 50px"
         v-if="isLogin"
         icon
         size="50"
         @click="store.commit('mode', !mode)"
-        :color="mode ? 'light' : 'grey-darken-3'"
+        :class="mode ? 'bg-white' : 'bg-element '"
+        variant="tonal"
       >
-        <v-avatar size="23">
+        <v-avatar size="25">
           <v-img src="../assets/sun.svg" v-if="mode"></v-img>
           <v-img src="../assets/moon.png" v-else></v-img>
         </v-avatar>

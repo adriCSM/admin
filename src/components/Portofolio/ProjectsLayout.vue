@@ -80,7 +80,7 @@ const mode = computed(() => {
               </div>
             </td>
             <td class="text-justify">{{ item.description }}</td>
-            <td class="d-flex flex-row">
+            <td class="w-25 px-0">
               <v-tooltip :text="action.text" v-for="action in actions" :key="action" location="top">
                 <template v-slot:activator="{ props }">
                   <v-btn

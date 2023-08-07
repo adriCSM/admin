@@ -1,5 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300&display=swap');
+*,
+#app {
+  font-family: 'Public Sans', sans-serif;
+}
+
 :root {
   --bg: #232332;
+  --bgLight: #f4f4f8;
   --bgComponent: #2a2c40;
 }
 
@@ -11,4 +18,12 @@
 .bg {
   color: white;
   background-color: var(--bg);
+}
+.bgLight {
+  color: #b3bec5;
+  background-color: var(--bgLight);
+}
+
+.avtr {
+  cursor: pointer;
 }

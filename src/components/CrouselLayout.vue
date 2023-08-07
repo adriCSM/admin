@@ -3,8 +3,8 @@ export default {
   data: () => ({
     length: 3,
     window: 0,
-    colors: ['indigo', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'],
-    slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
+    colors: ['blue', 'warning', 'pink darken-2', 'red lighten-1', 'deep-purple accent-4'],
+    slides: ['Adri', 'Second', 'Third', 'Fourth', 'Fifth'],
   }),
 };
 </script>

@@ -101,7 +101,7 @@ const mode = computed(() => store.state.mode);
               </v-table>
             </v-col>
             <v-col class="text-end">
-              <v-btn color="primary " class="ms-2" @click="reset">kolaborasi</v-btn>
+              <v-btn color="blue" class="ms-2 font-weight-bold" @click="reset">kolaborasi</v-btn>
             </v-col>
           </v-row>
         </v-card>

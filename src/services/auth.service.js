@@ -22,6 +22,7 @@ export default {
     if (response.data.data) {
       localStorage.setItem('user_id', JSON.stringify(response.data.data.refreshToken));
       localStorage.setItem('user', JSON.stringify(response.data.data.accessToken));
+      localStorage.setItem('mode', false);
     }
     return response.data;
   },

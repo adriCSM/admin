@@ -7,6 +7,8 @@ import { projects } from './project.module';
 import { cv } from './cv.module';
 import { contact } from './contact.module';
 
+const mode = JSON.parse(localStorage.getItem('mode'));
+
 export default createStore({
   modules: {
     auth,
@@ -23,13 +25,14 @@ export default createStore({
     success: '',
     info: '',
     loading: false,
-    mode: true,
+    mode: mode,
   },
   mutations: {
     drawer(state, drawer) {
       state.drawer = drawer;
     },
     mode(state, mode) {
+      localStorage.setItem('mode', mode);
       state.mode = mode;
     },
     success(state, success) {
@@ -43,6 +46,11 @@ export default createStore({
     },
     loading(state, loading) {
       state.loading = loading;
+    },
+  },
+  getters: {
+    mode(state) {
+      console.log(state);
     },
   },
 });

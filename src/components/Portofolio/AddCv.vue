@@ -30,7 +30,13 @@ const change = () => {
 <template>
   <v-dialog v-model="dialog" persistent width="1024">
     <template v-slot:activator="{ props }">
-      <v-btn color="#0fe" v-bind="props" @click="show" position="fixed" style="z-index: 9"
+      <v-btn
+        color="blue"
+        variant="tonal"
+        v-bind="props"
+        @click="show"
+        position="fixed"
+        style="z-index: 9"
         ><v-icon>mdi-plus</v-icon> CV
       </v-btn>
     </template>

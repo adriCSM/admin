@@ -45,7 +45,9 @@ const change = () => {
 <template>
   <v-dialog v-model="dialog" persistent width="1024">
     <template v-slot:activator="{ props }">
-      <v-btn color="success" v-bind="props" @click="show"><v-icon>mdi-plus</v-icon> Project </v-btn>
+      <v-btn color="blue" variant="tonal" v-bind="props" @click="show"
+        ><v-icon>mdi-plus</v-icon> Project
+      </v-btn>
     </template>
     <v-card class="bg-dark">
       <div v-if="error">

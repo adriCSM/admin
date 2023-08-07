@@ -13,8 +13,8 @@ const emit = defineEmits(['drawer']);
 const drawer = computed(() => props.drawer);
 const store = useStore();
 const error = computed(() => store.state.error);
-const mdUp = computed(() => vuetify.display.mdAndUp.value);
-const smDown = computed(() => vuetify.display.smAndDown.value);
+const lgUp = computed(() => vuetify.display.lgAndUp.value);
+const smUp = computed(() => vuetify.display.smAndUp.value);
 const mode = computed(() => store.state.mode);
 
 onMounted(async () => {
@@ -70,10 +70,10 @@ const lists = ref([
         elevation="3"
         width="100%"
       >
-        <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="!mdUp"></v-app-bar-nav-icon>
-        <v-spacer v-if="!mdUp"></v-spacer>
+        <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="!lgUp"></v-app-bar-nav-icon>
+        <v-spacer v-if="!lgUp"></v-spacer>
         <v-text-field
-          v-if="mdUp"
+          v-if="smUp"
           variant="underlined"
           hide-details
           base-color="blue"
@@ -84,30 +84,34 @@ const lists = ref([
         >
         </v-text-field>
         <v-text-field
-          v-if="!mdUp"
+          v-if="!smUp"
           variant="underlined"
           hide-details
           base-color="blue"
           placeholder="Search"
           color="blue"
-          :style="smDown ? { maxWidth: '100%', width: '100%' } : { maxWidth: '200px' }"
+          :style="{ maxWidth: '100%', width: '100%' }"
         >
         </v-text-field>
-        <v-btn icon :size="smDown ? '30' : '50'">
-          <v-icon>mdi-magnify</v-icon>
+        <v-btn icon :size="!smUp ? '40' : '50'">
+          <v-icon size="26">mdi-magnify</v-icon>
         </v-btn>
-        <v-spacer v-if="mdUp"></v-spacer>
+        <v-spacer v-if="lgUp"></v-spacer>
         <v-menu transition="slide-y-transition" location="bottom">
           <template v-slot:activator="{ props }">
-            <v-btn :size="smDown ? '30' : '50'" icon v-bind="props">
-              <v-icon>mdi-bell-outline</v-icon>
+            <v-btn :size="!smUp ? '40' : '50'" icon v-bind="props" class="me-4">
+              <v-badge content="99+" color="blue" transition="ease" style="z-index: 9">
+                <v-icon>mdi-bell-outline</v-icon>
+              </v-badge>
             </v-btn>
           </template>
           <v-list
             nav
             density="compact"
-            :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'"
-            :min-width="!smDown ? '350' : '200'"
+            class="hover"
+            :class="mode ? 'bg-white' : 'bg-element'"
+            :min-width="smUp ? '350' : '200'"
+            :style="mode ? null : { backgroundColor: ' var(--bgComponent)' }"
           >
             <div class="text-title">Notifikasi</div>
             <v-divider :color="mode ? 'black' : 'white'" class="mt-2"></v-divider>
@@ -129,20 +133,27 @@ const lists = ref([
 
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
-            <v-avatar size="40px" class="mx-md-3 mx-1 avtr" color="white" v-bind="props">
-              <v-img alt="Avatar" :src="pic" cover> </v-img>
-            </v-avatar>
+            <v-badge dot location="right bottom" color="green" offset-x="14" offset-y="7" bordered>
+              <v-avatar size="40px" class="mx-md-3 mx-1 avtr" color="white" v-bind="props">
+                <v-img alt="Avatar" :src="pic" cover> </v-img>
+              </v-avatar>
+            </v-badge>
           </template>
-          <v-list nav density="compact" :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'">
+          <v-list
+            nav
+            density="compact"
+            :class="mode ? 'bg-white ' : 'bg-element '"
+            :style="mode ? null : { backgroundColor: ' var(--bgComponent)' }"
+          >
             <v-list-item
+              :class="mode ? 'text-black' : 'text-white'"
               v-for="item in lists"
               :key="item"
               :prepend-icon="item.icon"
               :title="item.title"
               :value="item.value"
               :to="item.to"
-              active-class="bg-blue"
-              theme
+              active-class="bg-blue text-white"
             ></v-list-item>
             <v-list-item
               prepend-icon="mdi-logout"
@@ -156,9 +167,3 @@ const lists = ref([
     </v-container>
   </v-app-bar>
 </template>
-
-<style scoped>
-.avtr {
-  cursor: pointer;
-}
-</style>

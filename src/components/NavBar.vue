@@ -4,6 +4,7 @@
     elevation="10"
     v-if="isLogin"
     class="ms-md-3 ms-1 h-auto my-md-3 my-1 rounded-lg"
+    :class="mode ? 'bg-white' : 'bg-element'"
   >
     <v-list-item pre nav class="pt-3 text-center">
       <v-img src="../assets/logo_am.png" height="50"></v-img>
@@ -11,14 +12,15 @@
 
     <v-divider></v-divider>
 
-    <v-list density="compact" nav class="mx-3">
+    <v-list nav class="mx-3">
       <v-list-item
         v-for="item in links"
         :key="item"
         :prepend-icon="item.icon"
         :title="item.title"
         :to="item.to"
-        active-class="bg-blue"
+        active-class="bg-blue text-white"
+        :class="mode ? 'text-black' : 'text-white'"
       >
       </v-list-item>
 
@@ -32,13 +34,14 @@
         </template>
 
         <v-list-item
+          :class="mode ? 'text-black' : 'text-white'"
           v-for="(item, i) in portofolio"
           :key="i"
           :title="item.title"
           :prepend-icon="item.icon"
           :value="item.title"
           :to="item.to"
-          active-class="bg-blue"
+          active-class="bg-blue text-white"
         ></v-list-item>
       </v-list-group>
       <v-list-group value="Store">
@@ -53,8 +56,8 @@
           :prepend-icon="item.icon"
           :value="item.title"
           :to="item.to"
-          active-class="bg-blue"
-          exact
+          active-class="bg-blue text-white"
+          :class="mode ? 'text-black' : 'text-white'"
         ></v-list-item>
       </v-list-group>
     </v-list>
@@ -81,9 +84,9 @@ watch(props, (value) => {
 
 const links = ref([
   {
-    title: 'Home',
+    title: 'Dashboard',
     value: 'home',
-    icon: 'mdi-home-city',
+    icon: 'mdi-home-outline',
     to: { name: 'Home' },
   },
 
@@ -136,12 +139,6 @@ const stores = ref([
     to: { name: 'Order' },
   },
 ]);
-</script>
 
-<style>
-.v-navigation-drawer {
-  background-image: url('../assets/bg.jpeg');
-  color: white;
-  background-size: cover;
-}
-</style>
+const mode = computed(() => store.state.mode);
+</script>
