@@ -18,7 +18,7 @@
       <router-view />
     </v-main>
     <footer>
-      <div class="text-end px-7 py-3" :class="mode == 'bg-dark' ? 'text-white' : 'text-black'">
+      <div class="text-end px-7 py-3" :class="mode == 'bg' ? 'text-white' : 'text-black'">
         Copyright &copy; by Adri Mangidi
       </div>
     </footer>
@@ -42,7 +42,7 @@ const mode = computed(() => {
   if (store.state.mode) {
     return 'bg-light';
   } else {
-    return 'bg-dark';
+    return 'bg';
   }
 });
 const drawer = ref(null);
@@ -52,4 +52,6 @@ const change = (value) => {
 };
 </script>
 
-<style></style>
+<style>
+@import url('./assets/scss/style.scss');
+</style>

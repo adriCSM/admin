@@ -34,11 +34,7 @@ const mode = computed(() => store.state.mode);
       <v-col md="4" cols="12" order-md="1">
         <v-row>
           <v-col md="12">
-            <v-card
-              class="pa-3 rounded-xl"
-              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
-              elevation="3"
-            >
+            <v-card class="pa-3 rounded-xl" :class="mode ? 'bg-white' : 'bg-element'" elevation="3">
               <v-row>
                 <v-col cols="12" class="text-center">
                   <v-avatar
@@ -58,11 +54,7 @@ const mode = computed(() => store.state.mode);
             </v-card>
           </v-col>
           <v-col md="12">
-            <v-card
-              class="pa-3 rounded-lg"
-              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
-              elevation="3"
-            >
+            <v-card class="pa-3 rounded-lg" :class="mode ? 'bg-white' : 'bg-element'" elevation="3">
               <v-table class="bg-transparent">
                 <tbody>
                   <tr>
@@ -98,7 +90,7 @@ const mode = computed(() => store.state.mode);
       <v-col md="8" cols="12" order-md="0">
         <v-card
           class="pa-3 rounded-lg h-auto"
-          :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+          :class="mode ? 'bg-white' : 'bg-element'"
           elevation="3"
         >
           <v-row>

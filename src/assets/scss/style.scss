@@ -1,0 +1,14 @@
+:root {
+  --bg: #232332;
+  --bgComponent: #2a2c40;
+}
+
+.bg-element {
+  background-color: var(--bgComponent);
+  color: white;
+}
+
+.bg {
+  color: white;
+  background-color: var(--bg);
+}

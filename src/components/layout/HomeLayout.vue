@@ -13,7 +13,7 @@ const mode = computed(() => {
   if (store.state.mode) {
     return 'bg-white';
   } else {
-    return 'bg-grey-darken-3';
+    return 'bg-element';
   }
 });
 </script>

@@ -66,7 +66,7 @@ const lists = ref([
     <v-container fluid class="mx-3">
       <v-card
         class="rounded-lg pa-2 d-flex align-center"
-        :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'"
+        :class="mode ? 'bg-white ' : 'bg-element text-white'"
         elevation="3"
         width="100%"
       >

@@ -19,7 +19,7 @@ const mode = computed(() => {
   if (store.state.mode) {
     return 'bg-white';
   } else {
-    return 'bg-grey-darken-3';
+    return 'bg-element';
   }
 });
 </script>
@@ -27,7 +27,7 @@ const mode = computed(() => {
 <template>
   <v-container fluid class="px-7">
     <v-card class="py-5 rounded-lg" :class="mode" elevation="3">
-      <v-table class="px-5bg-transparent overflow-y-auto" style="max-height: 90vh" hover>
+      <v-table class="px-5 bg-transparent overflow-y-auto" style="max-height: 90vh" hover>
         <thead>
           <tr>
             <th class="text-center bg-transparent">Consumer</th>
