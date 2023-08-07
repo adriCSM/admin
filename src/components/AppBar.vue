@@ -13,7 +13,7 @@ const emit = defineEmits(['drawer']);
 const drawer = computed(() => props.drawer);
 const store = useStore();
 const error = computed(() => store.state.error);
-const mdUp = computed(() => vuetify.display.mdAndDown.value);
+const mdUp = computed(() => vuetify.display.mdAndUp.value);
 const smDown = computed(() => vuetify.display.smAndDown.value);
 const mode = computed(() => store.state.mode);
 
@@ -70,10 +70,10 @@ const lists = ref([
         elevation="3"
         width="100%"
       >
-        <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="mdUp"></v-app-bar-nav-icon>
-        <v-spacer v-if="mdUp"></v-spacer>
+        <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="!mdUp"></v-app-bar-nav-icon>
+        <v-spacer v-if="!mdUp"></v-spacer>
         <v-text-field
-          v-if="!mdUp"
+          v-if="mdUp"
           variant="underlined"
           hide-details
           base-color="blue"
@@ -84,7 +84,7 @@ const lists = ref([
         >
         </v-text-field>
         <v-text-field
-          v-if="mdUp"
+          v-if="!mdUp"
           variant="underlined"
           hide-details
           base-color="blue"
@@ -96,7 +96,7 @@ const lists = ref([
         <v-btn icon :size="smDown ? '30' : '50'">
           <v-icon>mdi-magnify</v-icon>
         </v-btn>
-        <v-spacer v-if="!mdUp"></v-spacer>
+        <v-spacer v-if="mdUp"></v-spacer>
         <v-menu transition="slide-y-transition" location="bottom">
           <template v-slot:activator="{ props }">
             <v-btn :size="smDown ? '30' : '50'" icon v-bind="props">
@@ -107,7 +107,7 @@ const lists = ref([
             nav
             density="compact"
             :class="mode ? 'bg-white ' : 'bg-grey-darken-3 text-white'"
-            width="260"
+            :min-width="!smDown ? '350' : '200'"
           >
             <div class="text-title">Notifikasi</div>
             <v-divider :color="mode ? 'black' : 'white'" class="mt-2"></v-divider>
