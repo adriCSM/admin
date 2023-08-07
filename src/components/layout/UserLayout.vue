@@ -48,7 +48,7 @@ const profile = (id) => {
         <thead>
           <tr>
             <th class="text-center bg-transparent">Image</th>
-            <th class="text-center bg-transparent">Name</th>
+            <th class="text-start bg-transparent">Name</th>
             <th class="text-center bg-transparent">Email</th>
             <th class="text-center bg-transparent">Role</th>
             <th class="text-center bg-transparent">Status</th>
@@ -56,21 +56,21 @@ const profile = (id) => {
           </tr>
         </thead>
         <tbody style="cursor: pointer">
-          <tr v-for="item in dataUsers" :key="item" class="text-center" @click="profile(item._id)">
-            <td>
+          <tr v-for="item in dataUsers" :key="item" class="text-center">
+            <td @click="profile(item._id)">
               <v-avatar size="40px" class="bg-white">
                 <v-img alt="Avatar" :src="item.pic"></v-img>
               </v-avatar>
             </td>
 
-            <td class="text-start">{{ item.username }}</td>
-            <td>{{ item.email }}</td>
-            <td>{{ item.role }}</td>
-            <td v-if="item.isOnline">
+            <td @click="profile(item._id)" class="text-start">{{ item.username }}</td>
+            <td @click="profile(item._id)">{{ item.email }}</td>
+            <td @click="profile(item._id)">{{ item.role }}</td>
+            <td v-if="item.isOnline" @click="profile(item._id)">
               <v-badge dot color="success" inline> </v-badge>
               online
             </td>
-            <td v-else>
+            <td v-else @click="profile(item._id)">
               <v-badge dot color="error" inline> </v-badge>
               offline
             </td>

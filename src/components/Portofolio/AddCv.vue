@@ -38,9 +38,7 @@ const change = () => {
       <div v-if="error">
         <h1 class="text-white">{{ error }}</h1>
       </div>
-      <v-card-title style="color: #0fe">
-        <span class="text-h5">Add CV</span>
-      </v-card-title>
+      <v-card-title style="color: #0fe" class="text-center"> Add CV </v-card-title>
 
       <v-card-text style="color: #0fe">
         <v-container>

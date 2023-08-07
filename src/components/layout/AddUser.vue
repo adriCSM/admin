@@ -38,9 +38,7 @@ const add = async () => {
       <v-btn color="success" v-bind="props" @click="show"><v-icon>mdi-plus</v-icon> User </v-btn>
     </template>
     <v-card class="bg-dark">
-      <v-card-title style="color: #0fe">
-        <span class="text-h5">Add User</span>
-      </v-card-title>
+      <v-card-title style="color: #0fe" class="text-center"> Add User </v-card-title>
 
       <v-card-text style="color: #0fe">
         <v-container>

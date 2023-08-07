@@ -29,7 +29,6 @@ export const profile = {
     async getProfile({ commit }, id) {
       try {
         const userProfile = await ProfileService.getProfile(id);
-        console.log(userProfile);
         commit('userProfile', userProfile);
       } catch (error) {
         handler.errorHandling(error);

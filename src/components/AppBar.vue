@@ -62,13 +62,7 @@ const lists = ref([
 </script>
 
 <template>
-  <v-app-bar
-    flat
-    color="transparent"
-    height="auto"
-    style="position: sticky; z-index: 99; top: 0"
-    v-if="isLogin"
-  >
+  <v-app-bar flat color="transparent" height="auto" v-if="isLogin">
     <v-container fluid class="mx-3">
       <v-card
         class="rounded-lg pa-2 d-flex align-center"
@@ -116,7 +110,7 @@ const lists = ref([
             width="260"
           >
             <div class="text-title">Notifikasi</div>
-            <v-divider :color="mode ? 'black' : 'white'" class="pt-0"></v-divider>
+            <v-divider :color="mode ? 'black' : 'white'" class="mt-2"></v-divider>
             <div v-if="adri">
               <v-list-item
                 v-for="item in lists"

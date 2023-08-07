@@ -61,8 +61,10 @@ const mode = computed(() => {
         </thead>
         <tbody>
           <tr v-for="item in data" :key="item" class="text-center">
-            <td class="text-start">{{ item.name }}</td>
-            <td align="center">
+            <td class="text-start" lang="id-ID">
+              {{ item.name }}
+            </td>
+            <td>
               <v-img :src="item.image" width="70px" class="ma-2 rounded"></v-img>
             </td>
             <td>
@@ -78,8 +80,8 @@ const mode = computed(() => {
               </div>
             </td>
             <td class="text-justify">{{ item.description }}</td>
-            <td>
-              <v-tooltip :text="action.text" v-for="action in actions" :key="action">
+            <td class="d-flex flex-row">
+              <v-tooltip :text="action.text" v-for="action in actions" :key="action" location="top">
                 <template v-slot:activator="{ props }">
                   <v-btn
                     v-bind="props"

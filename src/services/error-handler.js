@@ -5,12 +5,12 @@ export default {
   errorHandling(err) {
     console.log(err);
     store.commit('loading', false);
-    store.commit('auth/isLoggedIn', false);
     if (
       err.message == 'Invalid token specified' ||
       (err.response && err.response.status == 401) ||
       (err.response && err.response.status == 403)
     ) {
+      store.commit('auth/isLoggedIn', false);
       store.commit('profile/myProfile', null);
       router.push({ name: 'Login' });
     }

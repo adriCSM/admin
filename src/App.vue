@@ -6,7 +6,12 @@
   />
   <v-app id="inspire" :class="mode">
     <NavBar :nav="drawer" v-if="router.currentRoute.value.name !== 'Login'" />
-    <AppBar :drawer="drawer" @drawer="change" v-if="router.currentRoute.value.name !== 'Login'" />
+    <AppBar
+      :drawer="drawer"
+      @drawer="change"
+      v-if="router.currentRoute.value.name !== 'Login'"
+      style="position: sticky; top: 0"
+    />
 
     <v-main>
       <BtnBlobs v-if="router.currentRoute.value.name !== 'Login'" />
