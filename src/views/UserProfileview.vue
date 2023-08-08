@@ -36,11 +36,7 @@ const mode = computed(() => store.state.mode);
       <v-col md="4" cols="12">
         <v-row>
           <v-col md="12 ">
-            <v-card
-              class="pa-3 rounded-xl"
-              :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
-              elevation="3"
-            >
+            <v-card class="pa-3 rounded-xl" :class="mode ? 'bg-white' : 'bg-element'" elevation="3">
               <v-row>
                 <ButtonBackVue />
                 <v-col cols="12" class="text-center">
@@ -66,7 +62,7 @@ const mode = computed(() => store.state.mode);
         <v-card
           :loading="!profile ? true : false"
           class="pa-3 rounded-lg h-auto"
-          :class="mode ? 'bg-white' : 'bg-grey-darken-3'"
+          :class="mode ? 'bg-white' : 'bg-element'"
           elevation="3"
         >
           <v-row>

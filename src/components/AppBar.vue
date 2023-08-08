@@ -133,7 +133,14 @@ const lists = ref([
 
         <v-menu transition="slide-y-transition">
           <template v-slot:activator="{ props }">
-            <v-badge dot location="right bottom" color="green" offset-x="14" offset-y="7" bordered>
+            <v-badge
+              dot
+              location="right bottom"
+              color="green"
+              :offset-x="smUp ? '14' : '8'"
+              offset-y="7"
+              bordered
+            >
               <v-avatar size="40px" class="mx-md-3 mx-1 avtr" color="white" v-bind="props">
                 <v-img alt="Avatar" :src="pic" cover> </v-img>
               </v-avatar>
