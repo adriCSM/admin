@@ -1,9 +1,17 @@
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useStore } from 'vuex';
 import ButtonBackVue from '@/components/ButtonBack.vue';
+import { useRoute } from 'vue-router';
 
 const store = useStore();
+const route = useRoute();
+const id = route.params.id;
+onMounted(() => {
+  if (!store.state.profile.userProfile) {
+    store.dispatch('profile/getProfile', id);
+  }
+});
 
 const profile = computed(() => store.state.profile.userProfile);
 
