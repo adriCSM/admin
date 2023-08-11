@@ -62,7 +62,14 @@ const lists = ref([
 </script>
 
 <template>
-  <v-app-bar flat color="transparent" height="auto" v-if="isLogin">
+  <v-app-bar
+    flat
+    color="transparent"
+    height="auto"
+    v-if="
+      router.currentRoute.value.name !== 'Notfound' && router.currentRoute.value.name !== 'Login'
+    "
+  >
     <v-container fluid class="mx-3">
       <v-card
         class="rounded-lg pa-2 d-flex align-center"
@@ -70,10 +77,17 @@ const lists = ref([
         elevation="3"
         width="100%"
       >
-        <v-app-bar-nav-icon @click="emit('drawer', !drawer)" v-if="!lgUp"></v-app-bar-nav-icon>
+        <router-link to="/" class="me-5">
+          <v-img v-if="!isLogin" src="../assets/logo_am.png" height="50" width="60"></v-img>
+        </router-link>
+
+        <v-app-bar-nav-icon
+          @click="emit('drawer', !drawer)"
+          v-if="!lgUp && isLogin"
+        ></v-app-bar-nav-icon>
         <v-spacer v-if="!lgUp"></v-spacer>
         <v-text-field
-          v-if="smUp"
+          v-if="smUp && isLogin"
           variant="underlined"
           hide-details
           base-color="blue"
@@ -84,7 +98,7 @@ const lists = ref([
         >
         </v-text-field>
         <v-text-field
-          v-if="!smUp"
+          v-if="!smUp && isLogin"
           variant="underlined"
           hide-details
           base-color="blue"
@@ -93,11 +107,30 @@ const lists = ref([
           :style="{ maxWidth: '100%', width: '100%' }"
         >
         </v-text-field>
-        <v-btn icon :size="!smUp ? '40' : '50'">
+        <v-btn icon :size="!smUp ? '40' : '50'" v-if="isLogin">
           <v-icon size="26">mdi-magnify</v-icon>
         </v-btn>
+
+        <router-link
+          to="/documentation"
+          class="text-decoration-none"
+          :class="mode ? 'text-black' : 'text-white'"
+          >Docs</router-link
+        >
+
         <v-spacer v-if="lgUp"></v-spacer>
-        <v-menu transition="slide-y-transition" location="bottom">
+        <v-btn variant="text" color="blue" class="me-3 my-2" v-if="!isLogin" :to="{ name: 'Login' }"
+          >Sign In</v-btn
+        >
+        <v-btn
+          color="blue"
+          variant="outlined"
+          v-if="!isLogin"
+          @click="router.push({ name: 'Register' })"
+          >Sign Up</v-btn
+        >
+
+        <v-menu transition="slide-y-transition" location="bottom" v-if="isLogin">
           <template v-slot:activator="{ props }">
             <v-btn :size="!smUp ? '40' : '50'" icon v-bind="props" class="me-4">
               <v-badge content="99+" color="blue" transition="ease" style="z-index: 9">
@@ -131,7 +164,7 @@ const lists = ref([
           </v-list>
         </v-menu>
 
-        <v-menu transition="slide-y-transition">
+        <v-menu transition="slide-y-transition" v-if="isLogin">
           <template v-slot:activator="{ props }">
             <v-badge
               dot

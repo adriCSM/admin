@@ -6,7 +6,6 @@
         position="fixed"
         elevation="10"
         style="z-index: 99; right: 30px; bottom: 50px"
-        v-if="isLogin"
         icon
         size="50"
         @click="store.commit('mode', !mode)"
@@ -22,22 +21,10 @@
   </v-tooltip>
 </template>
 <script setup>
-import { computed, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
 
 const mode = computed(() => store.state.mode);
-
-onMounted(async () => {
-  if (!store.state.profile.myProfile && store.state.auth.loggedIn) {
-    await store.dispatch('profile/myProfile');
-  }
-});
-const isLogin = computed(() => {
-  if (store.state.auth.loggedIn) {
-    store.dispatch('profile/myProfile');
-  }
-  return store.state.auth.loggedIn;
-});
 </script>

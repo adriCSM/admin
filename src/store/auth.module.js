@@ -28,7 +28,7 @@ export const auth = {
         }
         commit('isLoggedIn', true);
         store.commit('info', `Selamat datang ${userProfile.username}`);
-        router.push({ name: 'Home' });
+        router.push({ name: 'Dashboard' });
       } catch (error) {
         commit('isLoggedIn', false);
         handler.errorHandling(error);

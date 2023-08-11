@@ -35,18 +35,20 @@ const login = async () => {
 </script>
 
 <template>
-  <div class="contain">
+  <div>
     <v-row style="min-height: 100vh">
       <v-col align-self="center" cols="12 " class="d-flex justify-center">
         <v-card class="pa-3 overflow-visible" elevation="20" min-width="300" rounded="lg">
-          <v-card class="bg-teal mt-0 rounded-lg align-end" style="top: -40px" elevation="5">
-            <v-img
-              class="mx-auto my-8"
-              max-width="120"
-              max-height="70px"
-              src="../../../public/LOGO.png"
-            >
-            </v-img>
+          <v-card class="bg-blue mt-0 rounded-lg align-end" style="top: -40px" elevation="5">
+            <router-link to="/">
+              <v-img
+                class="mx-auto my-8"
+                max-width="120"
+                height="70"
+                src="../../assets/logo_am_white.png"
+              >
+              </v-img>
+            </router-link>
           </v-card>
 
           <label for="email" class="text-subtitle-2 text-medium-emphasis">Email</label>
@@ -90,7 +92,7 @@ const login = async () => {
             @keyup.enter="login()"
           ></v-text-field>
 
-          <v-btn block class="mb-8" color="teal" @click="login">
+          <v-btn block class="mb-8" color="blue" @click="login">
             <span class="pe-3"> Log In </span>
             <v-progress-circular :width="6" :size="30" color="white" indeterminate v-show="show">
             </v-progress-circular>
@@ -101,10 +103,4 @@ const login = async () => {
   </div>
 </template>
 
-<style>
-.contain {
-  background-image: url('../../assets/bg.jpeg');
-  background-size: cover;
-  height: max-content;
-}
-</style>
+<style></style>

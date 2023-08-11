@@ -5,8 +5,13 @@ import LoginView from '../views/LoginView.vue';
 const routes = [
   {
     path: '/',
-    name: 'redirect',
-    redirect: '/auth/login',
+    name: 'Home',
+    component: () => import('../views/HomeView.vue'),
+  },
+  {
+    path: '/documentation',
+    name: 'Documentation',
+    component: () => import('../views/DocsView.vue'),
   },
 
   {
@@ -21,9 +26,9 @@ const routes = [
   },
 
   {
-    path: '/home',
-    name: 'Home',
-    component: () => import('../views/HomeView.vue'),
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: () => import('../views/DashboardView.vue'),
   },
 
   {
@@ -120,8 +125,8 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useStore();
-  if (to.name !== 'Login' && to.name !== 'Notfound' && !store.state.auth.loggedIn) {
-    next({ name: 'Login' });
+  if (to.name !== 'Home' && to.name !== 'Notfound' && !store.state.auth.loggedIn) {
+    next();
   } else if (to.name) {
     document.title = `AM || ${to.name}`;
     next();
