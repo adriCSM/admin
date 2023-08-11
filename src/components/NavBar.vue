@@ -85,9 +85,9 @@ watch(props, (value) => {
 const links = ref([
   {
     title: 'Dashboard',
-    value: 'home',
+    value: 'dashboard',
     icon: 'mdi-home-outline',
-    to: { name: 'Home' },
+    to: { name: 'Dashboard' },
   },
 
   {

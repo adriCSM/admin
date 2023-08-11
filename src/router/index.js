@@ -125,8 +125,13 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   const store = useStore();
-  if (to.name !== 'Home' && to.name !== 'Notfound' && !store.state.auth.loggedIn) {
-    next();
+  if (
+    to.name !== 'Home' &&
+    to.name !== 'Login' &&
+    to.name !== 'Notfound' &&
+    !store.state.auth.loggedIn
+  ) {
+    next({ name: 'Home' });
   } else if (to.name) {
     document.title = `AM || ${to.name}`;
     next();

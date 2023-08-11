@@ -112,6 +112,7 @@ const lists = ref([
         </v-btn>
 
         <router-link
+          v-if="!isLogin"
           to="/documentation"
           class="text-decoration-none"
           :class="mode ? 'text-black' : 'text-white'"
