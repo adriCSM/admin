@@ -4,6 +4,10 @@ import authHeader from './auth-header';
 const API_URL = process.env.VUE_APP_API_BASE_URL;
 const BASE_URL = process.env.VUE_APP_BASE_URL;
 
+if (localStorage.getItem('mode') == null) {
+  localStorage.setItem('mode', true);
+}
+
 export default {
   async login(user) {
     const response = await axios.post(
@@ -22,7 +26,6 @@ export default {
     if (response.data.data) {
       localStorage.setItem('user_id', JSON.stringify(response.data.data.refreshToken));
       localStorage.setItem('user', JSON.stringify(response.data.data.accessToken));
-      localStorage.setItem('mode', false);
     }
     return response.data;
   },
