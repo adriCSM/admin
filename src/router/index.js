@@ -128,6 +128,7 @@ router.beforeEach((to, from, next) => {
   if (
     to.name !== 'Home' &&
     to.name !== 'Login' &&
+    to.name !== 'Documentation' &&
     to.name !== 'Notfound' &&
     !store.state.auth.loggedIn
   ) {

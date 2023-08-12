@@ -35,7 +35,7 @@ const pic = computed(() =>
 const logout = async () => {
   await store.dispatch('auth/logout');
   if (!error.value) {
-    router.push({ name: 'Login' });
+    router.push({ name: 'Home' });
   }
 };
 
@@ -113,18 +113,23 @@ const lists = ref([
 
         <router-link
           v-if="!isLogin"
-          to="/documentation"
+          :to="{ name: 'Documentation' }"
           class="text-decoration-none"
           :class="mode ? 'text-black' : 'text-white'"
           >Docs</router-link
         >
 
         <v-spacer v-if="lgUp"></v-spacer>
-        <v-btn variant="text" color="blue" class="me-3 my-2" v-if="!isLogin" :to="{ name: 'Login' }"
+        <v-btn
+          variant="text"
+          :color="mode ? 'blue' : 'white'"
+          class="me-3 my-2"
+          v-if="!isLogin"
+          :to="{ name: 'Login' }"
           >Sign In</v-btn
         >
         <v-btn
-          color="blue"
+          :color="mode ? 'blue' : 'white'"
           variant="outlined"
           v-if="!isLogin"
           @click="router.push({ name: 'Register' })"

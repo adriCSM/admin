@@ -13,19 +13,17 @@
       <router-view />
     </v-main>
     <footer>
-      <div class="text-end px-7 py-3" :class="mode == 'bg' ? 'text-white' : 'text-black'">
-        Copyright &copy; by Adri Mangidi
-      </div>
+      <FooterView />
     </footer>
   </v-app>
 </template>
 
 <script setup>
 import AlertWeb from '@/components/AlertWeb.vue';
-// import LoadProgres from '@/components/LoadProgres.vue';
 import BtnBlobs from '@/components/BtnBlobs.vue';
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
+import FooterView from '@/components/FooterView.vue';
 
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';

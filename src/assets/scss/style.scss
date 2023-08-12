@@ -28,7 +28,10 @@
   cursor: pointer;
 }
 
-.hero {
-  background-image: url('../109715820.jpg');
+.bgHero {
+  background-color: #00000008;
   background-size: cover;
+  background-position: center;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(25px);
 }

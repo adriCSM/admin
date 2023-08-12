@@ -1,5 +1,9 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+const mode = computed(() => store.state.mode);
 
 const icon = ref('mdi-content-copy');
 const copy = () => {
@@ -19,11 +23,11 @@ const copy = () => {
 
 <template>
   <v-row>
-    <v-col md="2" class="bg-grey h-screen">
+    <v-col md="2" class="h-screen" :class="mode ? 'bg-white text-black ' : 'bg-element text-white'">
       <v-list class="bg-transparent" nav>
-        <v-list-item to="/" class="text-white" active-class="bg-blue">User</v-list-item>
+        <v-list-item to="/" active-class="bg-blue">User</v-list-item>
 
-        <v-list-item to="/" class="text-white">Product</v-list-item>
+        <v-list-item to="/">Product</v-list-item>
       </v-list>
     </v-col>
     <v-col md="10" class="px-2">
