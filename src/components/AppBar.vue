@@ -66,9 +66,7 @@ const lists = ref([
     flat
     color="transparent"
     height="auto"
-    v-if="
-      router.currentRoute.value.name !== 'Notfound' && router.currentRoute.value.name !== 'Login'
-    "
+    v-if="router.currentRoute.value.name !== 'Notfound'"
   >
     <v-container fluid class="mx-3">
       <v-card

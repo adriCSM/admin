@@ -19,10 +19,6 @@
   color: white;
   background-color: var(--bg);
 }
-.bgLight {
-  color: #b3bec5;
-  background-color: var(--bgLight);
-}
 
 .avtr {
   cursor: pointer;
@@ -34,4 +30,7 @@
   background-position: center;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(25px);
+}
+.v-btn--active {
+  background-color: #2196f305;
 }

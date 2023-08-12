@@ -12,9 +12,7 @@
       <BtnBlobs />
       <router-view />
     </v-main>
-    <footer>
-      <FooterView />
-    </footer>
+    <footer><FooterView /></footer>
   </v-app>
 </template>
 
@@ -33,7 +31,7 @@ const router = useRouter();
 const store = useStore();
 const mode = computed(() => {
   if (store.state.mode) {
-    return 'bgLight';
+    return 'bgLight ';
   } else {
     return 'bg';
   }
