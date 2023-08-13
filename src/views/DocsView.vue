@@ -28,7 +28,7 @@ const mode = computed(() => {
 </script>
 
 <template>
-  <v-container class="" fluid>
+  <v-container fluid>
     <v-row>
       <v-col md="2" class="h-screen" :class="mode">
         <v-list class="bg-transparent" nav>
@@ -37,9 +37,9 @@ const mode = computed(() => {
           <v-list-item to="/">Product</v-list-item>
         </v-list>
       </v-col>
-      <v-col md="10" class="px-10">
+      <v-col md="10" class="px-10 overflow-y-auto" style="max-height: 100vh">
         <section id="addUsers">
-          <h5>POST Users</h5>
+          <h5 class="text-blue font-weight-bold">POST Users</h5>
           <h6>Endpoint</h6>
           <v-card width="100%" class="pa-5 my-5">
             <code class="code">
@@ -80,7 +80,7 @@ const mode = computed(() => {
           </v-card>
         </section>
         <section id="getUsers">
-          <h5>GET Users</h5>
+          <h5 class="text-blue font-weight-bold">GET Users</h5>
           <h6>Endpoint</h6>
           <v-card width="100%" class="pa-5 my-5">
             <code class="code">
