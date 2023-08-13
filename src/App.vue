@@ -31,7 +31,7 @@ const router = useRouter();
 const store = useStore();
 const mode = computed(() => {
   if (store.state.mode) {
-    return 'bgLight ';
+    return 'bg-light ';
   } else {
     return 'bg';
   }

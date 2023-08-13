@@ -3,11 +3,17 @@ import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
-const mode = computed(() => store.state.mode);
+const mode = computed(() => {
+  if (store.state.mode) {
+    return 'bg-white text-black ';
+  } else {
+    return 'bg-element text-white';
+  }
+});
 
 const icon = ref('mdi-content-copy');
 const copy = () => {
-  const a = document.querySelector('code').innerHTML;
+  const a = document.querySelector('code').innerText;
   const input = document.createElement('input');
   input.setAttribute('value', a);
   document.body.appendChild(input);
@@ -23,7 +29,7 @@ const copy = () => {
 
 <template>
   <v-row>
-    <v-col md="2" class="h-screen" :class="mode ? 'bg-white text-black ' : 'bg-element text-white'">
+    <v-col md="2" class="h-screen" :class="mode">
       <v-list class="bg-transparent" nav>
         <v-list-item to="/" active-class="bg-blue">User</v-list-item>
 
@@ -32,11 +38,20 @@ const copy = () => {
     </v-col>
     <v-col md="10" class="px-2">
       <code class="code">
-        <div>
-          <span class="text-red">Get </span> <span class="text-white"> /users</span>
-          <v-spacer></v-spacer
-          ><v-btn :icon="icon" color="black" @click="copy" variant="text"></v-btn>
-        </div>
+        <v-row class="me-7 ms-3" :class="mode">
+          <v-col>
+            <div class="bg-grey">
+              <v-btn
+                location="right"
+                :icon="icon"
+                color="black"
+                @click="copy"
+                variant="text"
+              ></v-btn>
+            </div>
+            <div><span class="text-red">Get </span> <span> /users</span></div>
+          </v-col>
+        </v-row>
       </code>
     </v-col>
   </v-row>
