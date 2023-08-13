@@ -6,11 +6,11 @@
     :class="mode ? 'bg-light text-black' : 'bg text-white'"
   >
     <v-row v-if="!isLogin && router.currentRoute.value.name == 'Home'">
-      <v-col class="d-flex flex-column">
+      <v-col class="d-flex flex-column w-auto">
         <v-img src="../assets/logo_am.png" width="80"></v-img>
         <v-spacer></v-spacer>
         <div>
-          <v-btn icon="mdi-facebook" color="blue" variant="tonal" class="text-h6"></v-btn>
+          <v-btn icon="mdi-facebook" color="blue" variant="tonal" class="text-h6 w-auto"></v-btn>
           <v-btn icon="mdi-instagram" color="pink-darken-1" variant="tonal" class="text-h6"></v-btn>
           <v-btn icon="mdi-twitter" color="blue" variant="tonal" class="text-h6"></v-btn>
           <v-btn icon="mdi-github" color="black" variant="tonal" class="text-h6"></v-btn>

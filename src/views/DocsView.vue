@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -11,48 +11,133 @@ const mode = computed(() => {
   }
 });
 
-const icon = ref('mdi-content-copy');
-const copy = () => {
-  const a = document.querySelector('code').innerText;
-  const input = document.createElement('input');
-  input.setAttribute('value', a);
-  document.body.appendChild(input);
-  input.select();
-  document.execCommand('copy');
-  input.parentNode.removeChild(input);
-  icon.value = 'mdi-check';
-  setTimeout(() => {
-    icon.value = 'mdi-content-copy';
-  }, 2000);
-};
+// const icon = ref('mdi-content-copy');
+// const copy = () => {
+//   const a = document.querySelector('code').innerText;
+//   const input = document.createElement('input');
+//   input.setAttribute('value', a);
+//   document.body.appendChild(input);
+//   input.select();
+//   document.execCommand('copy');
+//   input.parentNode.removeChild(input);
+//   icon.value = 'mdi-check';
+//   setTimeout(() => {
+//     icon.value = 'mdi-content-copy';
+//   }, 2000);
+// };
 </script>
 
 <template>
-  <v-row>
-    <v-col md="2" class="h-screen" :class="mode">
-      <v-list class="bg-transparent" nav>
-        <v-list-item to="/" active-class="bg-blue">User</v-list-item>
+  <v-container class="" fluid>
+    <v-row>
+      <v-col md="2" class="h-screen" :class="mode">
+        <v-list class="bg-transparent" nav>
+          <v-list-item to="/" active-class="bg-blue">User</v-list-item>
 
-        <v-list-item to="/">Product</v-list-item>
-      </v-list>
-    </v-col>
-    <v-col md="10" class="px-2">
-      <code class="code">
-        <v-row class="me-7 ms-3" :class="mode">
-          <v-col>
-            <div class="bg-grey">
-              <v-btn
-                location="right"
-                :icon="icon"
-                color="black"
-                @click="copy"
-                variant="text"
-              ></v-btn>
-            </div>
-            <div><span class="text-red">Get </span> <span> /users</span></div>
-          </v-col>
-        </v-row>
-      </code>
-    </v-col>
-  </v-row>
+          <v-list-item to="/">Product</v-list-item>
+        </v-list>
+      </v-col>
+      <v-col md="10" class="px-10">
+        <section id="addUsers">
+          <h5>POST Users</h5>
+          <h6>Endpoint</h6>
+          <v-card width="100%" class="pa-5 my-5">
+            <code class="code">
+              <v-row elevation="9">
+                <v-col cols="12">
+                  <div><span class="text-red">POST </span> <span> /users</span></div>
+                </v-col>
+              </v-row>
+            </code>
+          </v-card>
+          <h6>Payload</h6>
+          <v-card class="my-5">
+            <pre>
+              <code >
+      {
+        "username":"adri",
+        "phoneNumber": "081234567890",
+        "email":"adri@gmail.com",
+        "password": "#Adricsm10",
+        "confirmPassword":"#Adricsm10"
+      }
+              </code>
+            </pre>
+          </v-card>
+          <h6>Response</h6>
+          <v-card class="my-5">
+            <pre>
+              <code>
+      {
+        "status": "success",
+        "message": "Akun berhasil dibuat",
+        "data": {
+          "userId": "64cbce0c7a4d8fc56d322b80"
+        }
+      }
+              </code>
+            </pre>
+          </v-card>
+        </section>
+        <section id="getUsers">
+          <h5>GET Users</h5>
+          <h6>Endpoint</h6>
+          <v-card width="100%" class="pa-5 my-5">
+            <code class="code">
+              <v-row elevation="9">
+                <!-- <v-col cols="12" class="text-end">
+                  <v-btn
+                    :icon="icon"
+                    :color="mode == 'bg-white text-black ' ? 'black' : 'white'"
+                    @click="copy"
+                    variant="text"
+                  ></v-btn>
+                </v-col> -->
+
+                <v-col cols="12">
+                  <div><span class="text-red">Get </span> <span> /users</span></div>
+                </v-col>
+              </v-row>
+            </code>
+          </v-card>
+          <h6>Headers</h6>
+          <v-card class="my-5">
+            <pre>
+              <code >
+      { 
+        Headers: { 
+          Authorization: Bearer &lt;accessToken&gt; 
+        } 
+      }
+              </code>
+            </pre>
+          </v-card>
+          <h6>Response</h6>
+          <v-card class="my-5">
+            <pre>
+              <code>
+      {
+        "status":"success",
+        "data": [
+        {
+        "_id": "64a80dd2082ef6f61e879677",
+        "username": "adri",
+        "phone_number": "081234567890",
+        "email": "adri@gmail.com",
+        "role": "adri",
+        "pic": "https://img.icons8.com/ios-filled/50/000000/user-male-circle.png",
+        "createdAt": "2023-07-07T13:06:26.860Z",
+        "updatedAt": "2023-08-03T15:40:00.052Z",
+        "__v": 0,
+        "isOnline": true
+        },
+        ...
+      }
+              </code>
+            </pre>
+          </v-card>
+        </section>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>

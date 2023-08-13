@@ -114,7 +114,7 @@ const lists = ref([
           :to="{ name: 'Documentation' }"
           class="text-decoration-none"
           :class="mode ? 'text-black' : 'text-white'"
-          >Docs</router-link
+          >Documentation</router-link
         >
 
         <v-spacer v-if="lgUp"></v-spacer>
