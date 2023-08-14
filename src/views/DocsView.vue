@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -11,20 +11,20 @@ const mode = computed(() => {
   }
 });
 
-// const icon = ref('mdi-content-copy');
-// const copy = () => {
-//   const a = document.querySelector('code').innerText;
-//   const input = document.createElement('input');
-//   input.setAttribute('value', a);
-//   document.body.appendChild(input);
-//   input.select();
-//   document.execCommand('copy');
-//   input.parentNode.removeChild(input);
-//   icon.value = 'mdi-check';
-//   setTimeout(() => {
-//     icon.value = 'mdi-content-copy';
-//   }, 2000);
-// };
+const icon = ref('mdi-content-copy');
+const copy = () => {
+  const a = document.querySelector('.payloadUsers').innerText;
+  const input = document.createElement('input');
+  input.setAttribute('value', a);
+  document.body.appendChild(input);
+  input.select();
+  document.execCommand('copy');
+  input.parentNode.removeChild(input);
+  icon.value = 'mdi-check';
+  setTimeout(() => {
+    icon.value = 'mdi-content-copy';
+  }, 2000);
+};
 </script>
 
 <template>
@@ -32,8 +32,8 @@ const mode = computed(() => {
     <v-row>
       <v-col md="2" class="h-screen" :class="mode">
         <v-list class="bg-transparent" nav>
+          <v-list-item to="/">Authentication</v-list-item>
           <v-list-item to="/" active-class="bg-blue">User</v-list-item>
-
           <v-list-item to="/">Product</v-list-item>
         </v-list>
       </v-col>
@@ -41,19 +41,21 @@ const mode = computed(() => {
         <section id="addUsers">
           <h5 class="text-blue font-weight-bold">POST Users</h5>
           <h6>Endpoint</h6>
-          <v-card width="100%" class="pa-5 my-5">
-            <code class="code">
-              <v-row elevation="9">
-                <v-col cols="12">
-                  <div><span class="text-red">POST </span> <span> /users</span></div>
-                </v-col>
-              </v-row>
-            </code>
+          <v-card width="100%" height="auto" class="my-5" :class="mode">
+            <v-card-title class="text-body-1"> POST /users </v-card-title>
           </v-card>
           <h6>Payload</h6>
-          <v-card class="my-5">
+          <v-card class="my-5" :class="mode">
+            <v-col cols="12" class="text-end bg-grey-darken-2">
+              <v-btn
+                :icon="icon"
+                :color="mode == 'bg-white text-black ' ? 'black' : 'white'"
+                @click="copy"
+                variant="tonal"
+              ></v-btn>
+            </v-col>
             <pre>
-              <code >
+              <code class="payloadUsers">
       {
         "username":"adri",
         "phoneNumber": "081234567890",
@@ -65,7 +67,7 @@ const mode = computed(() => {
             </pre>
           </v-card>
           <h6>Response</h6>
-          <v-card class="my-5">
+          <v-card class="my-5" :class="mode">
             <pre>
               <code>
       {
@@ -82,26 +84,11 @@ const mode = computed(() => {
         <section id="getUsers">
           <h5 class="text-blue font-weight-bold">GET Users</h5>
           <h6>Endpoint</h6>
-          <v-card width="100%" class="pa-5 my-5">
-            <code class="code">
-              <v-row elevation="9">
-                <!-- <v-col cols="12" class="text-end">
-                  <v-btn
-                    :icon="icon"
-                    :color="mode == 'bg-white text-black ' ? 'black' : 'white'"
-                    @click="copy"
-                    variant="text"
-                  ></v-btn>
-                </v-col> -->
-
-                <v-col cols="12">
-                  <div><span class="text-red">Get </span> <span> /users</span></div>
-                </v-col>
-              </v-row>
-            </code>
+          <v-card width="100%" height="auto" class="my-5" :class="mode">
+            <v-card-title class="text-body-1"> GET /users </v-card-title>
           </v-card>
           <h6>Headers</h6>
-          <v-card class="my-5">
+          <v-card class="my-5" :class="mode">
             <pre>
               <code >
       { 
@@ -113,7 +100,7 @@ const mode = computed(() => {
             </pre>
           </v-card>
           <h6>Response</h6>
-          <v-card class="my-5">
+          <v-card class="my-5" :class="mode">
             <pre>
               <code>
       {
