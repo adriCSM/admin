@@ -25,6 +25,15 @@ const mode = computed(() => {
         </v-list>
       </v-col>
       <v-col md="10" class="px-10 overflow-y-auto" style="max-height: 100vh">
+        <p>
+          Untuk sementara konten pada dokumnetasi API ini masih belum lengakap. untuk lebih jelasnya
+          anda dapat mengunjungi repositori github berikut
+          <a href="https://github.com/adriCSM/admin" target="_blank"
+            >https://github.com/adriCSM/admin</a
+          >
+          untuk melihat source codenya. silakan beri komentar dan masukan bila terdapta kekurangan
+          ataupun kesalahan dalam code saya.
+        </p>
         <section id="addUsers">
           <h5 class="text-blue font-weight-bold">POST Users</h5>
           <h6>Endpoint</h6>
@@ -62,6 +71,7 @@ const mode = computed(() => {
             </pre>
           </v-card>
         </section>
+        <v-divider :color="mode" class="py-5"></v-divider>
         <section id="getUsers">
           <h5 class="text-blue font-weight-bold">GET Users</h5>
           <h6>Endpoint</h6>
