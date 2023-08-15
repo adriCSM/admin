@@ -85,7 +85,7 @@ const mode = computed(() => {
           <h6>Response</h6>
           <v-card class="my-5" :class="mode">
             <BtnCopy class-name="responseGetUsers" />
-            <pre>
+            <pre class="responseGetUsers">
               <code>
       {
         "status":"success",
