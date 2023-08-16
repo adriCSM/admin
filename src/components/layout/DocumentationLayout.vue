@@ -46,9 +46,9 @@ const mode = computed(() => {
           </v-card>
           <h6>Payload</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="payloadAuthUsers" />
+            <BtnCopy class-name="postAuthPayload" />
             <pre>
-              <code class="payloadAuthUsers">
+              <code class="postAuthPayload">
       {
         "email":"adri@gmail.com",
         "password": "#Adricsm10",
@@ -58,8 +58,8 @@ const mode = computed(() => {
           </v-card>
           <h6>Response</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="authPostResponse" />
-            <pre class="authPostResponse">
+            <BtnCopy class-name="postAuthResponse" />
+            <pre class="postAuthResponse">
               <code>
       {
         "status": "success",
@@ -114,9 +114,9 @@ const mode = computed(() => {
           </v-card>
           <h6>Headers</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="putAuthPaylod" />
+            <BtnCopy class-name="deleteAuthHeaders" />
             <pre>
-              <code class="putAuthPaylod">
+              <code class="deleteAuthHeaders">
       { 
         Headers: { 
           Authorization: Bearer &lt;accessToken&gt; 
@@ -127,8 +127,8 @@ const mode = computed(() => {
           </v-card>
           <h6>Response</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="putAuthResponse" />
-            <pre class="putAuthResponse">
+            <BtnCopy class-name="deleteAuthResponse" />
+            <pre class="deleteAuthResponse">
               <code>
       {
         "status": "success",
@@ -149,9 +149,9 @@ const mode = computed(() => {
           </v-card>
           <h6>Payload</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="payloadUsers" />
+            <BtnCopy class-name="postUsersPayload" />
             <pre>
-              <code class="payloadUsers">
+              <code class="postUsersPayload">
       {
         "username":"adri",
         "phoneNumber": "081234567890",
@@ -164,8 +164,8 @@ const mode = computed(() => {
           </v-card>
           <h6>Response</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="usersResponse" />
-            <pre class="usersResponse">
+            <BtnCopy class-name="postUsersResponse" />
+            <pre class="postUsersResponse">
               <code>
       {
         "status": "success",
@@ -187,9 +187,9 @@ const mode = computed(() => {
           </v-card>
           <h6>Headers</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="headersGetUsers" />
+            <BtnCopy class-name="getUsersHeaders" />
 
-            <pre class="headersGetUsers">
+            <pre class="getUsersHeaders">
               <code >
       { 
         Headers: { 
@@ -201,8 +201,8 @@ const mode = computed(() => {
           </v-card>
           <h6>Response</h6>
           <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="responseGetUsers" />
-            <pre class="responseGetUsers">
+            <BtnCopy class-name="getUsersResponse" />
+            <pre class="getUsersResponse">
               <code>
       {
         "status":"success",
