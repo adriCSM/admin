@@ -12,6 +12,8 @@ const mode = computed(() => {
     return 'bg-element text-white';
   }
 });
+// const Properti = 'text-orange';
+// const value = 'text-blue';
 </script>
 
 <template>
@@ -137,7 +139,7 @@ const mode = computed(() => {
           </v-card>
         </section>
 
-        <v-divider color="blue" class="py-5 opacity-100" thickness="6"></v-divider>
+        <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
 
         <section id="addUsers">
           <h5 class="text-blue font-weight-bold">POST Users</h5>
@@ -176,8 +178,6 @@ const mode = computed(() => {
             </pre>
           </v-card>
         </section>
-
-        <v-divider :color="mode" class="py-5"></v-divider>
 
         <section id="getUsers">
           <h5 class="text-blue font-weight-bold">GET Users</h5>
@@ -226,6 +226,8 @@ const mode = computed(() => {
             </pre>
           </v-card>
         </section>
+
+        <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
       </v-col>
     </v-row>
   </v-container>
