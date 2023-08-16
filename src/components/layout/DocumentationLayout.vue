@@ -71,8 +71,6 @@ const mode = computed(() => {
           </v-card>
         </section>
 
-        <v-divider :color="mode" class="py-5"></v-divider>
-
         <section id="putAuthentication">
           <h5 class="text-blue font-weight-bold">PUT Authentication</h5>
           <h6>Endpoint</h6>
@@ -105,8 +103,6 @@ const mode = computed(() => {
             </pre>
           </v-card>
         </section>
-
-        <v-divider :color="mode" class="py-5"></v-divider>
 
         <section id="deleteAuthentication">
           <h5 class="text-blue font-weight-bold">DELETE Authentication</h5>
@@ -141,7 +137,7 @@ const mode = computed(() => {
           </v-card>
         </section>
 
-        <v-divider :color="mode" class="py-5"></v-divider>
+        <v-divider color="blue" class="py-5 opacity-100" thickness="6"></v-divider>
 
         <section id="addUsers">
           <h5 class="text-blue font-weight-bold">POST Users</h5>
