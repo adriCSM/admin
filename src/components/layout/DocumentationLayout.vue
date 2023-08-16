@@ -19,14 +19,14 @@ const mode = computed(() => {
 <template>
   <v-container fluid>
     <v-row>
-      <v-col md="2" class="h-screen" :class="mode">
+      <v-col md="2" class="h-screen" :class="mode" style="max-height: 80vh">
         <v-list class="bg-transparent" nav>
           <v-list-item to="/">Authentication</v-list-item>
           <v-list-item to="/" active-class="bg-blue">User</v-list-item>
           <v-list-item to="/">Product</v-list-item>
         </v-list>
       </v-col>
-      <v-col md="10" class="px-10 overflow-y-auto" style="max-height: 100vh">
+      <v-col md="10" class="px-10 overflow-y-auto" style="max-height: 80vh">
         <p>
           Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
           dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
