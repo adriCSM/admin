@@ -8,12 +8,17 @@ const routes = [
     name: 'Home',
     component: () => import('../views/HomeView.vue'),
   },
+
   {
     path: '/documentation',
     name: 'Documentation',
     component: () => import('../views/DocsView.vue'),
   },
-
+  {
+    path: '/donation',
+    name: 'Donation',
+    component: () => import('../views/DonationView.vue'),
+  },
   {
     path: '/auth/login',
     name: 'Login',
@@ -129,6 +134,7 @@ router.beforeEach((to, from, next) => {
     to.name !== 'Home' &&
     to.name !== 'Login' &&
     to.name !== 'Documentation' &&
+    to.name !== 'Donation' &&
     to.name !== 'Notfound' &&
     !store.state.auth.loggedIn
   ) {

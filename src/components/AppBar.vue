@@ -66,7 +66,9 @@ const lists = ref([
     flat
     color="transparent"
     height="auto"
-    v-if="router.currentRoute.value.name !== 'Notfound'"
+    v-if="
+      router.currentRoute.value.name !== 'Donation' && router.currentRoute.value.name !== 'Notfound'
+    "
   >
     <v-container fluid class="mx-3">
       <v-card
@@ -118,21 +120,36 @@ const lists = ref([
         >
 
         <v-spacer v-if="lgUp"></v-spacer>
-        <v-btn
-          variant="text"
-          :color="mode ? 'blue' : 'white'"
-          class="me-3 my-2"
-          v-if="!isLogin"
-          :to="{ name: 'Login' }"
-          >Sign In</v-btn
-        >
-        <v-btn
-          :color="mode ? 'blue' : 'white'"
-          variant="outlined"
-          v-if="!isLogin"
-          @click="router.push({ name: 'Register' })"
-          >Sign Up</v-btn
-        >
+        <v-hover>
+          <template v-slot:default="{ isHovering, props }">
+            <v-btn
+              v-bind="props"
+              :elevation="isHovering ? '6' : '2'"
+              rounded="pill"
+              :variant="isHovering ? 'flat' : 'outlined'"
+              color="blue"
+              v-if="!isLogin"
+              :to="{ name: 'Login' }"
+              class="me-3 my-2"
+              >Sign In</v-btn
+            >
+          </template>
+        </v-hover>
+        <v-hover>
+          <template v-slot:default="{ isHovering, props }">
+            <v-btn
+              v-bind="props"
+              :elevation="isHovering ? '6' : '2'"
+              rounded="pill"
+              :variant="isHovering ? 'flat' : 'tonal'"
+              color="blue"
+              v-if="!isLogin"
+              :to="{ name: 'Login' }"
+              class="me-3 my-2"
+              >Sign Up</v-btn
+            >
+          </template>
+        </v-hover>
 
         <v-menu transition="slide-y-transition" location="bottom" v-if="isLogin">
           <template v-slot:activator="{ props }">
