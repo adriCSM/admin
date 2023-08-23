@@ -26,7 +26,7 @@ const mode = computed(() => {
           <v-list-item to="/">Product</v-list-item>
         </v-list>
       </v-col>
-      <v-col md="10" class="px-10 overflow-y-auto" style="max-height: 80vh">
+      <v-col cols="12" md="auto" class="px-10 overflow-y-auto" style="max-height: 80vh">
         <p>
           Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
           dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
