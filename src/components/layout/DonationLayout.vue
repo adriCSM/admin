@@ -1,59 +1,81 @@
-<!-- <template>
-  <div class="text-center">
-    <v-hover>
-      <template v-slot:default="{ isHovering, props }">
-        <v-btn
-          variant="tonal"
-          v-bind="props"
-          color="blue"
-          :class="isHovering ? ' font-weight-bold  text-white' : null"
-          rounded="pill"
-          :elevation="isHovering ? '6' : '2'"
-        >
-          Donasi
+<script setup>
+import router from '@/router';
+import vuetify from '@/plugins/vuetify';
+import { computed } from 'vue';
 
-          <v-dialog
-            v-model="dialog"
-            class="centered-card"
-            position="absolute"
-            activator="parent"
-            width="auto"
-          >
-            <v-card>
-              <v-card-text>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua.
-              </v-card-text>
-              <v-card-actions>
-                <v-btn color="primary" block @click.stop="dialog = false">Close Dialog</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
-        </v-btn></template
-      ></v-hover
-    >
-  </div>
-</template> -->
+const xs = computed(() => vuetify.display.xs.value);
 
+const back = () => {
+  router.go(-1);
+};
+</script>
 <template>
   <v-container>
-    <v-row justify="center" class="h-screen">
+    <v-row justify="center" style="min-height: 100vh" class="h-auto">
       <v-col cols="auto" align-self="center">
-        <v-card min-height="80vh" min-width="60vw" max-width="60vw" elevation="2" rounded="xl">
+        <v-card
+          min-height="80vh"
+          :min-width="xs ? '80vw' : '60vw'"
+          :max-width="xs ? '80vw' : '60vw'"
+          elevation="2"
+          rounded="xl"
+          class="d-flex"
+          :class="xs ? 'flex-column' : 'flex-row'"
+        >
+          <v-btn
+            @click="back"
+            icon="mdi-arrow-left"
+            color="blue"
+            position="absolute"
+            style="z-index: 99"
+          ></v-btn>
           <v-row>
-            <v-col md="6" align-self="center"
-              ><v-img src="../../assets/109715820.jpg" height="screen" cover></v-img
-            ></v-col>
-            <v-col md="6" align-self="center" class="pa-15">
-              <v-card-title>Username</v-card-title>
-              <v-text-field variant="outlined" color="blue" base-color="blue" density="compact">
+            <v-col md="6">
+              <v-img
+                src="../../assets/bg-donasi.jpg"
+                min-width="100%"
+                min-height="100%"
+                cover
+              ></v-img>
+            </v-col>
+
+            <v-col class="pa-md-15 pa-10" cols="12" md="6" align-self="center">
+              <p class="mb-0">Email</p>
+
+              <v-text-field
+                class="py-0"
+                variant="outlined"
+                color="blue"
+                base-color="blue"
+                density="compact"
+                required="true"
+              >
               </v-text-field>
-              <v-card-title>Password </v-card-title>
-              <v-text-field variant="outlined" color="blue" base-color="blue" density="compact">
+
+              <p class="mb-0">Password</p>
+              <v-text-field
+                variant="outlined"
+                class="py-0"
+                color="blue"
+                base-color="blue"
+                density="compact"
+              >
               </v-text-field>
-              <v-card-title>Amount </v-card-title>
-              <v-text-field variant="outlined" color="blue" base-color="blue" density="compact">
-              </v-text-field>
+
+              <p class="mb-0">Amount</p>
+              <v-select
+                class="py-0"
+                color="blue"
+                base-color="blue"
+                label="Select"
+                :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                variant="outlined"
+                density="compact"
+                hide-details="true"
+              ></v-select>
+
+              <v-checkbox color="blue" label="Yakin?" class="py-0" hide-details="true"></v-checkbox>
+
               <v-hover>
                 <template v-slot:default="{ isHovering, props }">
                   <v-btn
@@ -75,10 +97,3 @@
     </v-row>
   </v-container>
 </template>
-<script>
-export default {
-  data: () => ({
-    dialog: false,
-  }),
-};
-</script>
