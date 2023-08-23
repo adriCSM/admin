@@ -1,0 +1,37 @@
+# config app
+PORT =
+HOST=
+
+# mongoose config mongodb atlas
+MONGODB_URI=
+# mongoose config local
+MONGODB_URI= mongodb://0.0.0.0:27017/store
+
+# config @hapi/jwt
+REFRESH_TOKEN_KEY=
+ACCESS_TOKEN_KEY=
+ACCESS_TOKEN_AGE=
+REFRESH_TOKEN_AGE=
+
+# config Firebase
+FB_API_KEY=
+FB_AUTH_DOMAIN= 
+FB_PROJECT_ID= 
+FB_STORAGE_BUCKET= 
+FB_MESSAGING_SENDER_ID= 
+FB_APP_ID= 
+FB_MEASUREMENT_ID=
+
+# cache server-side redis railway
+ REDIS_URL= 
+# cache server-side redis local
+REDIS_HOST=
+# cache server-side redis varcel/kv config
+KV_URL=
+KV_REST_API_URL=
+KV_REST_API_TOKEN=
+KV_REST_API_READ_ONLY_TOKEN=
+# config nodemailer
+EMAIL=  # from email  app google
+PASSWORD=    # from password  app google
+
