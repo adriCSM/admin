@@ -82,6 +82,7 @@ const init = async () => {
           'https://am-admin.netlify.app',
           'https://adricsm.github.io',
           'https://am-store.netlify.app',
+          'https://admin.adri-csm.my.id',
         ],
         additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
