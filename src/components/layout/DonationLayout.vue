@@ -40,6 +40,7 @@ const back = () => {
   router.go(-1);
 };
 </script>
+
 <template>
   <v-container>
     <v-row justify="center" style="min-height: 100vh" class="h-auto">
