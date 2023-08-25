@@ -47,6 +47,7 @@ class MidtransService {
       };
 
       const transaction = await this.snap.createTransaction(parameter);
+
       return transaction;
     } catch (error) {
       throw new InvariantError(error.message);
