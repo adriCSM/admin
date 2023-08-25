@@ -16,6 +16,11 @@ import AuthenticationService from './services/mongodb/AuthenticationsService.js'
 import AuthenticationValidator from './validators/Authentication/index.js';
 import TokenManager from './token/TokenManager.js';
 
+// PAYMENT
+
+import payment from './api/payment/index.js';
+import MidtransService from './services/midtrans/Midtrans.Service.js';
+
 // PORTOFOLIO PROJECTS
 import projects from './api/portofolio/Projects/index.js';
 import ProjectsService from './services/mongodb/portofolio/ProjectsService.js';
@@ -62,6 +67,8 @@ const init = async () => {
   const cacheService = new CacheService();
   const usersService = new UsersService(firebaseService);
   const authenticationsService = new AuthenticationService();
+
+  const midtransService = new MidtransService();
 
   const projectsService = new ProjectsService(firebaseService);
   const certificatesService = new CertificatesService(firebaseService);
@@ -181,6 +188,13 @@ const init = async () => {
       options: {
         contactService,
         usersService,
+        validator: ContactValidator,
+      },
+    },
+    {
+      plugin: payment,
+      options: {
+        midtransService,
         validator: ContactValidator,
       },
     },
