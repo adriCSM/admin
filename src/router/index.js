@@ -20,6 +20,11 @@ const routes = [
     component: () => import('../views/DonationView.vue'),
   },
   {
+    path: '/donation/success',
+    name: 'Donation Success',
+    component: () => import('../views/DonationSuccess.vue'),
+  },
+  {
     path: '/auth/login',
     name: 'Login',
     component: LoginView,
@@ -132,6 +137,7 @@ router.beforeEach((to, from, next) => {
   const store = useStore();
   if (
     to.name !== 'Home' &&
+    to.name !== 'Donation Success' &&
     to.name !== 'Login' &&
     to.name !== 'Documentation' &&
     to.name !== 'Donation' &&

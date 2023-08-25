@@ -40,7 +40,7 @@ const back = () => {
             </v-col>
 
             <v-col class="pa-md-15 pa-10" cols="12" md="6" align-self="center">
-              <p class="mb-0">Email</p>
+              <p class="mb-0">Name</p>
 
               <v-text-field
                 class="py-0"
@@ -52,8 +52,10 @@ const back = () => {
               >
               </v-text-field>
 
-              <p class="mb-0">Password</p>
+              <p class="mb-0">Email</p>
               <v-text-field
+                type="email"
+                name="email"
                 variant="outlined"
                 class="py-0"
                 color="blue"
@@ -62,13 +64,13 @@ const back = () => {
               >
               </v-text-field>
 
-              <p class="mb-0">Amount</p>
+              <p class="mb-0">Donation Amount (Rp)</p>
               <v-select
                 class="py-0"
                 color="blue"
                 base-color="blue"
                 label="Select"
-                :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+                :items="[5000, 20000, 50000, 100000, 500000, 1000000]"
                 variant="outlined"
                 density="compact"
                 hide-details="true"

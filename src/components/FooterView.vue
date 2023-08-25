@@ -2,6 +2,7 @@
   <div
     v-if="
       router.currentRoute.value.name !== 'Donation' &&
+      router.currentRoute.value.name !== 'Donation Success' &&
       router.currentRoute.value.name !== 'Notfound' &&
       router.currentRoute.value.name !== 'Login'
     "
