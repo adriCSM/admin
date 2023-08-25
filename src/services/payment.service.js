@@ -11,8 +11,6 @@ export default {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          Authorization:
-            'Basic ' + Buffer.from(process.env.VUE_APP_MIDTRANS_SERVER_KEY).toString('base64'),
         },
       },
     );
