@@ -1,10 +1,41 @@
 <script setup>
 import router from '@/router';
 import vuetify from '@/plugins/vuetify';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
 
 const xs = computed(() => vuetify.display.xs.value);
+const store = useStore();
 
+const payload = ref({
+  firstName: '',
+  lastName: '',
+  email: '',
+  grossAmount: 0,
+});
+const selected = ref(false);
+
+const pay = async () => {
+  const token = await store.dispatch('payment/donation', payload.value);
+
+  window.snap.pay(token, {
+    onSuccess: function (result) {
+      store.commit('success', 'Donasi berhasil terkirim');
+      router.push({ name: 'Donation Success' });
+      console.log(result.transaction_status);
+    },
+    onPending: function (result) {
+      console.log(result.transaction_status);
+    },
+    onError: function (result) {
+      store.commit('error', 'Gagal melakukan donasi');
+      console.log(result.transaction_status);
+    },
+    onClose: function () {
+      console.log('customer closed the popup without finishing the payment');
+    },
+  });
+};
 const back = () => {
   router.go(-1);
 };
@@ -40,9 +71,22 @@ const back = () => {
             </v-col>
 
             <v-col class="pa-md-15 pa-10" cols="12" md="6" align-self="center">
-              <p class="mb-0">Name</p>
+              <p class="mb-0">Firs Name</p>
 
               <v-text-field
+                v-model="payload.firstName"
+                class="py-0"
+                variant="outlined"
+                color="blue"
+                base-color="blue"
+                density="compact"
+                required="true"
+              >
+              </v-text-field>
+              <p class="mb-0">Last Name</p>
+
+              <v-text-field
+                v-model="payload.lastName"
                 class="py-0"
                 variant="outlined"
                 color="blue"
@@ -54,6 +98,7 @@ const back = () => {
 
               <p class="mb-0">Email</p>
               <v-text-field
+                v-model="payload.email"
                 type="email"
                 name="email"
                 variant="outlined"
@@ -66,6 +111,7 @@ const back = () => {
 
               <p class="mb-0">Donation Amount (Rp)</p>
               <v-select
+                v-model="payload.grossAmount"
                 class="py-0"
                 color="blue"
                 base-color="blue"
@@ -76,7 +122,13 @@ const back = () => {
                 hide-details="true"
               ></v-select>
 
-              <v-checkbox color="blue" label="Yakin?" class="py-0" hide-details="true"></v-checkbox>
+              <v-checkbox
+                v-model="selected"
+                color="blue"
+                label="Yakin?"
+                class="py-0"
+                hide-details="true"
+              ></v-checkbox>
 
               <v-hover>
                 <template v-slot:default="{ isHovering, props }">
@@ -87,7 +139,8 @@ const back = () => {
                     width="100%"
                     :variant="isHovering ? 'flat' : 'outlined'"
                     color="blue"
-                    to="/donation"
+                    @click="pay"
+                    :disabled="!selected"
                     >Donasi</v-btn
                   >
                 </template>

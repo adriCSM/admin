@@ -6,6 +6,7 @@ import { certificates } from './certificate.module';
 import { projects } from './project.module';
 import { cv } from './cv.module';
 import { contact } from './contact.module';
+import { payment } from '@/store/payment.module';
 
 const mode = JSON.parse(localStorage.getItem('mode'));
 
@@ -18,6 +19,7 @@ export default createStore({
     projects,
     cv,
     contact,
+    payment,
   },
   state: {
     drawer: null,
