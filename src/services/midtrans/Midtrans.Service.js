@@ -33,7 +33,7 @@ class MidtransService {
 
       const parameter = {
         transaction_details: {
-          order_id: `donation-${2}`,
+          order_id: `donation-${new Date().getTime()}`,
           gross_amount: grossAmount,
         },
         customer_details: {

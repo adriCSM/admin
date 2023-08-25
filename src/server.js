@@ -20,6 +20,7 @@ import TokenManager from './token/TokenManager.js';
 
 import payment from './api/payment/index.js';
 import MidtransService from './services/midtrans/Midtrans.Service.js';
+import PaymentValidator from './validators/Payment/index.js';
 
 // PORTOFOLIO PROJECTS
 import projects from './api/portofolio/Projects/index.js';
@@ -195,7 +196,7 @@ const init = async () => {
       plugin: payment,
       options: {
         midtransService,
-        validator: ContactValidator,
+        validator: PaymentValidator,
       },
     },
   ]);
