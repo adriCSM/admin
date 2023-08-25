@@ -1,5 +1,5 @@
-import InvariantError from '../../Error/InvariantError';
-import paymentPayloadSchema from './schema';
+import InvariantError from '../../Error/InvariantError.js';
+import paymentPayloadSchema from './schema.js';
 
 const PaymentValidator = {
   paymentPayload: (payload) => {

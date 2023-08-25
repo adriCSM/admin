@@ -5,6 +5,7 @@ class PaymentHandler {
   }
 
   async sendDonationHandler(request, h) {
+    this.validator.paymentPayload(request.payload);
     const transaction = await this.midtransService.sendDonation(request.payload);
     return h
       .response({
