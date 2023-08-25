@@ -5,6 +5,10 @@ class PaymentHandler {
   }
 
   async sendDonationHandler(request, h) {
+    request.headers.authorization = `Basic ${Buffer.from(process.env.MIDTRANS_SERVER_KEY).toString(
+      'base64',
+    )}`;
+    console.log(request.headers);
     this.validator.paymentPayload(request.payload);
     const transaction = await this.midtransService.sendDonation(request.payload);
     return h
