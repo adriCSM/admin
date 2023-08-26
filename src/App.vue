@@ -9,6 +9,7 @@
     <AppBar :drawer="drawer" @drawer="change" style="position: sticky; top: 0" v-if="loggedIn" />
     <AppbarHome v-if="!loggedIn" style="z-index: 9999" />
 
+    <NavbarHomeVue />
     <v-main>
       <BtnBlobs />
       <router-view />
@@ -23,6 +24,8 @@ import AlertWeb from '@/components/AlertWeb.vue';
 import BtnBlobs from '@/components/BtnBlobs.vue';
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
+import NavbarHomeVue from '@/components/NavbarHome.vue';
+
 import FooterView from '@/components/FooterView.vue';
 import AppbarHome from '@/components/AppbarHome.vue';
 import FooterHomeVue from '@/components/FooterHome.vue';
@@ -33,6 +36,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const store = useStore();
+
 const mode = computed(() => {
   if (store.state.mode) {
     return 'light-mode';

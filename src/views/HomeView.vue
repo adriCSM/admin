@@ -7,7 +7,7 @@ const sm = computed(() => vuetify.display.sm.value);
 </script>
 
 <template>
-  <div class="mx-md-15 mt-n15 pt-5">
+  <div class="mx-md-15 mt-md-n15 pt-5">
     <v-container class="h-auto mx-xl-15 d-flex justify-space-between" style="min-height: 100vh">
       <v-row class="h-auto" justify="end">
         <v-col cols="12" class="h-auto" order-sm="1" md="6" sm="6" align-self="center">
@@ -29,7 +29,9 @@ const sm = computed(() => vuetify.display.sm.value);
             API ini dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya
             dengan 👇
           </div>
-          <v-btn class="ms-md-4 text-white" color="#6368D9" rounded="lg">Donasi</v-btn>
+          <v-btn class="ms-md-4 text-white" color="#6368D9" rounded="lg" to="/donation"
+            >Donasi</v-btn
+          >
         </v-col>
       </v-row>
     </v-container>

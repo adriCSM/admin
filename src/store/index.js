@@ -23,6 +23,7 @@ export default createStore({
   },
   state: {
     drawer: null,
+    drawerHome: false,
     error: '',
     success: '',
     info: '',
@@ -32,6 +33,9 @@ export default createStore({
   mutations: {
     drawer(state, drawer) {
       state.drawer = drawer;
+    },
+    drawerHome(state, drawerHome) {
+      state.drawerHome = drawerHome;
     },
     mode(state, mode) {
       localStorage.setItem('mode', mode);

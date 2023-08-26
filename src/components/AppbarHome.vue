@@ -1,31 +1,73 @@
-<template>
-  <nav class="bg-nav mx-md-15">
-    <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
-      <div>
-        <v-list class="bg-transparent d-flex">
-          <v-list-item class="text-h4" style="font-weight: 800"> AM </v-list-item>
-          <v-list-item>Home</v-list-item>
-          <v-list-item>Documentation</v-list-item>
-        </v-list>
-      </div>
-      <div class="d-flex align-center text-end">
-        <v-btn
-          color="#6368D9"
-          rounded="lg"
-          class="text-white font-weight-bold text-capitalize me-3"
-        >
-          Sign In
-        </v-btn>
+<script setup>
+import vuetify from '@/plugins/vuetify';
+import { computed } from 'vue';
+import { useStore } from 'vuex';
 
-        <v-btn
-          color="#6368D9"
-          rounded="lg"
-          variant="outlined"
-          class="font-weight-bold text-capitalize"
-        >
-          Sign Up
-        </v-btn>
-      </div>
-    </v-container>
+const xs = computed(() => vuetify.display.xs.value);
+const store = useStore();
+
+const open = () => {
+  store.commit('drawerHome', true);
+};
+
+const mode = computed(() => store.state.mode);
+</script>
+
+<template>
+  <nav class="bg-nav">
+    <div class="mx-md-15">
+      <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
+        <div>
+          <v-list class="bg-transparent d-flex">
+            <v-list-item class="text-h4" style="font-weight: 800"> AM </v-list-item>
+            <v-list-item
+              v-if="!xs"
+              to="/"
+              :active-class="mode ? 'text-indigo rounded-lg py-0 ' : 'white rounded-lg py-0 '"
+              class="font-weight-medium"
+            >
+              Home
+            </v-list-item>
+            <v-list-item
+              v-if="!xs"
+              to="/documentation"
+              :active-class="mode ? 'text-indigo rounded-lg py-0 ' : 'white rounded-lg py-0 '"
+              class="font-weight-medium"
+              >Documentation</v-list-item
+            >
+          </v-list>
+        </div>
+        <div class="d-flex align-center text-end">
+          <v-btn
+            v-if="!xs"
+            elevation="6"
+            color="#6368D9"
+            rounded="lg"
+            class="text-white font-weight-bold text-capitalize me-3"
+            to="/auth/login"
+          >
+            Sign In
+          </v-btn>
+
+          <v-btn
+            v-if="!xs"
+            elevation="6"
+            color="#6368D9"
+            rounded="lg"
+            variant="outlined"
+            class="font-weight-bold text-capitalize"
+          >
+            <span :class="!mode ? 'text-white' : null"> Sign Up </span>
+          </v-btn>
+
+          <v-app-bar-nav-icon
+            v-if="xs"
+            variant="text"
+            color="primary"
+            @click.stop="open"
+          ></v-app-bar-nav-icon>
+        </div>
+      </v-container>
+    </div>
   </nav>
 </template>
