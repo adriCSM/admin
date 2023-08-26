@@ -1,17 +1,17 @@
 import Joi from 'joi';
 
-const messages = {
-  'string.empty': '#{label} is required',
+const message = {
+  'string.empty': '{#label} is required',
 };
 
 const paymentPayloadSchema = Joi.object({
-  firstName: Joi.string().required().message(messages),
-  lastName: Joi.string().required().message(messages),
+  firstName: Joi.string().required().message(message),
+  lastName: Joi.string().required().message(message),
   email: Joi.string()
     .email({ tlds: { allow: ['com', 'net', 'id', 'ac', 'uho'] } })
     .required()
-    .message(messages),
-  grossAmount: Joi.number().required().options({ convert: false }).message(messages),
+    .message(message),
+  grossAmount: Joi.number().required().options({ convert: false }).message(message),
 });
 
 export default paymentPayloadSchema;
