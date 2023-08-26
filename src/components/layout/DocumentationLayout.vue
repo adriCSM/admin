@@ -78,7 +78,13 @@ const users = ref([
             <v-list-item to="/">Product</v-list-item>
           </v-list>
         </v-col>
-        <v-col md="7" sm="7" class="overflow-y-auto" align-self="center" style="max-height: 80vh">
+        <v-col
+          md="7"
+          sm="7"
+          class="overflow-y-auto content"
+          align-self="center"
+          style="max-height: 80vh"
+        >
           <p>
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
             dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya

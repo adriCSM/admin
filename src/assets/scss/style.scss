@@ -73,3 +73,12 @@ section {
   top: 12rem;
   z-index: 9999;
 }
+
+.content::-webkit-scrollbar {
+  background: var(--text);
+  width: 5px;
+}
+.content::-webkit-scrollbar-thumb {
+  background: white;
+  border-radius: 10px;
+}
