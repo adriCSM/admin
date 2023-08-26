@@ -82,3 +82,7 @@ section {
   background: white;
   border-radius: 10px;
 }
+
+html::-webkit-scrollbar {
+  display: none;
+}

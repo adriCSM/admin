@@ -1,10 +1,12 @@
 <script setup>
 import BtnCopy from '@/components/BtnCopy.vue';
+import vuetify from '@/plugins/vuetify';
 
 import { ref } from 'vue';
 
 import { computed } from 'vue';
 import { useStore } from 'vuex';
+const xs = computed(() => vuetify.display.xs.value);
 
 const store = useStore();
 const mode = computed(() => {
@@ -44,9 +46,10 @@ const users = ref([
 
 <template>
   <div class="mx-md-15 mt-md-n15 pt-5">
-    <v-container class="h-auto mx-xl-15 d-flex justify-space-between" style="min-height: 100vh">
-      <v-row class="h-100 pt-15">
+    <v-container class="h-auto mx-xl-15" style="min-height: 100vh">
+      <v-row class="h-100 pt-md-15">
         <v-col
+          v-if="!xs"
           class="bg-transparent"
           md="2"
           sm="2"
@@ -79,9 +82,10 @@ const users = ref([
           </v-list>
         </v-col>
         <v-col
+          cols="auto"
           md="7"
           sm="7"
-          class="overflow-y-auto content"
+          class="overflow-auto content"
           align-self="center"
           style="max-height: 80vh"
         >
