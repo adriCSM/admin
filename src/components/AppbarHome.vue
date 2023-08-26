@@ -1,5 +1,6 @@
 <script setup>
 import vuetify from '@/plugins/vuetify';
+import router from '@/router';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -19,7 +20,14 @@ const mode = computed(() => store.state.mode);
       <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
         <div>
           <v-list class="bg-transparent d-flex">
-            <v-list-item class="text-h4" style="font-weight: 800"> AM </v-list-item>
+            <v-list-item
+              class="text-h4"
+              variant="text"
+              style="font-weight: 800"
+              @click="() => router.push('/')"
+            >
+              AM
+            </v-list-item>
             <v-list-item
               v-if="!xs"
               to="/"

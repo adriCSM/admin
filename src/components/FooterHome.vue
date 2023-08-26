@@ -9,18 +9,23 @@ const mode = computed(() => store.state.mode);
 const btn = ref([
   {
     file: 'ytb.png',
+    href: 'https://www.youtube.com/@adracmangidi368',
   },
   {
     file: 'fb.png',
+    href: 'https://web.facebook.com/adricandrasaputramangidi',
   },
   {
     file: 'ig.png',
+    href: 'https://www.instagram.com/adri_csm/',
   },
   {
     file: 'wa.png',
+    href: 'https://wa.me/6282259042427',
   },
   {
     file: 'ln.png',
+    href: 'https://www.linkedin.com/in/adri-candra-saputra-m-9696a3195',
   },
 ]);
 </script>
@@ -46,6 +51,8 @@ const btn = ref([
                     class="me-2 py-auto mt-2"
                     v-for="item in btn"
                     :key="item"
+                    :href="item.href"
+                    target="_blank"
                   >
                     <v-icon size="40">
                       <v-img :src="require(`../assets/img/` + item.file)"></v-img>
@@ -74,7 +81,7 @@ const btn = ref([
               </v-col>
             </v-row>
           </v-col>
-          <v-divider thickness="3" class="my-0 mx-2 border-opacity-100"></v-divider>
+          <v-divider thickness="3" class="my-0 mx-2 border-opacity-50"></v-divider>
           <v-col cols="12">
             <p>Copy right &copy; {{ new Date().getFullYear() }} by Adri Candra Saputra Mangidi</p>
           </v-col>
