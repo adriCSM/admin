@@ -1,7 +1,7 @@
 <template>
   <div class="min-vh-100 bg-white d-flex flex-column justify-center align-center">
     <div>
-      <v-img src="../assets/errr.gif" alt="" width="400" />
+      <v-img src="../assets/img/errr.gif" alt="" width="400" />
     </div>
     <h1 class="font-weight-black">Page Not Found</h1>
     <strong class="text-error font-weight-light"

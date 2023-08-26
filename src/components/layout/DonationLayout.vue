@@ -63,7 +63,7 @@ const pay = async () => {
           <v-row>
             <v-col md="6">
               <v-img
-                src="../../assets/bg-donasi.jpg"
+                src="../../assets/img/bg-donasi.jpg"
                 min-width="100%"
                 min-height="100%"
                 cover

@@ -48,7 +48,7 @@ const btn = ref([
                     :key="item"
                   >
                     <v-icon size="40">
-                      <v-img :src="require(`../assets/` + item.file)"></v-img>
+                      <v-img :src="require(`../assets/img/` + item.file)"></v-img>
                     </v-icon>
                   </v-btn>
                 </div>

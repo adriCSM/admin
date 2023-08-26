@@ -7,7 +7,7 @@
     :class="mode ? 'bg-white' : 'bg-element'"
   >
     <v-list-item pre nav class="pt-3 text-center">
-      <v-img src="../assets/logo_am.png" height="50"></v-img>
+      <v-img src="../assets/img/logo_am.png" height="50"></v-img>
     </v-list-item>
 
     <v-divider></v-divider>

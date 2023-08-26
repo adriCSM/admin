@@ -44,7 +44,7 @@ const login = async () => {
               class="mx-auto my-8"
               max-width="120"
               height="70"
-              src="../../assets/logo_am_white.png"
+              src="../../assets/img/logo_am_white.png"
             >
             </v-img>
           </router-link>
@@ -53,7 +53,7 @@ const login = async () => {
         <label for="email" class="text-subtitle-2 text-medium-emphasis">Email</label>
         <v-text-field
           name="email"
-          color="teal"
+          color="#6368D9"
           v-model="user.email"
           :rules="emailRules"
           density="compact"

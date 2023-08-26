@@ -12,7 +12,7 @@ const sm = computed(() => vuetify.display.sm.value);
       <v-row class="h-auto" justify="end">
         <v-col cols="12" class="h-auto" order-sm="1" md="6" sm="6" align-self="center">
           <v-img
-            src="../assets/img_home.png"
+            src="../assets/img/img_home.png"
             max-width="709"
             max-height="627"
             height="100%"

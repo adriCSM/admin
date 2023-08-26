@@ -13,8 +13,8 @@
         variant="tonal"
       >
         <v-avatar size="25">
-          <v-img src="../assets/sun.svg" v-if="mode"></v-img>
-          <v-img src="../assets/moon.png" v-else></v-img>
+          <v-img src="../assets/img/sun.svg" v-if="mode"></v-img>
+          <v-img src="../assets/img/moon.png" v-else></v-img>
         </v-avatar>
       </v-btn>
     </template>

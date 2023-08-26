@@ -42,7 +42,7 @@ const mode = computed(() => {
           <tr v-for="item in 10" :key="item.name" class="text-center">
             <td>
               <v-avatar size="40px">
-                <v-img alt="Avatar" src="../../assets/109715820.jpg"></v-img>
+                <v-img alt="Avatar" src="../../assets/img/109715820.jpg"></v-img>
               </v-avatar>
             </td>
             <td>ale-ale</td>

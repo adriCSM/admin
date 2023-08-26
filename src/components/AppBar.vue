@@ -80,7 +80,7 @@ const lists = ref([
         width="100%"
       >
         <router-link to="/" class="me-5">
-          <v-img v-if="!isLogin" src="../assets/logo_am.png" height="50" width="60"></v-img>
+          <v-img v-if="!isLogin" src="../assets/img/logo_am.png" height="50" width="60"></v-img>
         </router-link>
 
         <v-app-bar-nav-icon
