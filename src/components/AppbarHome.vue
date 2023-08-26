@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-nav mx-md-15">
+  <nav class="bg-nav mx-md-15">
     <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
       <div>
         <v-list class="bg-transparent d-flex">
@@ -27,5 +27,5 @@
         </v-btn>
       </div>
     </v-container>
-  </div>
+  </nav>
 </template>

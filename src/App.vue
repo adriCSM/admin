@@ -13,7 +13,8 @@
       <BtnBlobs />
       <router-view />
     </v-main>
-    <footer><FooterView /></footer>
+    <footer v-if="loggedIn"><FooterView /></footer>
+    <FooterHomeVue v-if="!loggedIn" />
   </v-app>
 </template>
 
@@ -24,6 +25,7 @@ import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 import FooterView from '@/components/FooterView.vue';
 import AppbarHome from '@/components/AppbarHome.vue';
+import FooterHomeVue from '@/components/FooterHome.vue';
 
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
