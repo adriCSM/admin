@@ -26,24 +26,31 @@ const btn = ref([
       <v-container class="mx-xl-15 d-flex">
         <v-row>
           <v-col md="6">
-            <div class="text-white text-h4 font-weight-black py-auto">AM</div>
-            <div>
-              <v-btn
-                size="40"
-                rounded="lg"
-                color="#D9D9D9"
-                class="me-2 py-auto"
-                v-for="item in btn"
-                :key="item"
-              >
-                <v-icon size="40">
-                  <v-img :src="require(`../assets/` + item.file)"></v-img>
-                </v-icon>
-              </v-btn>
-            </div>
+            <v-row class="h-100">
+              <v-col cols="12">
+                <div class="text-white text-h4 font-weight-black py-auto">AM</div>
+              </v-col>
+
+              <v-col cols="12" align-self="end">
+                <div>
+                  <v-btn
+                    size="40"
+                    rounded="lg"
+                    color="#D9D9D9"
+                    class="me-2 py-auto mt-2"
+                    v-for="item in btn"
+                    :key="item"
+                  >
+                    <v-icon size="40">
+                      <v-img :src="require(`../assets/` + item.file)"></v-img>
+                    </v-icon>
+                  </v-btn>
+                </div>
+              </v-col>
+            </v-row>
           </v-col>
           <v-col md="6">
-            <v-row class="text-white">
+            <v-row class="text-white" justify="space-between">
               <v-col>
                 <h5 class="font-weight-medium">Documentation</h5>
                 <ul class="ps-0" style="list-style: none">
@@ -60,6 +67,10 @@ const btn = ref([
                 </ul>
               </v-col>
             </v-row>
+          </v-col>
+          <v-divider thickness="3" class="my-0 mx-2 border-opacity-100"></v-divider>
+          <v-col cols="12">
+            <p>Copy right &copy; {{ new Date().getFullYear() }} by Adri Candra Saputra Mangidi</p>
           </v-col>
         </v-row>
       </v-container>
