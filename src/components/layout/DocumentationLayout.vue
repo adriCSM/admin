@@ -1,6 +1,8 @@
 <script setup>
 import BtnCopy from '@/components/BtnCopy.vue';
 
+import { ref } from 'vue';
+
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -12,42 +14,92 @@ const mode = computed(() => {
     return 'bg-element text-white';
   }
 });
-// const Properti = 'text-orange';
-// const value = 'text-blue';
+
+const auth = ref([
+  {
+    title: 'POST Authentication',
+  },
+  {
+    title: 'PUT Authentication',
+  },
+  {
+    title: 'DELETE Authentication',
+  },
+]);
+const users = ref([
+  {
+    title: 'POST User',
+  },
+  {
+    title: "GET User's",
+  },
+  {
+    title: 'PUT User',
+  },
+  {
+    title: 'DELETE User',
+  },
+]);
 </script>
 
 <template>
-  <v-container fluid>
-    <v-row>
-      <v-col md="2" class="h-screen" :class="mode" style="max-height: 80vh">
-        <v-list class="bg-transparent" nav>
-          <v-list-item to="/">Authentication</v-list-item>
-          <v-list-item to="/" active-class="bg-blue">User</v-list-item>
-          <v-list-item to="/">Product</v-list-item>
-        </v-list>
-      </v-col>
-      <v-col cols="12" md="auto" class="px-10 overflow-y-auto" style="max-height: 80vh">
-        <p>
-          Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
-          dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
-          ditampilkan pada documentation API sehingga terhindar dari ancaman peretasan. untuk
-          melihat source code lebih jelasnya anda dapat mengunjungi repositori github berikut
-          <a href="https://github.com/adriCSM/admin" target="_blank"
-            >https://github.com/adriCSM/admin</a
-          >
-          .
-        </p>
+  <div class="mx-md-15 mt-md-n15 pt-5">
+    <v-container class="h-auto mx-xl-15 d-flex justify-space-between" style="min-height: 100vh">
+      <v-row class="h-100 pt-15">
+        <v-col
+          class="bg-transparent"
+          md="2"
+          sm="2"
+          style="border: solid 2px var(--text); min-height: 80vh"
+          align-self="start"
+        >
+          <v-list class="bg-transparent" density="compact" nav>
+            <v-list-group value="Authentication">
+              <template v-slot:activator="{ props }">
+                <v-list-item
+                  v-bind="props"
+                  prepend-icon="mdi-account-key"
+                  title="Authentication"
+                ></v-list-item>
+              </template>
+              <v-list-item v-for="item in auth" :key="item" :title="item.title"></v-list-item>
+            </v-list-group>
+            <v-list-group value="Users">
+              <template v-slot:activator="{ props }">
+                <v-list-item
+                  v-bind="props"
+                  prepend-icon="mdi-account-group"
+                  title="Users"
+                ></v-list-item>
+              </template>
+              <v-list-item v-for="item in users" :key="item" :title="item.title"></v-list-item>
+            </v-list-group>
 
-        <section id="postAuthentication">
-          <h5 class="text-blue font-weight-bold">POST Authentication</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> POST /auth </v-card-title>
-          </v-card>
-          <h6>Payload</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="postAuthPayload" />
-            <pre>
+            <v-list-item to="/">Product</v-list-item>
+          </v-list>
+        </v-col>
+        <v-col md="7" sm="7" class="overflow-y-auto" align-self="center" style="max-height: 80vh">
+          <p>
+            Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
+            dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
+            ditampilkan pada documentation API sehingga terhindar dari ancaman peretasan. untuk
+            melihat source code lebih jelasnya anda dapat mengunjungi repositori github berikut
+            <a href="https://github.com/adriCSM/admin" target="_blank"
+              >https://github.com/adriCSM/admin</a
+            >
+            .
+          </p>
+
+          <section id="postAuthentication">
+            <h5 class="text-blue font-weight-bold">POST Authentication</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> POST /auth </v-card-title>
+            </v-card>
+            <h6>Payload</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="postAuthPayload" />
+              <pre>
               <code class="postAuthPayload">
       {
         "email":"adri@gmail.com",
@@ -55,11 +107,11 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="postAuthResponse" />
-            <pre class="postAuthResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="postAuthResponse" />
+              <pre class="postAuthResponse">
               <code>
       {
         "status": "success",
@@ -70,30 +122,30 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <section id="putAuthentication">
-          <h5 class="text-blue font-weight-bold">PUT Authentication</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> PUT /auth </v-card-title>
-          </v-card>
-          <h6>Payload</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="putAuthPaylod" />
-            <pre>
+          <section id="putAuthentication">
+            <h5 class="text-blue font-weight-bold">PUT Authentication</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> PUT /auth </v-card-title>
+            </v-card>
+            <h6>Payload</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="putAuthPaylod" />
+              <pre>
               <code class="putAuthPaylod">
       {
         "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWE5NmUxMGQ5NjkxYjE4NTBkYzQwOCIsImlhdCI6MTY5MjE1NTc2Mn0.3BmcgWcpDNJhoOOlqjRkt91wZ_hATBjlwty6GmuMx24"
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="putAuthResponse" />
-            <pre class="putAuthResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="putAuthResponse" />
+              <pre class="putAuthResponse">
               <code>
       {
         "status": "success",
@@ -103,19 +155,19 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <section id="deleteAuthentication">
-          <h5 class="text-blue font-weight-bold">DELETE Authentication</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> DELETE /auth/&lt;refreshToken&gt; </v-card-title>
-          </v-card>
-          <h6>Headers</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="deleteAuthHeaders" />
-            <pre>
+          <section id="deleteAuthentication">
+            <h5 class="text-blue font-weight-bold">DELETE Authentication</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> DELETE /auth/&lt;refreshToken&gt; </v-card-title>
+            </v-card>
+            <h6>Headers</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="deleteAuthHeaders" />
+              <pre>
               <code class="deleteAuthHeaders">
       { 
         Headers: { 
@@ -124,11 +176,11 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="deleteAuthResponse" />
-            <pre class="deleteAuthResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="deleteAuthResponse" />
+              <pre class="deleteAuthResponse">
               <code>
       {
         "status": "success",
@@ -136,21 +188,21 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
+          <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
 
-        <section id="addUsers">
-          <h5 class="text-blue font-weight-bold">POST Users</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> POST /users </v-card-title>
-          </v-card>
-          <h6>Payload</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="postUsersPayload" />
-            <pre>
+          <section id="addUsers">
+            <h5 class="text-blue font-weight-bold">POST Users</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> POST /users </v-card-title>
+            </v-card>
+            <h6>Payload</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="postUsersPayload" />
+              <pre>
               <code class="postUsersPayload">
       {
         "username":"adri",
@@ -161,11 +213,11 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="postUsersResponse" />
-            <pre class="postUsersResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="postUsersResponse" />
+              <pre class="postUsersResponse">
               <code>
       {
         "status": "success",
@@ -176,20 +228,20 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <section id="getUsers">
-          <h5 class="text-blue font-weight-bold">GET Users</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> GET /users </v-card-title>
-          </v-card>
-          <h6>Headers</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="getUsersHeaders" />
+          <section id="getUsers">
+            <h5 class="text-blue font-weight-bold">GET Users</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> GET /users </v-card-title>
+            </v-card>
+            <h6>Headers</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="getUsersHeaders" />
 
-            <pre class="getUsersHeaders">
+              <pre class="getUsersHeaders">
               <code >
       { 
         Headers: { 
@@ -198,11 +250,11 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="getUsersResponse" />
-            <pre class="getUsersResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="getUsersResponse" />
+              <pre class="getUsersResponse">
               <code>
       {
         "status":"success",
@@ -224,20 +276,20 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <section id="putUser">
-          <h5 class="text-blue font-weight-bold">PUT User</h5>
-          <h6>Endpoint</h6>
-          <v-card width="100%" height="auto" class="my-5" :class="mode">
-            <v-card-title class="text-body-1"> PUT /users </v-card-title>
-          </v-card>
-          <h6>Headers</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="getUsersHeaders" />
+          <section id="putUser">
+            <h5 class="text-blue font-weight-bold">PUT User</h5>
+            <h6>Endpoint</h6>
+            <v-card width="100%" height="auto" class="my-5" :class="mode">
+              <v-card-title class="text-body-1"> PUT /users </v-card-title>
+            </v-card>
+            <h6>Headers</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="getUsersHeaders" />
 
-            <pre class="getUsersHeaders">
+              <pre class="getUsersHeaders">
               <code >
       { 
         Headers: { 
@@ -247,12 +299,12 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Payload</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="getUsersHeaders" />
+            </v-card>
+            <h6>Payload</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="getUsersHeaders" />
 
-            <pre class="getUsersHeaders">
+              <pre class="getUsersHeaders">
               <code >
       { 
         Headers: { 
@@ -261,11 +313,11 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-          <h6>Response</h6>
-          <v-card class="my-5" :class="mode">
-            <BtnCopy class-name="getUsersResponse" />
-            <pre class="getUsersResponse">
+            </v-card>
+            <h6>Response</h6>
+            <v-card class="my-5" :class="mode">
+              <BtnCopy class-name="getUsersResponse" />
+              <pre class="getUsersResponse">
               <code>
       {
         "status":"success",
@@ -287,11 +339,12 @@ const mode = computed(() => {
       }
               </code>
             </pre>
-          </v-card>
-        </section>
+            </v-card>
+          </section>
 
-        <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
-      </v-col>
-    </v-row>
-  </v-container>
+          <v-divider color="blue" class="opacity-100" thickness="3"></v-divider>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
 </template>
