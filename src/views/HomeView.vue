@@ -1,20 +1,35 @@
 <script setup>
+import vuetify from '@/plugins/vuetify';
 import { computed } from 'vue';
-import { useStore } from 'vuex';
 
-const store = useStore();
-const mode = computed(() => store.state.mode);
+const xs = computed(() => vuetify.display.xs.value);
+const sm = computed(() => vuetify.display.sm.value);
 </script>
 
 <template>
-  <div class="rounded-lg h-screen mt-n12" :class="mode ? 'bg-blue' : 'bg-element'" elevation="7">
-    <v-container class="h-100">
-      <v-row class="h-100" align-content="center" justify="space-between">
-        <v-col cols="12" md="6" align-self="center">
-          <h1 class="text-center font-weight-bold">Selamat Datang di Portal AM</h1>
+  <div class="mx-md-15 mt-n15 pt-5">
+    <v-container class="h-auto mx-xl-15 d-flex justify-space-between" style="min-height: 100vh">
+      <v-row class="h-auto" justify="end">
+        <v-col cols="12" class="h-auto" order-sm="1" md="6" sm="6" align-self="center">
+          <v-img
+            src="../assets/img_home.png"
+            max-width="709"
+            max-height="627"
+            height="100%"
+            :width="xs ? '100%' : sm ? '100%' : '130%'"
+            cover
+          ></v-img>
         </v-col>
-        <v-col cols="12" md="6" class="h-auto bgHero rounded-lg">
-          <v-img cover src="../assets/ilustrasi1.svg" width="600"></v-img>
+        <v-col cols="12" md="6" sm="6" align-self="center" order-sm="0">
+          <div class="h3 ps-md-4 py-3 font-weight-bold">Hallo, Selamat Datang</div>
+          <div class="h1 ps-md-4 font-weight-black" :style="!xs ? { lineHeight: '4r3m' } : null">
+            Di pustaka dokumentasi API buatan saya.
+          </div>
+          <div class="h6 ps-md-4 pt-3 pb-5">
+            API ini dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Ingin mensupport
+            saya.
+          </div>
+          <v-btn class="ms-md-4 text-white" color="#6368D9" rounded="lg">Donasi</v-btn>
         </v-col>
       </v-row>
     </v-container>

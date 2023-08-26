@@ -6,7 +6,8 @@
   />
   <v-app id="inspire" :class="mode">
     <NavBar :nav="drawer" v-if="router.currentRoute.value.name !== 'Login'" />
-    <AppBar :drawer="drawer" @drawer="change" style="position: sticky; top: 0" />
+    <AppBar :drawer="drawer" @drawer="change" style="position: sticky; top: 0" v-if="loggedIn" />
+    <AppbarHome v-if="!loggedIn" style="z-index: 9999" />
 
     <v-main>
       <BtnBlobs />
@@ -22,6 +23,7 @@ import BtnBlobs from '@/components/BtnBlobs.vue';
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 import FooterView from '@/components/FooterView.vue';
+import AppbarHome from '@/components/AppbarHome.vue';
 
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
@@ -31,12 +33,13 @@ const router = useRouter();
 const store = useStore();
 const mode = computed(() => {
   if (store.state.mode) {
-    return 'bg-light ';
+    return 'light-mode';
   } else {
     return 'bg';
   }
 });
 const drawer = ref(null);
+const loggedIn = computed(() => store.state('auth/loggedIn'));
 
 const change = (value) => {
   drawer.value = value;

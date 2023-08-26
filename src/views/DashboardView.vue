@@ -1,7 +1,7 @@
 <script setup>
-import HomeLayout from '@/components/layout/HomeLayout.vue';
+import DashboardLayout from '@/components/layout/DashboardLayout.vue';
 </script>
 
 <template>
-  <HomeLayout />
+  <DashboardLayout />
 </template>
