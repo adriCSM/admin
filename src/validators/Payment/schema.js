@@ -5,13 +5,13 @@ const message = {
 };
 
 const paymentPayloadSchema = Joi.object({
-  firstName: Joi.string().required().message(message),
-  lastName: Joi.string().required().message(message),
+  firstName: Joi.string().required().messages(message),
+  lastName: Joi.string().required().messages(message),
   email: Joi.string()
     .email({ tlds: { allow: ['com', 'net', 'id', 'ac', 'uho'] } })
     .required()
-    .message(message),
-  grossAmount: Joi.number().required().options({ convert: false }).message(message),
+    .messages(message),
+  grossAmount: Joi.number().required().options({ convert: false }).messages(message),
 });
 
 export default paymentPayloadSchema;
