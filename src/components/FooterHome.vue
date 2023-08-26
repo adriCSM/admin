@@ -32,7 +32,7 @@ const btn = ref([
 
 <template>
   <footer :class="mode ? 'bg-footer' : 'bg-footer-dark'">
-    <div class="mx-md-15">
+    <div class="mx-md-15 mt-5">
       <v-container class="mx-xl-15 d-flex">
         <v-row>
           <v-col md="6">
