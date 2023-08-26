@@ -29,8 +29,13 @@
     <v-divider></v-divider>
 
     <v-list density="compact" nav>
-      <v-list-item title="Home" to="/" @click="close"></v-list-item>
-      <v-list-item title="Documentation" to="/documentation" @click="close"></v-list-item>
+      <v-list-item title="Home" to="/" @click="close" color="#6368D9"></v-list-item>
+      <v-list-item
+        title="Documentation"
+        to="/documentation"
+        @click="close"
+        color="#6368D9"
+      ></v-list-item>
     </v-list>
   </v-navigation-drawer>
 </template>

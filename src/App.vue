@@ -15,7 +15,7 @@
       <router-view />
     </v-main>
     <footer v-if="loggedIn"><FooterView /></footer>
-    <FooterHomeVue v-if="!loggedIn" />
+    <FooterHomeVue v-if="!loggedIn && router.currentRoute.value.name !== 'Login'" />
   </v-app>
 </template>
 
