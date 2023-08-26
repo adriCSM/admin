@@ -36,9 +36,6 @@ const pay = async () => {
     },
   });
 };
-const back = () => {
-  router.go(-1);
-};
 </script>
 
 <template>
@@ -55,10 +52,12 @@ const back = () => {
           :class="xs ? 'flex-column' : 'flex-row'"
         >
           <v-btn
-            @click="back"
+            to="/"
             icon="mdi-arrow-left"
-            color="blue"
+            color="#6368D9"
             position="absolute"
+            class="text-white"
+            elevation="2"
             style="z-index: 99"
           ></v-btn>
           <v-row>
@@ -78,7 +77,7 @@ const back = () => {
                 v-model="payload.firstName"
                 class="py-0"
                 variant="outlined"
-                color="blue"
+                color="#6368D9"
                 base-color="blue"
                 density="compact"
                 required="true"
@@ -90,7 +89,7 @@ const back = () => {
                 v-model="payload.lastName"
                 class="py-0"
                 variant="outlined"
-                color="blue"
+                color="#6368D9"
                 base-color="blue"
                 density="compact"
                 required="true"
@@ -104,7 +103,7 @@ const back = () => {
                 name="email"
                 variant="outlined"
                 class="py-0"
-                color="blue"
+                color="#6368D9"
                 base-color="blue"
                 density="compact"
               >
@@ -114,7 +113,7 @@ const back = () => {
               <v-select
                 v-model="payload.grossAmount"
                 class="py-0"
-                color="blue"
+                color="#6368D9"
                 base-color="blue"
                 label="Select"
                 :items="[5000, 20000, 50000, 100000, 500000, 1000000]"
@@ -125,7 +124,7 @@ const back = () => {
 
               <v-checkbox
                 v-model="selected"
-                color="blue"
+                color="#6368D9"
                 label="Yakin?"
                 class="py-0"
                 hide-details="true"
@@ -139,7 +138,8 @@ const back = () => {
                     rounded="pill"
                     width="100%"
                     :variant="isHovering ? 'flat' : 'outlined'"
-                    color="blue"
+                    color="#6368D9"
+                    :class="isHovering ? 'text-white' : null"
                     @click="pay"
                     :disabled="!selected"
                     >Donasi</v-btn

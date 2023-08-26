@@ -1,16 +1,14 @@
 <template>
   <AlertWeb style="max-width: 400px; position: fixed; z-index: 9999" class="mt-15" />
-  <LoadProgres
-    style="position: fixed; z-index: 9999; align-self: center; justify-self: center"
-    class="mt-15"
-  />
   <v-app id="inspire" :class="mode">
     <NavBar :nav="drawer" v-if="router.currentRoute.value.name !== 'Login'" />
     <AppBar :drawer="drawer" @drawer="change" style="position: sticky; top: 0" v-if="loggedIn" />
-    <AppbarHome v-if="!loggedIn" style="z-index: 9999" />
+    <AppbarHome v-if="!loggedIn" style="z-index: 999" />
 
     <NavbarHomeVue />
     <v-main>
+      <LoadProgres class="mt-15 loading" />
+
       <BtnBlobs />
       <router-view />
     </v-main>
@@ -25,6 +23,7 @@ import BtnBlobs from '@/components/BtnBlobs.vue';
 import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 import NavbarHomeVue from '@/components/NavbarHome.vue';
+import LoadProgres from '@/components/LoadProgres.vue';
 
 import FooterView from '@/components/FooterView.vue';
 import AppbarHome from '@/components/AppbarHome.vue';

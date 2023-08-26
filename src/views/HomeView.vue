@@ -22,12 +22,16 @@ const sm = computed(() => vuetify.display.sm.value);
         </v-col>
         <v-col cols="12" md="6" sm="6" align-self="center" order-sm="0">
           <div class="h3 ps-md-4 py-3 font-weight-bold">Hallo, Selamat Datang</div>
-          <div class="h1 ps-md-4 font-weight-black" :style="!xs ? { lineHeight: '4r3m' } : null">
-            Di pustaka dokumentasi API buatan saya.
+          <div
+            class="h1 ps-md-4 font-weight-black"
+            style="font-weight: 900"
+            :style="!xs ? { lineHeight: '4r3m' } : null"
+          >
+            Di pustaka AM dokumentasi API.
           </div>
           <div class="h6 ps-md-4 pt-3 pb-5">
-            API ini dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya
-            dengan 👇
+            API dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya dengan
+            👇
           </div>
           <v-btn class="ms-md-4 text-white" color="#6368D9" rounded="lg" to="/donation"
             >Donasi</v-btn
