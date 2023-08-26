@@ -26,8 +26,8 @@ const sm = computed(() => vuetify.display.sm.value);
             Di pustaka dokumentasi API buatan saya.
           </div>
           <div class="h6 ps-md-4 pt-3 pb-5">
-            API ini dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Ingin mensupport
-            saya.
+            API ini dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya
+            dengan 👇
           </div>
           <v-btn class="ms-md-4 text-white" color="#6368D9" rounded="lg">Donasi</v-btn>
         </v-col>

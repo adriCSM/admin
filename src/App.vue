@@ -35,11 +35,11 @@ const mode = computed(() => {
   if (store.state.mode) {
     return 'light-mode';
   } else {
-    return 'bg';
+    return 'dark-mode';
   }
 });
 const drawer = ref(null);
-const loggedIn = computed(() => store.state('auth/loggedIn'));
+const loggedIn = computed(() => store.state.auth.loggedIn);
 
 const change = (value) => {
   drawer.value = value;
