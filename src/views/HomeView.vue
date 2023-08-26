@@ -23,13 +23,13 @@ const sm = computed(() => vuetify.display.sm.value);
         <v-col cols="12" md="6" sm="6" align-self="center" order-sm="0">
           <div class="h3 ps-md-4 py-3 font-weight-bold">Hallo, Selamat Datang</div>
           <div
-            class="h1 ps-md-4 font-weight-black"
+            class="h1 ps-md-4 font-weight-black text-start"
             style="font-weight: 900"
             :style="!xs ? { lineHeight: '4r3m' } : null"
           >
             Web dokumentasi "Application Programing Interface" web AM.
           </div>
-          <div class="h6 ps-md-4 pt-3 pb-5">
+          <div class="h6 ps-md-4 pt-3 pb-5 text-justify">
             API dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya dengan
             👇
           </div>

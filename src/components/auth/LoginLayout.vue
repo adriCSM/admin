@@ -38,7 +38,7 @@ const login = async () => {
   <v-row style="min-height: 80vh">
     <v-col align-self="center" cols="12 " class="d-flex justify-center">
       <v-card class="pa-3 overflow-visible" elevation="20" min-width="300" rounded="lg">
-        <v-card class="bg-blue mt-0 rounded-lg align-end" style="top: -40px" elevation="5">
+        <v-card class="mt-0 rounded-lg align-end" color="#6368D9" style="top: -40px" elevation="5">
           <router-link to="/">
             <v-img
               class="mx-auto my-8"
@@ -89,8 +89,8 @@ const login = async () => {
           @keyup.enter="login()"
         ></v-text-field>
 
-        <v-btn block class="mb-8" color="blue" @click="login">
-          <span class="pe-3"> Log In </span>
+        <v-btn block class="mb-8" color="#6368D9" @click="login">
+          <span class="pe-3 text-white text-capitalize"> Sign In </span>
           <v-progress-circular :width="6" :size="30" color="white" indeterminate v-show="show">
           </v-progress-circular>
         </v-btn>

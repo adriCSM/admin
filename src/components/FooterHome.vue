@@ -65,7 +65,7 @@ const btn = ref([
           <v-col md="6">
             <v-row class="text-white" justify="space-between">
               <v-col>
-                <h5 class="font-weight-medium">Documentation</h5>
+                <h5 class="font-weight-bold text-h6">Documentation</h5>
                 <ul class="ps-0" style="list-style: none">
                   <li>Authentication</li>
                   <li>User</li>
@@ -73,7 +73,7 @@ const btn = ref([
                 </ul>
               </v-col>
               <v-col>
-                <h5 class="font-weight-medium">Privacy & Policy</h5>
+                <h5 class="font-weight-bold text-h6">Privacy & Policy</h5>
                 <ul class="ps-0" style="list-style: none">
                   <li>Privacy</li>
                   <li>Policy</li>
