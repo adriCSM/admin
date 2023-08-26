@@ -40,6 +40,7 @@ const btn = ref([
                 <div>
                   <v-btn
                     size="40"
+                    variant="text"
                     rounded="lg"
                     color="#D9D9D9"
                     class="me-2 py-auto mt-2"
