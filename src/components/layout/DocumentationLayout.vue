@@ -53,7 +53,7 @@ const users = ref([
           class="bg-transparent"
           md="3"
           sm="3"
-          style="border: solid 2px var(--text); min-height: 80vh"
+          style="border: solid 2px var(--text); min-height: 85vh"
           align-self="start"
         >
           <v-list class="bg-transparent" density="compact" nav>
@@ -87,7 +87,7 @@ const users = ref([
           sm="9"
           :class="xs ? 'content' : 'overflow-auto content'"
           align-self="center"
-          :style="xs ? { maxHeight: 'auto' } : { maxHeight: '80vh' }"
+          :style="xs ? { maxHeight: 'auto' } : { maxHeight: '85vh' }"
         >
           <p>
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
