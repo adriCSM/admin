@@ -1,5 +1,10 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
+
+const mode = computed(() => store.state.mode);
 
 const btn = ref([
   {
@@ -21,7 +26,7 @@ const btn = ref([
 </script>
 
 <template>
-  <footer class="bg-footer">
+  <footer :class="mode ? 'bg-footer' : 'bg-footer-dark'">
     <div class="mx-md-15">
       <v-container class="mx-xl-15 d-flex">
         <v-row>
