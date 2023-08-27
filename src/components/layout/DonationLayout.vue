@@ -43,12 +43,11 @@ const pay = async () => {
     <v-row justify="center" class="h-auto">
       <v-col cols="auto" align-self="center">
         <v-card
-          min-height="80vh"
           :min-width="xs ? '80vw' : '60vw'"
           :max-width="xs ? '80vw' : '60vw'"
           elevation="2"
           rounded="xl"
-          class="d-flex"
+          class="d-flex h-auto"
           :class="xs ? 'flex-column' : 'flex-row'"
         >
           <v-btn
