@@ -1,6 +1,5 @@
 <script setup>
 import vuetify from '@/plugins/vuetify';
-import router from '@/router';
 import { computed } from 'vue';
 import { useStore } from 'vuex';
 
@@ -19,21 +18,21 @@ const mode = computed(() => store.state.mode);
     <div class="mx-md-15">
       <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
         <div>
-          <v-list class="bg-transparent d-flex">
-            <v-list-item
-              class="text-h4"
+          <v-list class="bg-transparent d-flex align-center">
+            <router-link
+              class="text-h4 text-decoration-none pe-5"
               variant="text"
-              style="font-weight: 800"
-              @click="() => router.push('/')"
+              style="font-weight: 800; color: var(--text)"
+              to="/"
             >
               AM
-            </v-list-item>
+            </router-link>
             <v-list-item
               rounded="lg"
               v-if="!xs"
               to="/"
               :active-class="mode ? 'text-indigo rounded-lg py-0 ' : 'white rounded-lg py-0 '"
-              class="font-weight-medium"
+              class="font-weight-medium mx-2"
               :class="mode ? null : 'text-white'"
             >
               Home
@@ -52,7 +51,6 @@ const mode = computed(() => store.state.mode);
         <div class="d-flex align-center text-end">
           <v-btn
             v-if="!xs"
-            elevation="6"
             color="#6368D9"
             rounded="lg"
             class="text-white font-weight-bold text-capitalize me-3"
@@ -63,7 +61,6 @@ const mode = computed(() => store.state.mode);
 
           <v-btn
             v-if="!xs"
-            elevation="6"
             color="#6368D9"
             rounded="lg"
             variant="outlined"

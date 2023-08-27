@@ -40,7 +40,7 @@ const pay = async () => {
 
 <template>
   <v-container>
-    <v-row justify="center" style="min-height: 100vh" class="h-auto">
+    <v-row justify="center" class="h-auto">
       <v-col cols="auto" align-self="center">
         <v-card
           min-height="80vh"

@@ -28,7 +28,7 @@
 
     <v-divider></v-divider>
 
-    <v-list density="compact" nav>
+    <v-list density="compact" class="h-75 d-flex flex-column" nav>
       <v-list-item
         title="Home"
         to="/"
@@ -43,12 +43,31 @@
         color="#6368D9"
         prepend-icon="mdi-book"
       ></v-list-item>
+      <v-spacer></v-spacer>
+      <v-list-item> Follow my social media: </v-list-item>
+      <div>
+        <v-btn
+          size="40"
+          variant="text"
+          rounded="lg"
+          color="#D9D9D9"
+          class="me-2 py-auto mt-2"
+          v-for="item in btn"
+          :key="item"
+          :href="item.href"
+          target="_blank"
+        >
+          <v-icon size="40">
+            <v-img :src="require(`../assets/img/` + item.file)"></v-img>
+          </v-icon>
+        </v-btn>
+      </div>
     </v-list>
   </v-navigation-drawer>
 </template>
 <script setup>
 import vuetify from '@/plugins/vuetify';
-import { computed, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 
@@ -56,7 +75,28 @@ const drawerHome = computed(() => store.state.drawerHome);
 const close = () => {
   store.commit('drawerHome', false);
 };
-
+const btn = ref([
+  {
+    file: 'ytb.png',
+    href: 'https://www.youtube.com/@adracmangidi368',
+  },
+  {
+    file: 'fb.png',
+    href: 'https://web.facebook.com/adricandrasaputramangidi',
+  },
+  {
+    file: 'ig.png',
+    href: 'https://www.instagram.com/adri_csm/',
+  },
+  {
+    file: 'wa.png',
+    href: 'https://wa.me/6282259042427',
+  },
+  {
+    file: 'ln.png',
+    href: 'https://www.linkedin.com/in/adri-candra-saputra-m-9696a3195',
+  },
+]);
 const smUp = computed(() => vuetify.display.smAndUp.value);
 watch(smUp, (value) => {
   if (value) {

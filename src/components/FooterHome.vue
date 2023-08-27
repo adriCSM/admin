@@ -38,7 +38,14 @@ const btn = ref([
           <v-col md="6">
             <v-row class="h-100">
               <v-col cols="12">
-                <div class="text-white text-h4 font-weight-black py-auto">AM</div>
+                <router-link
+                  class="text-h4 text-decoration-none pe-5 text-white"
+                  variant="text"
+                  style="font-weight: 900"
+                  to="/"
+                >
+                  AM
+                </router-link>
               </v-col>
 
               <v-col cols="12" align-self="end">
