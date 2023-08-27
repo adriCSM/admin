@@ -15,7 +15,9 @@ const mode = computed(() => {
 
 <template>
   <section id="putAuthentication">
-    <h5 class="text-blue font-weight-bold">PUT Authentication</h5>
+    <h5 class="font-weight-bold" :class="store.state.mode ? 'text-black' : 'text-white'">
+      PUT Authentication
+    </h5>
     <h6>Endpoint</h6>
     <v-card width="100%" height="auto" class="my-5" :class="mode">
       <v-card-title class="text-body-1"> PUT /auth </v-card-title>

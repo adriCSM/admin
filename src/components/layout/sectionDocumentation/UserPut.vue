@@ -14,13 +14,30 @@ const mode = computed(() => {
 </script>
 
 <template>
-  <section id="getUsers">
-    <h5 class="text-blue font-weight-bold">GET Users</h5>
+  <section id="putUser">
+    <h5 class="font-weight-bold" :class="store.state.mode ? 'text-black' : 'text-white'">
+      PUT User
+    </h5>
     <h6>Endpoint</h6>
     <v-card width="100%" height="auto" class="my-5" :class="mode">
-      <v-card-title class="text-body-1"> GET /users </v-card-title>
+      <v-card-title class="text-body-1"> PUT /users </v-card-title>
     </v-card>
     <h6>Headers</h6>
+    <v-card class="my-5" :class="mode">
+      <BtnCopy class-name="getUsersHeaders" />
+
+      <pre class="getUsersHeaders">
+              <code >
+      { 
+        Headers: { 
+          Authorization: Bearer &lt;accessToken&gt; 
+          Accept: ['application/vnd.api+json', 'multipart/form-data'],
+        } 
+      }
+              </code>
+            </pre>
+    </v-card>
+    <h6>Payload</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="getUsersHeaders" />
 

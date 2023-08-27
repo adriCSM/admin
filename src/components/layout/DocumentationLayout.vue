@@ -4,7 +4,11 @@ import vuetify from '@/plugins/vuetify';
 import { ref } from 'vue';
 
 import { computed } from 'vue';
+import { useStore } from 'vuex';
+
+const store = useStore();
 const xs = computed(() => vuetify.display.xs.value);
+const mode = computed(() => store.state.mode);
 
 const auth = ref([
   {
@@ -49,7 +53,7 @@ const users = ref([
           class="bg-transparent"
           md="3"
           sm="3"
-          style="border: solid 2px var(--text); min-height: 85vh"
+          style="border: solid 2px white; min-height: 85vh"
           align-self="start"
         >
           <v-list class="bg-transparent" density="compact" nav>
@@ -93,7 +97,7 @@ const users = ref([
           align-self="center"
           :style="xs ? { maxHeight: 'auto' } : { maxHeight: '85vh' }"
         >
-          <p>
+          <p :class="mode ? 'text-black' : null">
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
             dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
             ditampilkan pada documentation API sehingga terhindar dari ancaman peretasan. untuk
