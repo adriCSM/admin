@@ -7,8 +7,8 @@ class MidtransService {
     this.db = Donation;
     this.snap = new midtransClient.Snap({
       isProduction: false,
-      serverKey: process.env.MIDTRANS_SERVER_KEY,
-      clientKey: process.env.MIDTRANS_client_KEY,
+      serverKey: process.env.MIDTRANS_SERVER_KEY_PROD,
+      clientKey: process.env.MIDTRANS_client_KEY_PROD,
     });
   }
 
