@@ -44,7 +44,7 @@ const btn = ref([
                   style="font-weight: 900"
                   to="/"
                 >
-                  AM
+                  <v-img src="../assets/img/logo_am_white.png" width="80" />
                 </router-link>
               </v-col>
 

@@ -20,12 +20,12 @@ const mode = computed(() => store.state.mode);
         <div>
           <v-list density="compact" class="bg-transparent d-flex align-center">
             <router-link
-              class="text-h4 text-decoration-none pe-5"
+              class="text-h4 text-decoration-none"
               variant="text"
               style="font-weight: 800; color: var(--text)"
               to="/"
             >
-              AM
+              <v-img src="../assets/img/am_new.png" width="80" />
             </router-link>
             <v-list-item
               rounded="lg"
