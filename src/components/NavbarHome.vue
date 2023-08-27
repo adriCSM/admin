@@ -86,7 +86,7 @@ const btn = ref([
   },
   {
     file: 'ig.png',
-    href: 'https://www.instagram.com/adri_csm/',
+    href: 'https://www.instagram.com/adri_csm',
   },
   {
     file: 'wa.png',
