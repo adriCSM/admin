@@ -154,7 +154,6 @@ router.beforeEach((to, from, next) => {
   //   next({ name: 'Home' });
   // } else
   if (to.name) {
-    document.title = `AM || ${to.name}`;
     next();
   } else {
     next({ name: 'Notfound' });

@@ -1,16 +1,8 @@
 <script setup>
-import { computed } from 'vue';
 import { useStore } from 'vuex';
 import BtnCopy from '@/components/BtnCopy.vue';
 
 const store = useStore();
-const mode = computed(() => {
-  if (store.state.mode) {
-    return 'bg-white text-black ';
-  } else {
-    return 'bg-element text-white';
-  }
-});
 </script>
 
 <template>
@@ -19,11 +11,11 @@ const mode = computed(() => {
       POST Authentication
     </h5>
     <h6>Endpoint</h6>
-    <v-card width="100%" height="auto" class="my-5" :class="mode">
+    <v-card width="100%" height="auto" class="my-5">
       <v-card-title class="text-body-1"> POST /auth </v-card-title>
     </v-card>
     <h6>Payload</h6>
-    <v-card class="my-5" :class="mode">
+    <v-card class="my-5">
       <BtnCopy class-name="postAuthPayload" />
       <pre>
               <code class="postAuthPayload">
@@ -35,7 +27,7 @@ const mode = computed(() => {
             </pre>
     </v-card>
     <h6>Response</h6>
-    <v-card class="my-5" :class="mode">
+    <v-card class="my-5">
       <BtnCopy class-name="postAuthResponse" />
       <pre class="postAuthResponse">
               <code>

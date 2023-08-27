@@ -9,7 +9,7 @@
     <v-main>
       <LoadProgres class="mt-15 loading" />
 
-      <BtnBlobs />
+      <BtnBlobs v-if="loggedIn" />
       <router-view />
       <router-view name="adri"></router-view>
     </v-main>

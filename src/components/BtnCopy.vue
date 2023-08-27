@@ -20,7 +20,7 @@ const copy = () => {
 };
 </script>
 <template>
-  <v-col cols="12" class="text-end bg-grey-darken-2">
+  <v-col cols="12" class="text-end bg-copy">
     <v-btn
       :icon="icon"
       :color="mode == 'bg-white text-black ' ? 'black' : 'white'"

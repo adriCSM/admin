@@ -27,7 +27,7 @@ const sm = computed(() => vuetify.display.sm.value);
             style="font-weight: 900"
             :style="!xs ? { lineHeight: '4r3m' } : null"
           >
-            Web dokumentasi "Application Programing Interface" web AM.
+            AM dokumentasi API.
           </div>
           <div class="h6 ps-md-4 pt-3 pb-5 text-justify">
             API dibuat dengan menggunakan teknologi Node Js dan framework Hapi. Support saya dengan

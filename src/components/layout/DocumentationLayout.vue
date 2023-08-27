@@ -109,17 +109,17 @@ const users = ref([
           style="height: auto"
         >
           <v-btn variant="text" icon="mdi-arrow-left" v-if="xs" to="/documentation"></v-btn>
+
+          <router-view />
           <p :class="mode ? 'text-black' : null">
-            Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
-            dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
-            ditampilkan pada documentation API sehingga terhindar dari ancaman peretasan. untuk
-            melihat source code lebih jelasnya anda dapat mengunjungi repositori github berikut
+            Konten pada dokumnetasi API ini menampilkan semua CRUD method, headers, dan responsenya.
+            Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya ditampilkan pada
+            documentation API sehingga terhindar dari ancaman peretasan. untuk melihat source code
+            silakan mengunjungi repositori github berikut
             <a href="https://github.com/adriCSM/admin" target="_blank"
               >https://github.com/adriCSM/admin</a
             >
           </p>
-
-          <router-view />
         </v-col>
       </v-row>
     </v-container>
