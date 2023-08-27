@@ -1,5 +1,6 @@
 <script setup>
 import vuetify from '@/plugins/vuetify';
+import router from '@/router';
 
 import { ref } from 'vue';
 
@@ -9,6 +10,14 @@ import { useStore } from 'vuex';
 const store = useStore();
 const xs = computed(() => vuetify.display.xs.value);
 const mode = computed(() => store.state.mode);
+const docs = computed(() => {
+  if (router.currentRoute.value.name == 'Documentation') {
+    return true;
+  } else {
+    return false;
+  }
+});
+console.log(docs.value);
 
 const auth = ref([
   {
@@ -46,10 +55,10 @@ const users = ref([
 
 <template>
   <div class="mx-md-15 mt-md-n15 pt-5">
-    <v-container class="h-auto mx-xl-15" style="min-height: 100vh">
+    <v-container class="h-auto mx-xl-15" style="min-height: 50vh">
       <v-row class="h-100 pt-md-15">
         <v-col
-          v-if="!xs"
+          v-if="docs || !xs"
           class="bg-transparent"
           md="3"
           sm="3"
@@ -89,7 +98,8 @@ const users = ref([
             </v-list-group>
           </v-list>
         </v-col>
-        <v-col cols="auto" md="9" sm="9" align-self="center" style="height: auto">
+        <v-col v-if="!docs" cols="auto" md="9" sm="9" align-self="center" style="height: auto">
+          <v-btn variant="text" icon="mdi-arrow-left" v-if="xs" to="/documentation"></v-btn>
           <p :class="mode ? 'text-black' : null">
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
             dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
