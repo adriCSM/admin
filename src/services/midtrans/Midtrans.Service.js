@@ -6,7 +6,7 @@ class MidtransService {
   constructor() {
     this.db = Donation;
     this.snap = new midtransClient.Snap({
-      isProduction: false,
+      isProduction: true,
       serverKey: process.env.MIDTRANS_SERVER_KEY_PROD,
       clientKey: process.env.MIDTRANS_client_KEY_PROD,
     });
