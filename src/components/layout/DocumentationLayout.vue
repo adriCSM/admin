@@ -53,7 +53,7 @@ const users = ref([
           class="bg-transparent"
           md="3"
           sm="3"
-          style="border: solid 2px white; min-height: 85vh"
+          style="height: auto; position: sticky; top: 5rem"
           align-self="start"
         >
           <v-list class="bg-transparent" density="compact" nav>
@@ -89,14 +89,7 @@ const users = ref([
             </v-list-group>
           </v-list>
         </v-col>
-        <v-col
-          cols="auto"
-          md="9"
-          sm="9"
-          :class="xs ? 'content' : 'overflow-auto content'"
-          align-self="center"
-          :style="xs ? { maxHeight: 'auto' } : { maxHeight: '85vh' }"
-        >
+        <v-col cols="auto" md="9" sm="9" align-self="center" style="height: auto">
           <p :class="mode ? 'text-black' : null">
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,
             dan responsenya. Saya masih mempelajari isi kontent apa saja yang boleh dan tidaknya
