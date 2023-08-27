@@ -18,7 +18,7 @@ const mode = computed(() => store.state.mode);
     <div class="mx-md-15">
       <v-container class="mx-xl-15 d-flex pb-0 justify-space-between">
         <div>
-          <v-list class="bg-transparent d-flex align-center">
+          <v-list density="compact" class="bg-transparent d-flex align-center">
             <router-link
               class="text-h4 text-decoration-none pe-5"
               variant="text"

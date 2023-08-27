@@ -100,14 +100,7 @@ const users = ref([
             </v-list-group>
           </v-list>
         </v-col>
-        <v-col
-          v-if="!docs || !xs"
-          cols="auto"
-          md="9"
-          sm="9"
-          align-self="center"
-          style="height: auto"
-        >
+        <v-col v-if="!docs || !xs" cols="auto" md="9" sm="9" style="height: auto">
           <v-btn variant="text" icon="mdi-arrow-left" v-if="xs" to="/documentation"></v-btn>
 
           <router-view />
