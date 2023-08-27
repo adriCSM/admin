@@ -11,6 +11,7 @@
 
       <BtnBlobs />
       <router-view />
+      <router-view name="adri"></router-view>
     </v-main>
     <footer v-if="loggedIn"><FooterView /></footer>
     <FooterHomeVue v-if="!loggedIn && router.currentRoute.value.name !== 'Login'" />

@@ -75,14 +75,16 @@ section {
 }
 
 .content::-webkit-scrollbar {
-  background: var(--text);
+  background: white;
   width: 5px;
 }
 .content::-webkit-scrollbar-thumb {
-  background: white;
+  background: var(--text);
   border-radius: 10px;
 }
-
+.content {
+  scroll-behavior: auto;
+}
 html::-webkit-scrollbar {
   display: none;
 }

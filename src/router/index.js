@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import { useStore } from 'vuex';
+// import { useStore } from 'vuex';
 import LoginView from '../views/LoginView.vue';
-
+import routesDocumentation from './documentation.routes.js';
 const routes = [
   {
     path: '/',
@@ -10,15 +10,11 @@ const routes = [
   },
 
   {
-    path: '/documentation',
-    name: 'Documentation',
-    component: () => import('../views/DocsView.vue'),
-  },
-  {
     path: '/donation',
     name: 'Donation',
     component: () => import('../views/DonationView.vue'),
   },
+
   {
     path: '/donation/success',
     name: 'Donation Success',
@@ -127,6 +123,9 @@ const routes = [
     component: () => import('../views/NotfoundView.vue'),
   },
 ];
+routesDocumentation.map((route) => {
+  routes.push(route);
+});
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
@@ -135,23 +134,26 @@ const router = createRouter({
     to;
     from;
     savedPosition;
+
     return { top: 0 };
   },
 });
 
 router.beforeEach((to, from, next) => {
-  const store = useStore();
-  if (
-    to.name !== 'Home' &&
-    to.name !== 'Donation Success' &&
-    to.name !== 'Login' &&
-    to.name !== 'Documentation' &&
-    to.name !== 'Donation' &&
-    to.name !== 'Notfound' &&
-    !store.state.auth.loggedIn
-  ) {
-    next({ name: 'Home' });
-  } else if (to.name) {
+  // const store = useStore();
+  // if (
+  //   to.name !== 'Home' &&
+  //   to.name !== 'Donation Success' &&
+  //   to.name !== 'Login' &&
+  //   to.name !== 'Documentation' &&
+  //   to.name !== 'Donation' &&
+  //   to.name !== 'Auth_Post' &&
+  //   to.name !== 'Notfound' &&
+  //   !store.state.auth.loggedIn
+  // ) {
+  //   next({ name: 'Home' });
+  // } else
+  if (to.name) {
     document.title = `AM || ${to.name}`;
     next();
   } else {
