@@ -75,6 +75,7 @@ const users = ref([
                 ></v-list-item>
               </template>
               <v-list-item
+                :class="mode ? null : 'text-white'"
                 v-for="item in auth"
                 :key="item"
                 :title="item.title"
@@ -94,11 +95,19 @@ const users = ref([
                 :key="item"
                 :title="item.title"
                 :to="item.to"
+                :class="mode ? null : 'text-white'"
               ></v-list-item>
             </v-list-group>
           </v-list>
         </v-col>
-        <v-col v-if="!docs" cols="auto" md="9" sm="9" align-self="center" style="height: auto">
+        <v-col
+          v-if="!docs || !xs"
+          cols="auto"
+          md="9"
+          sm="9"
+          align-self="center"
+          style="height: auto"
+        >
           <v-btn variant="text" icon="mdi-arrow-left" v-if="xs" to="/documentation"></v-btn>
           <p :class="mode ? 'text-black' : null">
             Untuk sementara konten pada dokumnetasi API ini menampilkan semua CRUD method, headers,

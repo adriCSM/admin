@@ -29,18 +29,22 @@ const mode = computed(() => store.state.mode);
               AM
             </v-list-item>
             <v-list-item
+              rounded="lg"
               v-if="!xs"
               to="/"
               :active-class="mode ? 'text-indigo rounded-lg py-0 ' : 'white rounded-lg py-0 '"
               class="font-weight-medium"
+              :class="mode ? null : 'text-white'"
             >
               Home
             </v-list-item>
             <v-list-item
               v-if="!xs"
+              rounded="lg"
               to="/documentation"
               :active-class="mode ? 'text-indigo rounded-lg py-0 ' : 'white rounded-lg py-0 '"
               class="font-weight-medium"
+              :class="mode ? null : 'text-white'"
               >Documentation</v-list-item
             >
           </v-list>

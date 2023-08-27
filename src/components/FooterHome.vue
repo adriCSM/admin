@@ -66,11 +66,14 @@ const btn = ref([
             <v-row class="text-white" justify="space-between">
               <v-col>
                 <h5 class="font-weight-bold text-h6">Documentation</h5>
-                <ul class="ps-0" style="list-style: none">
-                  <li>Authentication</li>
-                  <li>User</li>
-                  <li>Store</li>
-                </ul>
+                <div class="d-flex flex-column">
+                  <router-link :to="{ name: 'AuthPost' }" class="text-white text-decoration-none">
+                    Authentication
+                  </router-link>
+                  <router-link :to="{ name: 'UserPost' }" class="text-white text-decoration-none"
+                    >User</router-link
+                  >
+                </div>
               </v-col>
               <v-col>
                 <h5 class="font-weight-bold text-h6">Privacy & Policy</h5>
