@@ -11,6 +11,9 @@ const mode = computed(() => {
     return 'bg-element text-white';
   }
 });
+
+import funHljs from '../../../config/hljs.js';
+funHljs();
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const mode = computed(() => {
     <h6>Payload</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="postUsersPayload" />
-      <pre>
+      <pre class="json">
               <code class="postUsersPayload">
       {
         "username":"adri",
@@ -40,7 +43,7 @@ const mode = computed(() => {
     <h6>Response</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="postUsersResponse" />
-      <pre class="postUsersResponse">
+      <pre class="postUsersResponse json">
               <code>
       {
         "status": "success",

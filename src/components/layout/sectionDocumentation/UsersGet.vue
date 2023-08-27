@@ -11,6 +11,8 @@ const mode = computed(() => {
     return 'bg-element text-white';
   }
 });
+import funHljs from '../../../config/hljs.js';
+funHljs();
 </script>
 
 <template>
@@ -26,11 +28,11 @@ const mode = computed(() => {
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="getUsersHeaders" />
 
-      <pre class="getUsersHeaders">
+      <pre class="getUsersHeaders json">
               <code >
       { 
-        Headers: { 
-          Authorization: Bearer &lt;accessToken&gt; 
+        "Headers": { 
+          "Authorization": "Bearer &lt;accessToken&gt;" 
         } 
       }
               </code>
@@ -39,7 +41,7 @@ const mode = computed(() => {
     <h6>Response</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="getUsersResponse" />
-      <pre class="getUsersResponse">
+      <pre class="getUsersResponse json">
               <code>
       {
         "status":"success",

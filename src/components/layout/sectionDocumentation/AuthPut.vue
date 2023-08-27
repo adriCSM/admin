@@ -11,6 +11,9 @@ const mode = computed(() => {
     return 'bg-element text-white';
   }
 });
+
+import funHljs from '../../../config/hljs.js';
+funHljs();
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const mode = computed(() => {
     <h6>Payload</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="putAuthPaylod" />
-      <pre>
+      <pre class="json">
               <code class="putAuthPaylod">
       {
         "refreshToken":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0YWE5NmUxMGQ5NjkxYjE4NTBkYzQwOCIsImlhdCI6MTY5MjE1NTc2Mn0.3BmcgWcpDNJhoOOlqjRkt91wZ_hATBjlwty6GmuMx24"
@@ -36,7 +39,7 @@ const mode = computed(() => {
     <h6>Response</h6>
     <v-card class="my-5" :class="mode">
       <BtnCopy class-name="putAuthResponse" />
-      <pre class="putAuthResponse">
+      <pre class="putAuthResponse json">
               <code>
       {
         "status": "success",

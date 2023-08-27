@@ -17,7 +17,6 @@ const docs = computed(() => {
     return false;
   }
 });
-console.log(docs.value);
 
 const auth = ref([
   {

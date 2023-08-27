@@ -3,6 +3,9 @@ import { useStore } from 'vuex';
 import BtnCopy from '@/components/BtnCopy.vue';
 
 const store = useStore();
+
+import funHljs from '../../../config/hljs.js';
+funHljs();
 </script>
 
 <template>
@@ -17,7 +20,7 @@ const store = useStore();
     <h6>Payload</h6>
     <v-card class="my-5">
       <BtnCopy class-name="postAuthPayload" />
-      <pre>
+      <pre class="json">
               <code class="postAuthPayload">
       {
         "email":"adri@gmail.com",
@@ -29,7 +32,7 @@ const store = useStore();
     <h6>Response</h6>
     <v-card class="my-5">
       <BtnCopy class-name="postAuthResponse" />
-      <pre class="postAuthResponse">
+      <pre class="postAuthResponse json">
               <code>
       {
         "status": "success",

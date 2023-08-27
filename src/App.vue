@@ -25,11 +25,9 @@ import AppBar from '@/components/AppBar.vue';
 import NavBar from '@/components/NavBar.vue';
 import NavbarHomeVue from '@/components/NavbarHome.vue';
 import LoadProgres from '@/components/LoadProgres.vue';
-
 import FooterView from '@/components/FooterView.vue';
 import AppbarHome from '@/components/AppbarHome.vue';
 import FooterHomeVue from '@/components/FooterHome.vue';
-
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
