@@ -83,11 +83,15 @@ const btn = ref([
                 </div>
               </v-col>
               <v-col>
-                <h5 class="font-weight-bold text-h6">Privacy & Policy</h5>
-                <ul class="ps-0" style="list-style: none">
-                  <li>Privacy</li>
-                  <li>Policy</li>
-                </ul>
+                <h5 class="font-weight-bold text-h6">Service</h5>
+                <div class="d-flex flex-column">
+                  <router-link
+                    :to="{ name: 'Privacy Policy' }"
+                    class="text-white text-decoration-none"
+                  >
+                    Privacy Policy
+                  </router-link>
+                </div>
               </v-col>
             </v-row>
           </v-col>

@@ -42,6 +42,7 @@ export const auth = {
         setTimeout(() => {
           context.commit('username', null);
         }, 1000);
+        store.commit('mode', true);
       } catch (error) {
         context.commit('isLoggedIn', true);
         handler.errorHandling(error);

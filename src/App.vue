@@ -5,7 +5,7 @@
     <AppBar :drawer="drawer" @drawer="change" style="position: sticky; top: 0" v-if="loggedIn" />
     <AppbarHome v-if="!loggedIn" style="z-index: 999" />
 
-    <NavbarHomeVue />
+    <NavbarHomeVue v-if="!loggedIn" />
     <v-main>
       <LoadProgres class="mt-15 loading" />
 

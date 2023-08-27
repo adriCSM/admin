@@ -34,6 +34,7 @@ const pic = computed(() =>
 
 const logout = async () => {
   await store.dispatch('auth/logout');
+
   if (!error.value) {
     router.push({ name: 'Home' });
   }
