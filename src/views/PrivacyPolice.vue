@@ -1,6 +1,6 @@
 <template>
   <div class="mx-md-15">
-    <v-container class="mx-xl-15 pb-0 text-black">
+    <v-container class="mx-xl-15 pb-0 text-black text-justify">
       <h3 class="text-center font-weight-black">Kebijakan Privasi</h3>
       <p><span class="font-weight-bold">Terakhir diperbarui pada:</span> 27/8/2023</p>
       <p>Selamat datang di web AM!</p>
@@ -16,7 +16,7 @@
         kebijakan privasi ini. Jika Anda tidak setuju dengan praktik kami, Anda sebaiknya tidak
         melanjutkan penggunaan situs web ini.
       </p>
-      <h6 class="font-weight-bold">A. Informasi yang Kami Kumpulkan</h6>
+      <h6 class="font-weight-bold mt-5">A. Informasi yang Kami Kumpulkan</h6>
       <p>Kami dapat mengumpulkan informasi berikut:</p>
       <ul>
         <li>
@@ -38,7 +38,7 @@
         </li>
       </ul>
 
-      <h6 class="font-weight-bold">B. Penggunaan Informasi</h6>
+      <h6 class="font-weight-bold mt-5">B. Penggunaan Informasi</h6>
       <p>Informasi yang kami kumpulkan dapat digunakan untuk:</p>
 
       <ul>
@@ -60,7 +60,7 @@
         </li>
       </ul>
 
-      <h6 class="font-weight-bold">C. Pemberian Informasi kepada Pihak Ketiga</h6>
+      <h6 class="font-weight-bold mt-5">C. Pemberian Informasi kepada Pihak Ketiga</h6>
       <p>
         Kami tidak akan menjual, menyewakan, atau menukar informasi pribadi Anda kepada pihak
         ketiga. Namun, kami dapat membagikan informasi dengan pihak ketiga yang membantu kami dalam
@@ -69,7 +69,7 @@
         informasi tersebut sesuai dengan tujuan yang ditentukan.
       </p>
 
-      <h6 class="font-weight-bold">D. Pilihan Anda</h6>
+      <h6 class="font-weight-bold mt-5">D. Pilihan Anda</h6>
 
       <ul>
         <li>
@@ -83,19 +83,19 @@
         </li>
       </ul>
 
-      <h6 class="font-weight-bold">E. Keamanan Informasi</h6>
+      <h6 class="font-weight-bold mt-5">E. Keamanan Informasi</h6>
       <p>
         Kami mengambil langkah-langkah keamanan yang wajar untuk melindungi informasi pribadi Anda.
         Namun, kami tidak dapat menjamin keamanan mutlak terhadap segala bentuk risiko.
       </p>
 
-      <h6 class="font-weight-bold">F. Perubahan Kebijakan Privasi</h6>
+      <h6 class="font-weight-bold mt-5">F. Perubahan Kebijakan Privasi</h6>
       <p>
         Kami dapat memperbarui kebijakan privasi ini dari waktu ke waktu dengan mengirimkan
         perubahan ke situs web ini. Pastikan untuk memeriksa kebijakan privasi ini secara berkala.
       </p>
 
-      <h6 class="font-weight-bold">G. Hubungi Kami</h6>
+      <h6 class="font-weight-bold mt-5">G. Hubungi Kami</h6>
       <p>
         Jika Anda memiliki pertanyaan atau kekhawatiran tentang kebijakan privasi ini, silakan
         hubungi kami di:
