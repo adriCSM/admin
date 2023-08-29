@@ -6,8 +6,11 @@ const qrName = ref('');
 const url = ref(null);
 
 const generator = () => {
-  console.log('adri');
   url.value = qrName.value;
+};
+
+const download = () => {
+  console.log('download');
 };
 </script>
 
@@ -28,6 +31,7 @@ const generator = () => {
         max-width="200"
         class="mx-auto py-5 mt-5"
       ></v-img>
+      <v-btn v-if="url" color="#6368d9" class="text-white" @click="download">Download</v-btn>
     </v-card>
   </v-container>
 </template>
