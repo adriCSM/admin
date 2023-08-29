@@ -6,11 +6,22 @@ const qrName = ref('');
 const url = ref(null);
 
 const generator = () => {
-  url.value = qrName.value;
+  url.value = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qrName.value}`;
 };
 
 const download = () => {
-  console.log('download');
+  fetch(url.value)
+    .then((response) => response.blob())
+    .then((file) => {
+      const urlDownload = URL.createObjectURL(file);
+
+      const link = document.createElement('a');
+      link.href = urlDownload;
+      link.download = 'QrCode-' + Date.now();
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    });
 };
 </script>
 
@@ -25,13 +36,15 @@ const download = () => {
         placeholder="Type here"
       ></v-text-field>
       <v-btn @click="generator" color="#6368d9" class="text-white">Generate QR Code</v-btn>
-      <v-img
+      <v-img v-if="url" :src="url" max-width="200" class="mx-auto py-5 mt-5"></v-img>
+      <v-btn
         v-if="url"
-        :src="`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${url}`"
-        max-width="200"
-        class="mx-auto py-5 mt-5"
-      ></v-img>
-      <v-btn v-if="url" color="#6368d9" class="text-white" @click="download">Download</v-btn>
+        prepend-icon="mdi-download"
+        color="#6368d9"
+        class="text-white"
+        @click="download"
+        >Download</v-btn
+      >
     </v-card>
   </v-container>
 </template>
