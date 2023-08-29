@@ -94,6 +94,11 @@ const login = async () => {
           <v-progress-circular :width="6" :size="30" color="white" indeterminate v-show="show">
           </v-progress-circular>
         </v-btn>
+
+        <p class="text-center">
+          Don't have account?
+          <router-link class="text-decoration-none" to="/auth/register">Sign Up</router-link>
+        </p>
       </v-card>
     </v-col>
   </v-row>
