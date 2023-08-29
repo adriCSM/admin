@@ -2,7 +2,7 @@
 
 <template>
   <div class="mx-md-15 mt-md-n15 pt-5">
-    <v-container class="h-auto mx-xl-15 d-flex justify-space-between" style="min-height: 100vh">
+    <v-container class="h-auto mx-xl-15" style="min-height: 100vh">
       <v-row class="h-auto" justify="center">
         <v-col cols="12" class="h-auto justify-center" md="8" sm="8" align-self="center">
           <v-img src="../assets/img/img_signup.png" width="auto" class="mx-auto" cover></v-img>
