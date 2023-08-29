@@ -9,8 +9,8 @@ const generator = () => {
   url.value = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qrName.value}`;
 };
 
-const download = () => {
-  fetch(url.value)
+const download = async () => {
+  await fetch(url.value)
     .then((response) => response.blob())
     .then((file) => {
       const urlDownload = URL.createObjectURL(file);

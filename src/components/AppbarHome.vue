@@ -65,6 +65,7 @@ const mode = computed(() => store.state.mode);
             rounded="lg"
             variant="outlined"
             class="font-weight-bold text-capitalize"
+            to="/auth/register"
           >
             <span :class="!mode ? 'text-white' : null"> Sign Up </span>
           </v-btn>

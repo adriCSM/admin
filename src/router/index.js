@@ -28,6 +28,11 @@ const routes = [
     component: LoginView,
   },
   {
+    path: '/auth/register',
+    name: 'SignUp',
+    component: () => import('../views/SignUp.vue'),
+  },
+  {
     path: '/auth/password',
     name: 'Password',
     component: () => import('../views/ForgetPasswordView.vue'),
