@@ -80,6 +80,11 @@ const btn = ref([
                   <router-link :to="{ name: 'UserPost' }" class="text-white text-decoration-none"
                     >User</router-link
                   >
+                  <router-link
+                    :to="{ name: 'QrCodeGenerator' }"
+                    class="text-white text-decoration-none"
+                    >QR code generator</router-link
+                  >
                 </div>
               </v-col>
               <v-col>

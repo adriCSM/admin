@@ -73,6 +73,11 @@ const routes = [
     component: () => import('../views/PrivacyPolice.vue'),
   },
   {
+    path: '/qr-code-generator',
+    name: 'QrCodeGenerator',
+    component: () => import('../views/QrCodeGenerator.vue'),
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'Notfound',
     component: () => import('../views/NotfoundView.vue'),
