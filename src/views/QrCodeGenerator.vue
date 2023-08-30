@@ -6,7 +6,11 @@ const qrName = ref('');
 const url = ref(null);
 
 const generator = () => {
-  url.value = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qrName.value}`;
+  if (qrName.value) {
+    url.value = `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${qrName.value}`;
+  } else {
+    url.value = null;
+  }
 };
 
 const download = async () => {
@@ -31,6 +35,7 @@ const download = async () => {
       <v-card-title>QR Code Generator</v-card-title>
       <v-text-field
         @keyup.enter="generator"
+        @keyup="isEmpty"
         v-model="qrName"
         variant="outlined"
         placeholder="Type here"
