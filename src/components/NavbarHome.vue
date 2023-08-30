@@ -22,6 +22,7 @@
         variant="outlined"
         class="font-weight-bold text-capitalize"
         to="/auth/register"
+        @click="close"
       >
         <span :class="!mode ? 'text-indigo' : null"> Sign Up </span>
       </v-btn>
