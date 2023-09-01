@@ -91,6 +91,7 @@ const init = async () => {
           'https://adricsm.github.io',
           'https://am-store.netlify.app',
           'https://admin.adri-csm.my.id',
+          'https://app.midtrans.com',
         ],
         additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
