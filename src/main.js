@@ -9,6 +9,7 @@ import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import javascript from 'highlight.js/lib/languages/javascript';
 import './registerServiceWorker.js';
+import './registerServiceWorker'
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
