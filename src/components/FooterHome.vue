@@ -7,12 +7,12 @@ let deferredPrompt = ref('');
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt.value = e;
+  window.addEventListener('appinstalled', () => {
+    console.log('a');
+    installed.value = false;
+  });
 });
 const installed = ref(true);
-window.addEventListener('appinstalled', () => {
-  console.log('a');
-  installed.value = false;
-});
 
 const install = () => {
   if (deferredPrompt.value) {
