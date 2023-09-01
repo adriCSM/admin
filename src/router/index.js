@@ -1,10 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router';
-// import { useStore } from 'vuex';
 import LoginView from '../views/LoginView.vue';
 import routesDocumentation from './documentation.routes.js';
 import routesUsers from './users.routes.js';
 import routesPortofolio from './portfolio.routes.js';
-import { useStore } from 'vuex';
 const routes = [
   {
     path: '/',
@@ -112,7 +110,6 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  const store = useStore();
   if (
     to.name !== 'Home' &&
     to.name !== 'Donation Success' &&
