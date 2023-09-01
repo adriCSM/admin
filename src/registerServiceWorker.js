@@ -11,7 +11,6 @@ if (process.env.NODE_ENV === 'production') {
       );
     },
     registered() {
-      window.addEventListener('bef');
       console.log('Service worker has been registered.');
     },
     cached() {

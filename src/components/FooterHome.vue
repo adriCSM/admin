@@ -8,6 +8,11 @@ window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt.value = e;
 });
+const installed = ref(true);
+window.addEventListener('appinstalled', () => {
+  console.log('a');
+  installed.value = false;
+});
 
 const install = () => {
   if (deferredPrompt.value) {
@@ -110,7 +115,7 @@ const btn = ref([
                 </div>
               </v-col>
             </v-row>
-            <v-row>
+            <v-row v-if="!installed">
               <v-col>
                 <v-btn color="white" variant="outlined" @click="install">
                   <span class="text-capitalize">install app</span>PWA !
