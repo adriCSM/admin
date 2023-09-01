@@ -3,6 +3,7 @@ import LoginView from '../views/LoginView.vue';
 import routesDocumentation from './documentation.routes.js';
 import routesUsers from './users.routes.js';
 import routesPortofolio from './portfolio.routes.js';
+import { useStore } from 'vuex';
 const routes = [
   {
     path: '/',
@@ -110,6 +111,7 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  const store = useStore();
   if (
     to.name == 'Home' &&
     to.name == 'Donation Success' &&
@@ -118,7 +120,7 @@ router.beforeEach((to, from, next) => {
     to.name == 'Donation' &&
     to.name == 'Auth_Post'
   ) {
-    localStorage.removeItem('user');
+    store.dispatch('auth/logout');
   } else if (to.name) {
     next();
   } else {
