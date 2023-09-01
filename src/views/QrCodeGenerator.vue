@@ -13,6 +13,12 @@ const generator = () => {
   }
 };
 
+const isEmpty = () => {
+  if (!qrName.value) {
+    url.value = null;
+  }
+};
+
 const download = async () => {
   await fetch(url.value)
     .then((response) => response.blob())
