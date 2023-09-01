@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue';
 import routesDocumentation from './documentation.routes.js';
 import routesUsers from './users.routes.js';
 import routesPortofolio from './portfolio.routes.js';
+import { useStore } from 'vuex';
 const routes = [
   {
     path: '/',
@@ -111,20 +112,18 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  // const store = useStore();
-  // if (
-  //   to.name !== 'Home' &&
-  //   to.name !== 'Donation Success' &&
-  //   to.name !== 'Login' &&
-  //   to.name !== 'Documentation' &&
-  //   to.name !== 'Donation' &&
-  //   to.name !== 'Auth_Post' &&
-  //   to.name !== 'Notfound' &&
-  //   !store.state.auth.loggedIn
-  // ) {
-  //   next({ name: 'Home' });
-  // } else
-  if (to.name) {
+  const store = useStore();
+  if (
+    to.name !== 'Home' &&
+    to.name !== 'Donation Success' &&
+    to.name !== 'Login' &&
+    to.name !== 'Documentation' &&
+    to.name !== 'Donation' &&
+    to.name !== 'Auth_Post' &&
+    to.name !== 'Notfound'
+  ) {
+    store.commit('auth/loggedIn', false);
+  } else if (to.name) {
     next();
   } else {
     next({ name: 'Notfound' });
