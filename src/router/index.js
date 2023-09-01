@@ -122,7 +122,7 @@ router.beforeEach((to, from, next) => {
     to.name !== 'Auth_Post' &&
     to.name !== 'Notfound'
   ) {
-    store.commit('auth/loggedIn', false);
+    localStorage.removeItem('user');
   } else if (to.name) {
     next();
   } else {
