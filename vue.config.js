@@ -5,7 +5,7 @@ module.exports = defineConfig({
 
   pluginOptions: {
     vuetify: {
-      // https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader
+      // 'https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader'
     },
   },
 
@@ -21,7 +21,7 @@ module.exports = defineConfig({
       favicon32: 'img/icons/LOGO.png',
       favicon16: 'img/icons/LOGO.png',
       appleTouchIcon: 'img/icons/LOGO.png',
-      maskIcon: 'img/icons/safari-pinned-tab.svg',
+      maskIcon: 'img/icons/LOGO.png',
       msTileImage: 'img/icons/LOGO.png',
     },
   },
