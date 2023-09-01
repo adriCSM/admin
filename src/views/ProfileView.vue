@@ -1,16 +1,16 @@
 <script setup>
 import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
-
+const store = useStore();
 const profile = computed(() => store.state.profile.myProfile);
 
 const payload = ref({
-  username: null,
+  username: profile.value.username,
   name: null,
-  email: null,
-  phoneNumber: null,
-  gender: null,
-  birth: null,
+  email: profile.value.email,
+  phoneNumber: profile.value.phone_number,
+  gender: profile.value.gender,
+  birth: profile.value.birth,
 });
 
 const reset = () => {
@@ -24,7 +24,7 @@ const reset = () => {
     birth: null,
   };
 };
-const store = useStore();
+
 const mode = computed(() => store.state.mode);
 </script>
 
@@ -87,7 +87,7 @@ const mode = computed(() => store.state.mode);
           </v-col>
         </v-row>
       </v-col>
-      <v-col md="8" cols="12" order-md="0">
+      <v-col md="8" cols="12" order-md="0" v-if="profile">
         <v-card
           class="pa-3 rounded-lg h-auto"
           :class="mode ? 'bg-white' : 'bg-element'"

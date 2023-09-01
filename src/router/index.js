@@ -122,6 +122,7 @@ router.beforeEach((to, from, next) => {
     store.state.auth.loggedIn
   ) {
     store.dispatch('auth/logout');
+    next();
   } else if (to.name) {
     next();
   } else {
