@@ -24,6 +24,7 @@ export default {
       },
     );
     if (response.data.data) {
+      console.log('...login successfully');
       localStorage.setItem('user_id', JSON.stringify(response.data.data.refreshToken));
       localStorage.setItem('user', JSON.stringify(response.data.data.accessToken));
     }
@@ -36,6 +37,7 @@ export default {
         headers: await authHeader(),
       })
       .then(() => {
+        console.log('...logout successfully');
         localStorage.removeItem('user_id');
         localStorage.removeItem('user');
         localStorage.removeItem('activeTabStore');

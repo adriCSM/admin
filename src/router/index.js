@@ -113,12 +113,13 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const store = useStore();
   if (
-    to.name == 'Home' &&
-    to.name == 'Donation Success' &&
-    to.name == 'Login' &&
-    to.name == 'Documentation' &&
-    to.name == 'Donation' &&
-    to.name == 'Auth_Post'
+    (to.name == 'Home' ||
+      to.name == 'Donation Success' ||
+      to.name == 'Login' ||
+      to.name == 'Documentation' ||
+      to.name == 'Donation' ||
+      to.name == 'Auth_Post') &&
+    store.state.auth.loggedIn
   ) {
     store.dispatch('auth/logout');
   } else if (to.name) {
