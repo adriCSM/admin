@@ -22,7 +22,7 @@ module.exports = defineConfig({
       favicon16: 'img/icons/LOGO.png',
       appleTouchIcon: 'img/icons/LOGO.png',
       maskIcon: 'img/icons/safari-pinned-tab.svg',
-      msTileImage: 'img/icons/msapplication-icon-144x144.png',
+      msTileImage: 'img/icons/LOGO.png',
     },
   },
 });
