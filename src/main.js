@@ -9,12 +9,16 @@ import hljs from 'highlight.js/lib/core';
 import json from 'highlight.js/lib/languages/json';
 import javascript from 'highlight.js/lib/languages/javascript';
 import './registerServiceWorker.js';
-import './registerServiceWorker'
+import './registerServiceWorker';
 
 hljs.registerLanguage('javascript', javascript);
 hljs.registerLanguage('json', json);
 axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
 axios.defaults.withCredentials = true;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+});
 
 loadFonts();
 

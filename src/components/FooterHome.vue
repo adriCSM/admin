@@ -3,6 +3,17 @@ import { computed, ref } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
+let deferredPrompt = ref('');
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt.value = e;
+});
+
+const install = () => {
+  if (deferredPrompt.value) {
+    deferredPrompt.value.prompt();
+  }
+};
 
 const mode = computed(() => store.state.mode);
 
@@ -97,6 +108,13 @@ const btn = ref([
                     Privacy Policy
                   </router-link>
                 </div>
+              </v-col>
+            </v-row>
+            <v-row>
+              <v-col>
+                <v-btn color="white" variant="outlined" @click="install">
+                  <span class="text-capitalize">install app</span>PWA !
+                </v-btn>
               </v-col>
             </v-row>
           </v-col>
