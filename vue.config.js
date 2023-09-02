@@ -17,6 +17,7 @@ module.exports = defineConfig({
     manifestOptions: {
       background_color: '#6368D9',
       icons: [
+        // mengganti icin pada smarthphone
         {
           src: 'img/icons/LOGO.png',
           sizes: '512x512',
@@ -26,6 +27,7 @@ module.exports = defineConfig({
       ],
     },
     iconPaths: {
+      // mengganti icin pada web dekstop
       faviconSVG: 'img/icons/LOGO.png',
       favicon16: 'img/icons/LOGO.png',
       favicon32: 'img/icons/LOGO.png',
