@@ -15,7 +15,7 @@ module.exports = defineConfig({
     themeColor: '#6368D9',
     msTileColor: '#6368D9',
     manifestOptions: {
-      background_color: '#6368D9',
+      background_color: '#000000',
       icons: [
         // mengganti icin pada smarthphone
         {
