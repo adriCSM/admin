@@ -19,6 +19,8 @@ module.exports = defineConfig({
     },
     iconPaths: {
       faviconSVG: 'img/icons/LOGO.png',
+      favicon16: 'img/icons/LOGO.png',
+      favicon32: 'img/icons/LOGO.png',
     },
   },
 });
