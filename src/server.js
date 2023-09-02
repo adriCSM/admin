@@ -92,7 +92,7 @@ const init = async () => {
           'https://am-store.netlify.app',
           'https://admin.adri-csm.my.id',
         ],
-        additionalHeaders: ['X-Requested-With', 'X-Data-Source', '*'],
+        additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
       },
     },
