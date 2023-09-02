@@ -4,7 +4,7 @@ const API_URL = process.env.VUE_APP_API_BASE_URL;
 
 export default {
   async donation(payload) {
-    console.log('test');
+    console.log({ API_URL });
     const response = await axios.post(
       API_URL + '/donation',
       { ...payload },
@@ -12,7 +12,6 @@ export default {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          'Access-Control-Allow-Origin': '*',
         },
       },
     );
