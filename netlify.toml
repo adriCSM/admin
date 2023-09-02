@@ -4,7 +4,7 @@
     status = 200
 
 [[headers]]
-  # Aturan header untuk semua rute
+ 
   for = "/*"
   [headers.values]
     Access-Control-Allow-Origin = "*"
