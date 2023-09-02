@@ -1,6 +1,15 @@
 /* eslint-disable no-console */
 
 import { register } from 'register-service-worker';
+import { precacheAndRoute } from 'workbox-precaching';
+
+precacheAndRoute(
+  [{ url: '/index.html', revision: +new Date() }],
+
+  {
+    ignoreURLParametersMatching: ['/_redirects'],
+  },
+);
 
 if (process.env.NODE_ENV === 'production') {
   register(`/service-worker.js`, {

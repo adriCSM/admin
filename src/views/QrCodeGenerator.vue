@@ -37,7 +37,7 @@ const download = async () => {
 
 <template>
   <v-container>
-    <v-card height="auto" width="600" class="mx-auto pa-5 text-center" elevation="4">
+    <v-card height="auto" max-width="600" class="mx-auto pa-5 text-center" elevation="4">
       <v-card-title>QR Code Generator</v-card-title>
       <v-text-field
         @keyup.enter="generator"
