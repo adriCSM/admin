@@ -13,9 +13,11 @@ module.exports = defineConfig({
   pwa: {
     name: 'Web AM',
     themeColor: '#6368D9',
-    msTileColor: '#6368D9',
+    msTileColor: '#FFFFFF',
+    appleMobileWebAppCapable: 'yes',
+    appleMobileWebAppStatusBarStyle: 'black',
     manifestOptions: {
-      background_color: '#000000',
+      background_color: '#6368D9',
       icons: [
         // mengganti icin pada smarthphone
         {
@@ -31,6 +33,9 @@ module.exports = defineConfig({
       faviconSVG: 'img/icons/LOGO.png',
       favicon16: 'img/icons/LOGO.png',
       favicon32: 'img/icons/LOGO.png',
+      appleTouchIcon: 'img/icons/LOGO.png',
+      maskIcon: 'img/icons/LOGO.png',
+      msTileImage: 'img/icons/LOGO.png',
     },
   },
 });
