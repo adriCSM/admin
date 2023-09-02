@@ -16,6 +16,14 @@ module.exports = defineConfig({
     msTileColor: '#6368D9',
     manifestOptions: {
       background_color: '#6368D9',
+      icons: [
+        {
+          src: 'img/icons/LOGO.png',
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'any maskable',
+        },
+      ],
     },
     iconPaths: {
       faviconSVG: 'img/icons/LOGO.png',
