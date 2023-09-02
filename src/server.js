@@ -85,15 +85,13 @@ const init = async () => {
     routes: {
       cors: {
         origin: [
-          '*',
-          // 'http://localhost:8080',
-          // 'https://adri-csm.my.id',
-          // 'https://am-admin.netlify.app',
-          // 'https://adricsm.github.io',
-          // 'https://am-store.netlify.app',
-          // 'https://admin.adri-csm.my.id',
+          'http://localhost:8080',
+          'https://adri-csm.my.id',
+          'https://am-admin.netlify.app',
+          'https://adricsm.github.io',
+          'https://am-store.netlify.app',
+          'https://admin.adri-csm.my.id',
         ],
-        additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
       },
     },
