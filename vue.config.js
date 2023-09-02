@@ -9,15 +9,6 @@ module.exports = defineConfig({
       // 'https://github.com/vuetifyjs/vuetify-loader/tree/next/packages/vuetify-loader'
     },
   },
-  devServer: {
-    proxy: {
-      '/css': {
-        target: 'https://d2f3dnusg0rbp7.cloudfront.net',
-        changeOrigin: true,
-        pathRewrite: { '^/css': '' },
-      },
-    },
-  },
 
   pwa: {
     name: 'Web AM',
