@@ -49,22 +49,31 @@ const mode = computed(() => store.state.mode);
           </v-list>
         </div>
         <div class="d-flex align-center text-end">
-          <v-btn
-            v-if="!xs"
-            color="#6368D9"
-            rounded="lg"
-            class="text-white font-weight-bold text-capitalize me-3"
-            to="/auth/login"
-          >
-            Sign In
-          </v-btn>
+          <v-hover>
+            <template v-slot:default="{ isHovering, props }">
+              <v-btn
+                v-bind="props"
+                v-if="!xs"
+                color="#6368D9"
+                rounded="lg"
+                :class="
+                  isHovering
+                    ? 'text-white font-weight-bold text-capitalize me-3'
+                    : 'font-weight-bold text-capitalize me-3'
+                "
+                to="/auth/login"
+                :variant="isHovering ? 'flat' : 'outlined'"
+              >
+                Sign In
+              </v-btn>
+            </template>
+          </v-hover>
 
           <v-btn
             v-if="!xs"
             color="#6368D9"
             rounded="lg"
-            variant="outlined"
-            class="font-weight-bold text-capitalize"
+            class="font-weight-bold text-white text-capitalize"
             to="/auth/register"
           >
             <span :class="!mode ? 'text-white' : null"> Sign Up </span>

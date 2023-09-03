@@ -42,11 +42,11 @@ const btn = ref([
 </script>
 
 <template>
-  <footer :class="mode ? 'bg-footer' : 'bg-footer-dark'">
+  <footer :class="mode ? 'bg-footer' : 'bg-footer-dark'" class="mx-1">
     <div class="mx-md-15 mt-5">
       <v-container class="mx-xl-15 d-flex">
         <v-row>
-          <v-col md="6">
+          <v-col md="3">
             <v-row class="h-100">
               <v-col cols="12">
                 <router-link
@@ -80,7 +80,7 @@ const btn = ref([
               </v-col>
             </v-row>
           </v-col>
-          <v-col md="6">
+          <v-col md="9">
             <v-row class="text-white" justify="space-between">
               <v-col>
                 <h5 class="font-weight-bold text-h6">Documentation</h5>
@@ -91,15 +91,10 @@ const btn = ref([
                   <router-link :to="{ name: 'UserPost' }" class="text-white text-decoration-none"
                     >User</router-link
                   >
-                  <router-link
-                    :to="{ name: 'QrCodeGenerator' }"
-                    class="text-white text-decoration-none"
-                    >QR code generator</router-link
-                  >
                 </div>
               </v-col>
               <v-col>
-                <h5 class="font-weight-bold text-h6">Service</h5>
+                <h5 class="font-weight-bold text-h6">About</h5>
                 <div class="d-flex flex-column">
                   <router-link
                     :to="{ name: 'Privacy Policy' }"
@@ -109,6 +104,16 @@ const btn = ref([
                   </router-link>
                 </div>
               </v-col>
+              <v-col>
+                <h5 class="font-weight-bold text-h6">Others</h5>
+                <div class="d-flex flex-column">
+                  <router-link
+                    :to="{ name: 'QrCodeGenerator' }"
+                    class="text-white text-decoration-none"
+                    >QR code generator</router-link
+                  >
+                </div>
+              </v-col>
             </v-row>
             <v-row>
               <v-col>
@@ -116,6 +121,7 @@ const btn = ref([
                   <span class="text-capitalize">install App</span>!
                 </v-btn>
               </v-col>
+              <v-col> </v-col>
             </v-row>
           </v-col>
           <v-divider thickness="3" class="my-0 mx-2 border-opacity-50"></v-divider>
