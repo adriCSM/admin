@@ -14,7 +14,7 @@ class ContactHandler {
         message: 'Pesan terkirim',
         data: { messageId },
       })
-      .code(201);
+      .code(200);
     return response;
   }
 

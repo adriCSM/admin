@@ -92,7 +92,6 @@ const init = async () => {
           'https://admin.adri-csm.my.id',
           'https://am-admin.netlify.app',
           'https://adri-csm.netlify.app',
-          'https://graph.facebook.com/v21.0/102475412873585/messages',
         ],
         additionalHeaders: ['X-Requested-With', 'X-Data-Source'],
         credentials: true,
