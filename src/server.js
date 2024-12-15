@@ -85,7 +85,7 @@ const init = async () => {
     routes: {
       cors: {
         origin: [
-          'http://localhost:8080',
+          'http://localhost:5173',
           'https://adri-csm.my.id',
           'https://adricsm.github.io',
           'https://am-store.netlify.app',
