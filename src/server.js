@@ -85,6 +85,7 @@ const init = async () => {
     routes: {
       cors: {
         origin: [
+          'http://localhost:3000',
           'http://localhost:5173',
           'https://adri-csm.my.id',
           'https://adricsm.github.io',
